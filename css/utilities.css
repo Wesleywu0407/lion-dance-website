@@ -1,0 +1,23 @@
+.reveal {
+  opacity: 0;
+  transform: translateY(42px) scale(0.98);
+  transition: opacity 0.95s ease, transform 0.95s ease, filter 0.95s ease;
+  filter: blur(6px);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+@keyframes scrollPulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scaleY(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}

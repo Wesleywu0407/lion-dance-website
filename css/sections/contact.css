@@ -1,0 +1,251 @@
+.contact-layout {
+  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: 56px;
+}
+
+.contact-info {
+  display: grid;
+  gap: 24px;
+}
+
+.contact-info article {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  gap: 18px;
+  align-items: start;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(20, 19, 17, 0.08);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.contact-info span {
+  display: inline-block;
+  margin-bottom: 6px;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.contact-info p {
+  margin: 0 0 4px;
+  font-size: 0.98rem;
+  color: var(--ink-soft);
+}
+
+.contact-icon {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background:
+    linear-gradient(180deg, rgba(245, 236, 220, 0.96), rgba(235, 224, 206, 0.94));
+  border: 1px solid rgba(159, 53, 31, 0.12);
+  color: var(--accent-deep);
+  font-weight: 800;
+}
+
+.business-hours {
+  margin-top: 10px;
+  padding: 34px;
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgba(242, 234, 221, 0.96), rgba(229, 220, 203, 0.96));
+  border: 1px solid rgba(159, 53, 31, 0.08);
+  box-shadow: 0 18px 34px rgba(20, 19, 17, 0.04);
+}
+
+.business-hours h3 {
+  margin: 0 0 24px;
+  font-family: "Noto Serif TC", serif;
+  font-size: 1.6rem;
+}
+
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 0;
+  color: var(--ink-soft);
+  font-size: 1rem;
+}
+
+.hours-row strong {
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+
+.contact-form {
+  display: grid;
+  gap: 22px;
+  padding: 32px;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(251, 247, 239, 0.92), rgba(244, 238, 228, 0.86));
+  border: 1px solid rgba(20, 19, 17, 0.06);
+  box-shadow: 0 22px 42px rgba(20, 19, 17, 0.05);
+}
+
+.contact-form label {
+  display: grid;
+  gap: 10px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.contact-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  width: 100%;
+  padding: 18px 18px;
+  border: 1px solid rgba(20, 20, 20, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 251, 245, 0.8);
+  font: inherit;
+  color: var(--ink);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  outline: none;
+  border-color: rgba(159, 53, 31, 0.44);
+  box-shadow: 0 0 0 4px rgba(159, 53, 31, 0.08);
+  background: #fff;
+}
+
+.contact-form .button {
+  width: 100%;
+  min-width: 0;
+  padding: 20px 24px;
+  border-radius: 12px;
+}
+
+.contact-note {
+  margin: 8px 0 0;
+  text-align: center;
+  color: #7f8794;
+}
+
+.contact-quote {
+  margin: 44px 0 0;
+  padding-left: 24px;
+  border-left: 2px solid var(--accent);
+  color: var(--ink-soft);
+  font-size: 1.1rem;
+}
+
+.site-footer {
+  margin-top: 56px;
+  padding: 56px 0 24px;
+  background:
+    linear-gradient(180deg, #13100d, #090807 76%),
+    radial-gradient(circle at 20% 10%, rgba(159, 53, 31, 0.14), transparent 28%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 400'%3E%3Cg fill='none' stroke='%23f4e4d1' stroke-opacity='.05' stroke-width='2'%3E%3Cpath d='M0 110c125 42 218 47 325 18 121-33 236-35 342 5 123 47 265 51 456-7 111-34 203-39 277-27'/%3E%3Cpath d='M0 272c130 26 231 22 324-11 116-41 234-44 365-7 135 37 281 42 490-18 98-28 173-30 221-18'/%3E%3C/g%3E%3C/svg%3E")
+    center/cover no-repeat;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.footer-inner,
+.footer-bottom {
+  width: min(calc(100% - 40px), var(--max-width));
+  margin: 0 auto;
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+}
+
+.footer-badge {
+  display: inline-grid;
+  place-items: center;
+  width: 108px;
+  height: 78px;
+  background: linear-gradient(180deg, rgba(159, 53, 31, 0.96), rgba(127, 38, 22, 0.96));
+  color: #fff;
+  font-family: "Noto Serif TC", serif;
+  font-size: 2rem;
+  font-weight: 800;
+  border-radius: 6px;
+}
+
+.footer-brand h3 {
+  margin: 26px 0 10px;
+  font-family: "Noto Serif TC", serif;
+  font-size: 2rem;
+}
+
+.footer-brand p {
+  max-width: 40rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+}
+
+.footer-links h4 {
+  margin: 10px 0 20px;
+  font-size: 1.8rem;
+  font-family: "Noto Serif TC", serif;
+}
+
+.footer-links a {
+  display: block;
+  margin: 12px 0;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.footer-socials a {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 247, 238, 0.9);
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.footer-socials a:hover,
+.footer-socials a:focus-visible {
+  transform: translateY(-3px);
+  border-color: rgba(159, 53, 31, 0.5);
+  background: rgba(159, 53, 31, 0.12);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 26px;
+  margin-top: 34px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.76);
+}

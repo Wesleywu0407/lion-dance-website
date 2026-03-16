@@ -1,0 +1,190 @@
+@media (max-width: 1100px) {
+  .process-grid,
+  .about-points {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-dragon-trace {
+    width: min(60vw, 620px);
+    right: -72px;
+  }
+
+  .about-layout,
+  .intro-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-layout,
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-header {
+    padding: 14px 18px;
+  }
+
+  .brand-text small {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: inline-block;
+  }
+
+  .site-nav {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 18px;
+    right: 18px;
+    display: grid;
+    gap: 12px;
+    padding: 18px;
+    border-radius: 22px;
+    background: rgba(24, 20, 17, 0.94);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.22);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .site-nav a {
+    color: #fff8f0;
+  }
+
+  .site-nav.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .hero {
+    padding: 126px 20px 72px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.8rem, 15vw, 4.5rem);
+  }
+
+  .hero-video-label,
+  .hero-dragon-trace {
+    display: none;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .hero-scroll {
+    display: none;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .section,
+  .intro-band {
+    width: min(calc(100% - 24px), var(--max-width));
+  }
+
+  .section {
+    padding: 78px 0;
+  }
+
+  .section::before {
+    inset: 26px -10px;
+  }
+
+  .section-heading::after {
+    display: none;
+  }
+
+  .page-hero {
+    min-height: 360px;
+    padding: 148px 0 58px;
+  }
+
+  .intro-band {
+    margin-top: 0;
+    padding: 72px 20px 40px;
+  }
+
+  .service-grid,
+  .process-grid,
+  .about-points,
+  .contact-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    columns: 1;
+  }
+
+  .about-visual {
+    min-height: 380px;
+  }
+
+  .about-card {
+    min-height: 380px;
+  }
+
+  .vertical-text {
+    font-size: 2.7rem;
+  }
+
+  .brush-divider {
+    width: min(calc(100% - 24px), calc(var(--max-width) + 120px));
+  }
+
+  .service-image {
+    min-height: 290px;
+  }
+
+  .service-overlay {
+    inset: auto 18px 18px 18px;
+  }
+
+  .contact-form {
+    padding: 24px 18px;
+  }
+
+  .footer-links {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .footer-bottom {
+    justify-content: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-dragon-trace path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}

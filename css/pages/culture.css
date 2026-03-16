@@ -1,0 +1,13 @@
+/* culture.html 專用樣式
+   未來建立文化頁面時，只要在 culture.html 加入：
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/pages/culture.css">
+*/
+
+.culture-hero {
+  padding-top: 160px;
+}
+
+.culture-story {
+  background: rgba(255, 252, 247, 0.8);
+}

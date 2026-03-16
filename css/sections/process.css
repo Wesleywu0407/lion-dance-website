@@ -1,0 +1,42 @@
+.process-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.process-step {
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(180deg, rgba(251, 247, 239, 0.88), rgba(244, 236, 223, 0.8));
+  box-shadow: 0 14px 30px rgba(20, 19, 17, 0.04);
+}
+
+.process-step::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(177, 75, 29, 0.08), transparent 60%);
+  pointer-events: none;
+}
+
+.process-step span {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: var(--accent-deep);
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.process-step h3 {
+  margin: 0 0 10px;
+  font-size: 1.36rem;
+}
+
+.process-step p {
+  margin: 0;
+  color: var(--ink-soft);
+}

@@ -1,0 +1,11 @@
+@import url("./base.css");
+@import url("./header.css");
+@import url("./components.css");
+@import url("./sections/home.css");
+@import url("./sections/about.css");
+@import url("./sections/services.css");
+@import url("./sections/process.css");
+@import url("./sections/gallery.css");
+@import url("./sections/contact.css");
+@import url("./utilities.css");
+@import url("./responsive.css");
