@@ -4,6 +4,14 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .service-directory {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .service-group-items {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .hero-dragon-trace {
     width: min(60vw, 620px);
     right: -72px;
@@ -50,7 +58,37 @@
     transition: opacity 0.2s ease, transform 0.2s ease;
   }
 
+  .nav-services {
+    display: grid;
+    gap: 10px;
+  }
+
   .site-nav a {
+    color: #fff8f0;
+  }
+
+  .service-mega {
+    position: static;
+    transform: none;
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 14px 14px 6px;
+    border-radius: 16px;
+    background: rgba(255, 248, 240, 0.05);
+    border-color: rgba(255, 248, 240, 0.08);
+    box-shadow: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .service-mega::before {
+    inset: 10px;
+    border-color: rgba(155, 119, 64, 0.18);
+  }
+
+  .service-mega-group h3,
+  .service-mega-group a {
     color: #fff8f0;
   }
 
@@ -122,6 +160,15 @@
   .about-points,
   .contact-form-row {
     grid-template-columns: 1fr;
+  }
+
+  .service-directory,
+  .service-group-items {
+    grid-template-columns: 1fr;
+  }
+
+  .service-group {
+    padding: 24px 18px;
   }
 
   .gallery-grid {

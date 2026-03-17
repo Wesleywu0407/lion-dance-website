@@ -47,8 +47,9 @@
   inset: 40px auto 40px 40px;
   writing-mode: vertical-rl;
   text-orientation: mixed;
+  font-family: var(--font-calligraphy);
   font-size: clamp(2.3rem, 6vw, 4.3rem);
-  letter-spacing: 0.22em;
+  letter-spacing: 0.16em;
   color: rgba(255, 247, 236, 0.88);
 }
 
@@ -62,7 +63,7 @@
   place-items: center;
   border: 2px solid rgba(177, 75, 29, 0.76);
   color: rgba(236, 169, 129, 0.92);
-  font-family: "Noto Serif TC", serif;
+  font-family: var(--font-calligraphy);
   font-weight: 700;
   line-height: 1.2;
 }
