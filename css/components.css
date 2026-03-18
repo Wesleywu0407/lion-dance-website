@@ -3,11 +3,12 @@
   align-items: center;
   justify-content: center;
   min-width: 168px;
+  gap: 12px;
   padding: 15px 28px;
-  border-radius: 10px;
+  border-radius: 999px;
   text-decoration: none;
   border: 1px solid transparent;
-  font-size: 0.96rem;
+  font-size: 0.92rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   cursor: pointer;
@@ -16,33 +17,31 @@
 
 .button:hover,
 .button:focus-visible {
-  transform: translateY(-3px);
+  transform: translateY(-1px);
 }
 
 .button-primary {
-  background:
-    linear-gradient(180deg, rgba(164, 56, 39, 0.98), rgba(116, 32, 20, 0.98));
-  color: #fff;
-  box-shadow: 0 14px 28px rgba(116, 32, 20, 0.18);
-  border-color: rgba(240, 219, 188, 0.14);
+  background: linear-gradient(180deg, #984438, #8f3a2f);
+  color: #fffaf4;
+  box-shadow: 0 10px 22px rgba(143, 58, 47, 0.14);
+  border-color: rgba(249, 239, 226, 0.14);
 }
 
 .button-secondary {
-  background:
-    linear-gradient(180deg, rgba(18, 15, 14, 0.5), rgba(18, 15, 14, 0.32));
-  color: #fffaf3;
-  border-color: rgba(240, 220, 188, 0.18);
+  background: rgba(251, 247, 241, 0.72);
+  color: var(--ink);
+  border-color: rgba(22, 19, 17, 0.14);
   backdrop-filter: blur(8px);
 }
 
 .button::before,
 .button::after {
   content: "";
-  width: 10px;
-  height: 10px;
+  width: 7px;
+  height: 7px;
   flex: 0 0 auto;
   border-top: 1px solid currentColor;
-  opacity: 0.72;
+  opacity: 0.44;
 }
 
 .button::before {

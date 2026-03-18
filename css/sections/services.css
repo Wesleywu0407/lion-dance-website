@@ -1,7 +1,12 @@
 .service-grid {
+  display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 30px;
   align-items: start;
+}
+
+.service-performance-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .service-nav {
@@ -13,8 +18,8 @@
 .service-nav a {
   padding: 10px 16px;
   border-radius: 999px;
-  border: 1px solid rgba(155, 119, 64, 0.18);
-  background: rgba(250, 245, 237, 0.86);
+  border: 1px solid rgba(185, 146, 94, 0.18);
+  background: rgba(251, 247, 241, 0.86);
   color: var(--ink);
   text-decoration: none;
   font-size: 0.88rem;
@@ -22,11 +27,78 @@
   letter-spacing: 0.08em;
 }
 
+.service-nav a:hover,
+.service-nav a:focus-visible {
+  border-color: rgba(143, 58, 47, 0.24);
+  color: var(--accent-deep);
+}
+
+.service-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.service-preview-card {
+  position: relative;
+  padding: 28px 24px 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(22, 19, 17, 0.08);
+  background:
+    linear-gradient(180deg, rgba(251, 247, 241, 0.96), rgba(246, 240, 232, 0.92));
+}
+
+.service-preview-card::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(185, 146, 94, 0.12);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.service-preview-card span {
+  display: inline-block;
+  margin-bottom: 22px;
+  color: var(--accent-deep);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.service-preview-card h3 {
+  margin: 0 0 12px;
+  font-family: var(--font-serif);
+  font-size: 1.34rem;
+  letter-spacing: 0.06em;
+}
+
+.service-preview-card p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.service-preview-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: center;
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(22, 19, 17, 0.08);
+}
+
+.service-preview-footer p {
+  margin: 0;
+  max-width: 48rem;
+  color: var(--ink-soft);
+}
+
 .service-card {
   position: relative;
   padding: 0;
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: 16px;
   background: rgba(248, 244, 236, 0.76);
   border: 1px solid rgba(20, 19, 17, 0.07);
   box-shadow: 0 16px 28px rgba(20, 19, 17, 0.04);
@@ -37,7 +109,7 @@
   content: "";
   position: absolute;
   inset: 12px;
-  border: 1px solid rgba(155, 119, 64, 0.12);
+  border: 1px solid rgba(185, 146, 94, 0.12);
   z-index: 2;
   pointer-events: none;
 }
@@ -45,14 +117,72 @@
 .service-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 24px 44px rgba(20, 19, 17, 0.07);
-  border-color: rgba(159, 53, 31, 0.16);
+  border-color: rgba(143, 58, 47, 0.16);
+}
+
+.service-card-flip {
+  cursor: pointer;
+  perspective: 1400px;
+}
+
+.service-card-flip:focus-visible {
+  outline: 2px solid rgba(143, 58, 47, 0.42);
+  outline-offset: 4px;
+}
+
+.service-card-inner {
+  position: relative;
+  min-height: 320px;
+  transform-style: preserve-3d;
+  transition: transform 0.65s ease;
+}
+
+.service-card-flip.is-flipped .service-card-inner {
+  transform: rotateY(180deg);
+}
+
+.service-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.service-face-back {
+  transform: rotateY(180deg);
+  display: grid;
+  place-items: stretch;
+}
+
+.service-detail {
+  min-height: 320px;
+  padding: 28px 24px;
+  display: grid;
+  align-content: end;
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(45, 34, 28, 0.98), rgba(24, 19, 16, 0.98)),
+    radial-gradient(circle at 18% 16%, rgba(143, 58, 47, 0.18), transparent 24%);
+  color: rgba(251, 243, 232, 0.92);
+}
+
+.service-detail h3 {
+  margin: 0 0 10px;
+  font-family: var(--font-display-serif);
+  font-size: 1.46rem;
+  letter-spacing: 0.08em;
+}
+
+.service-detail p:last-child {
+  margin: 0;
+  color: rgba(239, 225, 206, 0.82);
 }
 
 .service-image {
   position: relative;
   overflow: hidden;
   min-height: 320px;
-  border-radius: 14px;
+  border-radius: 16px;
   background-color: #ccc;
 }
 
@@ -61,7 +191,7 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.62)),
+    linear-gradient(180deg, rgba(22, 19, 17, 0.06), rgba(22, 19, 17, 0.6)),
     radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.08), transparent 20%);
 }
 
@@ -72,8 +202,8 @@
   right: 18px;
   width: 44px;
   height: 44px;
-  border-top: 1px solid rgba(155, 119, 64, 0.78);
-  border-right: 1px solid rgba(155, 119, 64, 0.78);
+  border-top: 1px solid rgba(185, 146, 94, 0.78);
+  border-right: 1px solid rgba(185, 146, 94, 0.78);
 }
 
 .service-image,
@@ -97,6 +227,14 @@
   max-width: 32rem;
 }
 
+.service-type {
+  margin: 0 0 10px;
+  color: rgba(243, 224, 201, 0.72);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+}
+
 .service-copy h3 {
   margin: 0;
   font-size: clamp(1.3rem, 2vw, 1.68rem);
@@ -106,56 +244,32 @@
   text-shadow: 0 6px 18px rgba(0, 0, 0, 0.26);
 }
 
-.service-copy p {
-  margin: 10px 0 0;
-  color: rgba(255, 247, 238, 0.84);
-  font-size: 0.95rem;
-  line-height: 1.7;
-}
-
-.service-lion {
+.service-lion,
+.service-lion-pole,
+.service-dragon,
+.service-drum,
+.service-folk,
+.service-lion-plum,
+.service-god {
   background:
-    linear-gradient(180deg, rgba(16, 12, 9, 0.06), rgba(16, 12, 9, 0.32)),
-    url("https://images.unsplash.com/photo-1578922864601-79dcc7b2be3b?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
-}
-
-.service-dragon {
-  background:
-    linear-gradient(180deg, rgba(16, 12, 9, 0.06), rgba(16, 12, 9, 0.34)),
-    url("https://images.unsplash.com/photo-1545579133-99bb5ab189bd?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
-}
-
-.service-drum {
-  background:
-    linear-gradient(180deg, rgba(16, 12, 9, 0.06), rgba(16, 12, 9, 0.34)),
-    url("https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
-}
-
-.service-folk {
-  background:
-    linear-gradient(180deg, rgba(16, 12, 9, 0.06), rgba(16, 12, 9, 0.34)),
-    url("https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
+    linear-gradient(160deg, rgba(54, 34, 29, 0.52), rgba(17, 15, 14, 0.84)),
+    radial-gradient(circle at top left, rgba(185, 146, 94, 0.22), transparent 24%),
+    linear-gradient(135deg, rgba(143, 58, 47, 0.18), rgba(22, 19, 17, 0.04));
 }
 
 .service-body {
   display: none;
 }
 
-.service-directory,
 .service-groups {
   display: grid;
   gap: 24px;
+  margin-top: 8px;
 }
 
-.service-directory {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  margin-top: 10px;
-}
-
-.service-directory-group,
 .service-group {
   position: relative;
-  padding: 24px;
+  padding: 34px;
   border-radius: 16px;
   border: 1px solid rgba(20, 19, 17, 0.07);
   background:
@@ -163,59 +277,13 @@
   box-shadow: 0 16px 30px rgba(20, 19, 17, 0.04);
 }
 
-.service-directory-group::before,
 .service-group::before {
   content: "";
   position: absolute;
   inset: 12px;
-  border: 1px solid rgba(155, 119, 64, 0.12);
+  border: 1px solid rgba(185, 146, 94, 0.12);
   border-radius: 10px;
   pointer-events: none;
-}
-
-.service-directory-group h3,
-.service-group-heading h2,
-.service-offering h3 {
-  margin: 0;
-  font-family: var(--font-display-serif);
-}
-
-.service-directory-group h3 {
-  margin-bottom: 14px;
-  font-size: 1.16rem;
-  letter-spacing: 0.08em;
-}
-
-.service-directory-group ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 10px;
-}
-
-.service-directory-group li {
-  position: relative;
-  padding-left: 16px;
-  color: var(--ink-soft);
-}
-
-.service-directory-group li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.8em;
-  width: 8px;
-  height: 1px;
-  background: rgba(154, 48, 32, 0.7);
-}
-
-.service-groups {
-  margin-top: 8px;
-}
-
-.service-group {
-  padding: 34px;
 }
 
 .service-group-heading {
@@ -225,6 +293,12 @@
 
 .service-group-heading .section-tag {
   margin-bottom: 10px;
+}
+
+.service-group-heading h2,
+.service-offering h3 {
+  margin: 0;
+  font-family: var(--font-display-serif);
 }
 
 .service-group-heading h2 {
