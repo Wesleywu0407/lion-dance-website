@@ -89,6 +89,8 @@
     pointer-events: none;
     transform: translateY(-8px);
     transition: opacity 0.2s ease, transform 0.2s ease;
+    max-height: calc(100svh - 104px);
+    overflow-y: auto;
   }
 
   .nav-services {
@@ -103,6 +105,8 @@
 
   .site-nav a {
     color: var(--ink);
+    font-size: 0.96rem;
+    letter-spacing: 0.06em;
   }
 
   .service-mega {
@@ -156,27 +160,45 @@
 
   .hero-stage {
     min-height: 100svh;
-    padding: 116px 0 58px;
+    padding: 104px 0 40px;
   }
 
   .hero-shell {
     width: min(calc(100% - 24px), 1120px);
   }
 
+  .hero-content {
+    max-width: min(100%, 19rem);
+  }
+
   .hero-title-layer,
   .hero-title {
-    font-size: clamp(3.2rem, 16vw, 5.2rem);
-    letter-spacing: 0.08em;
+    font-size: clamp(2.9rem, 14vw, 4.8rem);
+    letter-spacing: 0.06em;
+    line-height: 0.98;
+  }
+
+  .hero-backdrop {
+    background:
+      linear-gradient(180deg, rgba(8, 6, 5, 0.42) 0%, rgba(8, 6, 5, 0.24) 28%, rgba(8, 6, 5, 0.74) 100%),
+      linear-gradient(90deg, rgba(8, 6, 5, 0.66) 0%, rgba(8, 6, 5, 0.34) 48%, rgba(8, 6, 5, 0.16) 100%);
+  }
+
+  .hero-photo img {
+    object-position: 72% center;
   }
 
   .hero-actions {
     display: grid;
     width: 100%;
+    gap: 12px;
+    margin-top: 1.5rem;
   }
 
   .hero-actions .button,
   .conversion-actions .button {
     width: 100%;
+    min-width: 0;
   }
 
   .section,
