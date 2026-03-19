@@ -146,7 +146,7 @@
 
 .narrative-layout {
   display: grid;
-  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr) minmax(250px, 0.72fr);
+  grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1.22fr);
   gap: 56px;
   align-items: start;
 }
