@@ -5,6 +5,7 @@ const revealItems = document.querySelectorAll('.reveal');
 const hero = document.querySelector('.hero');
 const heroTransform = document.querySelector('[data-transform-title]');
 const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+let lockedScrollY = 0;
 
 const syncHeader = () => {
   header.classList.toggle('is-scrolled', window.scrollY > 24);
@@ -13,17 +14,60 @@ const syncHeader = () => {
 syncHeader();
 window.addEventListener('scroll', syncHeader, { passive: true });
 
+const lockBodyScroll = () => {
+  lockedScrollY = window.scrollY;
+  document.body.classList.add('is-nav-open');
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${lockedScrollY}px`;
+  document.body.style.left = '0';
+  document.body.style.right = '0';
+  document.body.style.width = '100%';
+};
+
+const unlockBodyScroll = () => {
+  document.body.classList.remove('is-nav-open');
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.left = '';
+  document.body.style.right = '';
+  document.body.style.width = '';
+  window.scrollTo(0, lockedScrollY);
+};
+
 if (navToggle && siteNav) {
-  navToggle.addEventListener('click', () => {
-    const isOpen = siteNav.classList.toggle('is-open');
+  const setNavOpen = (isOpen) => {
+    siteNav.classList.toggle('is-open', isOpen);
     navToggle.setAttribute('aria-expanded', String(isOpen));
+
+    if (window.innerWidth <= 760) {
+      if (isOpen) {
+        lockBodyScroll();
+      } else {
+        unlockBodyScroll();
+      }
+    }
+  };
+
+  navToggle.addEventListener('click', () => {
+    setNavOpen(!siteNav.classList.contains('is-open'));
   });
 
   siteNav.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
-      siteNav.classList.remove('is-open');
-      navToggle.setAttribute('aria-expanded', 'false');
+      setNavOpen(false);
     });
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 760 && siteNav.classList.contains('is-open')) {
+      setNavOpen(false);
+    }
+  });
+
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && siteNav.classList.contains('is-open')) {
+      setNavOpen(false);
+    }
   });
 }
 

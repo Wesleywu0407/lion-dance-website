@@ -75,10 +75,11 @@
   }
 
   .site-nav {
-    position: absolute;
-    top: calc(100% + 10px);
+    position: fixed;
+    top: 78px;
     left: 18px;
     right: 18px;
+    bottom: 18px;
     display: grid;
     gap: 12px;
     padding: 18px;
@@ -89,8 +90,12 @@
     pointer-events: none;
     transform: translateY(-8px);
     transition: opacity 0.2s ease, transform 0.2s ease;
-    max-height: calc(100svh - 104px);
+    max-height: none;
     overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    z-index: 30;
   }
 
   .nav-services {

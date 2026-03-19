@@ -41,6 +41,10 @@ body {
   overflow-x: hidden;
 }
 
+body.is-nav-open {
+  overflow: hidden;
+}
+
 body::before {
   content: "";
   position: fixed;
