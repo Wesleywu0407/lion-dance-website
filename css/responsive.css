@@ -50,6 +50,7 @@
 
 @media (max-width: 760px) {
   .site-header {
+    position: fixed;
     padding: 14px 18px;
   }
 
@@ -75,11 +76,10 @@
   }
 
   .site-nav {
-    position: fixed;
-    top: 78px;
-    left: 18px;
-    right: 18px;
-    bottom: 18px;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
     display: grid;
     gap: 12px;
     padding: 18px;
@@ -90,7 +90,7 @@
     pointer-events: none;
     transform: translateY(-8px);
     transition: opacity 0.2s ease, transform 0.2s ease;
-    max-height: none;
+    max-height: calc(100dvh - 108px);
     overflow-y: auto;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
@@ -98,6 +98,7 @@
     z-index: 30;
     align-content: start;
     padding-bottom: max(18px, env(safe-area-inset-bottom));
+    border: 1px solid rgba(22, 19, 17, 0.08);
   }
 
   .nav-services {
@@ -110,11 +111,47 @@
     gap: 10px;
   }
 
+  .nav-services > a,
+  .nav-gallery > a {
+    justify-content: space-between;
+  }
+
+  .nav-services > a::before,
+  .nav-gallery > a::before {
+    display: none;
+  }
+
+  .nav-services > a::after,
+  .nav-gallery > a::after {
+    content: "+";
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    transform: none;
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .nav-services:not(.is-collapsed) > a::after,
+  .nav-gallery:not(.is-collapsed) > a::after {
+    content: "-";
+  }
+
   .site-nav a {
+    display: block;
     color: var(--ink);
     font-size: 0.96rem;
     letter-spacing: 0.06em;
     line-height: 1.45;
+  }
+
+  .site-nav > a,
+  .site-nav > .nav-services > a,
+  .site-nav > .nav-gallery > a {
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: rgba(245, 239, 230, 0.72);
   }
 
   .service-mega {
@@ -130,6 +167,7 @@
     box-shadow: none;
     opacity: 1;
     pointer-events: auto;
+    visibility: visible;
   }
 
   .case-mega {
@@ -143,6 +181,12 @@
     box-shadow: none;
     opacity: 1;
     pointer-events: auto;
+    visibility: visible;
+  }
+
+  .nav-services.is-collapsed .service-mega,
+  .nav-gallery.is-collapsed .case-mega {
+    display: none;
   }
 
   .case-mega::before {
@@ -156,8 +200,45 @@
   }
 
   .service-mega-group h3,
-  .service-mega-group a {
+  .service-mega-group a,
+  .nav-subgroup-toggle {
     color: var(--ink);
+  }
+
+  .service-mega-group,
+  .nav-subgroup-links {
+    position: relative;
+    z-index: 2;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .service-mega-group h3,
+  .service-mega-group a,
+  .nav-subgroup-links a {
+    position: relative;
+    z-index: 2;
+    opacity: 1;
+    color: var(--ink);
+    -webkit-text-fill-color: var(--ink);
+  }
+
+  .nav-subgroup {
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: rgba(245, 239, 230, 0.72);
+  }
+
+  .nav-subgroup.is-collapsed .nav-subgroup-links {
+    display: none;
+  }
+
+  .nav-subgroup-toggle {
+    font-size: 1rem;
+  }
+
+  .nav-subgroup-links {
+    padding-top: 4px;
   }
 
   .site-nav.is-open {

@@ -80,6 +80,13 @@
   align-items: center;
 }
 
+.nav-services > a,
+.nav-gallery > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .site-nav a {
   position: relative;
   color: var(--ink);
@@ -206,6 +213,46 @@
 .service-mega-group a:hover,
 .service-mega-group a:focus-visible {
   color: var(--accent-deep);
+}
+
+.nav-subgroup {
+  display: grid;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.nav-subgroup-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-display-serif);
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: left;
+  cursor: pointer;
+}
+
+.nav-subgroup-toggle::after {
+  content: "+";
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.nav-subgroup:not(.is-collapsed) .nav-subgroup-toggle::after {
+  content: "-";
+}
+
+.nav-subgroup-links {
+  display: grid;
+  gap: 8px;
 }
 
 .nav-toggle {

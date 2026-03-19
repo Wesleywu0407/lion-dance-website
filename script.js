@@ -54,6 +54,13 @@ if (navToggle && siteNav) {
 
   siteNav.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
+      if (
+        window.innerWidth <= 760 &&
+        (link.parentElement?.classList.contains('nav-services') || link.parentElement?.classList.contains('nav-gallery'))
+      ) {
+        return;
+      }
+
       setNavOpen(false);
     });
   });
@@ -70,6 +77,43 @@ if (navToggle && siteNav) {
     }
   });
 }
+
+document.querySelectorAll('.nav-services, .nav-gallery').forEach((group) => {
+  group.classList.add('is-collapsed');
+
+  const trigger = group.querySelector(':scope > a');
+
+  if (!trigger) {
+    return;
+  }
+
+  trigger.addEventListener('click', (event) => {
+    if (window.innerWidth > 760) {
+      return;
+    }
+
+    event.preventDefault();
+    group.classList.toggle('is-collapsed');
+  });
+});
+
+document.querySelectorAll('.nav-subgroup-toggle').forEach((toggle) => {
+  const subgroup = toggle.closest('.nav-subgroup');
+
+  if (!subgroup) {
+    return;
+  }
+
+  toggle.addEventListener('click', () => {
+    if (window.innerWidth > 760) {
+      return;
+    }
+
+    const willExpand = subgroup.classList.contains('is-collapsed');
+    subgroup.classList.toggle('is-collapsed', !willExpand);
+    toggle.setAttribute('aria-expanded', String(willExpand));
+  });
+});
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
