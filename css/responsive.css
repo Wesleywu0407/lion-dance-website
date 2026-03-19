@@ -24,7 +24,6 @@
     grid-template-columns: 1fr;
   }
 
-  .hero-shell,
   .narrative-layout {
     grid-template-columns: 1fr;
   }
@@ -41,29 +40,6 @@
 
   .language-item:nth-child(even) {
     width: 100%;
-  }
-
-  .hero-aside {
-    min-height: auto;
-    justify-self: start;
-    width: 100%;
-    padding: 0;
-    grid-template-columns: 1fr auto;
-    gap: 28px;
-    align-items: end;
-  }
-
-  .hero-monument {
-    padding: 0 0 0 1.4rem;
-  }
-
-  .hero-monument-kicker {
-    writing-mode: horizontal-tb;
-    font-size: clamp(1.8rem, 5vw, 2.8rem);
-  }
-
-  .hero-monument-copy {
-    max-width: 100%;
   }
 
   .narrative-intro {
@@ -178,10 +154,6 @@
     transform: translateY(0);
   }
 
-  .hero {
-    min-height: 150vh;
-  }
-
   .hero-stage {
     min-height: 100svh;
     padding: 116px 0 58px;
@@ -189,32 +161,12 @@
 
   .hero-shell {
     width: min(calc(100% - 24px), 1120px);
-    gap: 28px;
   }
 
   .hero-title-layer,
   .hero-title {
-    font-size: clamp(3rem, 16vw, 4.9rem);
+    font-size: clamp(3.2rem, 16vw, 5.2rem);
     letter-spacing: 0.08em;
-  }
-
-  .hero-title::before {
-    inset: -0.8rem -0.9rem;
-    border-radius: 1rem;
-  }
-
-  .hero-title::after {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-
-  .hero-subtitle {
-    margin-top: 1.4rem;
-  }
-
-  .hero-description {
-    font-size: 0.98rem;
-    line-height: 1.9;
   }
 
   .hero-actions {
@@ -225,42 +177,6 @@
   .hero-actions .button,
   .conversion-actions .button {
     width: 100%;
-  }
-
-  .hero-intent {
-    display: grid;
-    justify-items: start;
-    gap: 10px;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .hero-aside {
-    gap: 18px;
-  }
-
-  .hero-monument {
-    gap: 0.8rem;
-    padding-left: 1rem;
-  }
-
-  .hero-monument::after {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-
-  .hero-annotation {
-    justify-items: start;
-    gap: 8px;
-  }
-
-  .hero-transition-copy {
-    width: min(calc(100% - 48px), 32rem);
-    bottom: 6vh;
-  }
-
-  .hero-scroll {
-    display: none;
   }
 
   .section,

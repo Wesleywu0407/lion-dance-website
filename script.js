@@ -4,6 +4,7 @@ const siteNav = document.querySelector('.site-nav');
 const revealItems = document.querySelectorAll('.reveal');
 const hero = document.querySelector('.hero');
 const heroTransform = document.querySelector('[data-transform-title]');
+const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 const syncHeader = () => {
   header.classList.toggle('is-scrolled', window.scrollY > 24);
@@ -58,6 +59,54 @@ const syncHeroState = () => {
 syncHeroState();
 window.addEventListener('scroll', syncHeroState, { passive: true });
 window.addEventListener('resize', syncHeroState);
+
+if (hero && !reduceMotionQuery.matches) {
+  let pointerTargetX = 0;
+  let pointerTargetY = 0;
+  let pointerCurrentX = 0;
+  let pointerCurrentY = 0;
+  let heroFrame = null;
+
+  const animateHeroPointer = () => {
+    pointerCurrentX += (pointerTargetX - pointerCurrentX) * 0.08;
+    pointerCurrentY += (pointerTargetY - pointerCurrentY) * 0.08;
+
+    hero.style.setProperty('--hero-pointer-x', `${pointerCurrentX.toFixed(2)}px`);
+    hero.style.setProperty('--hero-pointer-y', `${pointerCurrentY.toFixed(2)}px`);
+
+    heroFrame = window.requestAnimationFrame(animateHeroPointer);
+  };
+
+  const updateHeroPointer = (event) => {
+    const rect = hero.getBoundingClientRect();
+    const offsetX = (event.clientX - rect.left) / rect.width - 0.5;
+    const offsetY = (event.clientY - rect.top) / rect.height - 0.5;
+
+    pointerTargetX = offsetX * 28;
+    pointerTargetY = offsetY * 18;
+  };
+
+  const resetHeroPointer = () => {
+    pointerTargetX = 0;
+    pointerTargetY = 0;
+  };
+
+  hero.addEventListener('pointermove', updateHeroPointer);
+  hero.addEventListener('pointerleave', resetHeroPointer);
+  hero.addEventListener('pointercancel', resetHeroPointer);
+
+  animateHeroPointer();
+
+  reduceMotionQuery.addEventListener('change', (event) => {
+    if (event.matches) {
+      if (heroFrame) {
+        window.cancelAnimationFrame(heroFrame);
+      }
+      hero.style.setProperty('--hero-pointer-x', '0px');
+      hero.style.setProperty('--hero-pointer-y', '0px');
+    }
+  });
+}
 
 document.querySelector('.contact-form')?.addEventListener('submit', (event) => {
   event.preventDefault();
