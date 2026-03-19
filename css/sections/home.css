@@ -72,11 +72,11 @@
 
 .hero-title-layer,
 .hero-title {
-  font-family: var(--font-calligraphy);
-  font-weight: 400;
+  font-family: var(--font-display-serif);
+  font-weight: 700;
   font-size: clamp(4rem, 10vw, 8rem);
   line-height: 0.94;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
 }
 
 .hero-title-layer span,

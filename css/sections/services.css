@@ -244,17 +244,46 @@
   text-shadow: 0 6px 18px rgba(0, 0, 0, 0.26);
 }
 
-.service-lion,
-.service-lion-pole,
-.service-dragon,
-.service-drum,
-.service-folk,
-.service-lion-plum,
+.service-lion {
+  background:
+    linear-gradient(160deg, rgba(54, 34, 29, 0.24), rgba(17, 15, 14, 0.78)),
+    url("../../images/祥獅獻瑞.JPG") center/cover no-repeat;
+}
+
+.service-lion-pole {
+  background:
+    linear-gradient(160deg, rgba(54, 34, 29, 0.24), rgba(17, 15, 14, 0.78)),
+    url("../../images/梅花樁獅.jpg") center/cover no-repeat;
+}
+
+.service-dragon {
+  background:
+    linear-gradient(160deg, rgba(54, 34, 29, 0.24), rgba(17, 15, 14, 0.78)),
+    url("../../images/祥龍搶珠.jpg") center/cover no-repeat;
+}
+
+.service-drum {
+  background:
+    linear-gradient(160deg, rgba(54, 34, 29, 0.24), rgba(17, 15, 14, 0.78)),
+    url("../../images/雷鳴戰鼓.jpg") center/cover no-repeat;
+}
+
+.service-folk {
+  background:
+    linear-gradient(160deg, rgba(54, 34, 29, 0.24), rgba(17, 15, 14, 0.78)),
+    url("../../images/民俗藝陣-變臉.jpg") center/cover no-repeat;
+}
+
+.service-lion-plum {
+  background:
+    linear-gradient(160deg, rgba(54, 34, 29, 0.24), rgba(17, 15, 14, 0.78)),
+    url("../../images/梅花樁獅.jpg") center/cover no-repeat;
+}
+
 .service-god {
   background:
-    linear-gradient(160deg, rgba(54, 34, 29, 0.52), rgba(17, 15, 14, 0.84)),
-    radial-gradient(circle at top left, rgba(185, 146, 94, 0.22), transparent 24%),
-    linear-gradient(135deg, rgba(143, 58, 47, 0.18), rgba(22, 19, 17, 0.04));
+    linear-gradient(160deg, rgba(54, 34, 29, 0.24), rgba(17, 15, 14, 0.78)),
+    url("../../images/文武財神駕到.jpg") center/cover no-repeat;
 }
 
 .service-body {

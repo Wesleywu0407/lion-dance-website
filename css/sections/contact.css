@@ -67,36 +67,6 @@
   height: 28px;
 }
 
-.business-hours {
-  margin-top: 10px;
-  padding: 34px;
-  border-radius: 18px;
-  background:
-    linear-gradient(180deg, rgba(251, 247, 241, 0.96), rgba(239, 231, 219, 0.96));
-  border: 1px solid rgba(143, 58, 47, 0.08);
-  box-shadow: 0 14px 28px rgba(20, 19, 17, 0.04);
-}
-
-.business-hours h3 {
-  margin: 0 0 24px;
-  font-family: "Noto Serif TC", serif;
-  font-size: 1.6rem;
-}
-
-.hours-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 8px 0;
-  color: var(--ink-soft);
-  font-size: 1rem;
-}
-
-.hours-row strong {
-  color: var(--ink-soft);
-  font-weight: 700;
-}
-
 .contact-form {
   display: grid;
   gap: 22px;
@@ -160,6 +130,15 @@
   min-width: 0;
   padding: 20px 24px;
   border-radius: 12px;
+}
+
+.contact-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .contact-note {

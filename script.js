@@ -152,11 +152,6 @@ if (hero && !reduceMotionQuery.matches) {
   });
 }
 
-document.querySelector('.contact-form')?.addEventListener('submit', (event) => {
-  event.preventDefault();
-  window.alert('感謝您的洽詢，我們將盡快與您聯繫。');
-});
-
 const flipCards = document.querySelectorAll('.service-card-flip');
 
 const toggleFlipCard = (card) => {

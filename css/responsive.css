@@ -96,6 +96,8 @@
     -webkit-overflow-scrolling: touch;
     touch-action: pan-y;
     z-index: 30;
+    align-content: start;
+    padding-bottom: max(18px, env(safe-area-inset-bottom));
   }
 
   .nav-services {
@@ -112,6 +114,7 @@
     color: var(--ink);
     font-size: 0.96rem;
     letter-spacing: 0.06em;
+    line-height: 1.45;
   }
 
   .service-mega {
@@ -244,6 +247,26 @@
     grid-template-columns: 1fr;
   }
 
+  .service-card-inner,
+  .service-image,
+  .service-detail {
+    min-height: 260px;
+  }
+
+  .service-detail {
+    padding: 22px 18px;
+  }
+
+  .service-copy h3 {
+    font-size: 1.46rem;
+    letter-spacing: 0.06em;
+  }
+
+  .service-type {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+  }
+
   .language-item {
     grid-template-columns: 1fr;
     gap: 10px;
@@ -340,6 +363,19 @@
   .footer-links {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+
+  .footer-brand h3 {
+    font-size: 1.45rem;
+  }
+
+  .footer-socials {
+    flex-wrap: wrap;
+  }
+
+  .footer-socials a {
+    width: 48px;
+    height: 48px;
   }
 
   .footer-bottom {
