@@ -9,6 +9,11 @@
   gap: 24px;
 }
 
+.contact-channel {
+  color: inherit;
+  text-decoration: none;
+}
+
 .contact-info article {
   display: grid;
   grid-template-columns: 68px 1fr;
@@ -19,6 +24,13 @@
   border-radius: 0;
   background: transparent;
   box-shadow: none;
+  transition: transform 0.22s ease, border-color 0.22s ease;
+}
+
+.contact-channel:hover article,
+.contact-channel:focus-visible article {
+  transform: translateX(4px);
+  border-bottom-color: rgba(143, 58, 47, 0.24);
 }
 
 .contact-info span {
@@ -48,6 +60,11 @@
   border: 1px solid rgba(143, 58, 47, 0.12);
   color: var(--accent-deep);
   font-weight: 800;
+}
+
+.contact-icon svg {
+  width: 28px;
+  height: 28px;
 }
 
 .business-hours {
@@ -149,6 +166,132 @@
   margin: 8px 0 0;
   text-align: center;
   color: var(--ink-muted);
+}
+
+.social-embed {
+  margin-top: 56px;
+  display: grid;
+  gap: 20px;
+}
+
+.social-embed-heading h2 {
+  margin: 0;
+  font-family: "Noto Serif TC", serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.18;
+}
+
+.facebook-card {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.82fr) minmax(0, 1fr);
+  gap: 0;
+  overflow: hidden;
+  border-radius: 26px;
+  background:
+    linear-gradient(180deg, rgba(251, 247, 241, 0.96), rgba(241, 233, 223, 0.94));
+  border: 1px solid rgba(20, 19, 17, 0.08);
+  box-shadow: 0 24px 44px rgba(20, 19, 17, 0.08);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+}
+
+.facebook-card:hover,
+.facebook-card:focus-visible {
+  transform: translateY(-4px);
+  border-color: rgba(66, 103, 178, 0.22);
+  box-shadow: 0 30px 54px rgba(20, 19, 17, 0.12);
+}
+
+.facebook-card-media {
+  position: relative;
+  min-height: 280px;
+  overflow: hidden;
+}
+
+.facebook-card-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(16, 23, 45, 0.02), rgba(16, 23, 45, 0.18)),
+    linear-gradient(90deg, transparent, rgba(16, 23, 45, 0.12));
+  pointer-events: none;
+}
+
+.facebook-card-media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.facebook-card-body {
+  display: grid;
+  align-content: center;
+  gap: 16px;
+  padding: 30px 30px 32px;
+}
+
+.facebook-card-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.facebook-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(66, 103, 178, 0.12);
+  color: #4267b2;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.facebook-action {
+  color: var(--ink-muted);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.facebook-card h3 {
+  margin: 0;
+  font-family: "Noto Serif TC", serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1.2;
+}
+
+.facebook-card p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.facebook-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.facebook-card-meta span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0.42rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(20, 19, 17, 0.06);
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+  font-weight: 700;
 }
 
 .contact-quote {

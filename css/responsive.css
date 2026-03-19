@@ -296,6 +296,42 @@
     padding: 24px 18px;
   }
 
+  .contact-info article {
+    grid-template-columns: 56px 1fr;
+    gap: 14px;
+  }
+
+  .contact-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .contact-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .social-embed {
+    margin-top: 42px;
+  }
+
+  .facebook-card {
+    grid-template-columns: 1fr;
+    border-radius: 22px;
+  }
+
+  .facebook-card-media {
+    min-height: 220px;
+  }
+
+  .facebook-card-body {
+    padding: 22px 20px 24px;
+  }
+
+  .facebook-card-top {
+    align-items: flex-start;
+  }
+
   .footer-links {
     grid-template-columns: 1fr;
     gap: 16px;
