@@ -35,6 +35,16 @@ const unlockBodyScroll = () => {
 };
 
 if (navToggle && siteNav) {
+  const navGroups = Array.from(siteNav.querySelectorAll('.nav-services, .nav-gallery'));
+
+  const resetMobileNavState = () => {
+    navGroups.forEach((group) => {
+      group.classList.add('is-collapsed');
+    });
+
+    siteNav.scrollTop = 0;
+  };
+
   const setNavOpen = (isOpen) => {
     siteNav.classList.toggle('is-open', isOpen);
     navToggle.setAttribute('aria-expanded', String(isOpen));
@@ -44,6 +54,7 @@ if (navToggle && siteNav) {
         lockBodyScroll();
       } else {
         unlockBodyScroll();
+        resetMobileNavState();
       }
     }
   };
@@ -66,6 +77,14 @@ if (navToggle && siteNav) {
   });
 
   window.addEventListener('resize', () => {
+    if (window.innerWidth > 760) {
+      navGroups.forEach((group) => {
+        group.classList.remove('is-collapsed');
+      });
+    } else {
+      resetMobileNavState();
+    }
+
     if (window.innerWidth > 760 && siteNav.classList.contains('is-open')) {
       setNavOpen(false);
     }
@@ -76,44 +95,27 @@ if (navToggle && siteNav) {
       setNavOpen(false);
     }
   });
+  navGroups.forEach((group) => {
+    const trigger = group.querySelector(':scope > a');
+
+    if (!trigger) {
+      return;
+    }
+
+    trigger.addEventListener('click', (event) => {
+      if (window.innerWidth > 760) {
+        return;
+      }
+
+      event.preventDefault();
+      group.classList.toggle('is-collapsed');
+    });
+  });
+
+  if (window.innerWidth <= 760) {
+    resetMobileNavState();
+  }
 }
-
-document.querySelectorAll('.nav-services, .nav-gallery').forEach((group) => {
-  group.classList.add('is-collapsed');
-
-  const trigger = group.querySelector(':scope > a');
-
-  if (!trigger) {
-    return;
-  }
-
-  trigger.addEventListener('click', (event) => {
-    if (window.innerWidth > 760) {
-      return;
-    }
-
-    event.preventDefault();
-    group.classList.toggle('is-collapsed');
-  });
-});
-
-document.querySelectorAll('.nav-subgroup-toggle').forEach((toggle) => {
-  const subgroup = toggle.closest('.nav-subgroup');
-
-  if (!subgroup) {
-    return;
-  }
-
-  toggle.addEventListener('click', () => {
-    if (window.innerWidth > 760) {
-      return;
-    }
-
-    const willExpand = subgroup.classList.contains('is-collapsed');
-    subgroup.classList.toggle('is-collapsed', !willExpand);
-    toggle.setAttribute('aria-expanded', String(willExpand));
-  });
-});
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
