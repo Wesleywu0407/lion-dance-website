@@ -36,10 +36,20 @@ const unlockBodyScroll = () => {
 
 if (navToggle && siteNav) {
   const navGroups = Array.from(siteNav.querySelectorAll('.nav-services, .nav-gallery'));
+  const navSubgroups = Array.from(siteNav.querySelectorAll('.nav-subgroup'));
 
   const resetMobileNavState = () => {
     navGroups.forEach((group) => {
       group.classList.add('is-collapsed');
+    });
+
+    navSubgroups.forEach((subgroup) => {
+      subgroup.classList.add('is-collapsed');
+      const toggle = subgroup.querySelector('.nav-subgroup-toggle');
+
+      if (toggle) {
+        toggle.setAttribute('aria-expanded', 'false');
+      }
     });
 
     siteNav.scrollTop = 0;
@@ -81,6 +91,10 @@ if (navToggle && siteNav) {
       navGroups.forEach((group) => {
         group.classList.remove('is-collapsed');
       });
+
+      navSubgroups.forEach((subgroup) => {
+        subgroup.classList.remove('is-collapsed');
+      });
     } else {
       resetMobileNavState();
     }
@@ -109,6 +123,24 @@ if (navToggle && siteNav) {
 
       event.preventDefault();
       group.classList.toggle('is-collapsed');
+    });
+  });
+
+  navSubgroups.forEach((subgroup) => {
+    const toggle = subgroup.querySelector('.nav-subgroup-toggle');
+
+    if (!toggle) {
+      return;
+    }
+
+    toggle.addEventListener('click', () => {
+      if (window.innerWidth > 760) {
+        return;
+      }
+
+      const willExpand = subgroup.classList.contains('is-collapsed');
+      subgroup.classList.toggle('is-collapsed', !willExpand);
+      toggle.setAttribute('aria-expanded', String(willExpand));
     });
   });
 
