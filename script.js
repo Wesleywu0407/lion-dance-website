@@ -91,7 +91,6 @@ if (navToggle && siteNav) {
       navGroups.forEach((group) => {
         group.classList.remove('is-collapsed');
       });
-
       navSubgroups.forEach((subgroup) => {
         subgroup.classList.remove('is-collapsed');
       });

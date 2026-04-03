@@ -1,3 +1,13 @@
+.service-page-hero {
+  min-height: 0;
+  padding: 148px 0 16px;
+}
+
+.service-page-hero .page-hero-inner {
+  display: flex;
+  align-items: flex-end;
+}
+
 .service-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -31,6 +41,13 @@
 .service-nav a:focus-visible {
   border-color: rgba(143, 58, 47, 0.24);
   color: var(--accent-deep);
+}
+
+.service-page-hero .service-page-tag {
+  margin: 0;
+  font-size: 3rem;
+  letter-spacing: 0.08em;
+  line-height: 1;
 }
 
 .service-preview-grid {
