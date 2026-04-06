@@ -43,13 +43,6 @@
   color: var(--accent-deep);
 }
 
-.service-page-hero .service-page-tag {
-  margin: 0;
-  font-size: 3rem;
-  letter-spacing: 0.08em;
-  line-height: 1;
-}
-
 .service-preview-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

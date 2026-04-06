@@ -184,14 +184,8 @@
     justify-content: space-between;
     gap: 12px;
     width: 100%;
-    padding: 6px 4px;
     border: 0;
     background: transparent;
-    color: var(--ink);
-    font-family: inherit;
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 0.04em;
     text-align: left;
     cursor: pointer;
   }
@@ -209,6 +203,7 @@
   .mobile-submenu-item {
     display: block;
     padding: 6px 4px;
+    font-family: inherit;
     color: var(--accent-deep);
     font-size: 0.9rem;
     font-weight: 500;
@@ -226,14 +221,13 @@
     display: block;
     padding: 6px 4px;
     color: var(--ink-soft);
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     font-weight: 500;
     letter-spacing: 0.04em;
     line-height: 1.45;
-    cursor: pointer;
-    pointer-events: auto;
-    user-select: auto;
-    text-decoration: none;
+    cursor: default;
+    pointer-events: none;
+    user-select: none;
   }
 
   .site-nav.is-open {
@@ -314,12 +308,6 @@
   .service-page-hero {
     min-height: 0;
     padding: 132px 0 16px;
-  }
-
-  .service-page-hero .service-page-tag {
-    margin: 0;
-    font-size: 3rem;
-    line-height: 1;
   }
 
   .intro-band {

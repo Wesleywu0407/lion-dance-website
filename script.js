@@ -77,7 +77,11 @@ if (navToggle && siteNav) {
     link.addEventListener('click', () => {
       if (
         window.innerWidth <= 760 &&
-        (link.parentElement?.classList.contains('nav-services') || link.parentElement?.classList.contains('nav-gallery'))
+        (
+          link.parentElement?.classList.contains('nav-services') ||
+          link.parentElement?.classList.contains('nav-gallery') ||
+          link.classList.contains('nav-subgroup-toggle')
+        )
       ) {
         return;
       }
@@ -132,14 +136,23 @@ if (navToggle && siteNav) {
       return;
     }
 
-    toggle.addEventListener('click', () => {
+    toggle.addEventListener('click', (event) => {
       if (window.innerWidth > 760) {
         return;
       }
 
-      const willExpand = subgroup.classList.contains('is-collapsed');
-      subgroup.classList.toggle('is-collapsed', !willExpand);
-      toggle.setAttribute('aria-expanded', String(willExpand));
+      const href = toggle.getAttribute('href');
+
+      if (subgroup.classList.contains('is-collapsed')) {
+        event.preventDefault();
+        subgroup.classList.remove('is-collapsed');
+        toggle.setAttribute('aria-expanded', 'true');
+        return;
+      }
+
+      if (href) {
+        window.location.href = href;
+      }
     });
   });
 
