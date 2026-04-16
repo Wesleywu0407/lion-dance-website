@@ -5,7 +5,19 @@
 
 .service-page-hero .page-hero-inner {
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.service-page-subtitle {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.65;
 }
 
 .service-grid {
@@ -128,6 +140,26 @@
   transform: translateY(-4px);
   box-shadow: 0 24px 44px rgba(20, 19, 17, 0.07);
   border-color: rgba(143, 58, 47, 0.16);
+}
+
+.service-performance-grid .service-card:nth-child(2) {
+  transition-delay: 0.06s;
+}
+
+.service-performance-grid .service-card:nth-child(3) {
+  transition-delay: 0.12s;
+}
+
+.service-performance-grid .service-card:nth-child(4) {
+  transition-delay: 0.18s;
+}
+
+.service-performance-grid .service-card:nth-child(5) {
+  transition-delay: 0.24s;
+}
+
+.service-performance-grid .service-card:nth-child(6) {
+  transition-delay: 0.3s;
 }
 
 .service-card-flip {
@@ -282,6 +314,12 @@
   background:
     linear-gradient(160deg, rgba(54, 34, 29, 0.24), rgba(17, 15, 14, 0.78)),
     url("../../images/民俗藝陣-變臉.jpg") center/cover no-repeat;
+}
+
+.service-nezha {
+  background:
+    linear-gradient(160deg, rgba(54, 34, 29, 0.24), rgba(17, 15, 14, 0.78)),
+    url("../../images/民俗藝陣-變臉.jpg") 58% center/cover no-repeat;
 }
 
 .service-lion-plum {

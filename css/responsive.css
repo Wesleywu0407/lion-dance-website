@@ -310,6 +310,26 @@
     padding: 132px 0 16px;
   }
 
+  .service-page-hero .page-hero-inner {
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .service-page-hero h1 {
+    max-width: none;
+    font-size: clamp(2.5rem, 12vw, 3.2rem);
+    line-height: 1.04;
+    letter-spacing: 0.08em;
+  }
+
+  .service-page-subtitle {
+    max-width: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+  }
+
   .intro-band {
     padding: 16px 0 0;
   }
@@ -321,13 +341,120 @@
     grid-template-columns: 1fr;
   }
 
-  .service-performance-grid,
+  .service-performance-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
   .service-group-items {
     grid-template-columns: 1fr;
   }
 
   .service-grid {
     gap: 22px;
+  }
+
+  .service-performance-grid .service-card {
+    border-radius: 18px;
+    box-shadow: 0 14px 30px rgba(20, 19, 17, 0.08);
+    transform-origin: center;
+  }
+
+  .service-performance-grid .service-card:nth-child(2) {
+    order: 5;
+  }
+
+  .service-performance-grid .service-card:nth-child(3) {
+    order: 3;
+  }
+
+  .service-performance-grid .service-card:nth-child(4) {
+    order: 2;
+  }
+
+  .service-performance-grid .service-card:nth-child(5) {
+    order: 4;
+  }
+
+  .service-performance-grid .service-card:nth-child(6) {
+    order: 6;
+  }
+
+  .service-performance-grid .service-card::before {
+    inset: 10px;
+    border-radius: 12px;
+  }
+
+  .service-performance-grid .service-card:hover,
+  .service-performance-grid .service-card:active {
+    transform: scale(1.03);
+    box-shadow: 0 18px 34px rgba(20, 19, 17, 0.12);
+  }
+
+  .service-performance-grid .service-card-flip {
+    perspective: none;
+  }
+
+  .service-performance-grid .service-card-inner {
+    min-height: 150px;
+    transform: none !important;
+  }
+
+  .service-performance-grid .service-face {
+    position: relative;
+  }
+
+  .service-performance-grid .service-face-back {
+    display: none;
+  }
+
+  .service-performance-grid .service-image {
+    min-height: 150px;
+    border-radius: 18px;
+  }
+
+  .service-performance-grid .service-image::before {
+    background:
+      linear-gradient(180deg, rgba(16, 13, 12, 0.16) 0%, rgba(16, 13, 12, 0.3) 34%, rgba(16, 13, 12, 0.82) 100%),
+      radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.08), transparent 22%);
+  }
+
+  .service-performance-grid .service-image::after {
+    top: 12px;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .service-performance-grid .service-overlay {
+    inset: 0;
+    padding: 12px;
+  }
+
+  .service-performance-grid .service-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 126px;
+    max-width: none;
+  }
+
+  .service-performance-grid .service-type {
+    margin: 0;
+    align-self: flex-start;
+    padding: 4px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(251, 247, 241, 0.14);
+    color: rgba(243, 224, 201, 0.82);
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+  }
+
+  .service-performance-grid .service-copy h3 {
+    font-size: 1.02rem;
+    letter-spacing: 0.08em;
+    line-height: 1.18;
   }
 
   .service-card-inner,
@@ -416,6 +543,74 @@
 
   .about-card {
     min-height: 380px;
+  }
+
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    padding: 4px 0 10px;
+  }
+
+  .case-card,
+  .case-card-feature {
+    width: auto;
+    min-width: 0;
+    grid-column: auto;
+    border-radius: 18px;
+    box-shadow: 0 14px 30px rgba(22, 19, 17, 0.07);
+  }
+
+  .case-card-feature {
+    border-color: rgba(143, 58, 47, 0.18);
+    box-shadow: 0 18px 34px rgba(143, 58, 47, 0.09);
+  }
+
+  .case-card::before {
+    inset: 10px;
+    border-radius: 12px;
+  }
+
+  .case-card-visual,
+  .case-card-feature .case-card-visual {
+    min-height: 108px;
+  }
+
+  .case-card-body {
+    padding: 12px 14px 14px;
+  }
+
+  .case-meta {
+    margin: 0;
+    color: var(--ink);
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1.35;
+  }
+
+  .case-card h3,
+  .case-card p:last-child {
+    display: none;
+  }
+
+  .case-directory {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .case-directory a:nth-child(-n + 5) {
+    display: none;
+  }
+
+  .case-directory a {
+    display: flex;
+    align-items: center;
+    min-height: 52px;
+    padding: 12px 14px;
+    line-height: 1.4;
+    letter-spacing: 0.06em;
   }
 
   .vertical-text {
