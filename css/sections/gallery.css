@@ -165,19 +165,16 @@
 }
 
 .case-meta {
-  margin: 0 0 12px;
+  margin: 0;
   color: var(--accent-deep);
-  font-size: 0.76rem;
+  font-size: 1rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
 }
 
 .case-card h3 {
-  margin: 0 0 12px;
-  font-family: var(--font-serif);
-  font-size: 1.46rem;
-  line-height: 1.35;
-  letter-spacing: 0.06em;
+  display: none;
 }
 
 .case-card p:last-child {
