@@ -75,3 +75,103 @@
   color: var(--ink-soft);
   font-size: 1.02rem;
 }
+
+/* ── Cinematic text-reveal layout ───────────────────────────
+   Overrides the default two-column about-layout grid.
+   Each .ctb (cinematic text block) occupies its own
+   full-viewport-height slice so phrases arrive one at a time
+   as the user scrolls.
+   ─────────────────────────────────────────────────────────── */
+
+.about-cinematic {
+  display: block;           /* override base.css display:grid  */
+  max-width: 100%;
+  padding: 0;
+}
+
+/* ── Text block ─────────────────────────────────────────── */
+
+.ctb {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.25rem;
+  text-align: center;
+  /* thin separator between blocks */
+  border-top: 1px solid rgba(22, 19, 17, 0.07);
+}
+
+.ctb:first-child {
+  border-top: none;
+}
+
+/* ── Key phrase ─────────────────────────────────────────── */
+
+.ctb-phrase {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-display-serif);
+  font-size: clamp(2.5rem, 10vw, 5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  width: 100%;
+}
+
+/* ── Supporting sentence ────────────────────────────────── */
+
+.ctb-support {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--ink-muted);
+  max-width: 280px;
+}
+
+/* ── Entrance animation: hidden state ───────────────────── */
+
+.ctb-phrase,
+.ctb-support {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(4px);
+  transition:
+    opacity   0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    filter    0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Support text delays 150ms after the phrase */
+.ctb-support {
+  --ctb-td: 150ms;
+  transition-delay: var(--ctb-td);
+}
+
+/* ── Visible state (class added by IntersectionObserver) ── */
+
+.ctb-phrase.is-visible,
+.ctb-support.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Remove the stagger delay once the phrase is visible so
+   hover / other interactions are never inadvertently delayed */
+.ctb-phrase.is-visible {
+  transition-delay: 0ms;
+}
+
+/* ── Reduced-motion fallback ────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .ctb-phrase,
+  .ctb-support {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}

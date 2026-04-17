@@ -22,20 +22,44 @@
   color: var(--accent-deep);
 }
 
+/* ── Masonry grid: 2-col mobile, 3-col desktop ─────────── */
+
 .case-grid {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 22px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 230px;
+  gap: 12px;
+  align-items: stretch;
 }
+
+@media (min-width: 760px) {
+  .case-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 280px;
+  }
+}
+
+/* ── Base card ──────────────────────────────────────────── */
 
 .case-card {
   position: relative;
-  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
-  border-radius: 18px;
+  border-radius: var(--radius);
   border: 1px solid rgba(22, 19, 17, 0.08);
-  background:
-    linear-gradient(180deg, rgba(251, 247, 241, 0.96), rgba(244, 238, 229, 0.94));
+  background: linear-gradient(180deg, rgba(251, 247, 241, 0.96), rgba(244, 238, 229, 0.94));
+  cursor: pointer;
+  transition:
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.case-card:hover {
+  transform: scale(1.03);
+  box-shadow:
+    0 20px 48px rgba(22, 19, 17, 0.13),
+    0 4px 16px rgba(22, 19, 17, 0.06);
 }
 
 .case-card::before {
@@ -48,18 +72,36 @@
   z-index: 1;
 }
 
+/* Featured card: reset old span-6, treat as a tall card */
 .case-card-feature {
-  grid-column: span 6;
+  grid-column: auto;
+  grid-row: span 2;
 }
+
+/* ── Visual area (image placeholder) ───────────────────── */
 
 .case-card-visual {
-  min-height: 280px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
   border-bottom: 1px solid rgba(22, 19, 17, 0.08);
   background-color: #d8cec0;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.case-card:hover .case-card-visual {
+  transform: scale(1.08);
+}
+
+/* Remove the old feature-specific visual height */
 .case-card-feature .case-card-visual {
-  min-height: 340px;
+  min-height: 0;
+}
+
+/* ── Every 3rd card is tall (spans 2 rows) ──────────────── */
+
+.case-card:nth-child(3n) {
+  grid-row: span 2;
 }
 
 .case-opening,
@@ -101,10 +143,25 @@
       center/cover no-repeat;
 }
 
+/* ── Card body: slides up on hover ─────────────────────── */
+
 .case-card-body {
   position: relative;
   z-index: 2;
-  padding: 24px 24px 26px;
+  flex-shrink: 0;
+  padding: 16px 18px 18px;
+  /* Fade edge between visual and body */
+  background: linear-gradient(
+    to bottom,
+    rgba(251, 247, 241, 0) 0%,
+    rgba(251, 247, 241, 0.97) 14%
+  );
+  transform: translateY(6px);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.case-card:hover .case-card-body {
+  transform: translateY(0);
 }
 
 .case-meta {
@@ -128,6 +185,40 @@
   color: var(--ink-soft);
 }
 
+/* Description hidden in masonry so the visual area has room */
+.case-grid .case-card p:not(.case-meta) {
+  display: none;
+}
+
 .case-footer {
   margin-top: 26px;
 }
+
+/* ── Staggered scroll-reveal ────────────────────────────────
+   The global .reveal / .is-visible system already handles
+   opacity + translateY. Here we override the easing and add
+   per-card stagger delays that only apply before reveal fires
+   (so hover transitions stay instant after cards land).
+   ─────────────────────────────────────────────────────────── */
+
+.case-grid .case-card.reveal {
+  transition:
+    opacity  0.72s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.72s cubic-bezier(0.22, 1, 0.36, 1),
+    filter   0.72s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Delay only while still hidden — resets to 0 once .is-visible lands */
+.case-grid .case-card.reveal:not(.is-visible) {
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.case-grid .case-card:nth-child(1) { --reveal-delay:   0ms; }
+.case-grid .case-card:nth-child(2) { --reveal-delay: 100ms; }
+.case-grid .case-card:nth-child(3) { --reveal-delay: 200ms; }
+.case-grid .case-card:nth-child(4) { --reveal-delay: 300ms; }
+.case-grid .case-card:nth-child(5) { --reveal-delay: 400ms; }
+.case-grid .case-card:nth-child(6) { --reveal-delay: 500ms; }
+.case-grid .case-card:nth-child(7) { --reveal-delay: 600ms; }
+.case-grid .case-card:nth-child(8) { --reveal-delay: 700ms; }
+.case-grid .case-card:nth-child(9) { --reveal-delay: 800ms; }

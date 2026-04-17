@@ -274,3 +274,161 @@ flipCards.forEach((card) => {
     }
   });
 });
+
+/* ── Cinematic about-page text reveal ────────────────────────
+   Each .ctb block is observed individually.  When 20 % of a
+   block enters the viewport both its .ctb-phrase and
+   .ctb-support get .is-visible — CSS handles the 150 ms
+   stagger between them via transition-delay on .ctb-support.
+   Fires once per block (unobserved immediately after trigger).
+   ─────────────────────────────────────────────────────────── */
+
+(function initCinematicReveal() {
+  const blocks = document.querySelectorAll('.ctb');
+  if (!blocks.length) return;
+
+  /* Skip animation if user prefers reduced motion */
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    blocks.forEach((b) => {
+      b.querySelector('.ctb-phrase')?.classList.add('is-visible');
+      b.querySelector('.ctb-support')?.classList.add('is-visible');
+    });
+    return;
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      const phrase  = entry.target.querySelector('.ctb-phrase');
+      const support = entry.target.querySelector('.ctb-support');
+
+      /* Phrase appears first; support follows via CSS transition-delay */
+      phrase?.classList.add('is-visible');
+      support?.classList.add('is-visible');
+
+      io.unobserve(entry.target);   /* play once only */
+    });
+  }, {
+    threshold: 0.20,                /* trigger when 20 % visible */
+    rootMargin: '0px 0px -60px 0px' /* slight bottom offset for feel */
+  });
+
+  blocks.forEach((block) => io.observe(block));
+}());
+
+/* ── Gallery masonry: lower-threshold reveal observer ────────
+   The global revealObserver fires at 18 % visibility, which is
+   fine for tall sections but too late for short masonry cards.
+   We attach a second observer specifically for .case-grid cards
+   at a lower threshold so the stagger feels natural.
+   The global observer is still attached; the first one to fire
+   calls .is-visible — re-adding it is harmless.
+   ─────────────────────────────────────────────────────────── */
+
+(function initGalleryReveal() {
+  const caseCards = document.querySelectorAll('.case-grid .case-card.reveal');
+  if (!caseCards.length) return;
+
+  const galleryObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        galleryObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  caseCards.forEach((card) => galleryObserver.observe(card));
+}());
+
+/* ── Lion intro animation ──────────────────────────────────
+   Scroll-triggered: cute Southern lion appears in the centre
+   of the performance grid, chomps, then the 6 cards spring
+   out from its mouth one by one.  Plays once per page load.
+   ─────────────────────────────────────────────────────────── */
+
+(function initLionAnimation() {
+  const stage = document.querySelector('.lion-intro-stage');
+  if (!stage) return;
+
+  /* Respect reduced-motion preference — skip animation entirely */
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    stage.classList.add('has-played');
+    return;
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      io.unobserve(entry.target);
+      playLionAnimation(stage);
+    });
+  }, { threshold: 0.3 });
+
+  io.observe(stage);
+}());
+
+function playLionAnimation(stage) {
+  const lion  = stage.querySelector('.lion-svg');
+  const cards = [...stage.querySelectorAll('.lion-card')];
+
+  /* Mark as played + pre-hide cards (synchronous, no repaint flash) */
+  stage.classList.add('has-played');
+  cards.forEach((c) => {
+    c.style.opacity    = '0';
+    c.style.visibility = 'visible';
+  });
+
+  /* ① Lion pops in */
+  lion.classList.add('is-appearing');
+
+  /* ② Jaw chomps (starts while lion is still bouncing in) */
+  setTimeout(() => lion.classList.add('is-chomping'), 370);
+
+  /* ③ Cards fly out one by one from the lion's mouth */
+  setTimeout(() => {
+    const stageRect = stage.getBoundingClientRect();
+    /* Mouth centre: horizontally centred, ~55 % down the stage */
+    const mouthX = stageRect.left + stageRect.width  * 0.5;
+    const mouthY = stageRect.top  + stageRect.height * 0.46;
+
+    cards.forEach((card, i) => {
+      setTimeout(() => {
+        const r   = card.getBoundingClientRect();
+        const dx  = mouthX - (r.left + r.width  * 0.5);
+        const dy  = mouthY - (r.top  + r.height * 0.5);
+        /* Alternate slight rotation for a natural scatter feel */
+        const rot = (i % 2 === 0 ? 1 : -1) * (6 + i * 3);
+
+        /* Teleport card to lion mouth (no transition) */
+        card.style.transition = 'none';
+        card.style.transform  = `translate(${dx}px,${dy}px) scale(0.1) rotate(${rot}deg)`;
+        card.style.opacity    = '0.85';
+        card.style.zIndex     = '25';
+
+        void card.offsetWidth; /* force reflow */
+
+        /* Spring to natural grid position */
+        card.style.transition = 'transform 0.65s cubic-bezier(0.34,1.56,0.64,1), opacity 0.22s ease';
+        card.style.transform  = '';
+        card.style.opacity    = '1';
+
+        /* Clean up inline styles once landed */
+        setTimeout(() => {
+          card.style.transition = '';
+          card.style.transform  = '';
+          card.style.opacity    = '';
+          card.style.visibility = '';
+          card.style.zIndex     = '';
+        }, 700);
+
+      }, i * 150);
+    });
+
+    /* ④ Lion shrinks away after the last card has landed */
+    const exitDelay = (cards.length - 1) * 150 + 680;
+    setTimeout(() => lion.classList.add('is-exiting'), exitDelay);
+
+  }, 600);
+}

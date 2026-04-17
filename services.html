@@ -99,8 +99,82 @@
 
       <section class="section page-section-stack">
 
-        <div class="service-grid service-performance-grid">
-          <article class="service-card service-card-flip reveal" id="item-auspicious-lion" tabindex="0" role="button" aria-pressed="false">
+        <div class="lion-intro-stage">
+
+          <!-- ── Cartoon Southern lion SVG ── -->
+          <svg class="lion-svg" viewBox="0 0 220 240" overflow="visible" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Mane (12 spikes alternating outer r=104 / inner r=83) -->
+            <polygon class="lion-mane"
+              points="110,14 132,38 162,28 169,59 200,66 190,97 214,118 190,140 200,170 169,177 162,208 132,198 110,222 89,198 58,208 51,177 20,170 30,140 6,118 30,97 20,66 51,59 58,28 89,38"
+              fill="#b83c30"/>
+            <!-- Head -->
+            <circle cx="110" cy="118" r="78" fill="#8f3a2f"/>
+            <!-- Face plate (slightly lighter centre) -->
+            <ellipse cx="110" cy="122" rx="64" ry="58" fill="#9e4035"/>
+            <!-- Dark mouth cavity (revealed when jaw opens) -->
+            <ellipse cx="110" cy="162" rx="44" ry="19" fill="#360e0e"/>
+            <!-- Forehead mitre decoration -->
+            <ellipse cx="110" cy="59" rx="30" ry="18" fill="#b9925e"/>
+            <ellipse cx="110" cy="56" rx="20" ry="12" fill="#c8a870"/>
+            <circle  cx="110" cy="50" r="10"         fill="#d4b85c"/>
+            <circle  cx="110" cy="49" r="6"          fill="#edd97a"/>
+            <!-- Cheek fluffs -->
+            <circle cx="50"  cy="138" r="22" fill="#fbf7f1"/>
+            <circle cx="170" cy="138" r="22" fill="#fbf7f1"/>
+            <!-- Eye whites -->
+            <circle cx="82"  cy="108" r="21" fill="white"/>
+            <circle cx="138" cy="108" r="21" fill="white"/>
+            <!-- Eyebrows (thick, arched) -->
+            <path d="M 63 88 Q 82 78 101 85"  stroke="#1e0906" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+            <path d="M 119 85 Q 138 78 157 88" stroke="#1e0906" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+            <!-- Pupils -->
+            <circle cx="84"  cy="111" r="13" fill="#130603"/>
+            <circle cx="140" cy="111" r="13" fill="#130603"/>
+            <!-- Eye sparkle highlights -->
+            <circle cx="89"  cy="106" r="5.5" fill="white" opacity="0.92"/>
+            <circle cx="145" cy="106" r="5.5" fill="white" opacity="0.92"/>
+            <circle cx="82"  cy="115" r="2.5" fill="white" opacity="0.4"/>
+            <circle cx="138" cy="115" r="2.5" fill="white" opacity="0.4"/>
+            <!-- Nose -->
+            <ellipse cx="110" cy="133" rx="11" ry="8"  fill="#4a120e"/>
+            <ellipse cx="110" cy="132" rx="7"  ry="4"  fill="#6a2016" opacity="0.7"/>
+            <!-- Upper teeth — hidden by CSS, revealed when jaw drops -->
+            <g class="lion-teeth-upper">
+              <rect x="87"  y="141" width="9"  height="13" rx="3.5" fill="#fff8ee"/>
+              <rect x="101" y="139" width="10" height="15" rx="4"   fill="white"/>
+              <rect x="116" y="141" width="9"  height="13" rx="3.5" fill="#fff8ee"/>
+            </g>
+            <!-- Tongue — hidden by CSS, revealed when chomping -->
+            <g class="lion-tongue">
+              <ellipse cx="110" cy="162" rx="24" ry="11" fill="#c0383e"/>
+              <path d="M 100 166 Q 110 177 120 166" fill="#8e2830"/>
+            </g>
+            <!-- Lower jaw (animated: translateY on .is-chomping) -->
+            <g class="lion-lower-jaw">
+              <!-- Lip/cover plate — hides teeth + cavity when closed -->
+              <rect x="60" y="148" width="100" height="24" rx="11" fill="#9e4035"/>
+              <!-- Lower teeth -->
+              <rect x="87"  y="153" width="9"  height="11" rx="3"   fill="#fff8ee"/>
+              <rect x="101" y="151" width="10" height="13" rx="3.5" fill="white"/>
+              <rect x="116" y="153" width="9"  height="11" rx="3"   fill="#fff8ee"/>
+              <!-- Jaw body -->
+              <ellipse cx="110" cy="186" rx="52" ry="28" fill="#9e4035"/>
+              <!-- Chin fluff -->
+              <ellipse cx="110" cy="204" rx="43" ry="20" fill="#fbf7f1"/>
+            </g>
+            <!-- Upper gum line (drawn on top — always visible) -->
+            <path d="M 68 148 Q 110 157 152 148" stroke="#1e0906" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <!-- Whisker dots -->
+            <circle cx="38"  cy="132" r="3" fill="#1e0906" opacity="0.18"/>
+            <circle cx="32"  cy="142" r="3" fill="#1e0906" opacity="0.18"/>
+            <circle cx="38"  cy="152" r="3" fill="#1e0906" opacity="0.18"/>
+            <circle cx="182" cy="132" r="3" fill="#1e0906" opacity="0.18"/>
+            <circle cx="188" cy="142" r="3" fill="#1e0906" opacity="0.18"/>
+            <circle cx="182" cy="152" r="3" fill="#1e0906" opacity="0.18"/>
+          </svg>
+
+          <div class="service-grid service-performance-grid">
+          <article class="service-card service-card-flip lion-card" id="item-auspicious-lion" tabindex="0" role="button" aria-pressed="false">
             <div class="service-card-inner">
               <div class="service-face service-face-front">
                 <div class="service-image service-lion">
@@ -121,7 +195,7 @@
               </div>
             </div>
           </article>
-          <article class="service-card service-card-flip reveal" id="item-pole-lion" tabindex="0" role="button" aria-pressed="false">
+          <article class="service-card service-card-flip lion-card" id="item-pole-lion" tabindex="0" role="button" aria-pressed="false">
             <div class="service-card-inner">
               <div class="service-face service-face-front">
                 <div class="service-image service-lion-pole">
@@ -142,7 +216,7 @@
               </div>
             </div>
           </article>
-          <article class="service-card service-card-flip reveal" id="item-dragon-pearl" tabindex="0" role="button" aria-pressed="false">
+          <article class="service-card service-card-flip lion-card" id="item-dragon-pearl" tabindex="0" role="button" aria-pressed="false">
             <div class="service-card-inner">
               <div class="service-face service-face-front">
                 <div class="service-image service-dragon">
@@ -163,7 +237,7 @@
               </div>
             </div>
           </article>
-          <article class="service-card service-card-flip reveal" id="item-war-drum" tabindex="0" role="button" aria-pressed="false">
+          <article class="service-card service-card-flip lion-card" id="item-war-drum" tabindex="0" role="button" aria-pressed="false">
             <div class="service-card-inner">
               <div class="service-face service-face-front">
                 <div class="service-image service-drum">
@@ -184,7 +258,7 @@
               </div>
             </div>
           </article>
-          <article class="service-card service-card-flip reveal" id="item-electric-nezha" tabindex="0" role="button" aria-pressed="false">
+          <article class="service-card service-card-flip lion-card" id="item-electric-nezha" tabindex="0" role="button" aria-pressed="false">
             <div class="service-card-inner">
               <div class="service-face service-face-front">
                 <div class="service-image service-nezha">
@@ -205,7 +279,7 @@
               </div>
             </div>
           </article>
-          <article class="service-card service-card-flip reveal" id="item-folk-arts" tabindex="0" role="button" aria-pressed="false">
+          <article class="service-card service-card-flip lion-card" id="item-folk-arts" tabindex="0" role="button" aria-pressed="false">
             <div class="service-card-inner">
               <div class="service-face service-face-front">
                 <div class="service-image service-folk">
@@ -226,7 +300,8 @@
               </div>
             </div>
           </article>
-        </div>
+          </div><!-- end .service-performance-grid -->
+        </div><!-- end .lion-intro-stage -->
 
         <div class="process">
           <div class="section-heading reveal">
