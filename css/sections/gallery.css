@@ -1,211 +1,192 @@
-.case-directory {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.case-directory a {
-  padding: 10px 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(185, 146, 94, 0.18);
-  background: rgba(251, 247, 241, 0.86);
-  color: var(--ink);
-  text-decoration: none;
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-}
-
-.case-directory a:hover,
-.case-directory a:focus-visible {
-  border-color: rgba(143, 58, 47, 0.24);
-  color: var(--accent-deep);
-}
-
-/* ── Masonry grid: 2-col mobile, 3-col desktop ─────────── */
+/* ── Photo wall ─────────────────────────────────────────── */
 
 .case-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 230px;
-  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
   align-items: stretch;
+  background: #fff;
 }
-
-@media (min-width: 760px) {
-  .case-grid {
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 280px;
-  }
-}
-
-/* ── Base card ──────────────────────────────────────────── */
 
 .case-card {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  aspect-ratio: 1;
   overflow: hidden;
-  border-radius: var(--radius);
-  border: 1px solid rgba(22, 19, 17, 0.08);
-  background: linear-gradient(180deg, rgba(251, 247, 241, 0.96), rgba(244, 238, 229, 0.94));
+  border: 0;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: none;
   cursor: pointer;
-  transition:
-    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.case-card:hover {
-  transform: scale(1.03);
-  box-shadow:
-    0 20px 48px rgba(22, 19, 17, 0.13),
-    0 4px 16px rgba(22, 19, 17, 0.06);
 }
 
 .case-card::before {
-  content: "";
-  position: absolute;
-  inset: 12px;
-  border: 1px solid rgba(185, 146, 94, 0.12);
-  border-radius: 12px;
-  pointer-events: none;
-  z-index: 1;
+  content: none;
 }
 
-/* Featured card: reset old span-6, treat as a tall card */
 .case-card-feature {
   grid-column: auto;
-  grid-row: span 2;
+  grid-row: auto;
 }
 
-/* ── Visual area (image placeholder) ───────────────────── */
-
-.case-card-visual {
-  flex: 1;
-  min-height: 0;
-  overflow: hidden;
-  border-bottom: 1px solid rgba(22, 19, 17, 0.08);
-  background-color: #d8cec0;
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+.case-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.16s ease;
 }
 
-.case-card:hover .case-card-visual {
-  transform: scale(1.08);
+.case-card:active img {
+  opacity: 0.8;
 }
 
-/* Remove the old feature-specific visual height */
-.case-card-feature .case-card-visual {
-  min-height: 0;
+/* ── Postcard modal ─────────────────────────────────────── */
+
+.postcard-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.58);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
 }
 
-/* ── Every 3rd card is tall (spans 2 rows) ──────────────── */
-
-.case-card:nth-child(3n) {
-  grid-row: span 2;
+.postcard-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.case-opening,
-.case-commercial,
-.case-festival,
-.case-campus,
-.case-banquet,
-.case-tourism,
-.case-memorial,
-.case-groundbreaking,
-.case-festival-retail,
-.case-ad-commercial,
-.case-temple-birthday {
-  background:
-    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.28), transparent 18%),
-    linear-gradient(160deg, rgba(122, 54, 43, 0.18), rgba(22, 19, 17, 0.08)),
-    linear-gradient(180deg, rgba(240, 231, 219, 0.88), rgba(221, 208, 192, 0.92));
-  position: relative;
+.postcard-card {
+  width: min(100%, 460px);
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  border-radius: 16px;
+  background: #fdf8f0;
+  color: #3a2e1e;
+  opacity: 0;
+  transform: scale(0.9);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 
-.case-opening::before,
-.case-commercial::before,
-.case-festival::before,
-.case-campus::before,
-.case-banquet::before,
-.case-tourism::before,
-.case-memorial::before,
-.case-groundbreaking::before,
-.case-festival-retail::before,
-.case-ad-commercial::before,
-.case-temple-birthday::before {
-  content: "";
-  position: absolute;
-  inset: 24px;
-  border-radius: 18px;
-  border: 1px solid rgba(185, 146, 94, 0.16);
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 420'%3E%3Cg fill='none' stroke='%238f3a2f' stroke-opacity='.16' stroke-width='2'%3E%3Cpath d='M52 248c57-27 103-41 139-41 27 0 48 7 65 19 16 13 25 30 25 50 0 18 10 30 25 30 15 0 25-10 25-24 0-18-13-31-35-36 42-9 76-28 103-57 20-21 42-32 67-32 27 0 46 15 46 37 0 18-12 31-34 37 59 9 104 28 139 58'/%3E%3Cpath d='M106 116h388M144 116v48M456 116v48' stroke='%23b9925e' stroke-opacity='.2'/%3E%3C/g%3E%3C/svg%3E")
-      center/cover no-repeat;
+.postcard-modal.is-open .postcard-card {
+  opacity: 1;
+  transform: scale(1);
 }
 
-/* ── Card body: slides up on hover ─────────────────────── */
-
-.case-card-body {
-  position: relative;
-  z-index: 2;
-  flex-shrink: 0;
-  padding: 16px 18px 18px;
-  /* Fade edge between visual and body */
-  background: linear-gradient(
-    to bottom,
-    rgba(251, 247, 241, 0) 0%,
-    rgba(251, 247, 241, 0.97) 14%
-  );
-  transform: translateY(6px);
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+.postcard-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
 }
 
-.case-card:hover .case-card-body {
-  transform: translateY(0);
+.postcard-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 96px;
+  border-top: 1px solid #d4c9b0;
 }
 
-.case-meta {
-  margin: 0;
-  color: var(--accent-deep);
-  font-size: 1rem;
+.postcard-copy {
+  display: flex;
+  min-height: 178px;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.postcard-category {
+  margin: 0 0 10px;
+  color: #7c6a50;
+  font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.18em;
   line-height: 1.4;
 }
 
-.case-card h3 {
-  display: none;
+.postcard-copy h2 {
+  margin: 0 0 12px;
+  color: #3a2e1e;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  line-height: 1.35;
 }
 
-.case-card p:last-child {
+.postcard-description {
   margin: 0;
-  color: var(--ink-soft);
+  color: #5f513c;
+  font-size: 0.9rem;
+  line-height: 1.75;
 }
 
-/* Description hidden in masonry so the visual area has room */
-.case-grid .case-card p:not(.case-meta) {
-  display: none;
+.postcard-lines {
+  display: grid;
+  gap: 7px;
+  margin-top: auto;
+  padding-top: 18px;
 }
 
-.case-footer {
-  margin-top: 26px;
+.postcard-lines span {
+  display: block;
+  height: 1px;
+  background: #d4c9b0;
 }
 
-/* ── Staggered scroll-reveal ────────────────────────────────
-   The global .reveal / .is-visible system already handles
-   opacity + translateY. Here we override the easing and add
-   per-card stagger delays that only apply before reveal fires
-   (so hover transitions stay instant after cards land).
-   ─────────────────────────────────────────────────────────── */
+.postcard-stamp {
+  display: grid;
+  align-content: start;
+  justify-items: center;
+  gap: 4px;
+  padding: 20px;
+  border-left: 1px solid #d4c9b0;
+}
+
+.postcard-stamp span {
+  display: grid;
+  width: 58px;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid #d4c9b0;
+  border-radius: 3px;
+  background: #fff8e8;
+  font-size: 1.6rem;
+}
+
+.postcard-stamp small {
+  color: #7c6a50;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.postcard-close {
+  width: calc(100% - 40px);
+  margin: 0 20px 20px;
+  padding: 11px 16px;
+  border: 1px solid #d4c9b0;
+  border-radius: 999px;
+  background: transparent;
+  color: #3a2e1e;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ── Staggered scroll-reveal ─────────────────────────────── */
 
 .case-grid .case-card.reveal {
   transition:
-    opacity  0.72s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.72s cubic-bezier(0.22, 1, 0.36, 1),
-    filter   0.72s cubic-bezier(0.22, 1, 0.36, 1);
+    filter 0.72s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Delay only while still hidden — resets to 0 once .is-visible lands */
 .case-grid .case-card.reveal:not(.is-visible) {
   transition-delay: var(--reveal-delay, 0ms);
 }

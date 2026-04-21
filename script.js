@@ -317,9 +317,9 @@ flipCards.forEach((card) => {
   blocks.forEach((block) => io.observe(block));
 }());
 
-/* ── Gallery masonry: lower-threshold reveal observer ────────
+/* ── Gallery cards: lower-threshold reveal observer ──────────
    The global revealObserver fires at 18 % visibility, which is
-   fine for tall sections but too late for short masonry cards.
+   fine for tall sections but too late for short gallery cards.
    We attach a second observer specifically for .case-grid cards
    at a lower threshold so the stagger feels natural.
    The global observer is still attached; the first one to fire
@@ -340,6 +340,61 @@ flipCards.forEach((card) => {
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
   caseCards.forEach((card) => galleryObserver.observe(card));
+}());
+
+(function initGalleryPostcardModal() {
+  const caseCards = document.querySelectorAll('.case-grid .case-card');
+  const modal = document.querySelector('#postcard-modal');
+  if (!caseCards.length || !modal) return;
+
+  const modalImage = modal.querySelector('.postcard-image');
+  const modalCategory = modal.querySelector('.postcard-category');
+  const modalTitle = modal.querySelector('#postcard-title');
+  const modalDescription = modal.querySelector('.postcard-description');
+  const closeButton = modal.querySelector('.postcard-close');
+
+  const openModal = (card) => {
+    const image = card.querySelector('img');
+    if (!image || !modalImage || !modalCategory || !modalTitle || !modalDescription) return;
+
+    modalImage.src = image.currentSrc || image.src;
+    modalImage.alt = image.alt || card.dataset.title || '';
+    modalCategory.textContent = card.dataset.category || '';
+    modalTitle.textContent = card.dataset.title || '';
+    modalDescription.textContent = card.dataset.description || '';
+
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    closeButton?.focus();
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+  };
+
+  caseCards.forEach((card) => {
+    card.addEventListener('click', () => openModal(card));
+    card.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+
+      event.preventDefault();
+      openModal(card);
+    });
+  });
+
+  closeButton?.addEventListener('click', closeModal);
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeModal();
+    }
+  });
 }());
 
 /* ── Lion intro animation ──────────────────────────────────
