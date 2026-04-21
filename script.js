@@ -245,10 +245,6 @@ if (hero && !reduceMotionQuery.matches) {
 const flipCards = document.querySelectorAll('.service-card-flip');
 
 const toggleFlipCard = (card) => {
-  if (window.innerWidth <= 760) {
-    return;
-  }
-
   const willFlip = !card.classList.contains('is-flipped');
 
   flipCards.forEach((item) => {

@@ -375,6 +375,10 @@
     order: 6;
   }
 
+  .service-performance-grid .service-card:nth-child(7) {
+    order: 7;
+  }
+
   .service-performance-grid .service-card::before {
     inset: 10px;
     border-radius: 12px;
@@ -387,24 +391,28 @@
   }
 
   .service-performance-grid .service-card-flip {
-    perspective: none;
+    perspective: 1200px;
   }
 
   .service-performance-grid .service-card-inner {
-    min-height: 150px;
-    transform: none !important;
+    min-height: 300px;
+    transform-style: preserve-3d;
   }
 
   .service-performance-grid .service-face {
-    position: relative;
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   .service-performance-grid .service-face-back {
-    display: none;
+    display: grid;
+    transform: rotateY(180deg);
   }
 
   .service-performance-grid .service-image {
-    min-height: 150px;
+    min-height: 300px;
     border-radius: 18px;
   }
 
@@ -430,7 +438,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 126px;
+    min-height: 276px;
     max-width: none;
   }
 
@@ -455,11 +463,12 @@
   .service-card-inner,
   .service-image,
   .service-detail {
-    min-height: 380px;
+    min-height: 300px;
   }
 
   .service-detail {
-    padding: 30px 24px;
+    align-content: start;
+    padding: 22px 18px;
   }
 
   .service-copy h3 {
@@ -475,14 +484,14 @@
   }
 
   .service-detail h3 {
-    font-size: 1.72rem;
+    font-size: 1.24rem;
     letter-spacing: 0.06em;
     line-height: 1.16;
   }
 
   .service-detail p:last-child {
-    font-size: 1rem;
-    line-height: 1.75;
+    font-size: 0.78rem;
+    line-height: 1.72;
   }
 
   .service-overlay {
