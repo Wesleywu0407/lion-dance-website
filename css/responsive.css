@@ -540,31 +540,6 @@
     min-height: 380px;
   }
 
-  .case-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 6px;
-    padding: 4px 0 10px;
-  }
-
-  .case-card,
-  .case-card-feature {
-    width: auto;
-    min-width: 0;
-    grid-column: auto;
-    border-radius: 8px;
-    box-shadow: none;
-  }
-
-  .case-card-feature {
-    border-color: transparent;
-    box-shadow: none;
-  }
-
-  .case-card::before {
-    content: none;
-  }
-
   .vertical-text {
     font-size: 2.7rem;
   }
