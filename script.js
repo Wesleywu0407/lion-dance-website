@@ -271,6 +271,144 @@ flipCards.forEach((card) => {
   });
 });
 
+const albumLightbox = document.querySelector('[data-album-lightbox]');
+
+if (albumLightbox) {
+  const albumPhotos = document.querySelectorAll('[data-album-photo]');
+  const lightboxImage = albumLightbox.querySelector('[data-album-lightbox-image]');
+  const lightboxClose = albumLightbox.querySelector('[data-album-lightbox-close]');
+
+  const closeAlbumLightbox = () => {
+    albumLightbox.classList.remove('is-open', 'has-image');
+    albumLightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('is-lightbox-open');
+
+    if (lightboxImage) {
+      lightboxImage.removeAttribute('src');
+      lightboxImage.alt = '';
+    }
+  };
+
+  const openAlbumLightbox = (photo) => {
+    const embeddedImage = photo.querySelector('img');
+    const imageSrc = photo.dataset.lightboxSrc || embeddedImage?.currentSrc || embeddedImage?.src || '';
+    const imageAlt = embeddedImage?.alt || photo.getAttribute('aria-label') || '';
+
+    if (imageSrc && lightboxImage) {
+      lightboxImage.src = imageSrc;
+      lightboxImage.alt = imageAlt;
+      albumLightbox.classList.add('has-image');
+    }
+
+    albumLightbox.classList.add('is-open');
+    albumLightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('is-lightbox-open');
+    lightboxClose?.focus();
+  };
+
+  albumPhotos.forEach((photo) => {
+    photo.addEventListener('click', () => {
+      openAlbumLightbox(photo);
+    });
+  });
+
+  lightboxClose?.addEventListener('click', closeAlbumLightbox);
+
+  albumLightbox.addEventListener('click', (event) => {
+    if (event.target === albumLightbox) {
+      closeAlbumLightbox();
+    }
+  });
+
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && albumLightbox.classList.contains('is-open')) {
+      closeAlbumLightbox();
+    }
+  });
+}
+
+const caseCategoryCards = document.querySelectorAll('.case-category-card');
+
+if (caseCategoryCards.length) {
+  const sparkColors = ['#e84a4a', '#f5a623', '#f5c842', '#ff6b35', '#ffd700'];
+  const sparkTimers = new WeakMap();
+  const sparkState = new WeakMap();
+
+  const spawnCaseSparks = (card) => {
+    const firecracker = card.querySelector('.firecracker');
+
+    if (!firecracker) {
+      return;
+    }
+
+    const rect = firecracker.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    for (let index = 0; index < 10; index += 1) {
+      const particle = document.createElement('div');
+      const size = 4 + Math.random() * 5;
+      const angle = Math.random() * Math.PI * 2;
+      const distance = 20 + Math.random() * 40;
+      const offsetX = Math.cos(angle) * distance;
+      const offsetY = Math.sin(angle) * distance - 10;
+      const color = sparkColors[Math.floor(Math.random() * sparkColors.length)];
+
+      particle.className = 'spark-particle';
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.left = `${centerX}px`;
+      particle.style.top = `${centerY}px`;
+      particle.style.background = color;
+      particle.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      document.body.appendChild(particle);
+
+      particle.animate([
+        {
+          opacity: 1,
+          transform: 'translate(-50%, -50%) scale(1)'
+        },
+        {
+          opacity: 0,
+          transform: `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px)) scale(0)`
+        }
+      ], {
+        duration: 500 + Math.random() * 300,
+        easing: 'ease-out'
+      }).onfinish = () => {
+        particle.remove();
+      };
+    }
+  };
+
+  caseCategoryCards.forEach((card) => {
+    card.addEventListener('mouseenter', () => {
+      sparkState.set(card, false);
+
+      const timer = window.setTimeout(() => {
+        if (sparkState.get(card)) {
+          return;
+        }
+
+        spawnCaseSparks(card);
+        sparkState.set(card, true);
+      }, 350);
+
+      sparkTimers.set(card, timer);
+    });
+
+    card.addEventListener('mouseleave', () => {
+      const timer = sparkTimers.get(card);
+
+      if (timer) {
+        window.clearTimeout(timer);
+      }
+
+      sparkState.set(card, false);
+    });
+  });
+}
+
 /* ── Cinematic about-page text reveal ────────────────────────
    Each .ctb block is observed individually.  When 20 % of a
    block enters the viewport both its .ctb-phrase and

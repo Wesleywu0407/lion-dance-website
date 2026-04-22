@@ -355,30 +355,6 @@
     transform-origin: center;
   }
 
-  .service-performance-grid .service-card:nth-child(2) {
-    order: 5;
-  }
-
-  .service-performance-grid .service-card:nth-child(3) {
-    order: 3;
-  }
-
-  .service-performance-grid .service-card:nth-child(4) {
-    order: 2;
-  }
-
-  .service-performance-grid .service-card:nth-child(5) {
-    order: 4;
-  }
-
-  .service-performance-grid .service-card:nth-child(6) {
-    order: 6;
-  }
-
-  .service-performance-grid .service-card:nth-child(7) {
-    order: 7;
-  }
-
   .service-performance-grid .service-card::before {
     inset: 10px;
     border-radius: 12px;
