@@ -28,6 +28,11 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  min-height: 100%;
+}
+
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -59,6 +64,13 @@ body::before {
 
 .page-shell {
   position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-shell > main {
+  flex: 1 0 auto;
 }
 
 .brand-text strong,
@@ -163,21 +175,25 @@ body::before {
   color: var(--ink);
 }
 
-.page-hero h1 {
+.page-hero .page-hero-inner > h1 {
   margin: 0;
   max-width: 14ch;
-  font-family: var(--font-display-serif);
-  font-weight: 700;
+  font-family: "Noto Serif TC", "Songti TC", "PMingLiU", "MingLiU", serif;
+  font-weight: 600;
   font-size: clamp(3rem, 6vw, 5rem);
-  line-height: 1.08;
-  letter-spacing: 0.08em;
+  line-height: 1.16;
+  letter-spacing: 0.12em;
+  color: #6F5547;
+  text-rendering: optimizeLegibility;
 }
 
-.page-hero p {
+.page-hero .page-hero-inner > p:not(.section-tag) {
   max-width: 54rem;
   margin: 18px 0 0;
-  color: var(--ink-soft);
+  color: #8B776B;
   font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  line-height: 1.8;
 }
 
 .cta-band {

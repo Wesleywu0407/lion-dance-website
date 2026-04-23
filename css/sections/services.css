@@ -13,11 +13,11 @@
 .service-page-subtitle {
   max-width: 34rem;
   margin: 0;
-  color: var(--ink-soft);
+  color: #8B776B;
   font-size: 0.96rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  line-height: 1.65;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.78;
 }
 
 .service-grid {

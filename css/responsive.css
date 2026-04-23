@@ -152,9 +152,45 @@
   .site-nav > a,
   .site-nav > .nav-services > a,
   .site-nav > .nav-gallery > a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 52px;
     padding: 16px;
     border-radius: 14px;
     background: rgba(245, 239, 230, 0.72);
+    font-family: inherit;
+    font-size: 0.96rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.06em;
+    line-height: 1.45;
+  }
+
+  .nav-services .mobile-submenu,
+  .nav-gallery .mobile-submenu {
+    gap: 7px;
+    margin-top: -4px;
+    padding: 2px 0 0 14px;
+    border-left: 1px solid rgba(111, 85, 71, 0.16);
+  }
+
+  .nav-services .mobile-submenu {
+    display: none;
+  }
+
+  .nav-services.is-open .mobile-submenu {
+    display: grid;
+  }
+
+  .nav-services .mobile-submenu-item,
+  .nav-gallery .mobile-submenu-item {
+    padding: 4px 0;
+    color: var(--ink-soft);
+    font-size: 0.84rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    line-height: 1.42;
   }
 
   .service-mega,
@@ -162,7 +198,6 @@
     display: none;
   }
 
-  .nav-services.is-collapsed .mobile-submenu,
   .nav-gallery.is-collapsed .mobile-submenu {
     display: none;
   }
@@ -311,18 +346,21 @@
     gap: 10px;
   }
 
-  .service-page-hero h1 {
+  .service-page-hero .page-hero-inner > h1 {
     max-width: none;
+    font-family: "Noto Serif TC", "Songti TC", "PMingLiU", "MingLiU", serif;
+    font-weight: 600;
     font-size: clamp(2.5rem, 12vw, 3.2rem);
-    line-height: 1.04;
-    letter-spacing: 0.08em;
+    line-height: 1.14;
+    letter-spacing: 0.1em;
+    color: #6F5547;
   }
 
   .service-page-subtitle {
     max-width: none;
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    line-height: 1.6;
+    font-size: 0.84rem;
+    letter-spacing: 0.06em;
+    line-height: 1.72;
   }
 
   .intro-band {

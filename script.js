@@ -35,12 +35,17 @@ const unlockBodyScroll = () => {
 };
 
 if (navToggle && siteNav) {
-  const navGroups = Array.from(siteNav.querySelectorAll('.nav-services, .nav-gallery'));
+  const serviceNavGroups = Array.from(siteNav.querySelectorAll('.nav-services'));
+  const galleryNavGroups = Array.from(siteNav.querySelectorAll('.nav-gallery'));
   const navSubgroups = Array.from(siteNav.querySelectorAll('.nav-subgroup'));
 
   const resetMobileNavState = () => {
-    navGroups.forEach((group) => {
+    galleryNavGroups.forEach((group) => {
       group.classList.add('is-collapsed');
+    });
+
+    serviceNavGroups.forEach((group) => {
+      group.classList.remove('is-open');
     });
 
     navSubgroups.forEach((subgroup) => {
@@ -92,8 +97,11 @@ if (navToggle && siteNav) {
 
   window.addEventListener('resize', () => {
     if (window.innerWidth > 760) {
-      navGroups.forEach((group) => {
+      galleryNavGroups.forEach((group) => {
         group.classList.remove('is-collapsed');
+      });
+      serviceNavGroups.forEach((group) => {
+        group.classList.remove('is-open');
       });
       navSubgroups.forEach((subgroup) => {
         subgroup.classList.remove('is-collapsed');
@@ -112,7 +120,24 @@ if (navToggle && siteNav) {
       setNavOpen(false);
     }
   });
-  navGroups.forEach((group) => {
+  serviceNavGroups.forEach((group) => {
+    const trigger = group.querySelector(':scope > a');
+
+    if (!trigger) {
+      return;
+    }
+
+    trigger.addEventListener('click', (event) => {
+      if (window.innerWidth > 760) {
+        return;
+      }
+
+      event.preventDefault();
+      group.classList.toggle('is-open');
+    });
+  });
+
+  galleryNavGroups.forEach((group) => {
     const trigger = group.querySelector(':scope > a');
 
     if (!trigger) {
