@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <circle cx="200" cy="200" r="195" fill="#7A2010"/>
+  <circle cx="200" cy="200" r="195" fill="none" stroke="#D85A30" stroke-width="6"/>
+  <circle cx="200" cy="200" r="187" fill="none" stroke="#F0997B" stroke-width="1.5"/>
+  <circle cx="200" cy="200" r="182" fill="#A83020"/>
+  <circle cx="200" cy="200" r="168" fill="none" stroke="#F0997B" stroke-width="0.8" stroke-dasharray="4 5"/>
+  <text font-family="serif" font-size="26" font-weight="500" fill="#FAECE7" text-anchor="middle" dominant-baseline="middle" transform="rotate(-144 200 200) translate(200 52)">臺</text>
+  <text font-family="serif" font-size="26" font-weight="500" fill="#FAECE7" text-anchor="middle" dominant-baseline="middle" transform="rotate(-108 200 200) translate(200 52)">灣</text>
+  <text font-family="serif" font-size="26" font-weight="500" fill="#FAECE7" text-anchor="middle" dominant-baseline="middle" transform="rotate(-72 200 200) translate(200 52)">南</text>
+  <text font-family="serif" font-size="26" font-weight="500" fill="#FAECE7" text-anchor="middle" dominant-baseline="middle" transform="rotate(-36 200 200) translate(200 52)">仙</text>
+  <text font-family="serif" font-size="26" font-weight="500" fill="#FAECE7" text-anchor="middle" dominant-baseline="middle" transform="rotate(0 200 200) translate(200 52)">龍</text>
+  <text font-family="serif" font-size="26" font-weight="500" fill="#FAECE7" text-anchor="middle" dominant-baseline="middle" transform="rotate(36 200 200) translate(200 52)">獅</text>
+  <text font-family="serif" font-size="26" font-weight="500" fill="#FAECE7" text-anchor="middle" dominant-baseline="middle" transform="rotate(72 200 200) translate(200 52)">體</text>
+  <text font-family="serif" font-size="26" font-weight="500" fill="#FAECE7" text-anchor="middle" dominant-baseline="middle" transform="rotate(108 200 200) translate(200 52)">育</text>
+  <text font-family="serif" font-size="26" font-weight="500" fill="#FAECE7" text-anchor="middle" dominant-baseline="middle" transform="rotate(144 200 200) translate(200 52)">會</text>
+  <polygon points="200,381 205,389 200,397 195,389" fill="#F0997B" opacity="0.8"/>
+  <ellipse cx="200" cy="143" rx="24" ry="36" fill="#FAECE7" transform="rotate(0 200 200)"/>
+  <ellipse cx="200" cy="143" rx="24" ry="36" fill="#FAECE7" transform="rotate(72 200 200)"/>
+  <ellipse cx="200" cy="143" rx="24" ry="36" fill="#FAECE7" transform="rotate(144 200 200)"/>
+  <ellipse cx="200" cy="143" rx="24" ry="36" fill="#FAECE7" transform="rotate(216 200 200)"/>
+  <ellipse cx="200" cy="143" rx="24" ry="36" fill="#FAECE7" transform="rotate(288 200 200)"/>
+  <ellipse cx="200" cy="154" rx="12" ry="22" fill="#F0997B" opacity="0.45" transform="rotate(0 200 200)"/>
+  <ellipse cx="200" cy="154" rx="12" ry="22" fill="#F0997B" opacity="0.45" transform="rotate(72 200 200)"/>
+  <ellipse cx="200" cy="154" rx="12" ry="22" fill="#F0997B" opacity="0.45" transform="rotate(144 200 200)"/>
+  <ellipse cx="200" cy="154" rx="12" ry="22" fill="#F0997B" opacity="0.45" transform="rotate(216 200 200)"/>
+  <ellipse cx="200" cy="154" rx="12" ry="22" fill="#F0997B" opacity="0.45" transform="rotate(288 200 200)"/>
+  <circle cx="200" cy="174" r="3.5" fill="#D85A30" transform="rotate(0 200 200)"/>
+  <circle cx="200" cy="174" r="3.5" fill="#D85A30" transform="rotate(72 200 200)"/>
+  <circle cx="200" cy="174" r="3.5" fill="#D85A30" transform="rotate(144 200 200)"/>
+  <circle cx="200" cy="174" r="3.5" fill="#D85A30" transform="rotate(216 200 200)"/>
+  <circle cx="200" cy="174" r="3.5" fill="#D85A30" transform="rotate(288 200 200)"/>
+  <circle cx="200" cy="200" r="12" fill="#993C1D"/>
+  <circle cx="200" cy="200" r="7" fill="#F0997B"/>
+  <circle cx="200" cy="200" r="3.5" fill="#FAECE7"/>
+  <circle cx="200" cy="200" r="128" fill="none" stroke="#F0997B" stroke-width="0.6" opacity="0.5"/>
+</svg>

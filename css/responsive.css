@@ -52,9 +52,9 @@
     gap: 12px;
   }
 
-  .brand::before {
-    width: 18px;
-    height: 40px;
+  .brand-logo {
+    width: 36px;
+    height: 36px;
   }
 
   .brand-text strong {
@@ -451,21 +451,9 @@
   .service-performance-grid .service-copy {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     min-height: 276px;
     max-width: none;
-  }
-
-  .service-performance-grid .service-type {
-    margin: 0;
-    align-self: flex-start;
-    padding: 4px 8px;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    background: rgba(251, 247, 241, 0.14);
-    color: rgba(243, 224, 201, 0.82);
-    font-size: 0.58rem;
-    letter-spacing: 0.18em;
   }
 
   .service-performance-grid .service-copy h3 {
