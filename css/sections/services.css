@@ -28,7 +28,165 @@
 }
 
 .service-performance-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.performance-diary {
+  display: grid;
+  grid-template-columns: minmax(0, 55%) minmax(0, 45%);
+  gap: 36px;
+  align-items: start;
+}
+
+.performance-diary-media {
+  position: sticky;
+  top: 100px;
+  height: calc(100vh - 120px);
+}
+
+.performance-diary-photo {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #1f140f;
+  box-shadow: 0 24px 48px rgba(26, 14, 9, 0.2);
+}
+
+.performance-diary-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 0.5s ease;
+}
+
+.performance-photo-current {
+  opacity: 1;
+}
+
+.performance-photo-next {
+  opacity: 0;
+}
+
+.performance-photo-next.is-visible {
+  opacity: 1;
+}
+
+.performance-diary-list {
+  display: grid;
+  gap: 0;
+}
+
+.service-item {
+  min-height: 85vh;
+  padding: 10vh 0;
+  border-bottom: 1px solid rgba(61, 26, 10, 0.08);
+}
+
+.service-item:last-child {
+  border-bottom: 0;
+}
+
+.service-item-photo {
+  display: none;
+}
+
+.service-item-step {
+  margin: 0 0 14px;
+  color: rgba(61, 26, 10, 0.45);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+
+.service-item h3 {
+  margin: 0;
+  font-family: var(--font-display-serif);
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  color: #3d1a0a;
+}
+
+.service-item-tags {
+  margin: 14px 0 0;
+  color: #888;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.service-item-description {
+  margin: 18px 0 0;
+  color: #5a3a2a;
+  font-size: 15px;
+  line-height: 1.8;
+  max-width: 42ch;
+}
+
+.service-item-link {
+  display: inline-flex;
+  margin-top: 18px;
+  color: #993C1D;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
+.service-item-link:hover,
+.service-item-link:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .performance-diary {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .performance-diary-media {
+    display: none;
+  }
+
+  .performance-diary-list {
+    padding: 0 20px;
+  }
+
+  .service-item {
+    min-height: auto;
+    padding: 0;
+    margin-bottom: 48px;
+    border-bottom: 0;
+  }
+
+  .service-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .service-item-photo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+
+  .service-item-step {
+    margin: 0 0 14px;
+  }
+
+  .service-item h3 {
+    font-size: 30px;
+  }
 }
 
 .service-nav {
@@ -178,7 +336,8 @@
 
 .service-card-inner {
   position: relative;
-  min-height: 320px;
+  min-height: 0;
+  aspect-ratio: 3 / 2;
   transform-style: preserve-3d;
   transition: transform 0.65s ease;
 }
@@ -201,10 +360,12 @@
 }
 
 .service-detail {
-  min-height: 320px;
-  padding: 28px 24px;
-  display: grid;
-  align-content: end;
+  min-height: 100%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 12px;
   overflow: auto;
   border-radius: 16px;
   background:
@@ -214,7 +375,7 @@
 }
 
 .service-detail h3 {
-  margin: 0 0 10px;
+  margin: 0;
   font-family: var(--font-display-serif);
   font-size: 1.46rem;
   letter-spacing: 0.08em;
@@ -223,24 +384,27 @@
 .service-detail p:last-child {
   margin: 0;
   color: rgba(239, 225, 206, 0.82);
+  font-size: 14px;
   line-height: 1.72;
 }
 
 .service-image {
   position: relative;
   overflow: hidden;
-  min-height: 320px;
+  width: 100%;
+  min-height: 0;
+  aspect-ratio: 3 / 2;
   border-radius: 16px;
   background-color: #ccc;
+  background-size: cover;
+  background-position: center;
 }
 
 .service-image::before {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, rgba(22, 19, 17, 0.06), rgba(22, 19, 17, 0.6)),
-    radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.08), transparent 20%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, transparent 50%);
 }
 
 .service-image::after {
@@ -257,11 +421,11 @@
 .service-image,
 .service-image::before,
 .service-image::after {
-  transition: transform 0.35s ease, opacity 0.35s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .service-card:hover .service-image {
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
 .service-overlay {
@@ -273,6 +437,7 @@
 
 .service-copy {
   max-width: 32rem;
+  position: static;
 }
 
 .service-type {
@@ -281,6 +446,10 @@
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.22em;
+}
+
+.service-face-front .service-type {
+  display: none;
 }
 
 .service-copy h3 {
@@ -293,51 +462,35 @@
 }
 
 .service-lion {
-  background:
-    linear-gradient(160deg, rgba(54, 34, 29, 0.24), rgba(17, 15, 14, 0.78)),
-    url("../../images/祥獅獻瑞.JPG") center/cover no-repeat;
+  background: url("../../images/祥獅獻瑞.JPG") center/cover no-repeat;
 }
 
 .service-lion-pole {
-  background:
-    linear-gradient(160deg, rgba(54, 34, 29, 0.24), rgba(17, 15, 14, 0.78)),
-    url("../../images/梅花樁獅.jpg") center/cover no-repeat;
+  background: url("../../images/梅花樁獅.jpg") center/cover no-repeat;
 }
 
 .service-dragon {
-  background:
-    linear-gradient(160deg, rgba(54, 34, 29, 0.24), rgba(17, 15, 14, 0.78)),
-    url("../../images/祥龍搶珠.jpg") center/cover no-repeat;
+  background: url("../../images/祥龍搶珠.jpg") center/cover no-repeat;
 }
 
 .service-drum {
-  background:
-    linear-gradient(160deg, rgba(54, 34, 29, 0.24), rgba(17, 15, 14, 0.78)),
-    url("../../images/雷鳴戰鼓.jpg") center/cover no-repeat;
+  background: url("../../images/雷鳴戰鼓.jpg") center/cover no-repeat;
 }
 
 .service-folk {
-  background:
-    linear-gradient(160deg, rgba(54, 34, 29, 0.24), rgba(17, 15, 14, 0.78)),
-    url("../../images/民俗藝陣-變臉.jpg") center/cover no-repeat;
+  background: url("../../images/民俗藝陣-變臉.jpg") center/cover no-repeat;
 }
 
 .service-nezha {
-  background:
-    linear-gradient(160deg, rgba(54, 34, 29, 0.24), rgba(17, 15, 14, 0.78)),
-    url("../../images/電音三太子.jpg") 54% 48%/cover no-repeat;
+  background: url("../../images/電音三太子.jpg") center/cover no-repeat;
 }
 
 .service-lion-plum {
-  background:
-    linear-gradient(160deg, rgba(54, 34, 29, 0.24), rgba(17, 15, 14, 0.78)),
-    url("../../images/梅花樁獅.jpg") center/cover no-repeat;
+  background: url("../../images/梅花樁獅.jpg") center/cover no-repeat;
 }
 
 .service-god {
-  background:
-    linear-gradient(160deg, rgba(54, 34, 29, 0.24), rgba(17, 15, 14, 0.78)),
-    url("../../images/文武財神駕到.jpg") center/cover no-repeat;
+  background: url("../../images/文武財神駕到.jpg") center/cover no-repeat;
 }
 
 .service-body {

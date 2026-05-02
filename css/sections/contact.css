@@ -304,17 +304,11 @@
   gap: 60px;
 }
 
-.footer-badge {
-  display: inline-grid;
-  place-items: center;
-  width: 96px;
-  height: 64px;
-  background: linear-gradient(180deg, rgba(143, 58, 47, 0.96), rgba(118, 49, 38, 0.96));
-  color: #fff;
-  font-family: "Noto Serif TC", serif;
-  font-size: 1.72rem;
-  font-weight: 800;
-  border-radius: 8px;
+.footer-seal {
+  display: block;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
 }
 
 .footer-brand h3 {

@@ -7,35 +7,10 @@
   <meta name="description" content="瀏覽臺灣南仙龍獅體育會的精選案例、演出規劃與現場回顧。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    @keyframes redpacket-fall {
-      0% {
-        transform: translateY(-80px) rotate(0deg);
-        opacity: 1;
-      }
-
-      80% {
-        opacity: 0.8;
-      }
-
-      100% {
-        transform: translateY(105vh) rotate(var(--spin));
-        opacity: 0;
-      }
-    }
-
-    .rp-packet {
-      position: fixed;
-      top: -80px;
-      pointer-events: none;
-      z-index: 999;
-      user-select: none;
-    }
-
-  </style>
 </head>
 <body>
   <div class="page-shell">
@@ -81,16 +56,16 @@
         <div class="nav-gallery">
           <a href="gallery.html">活動案例</a>
           <div class="mobile-submenu">
-            <a class="mobile-submenu-item" href="gallery.html#case-opening">開幕開工</a>
-            <a class="mobile-submenu-item" href="gallery.html#case-banquet">春酒尾牙</a>
-            <a class="mobile-submenu-item" href="gallery.html#case-tourism">觀光表演</a>
-            <a class="mobile-submenu-item" href="gallery.html#case-memorial">追思儀式</a>
-            <a class="mobile-submenu-item" href="gallery.html#case-groundbreaking">動土上樑</a>
-            <a class="mobile-submenu-item" href="gallery.html#case-festival-retail">百貨春節・週年慶</a>
-            <a class="mobile-submenu-item" href="gallery.html#case-temple-birthday">廟會繞境・祝壽典禮</a>
-            <a class="mobile-submenu-item" href="gallery.html#case-campus-training">學校社團・企業教學</a>
+            <a class="mobile-submenu-item" href="gallery-opening.html">開幕開工</a>
+            <a class="mobile-submenu-item" href="gallery-banquet.html">春酒尾牙</a>
+            <a class="mobile-submenu-item" href="gallery-tourism.html">觀光表演</a>
+            <a class="mobile-submenu-item" href="gallery-funeral.html">追思儀式</a>
+            <a class="mobile-submenu-item" href="gallery-groundbreaking.html">動土上樑</a>
+            <a class="mobile-submenu-item" href="gallery-festival-retail.html">百貨春節・週年慶</a>
+            <a class="mobile-submenu-item" href="gallery-temple.html">廟會繞境・祝壽典禮</a>
+            <a class="mobile-submenu-item" href="gallery-school.html">學校社團・企業教學</a>
             <div class="nav-subgroup is-collapsed">
-              <a class="mobile-submenu-item nav-subgroup-toggle" href="gallery.html#case-event-services" aria-expanded="false">展演服務</a>
+              <a class="mobile-submenu-item nav-subgroup-toggle" href="gallery-performance.html" aria-expanded="false">展演服務</a>
               <div class="nav-subgroup-links">
                 <span class="mobile-submenu-detail">遊行活動</span>
                 <span class="mobile-submenu-detail">造勢活動</span>
@@ -102,15 +77,15 @@
           <div class="case-mega">
             <div class="service-mega-group">
               <h3>活動案例</h3>
-              <a href="gallery.html#case-opening">開幕開工</a>
-              <a href="gallery.html#case-banquet">春酒尾牙</a>
-              <a href="gallery.html#case-tourism">觀光表演</a>
-              <a href="gallery.html#case-memorial">追思儀式</a>
-              <a href="gallery.html#case-groundbreaking">動土上樑</a>
-              <a href="gallery.html#case-festival-retail">百貨春節・週年慶</a>
-              <a href="gallery.html#case-temple-birthday">廟會繞境・祝壽典禮</a>
-              <a href="gallery.html#case-campus-training">學校社團・企業教學</a>
-              <a href="gallery.html#case-event-services">展演服務</a>
+              <a href="gallery-opening.html">開幕開工</a>
+              <a href="gallery-banquet.html">春酒尾牙</a>
+              <a href="gallery-tourism.html">觀光表演</a>
+              <a href="gallery-funeral.html">追思儀式</a>
+              <a href="gallery-groundbreaking.html">動土上樑</a>
+              <a href="gallery-festival-retail.html">百貨春節・週年慶</a>
+              <a href="gallery-temple.html">廟會繞境・祝壽典禮</a>
+              <a href="gallery-school.html">學校社團・企業教學</a>
+              <a href="gallery-performance.html">展演服務</a>
             </div>
           </div>
         </div>
@@ -119,10 +94,42 @@
     </header>
 
     <main>
-      <section class="page-hero">
-        <div class="page-hero-inner reveal">
-          <h1>活動案例</h1>
-          <p>依不同場域與活動需求，探索台灣南仙舞龍舞獅的演出案例</p>
+      <section class="page-hero gallery-page-hero">
+        <div class="gallery-hero-frame">
+          <div class="gallery-hero-corners" aria-hidden="true">
+            <div class="gallery-hero-corners-inner"></div>
+          </div>
+          <div class="page-hero-inner">
+            <div class="gallery-hero-shell">
+              <div class="gallery-hero-left">
+                <div class="gallery-hero-title-block">
+                  <h1 class="gallery-hero-title">活動案例</h1>
+                  <div class="gallery-hero-subbox">
+                    <span class="subbox-corner subbox-corner-tl" aria-hidden="true"></span>
+                    <span class="subbox-corner subbox-corner-tr" aria-hidden="true"></span>
+                    <span class="subbox-corner subbox-corner-bl" aria-hidden="true"></span>
+                    <span class="subbox-corner subbox-corner-br" aria-hidden="true"></span>
+                    <p class="gallery-hero-sub">開幕開工<br>・節慶互動</p>
+                  </div>
+                </div>
+                <div class="gallery-hero-left-bottom">
+                  <svg class="gallery-hero-cloud" viewBox="0 0 220 70" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M8 54H72C81 54 88 47 88 39C88 31 81 24 72 24C69 24 66 24 63 26C61 17 52 10 42 10C30 10 20 19 20 31C20 31 20 32 20 33H8C4 33 1 37 1 41C1 46 4 50 8 50" stroke="#C8A96E" stroke-width="1.6" opacity="0.4"/>
+                    <path d="M82 54H146C154 54 161 47 161 39C161 32 154 25 146 25C143 25 139 26 136 27C134 19 126 14 117 14C106 14 97 23 97 34C97 34 97 34 97 35H82C78 35 75 39 75 43C75 49 78 53 82 53" stroke="#C8A96E" stroke-width="1.4" opacity="0.35"/>
+                    <path d="M152 60H204" stroke="#C8A96E" stroke-width="1.4" opacity="0.35" stroke-linecap="round"/>
+                    <path d="M162 66H214" stroke="#C8A96E" stroke-width="1.1" opacity="0.3" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="gallery-hero-image-wrap">
+                <img class="gallery-hero-image" src="images/開幕開工/開幕熱場.jpg" alt="南仙龍獅活動現場">
+              </div>
+            </div>
+          </div>
+          <div class="gallery-hero-footer">
+            <span class="gallery-hero-divider">❥</span>
+            <p>沿著不同活動場域與節奏，收錄南仙龍獅的現場片段與演出記錄。</p>
+          </div>
         </div>
       </section>
 
@@ -429,14 +436,14 @@
           </a>
         </nav>
 
-        <p class="case-helper reveal">點選分類，查看對應活動照片與案例內容</p>
+        <p class="case-helper reveal">選擇活動類型，探索南仙龍獅的演出現場</p>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-brand">
-          <span class="footer-badge">南仙</span>
+          <img src="images/nanxian_seal.svg" class="footer-seal" width="60" height="60" alt="臺灣南仙龍獅體育會">
           <h3>臺灣南仙龍獅體育會</h3>
           <p>Taiwan Nan Sieng Dragon &amp; Lion Dance Activity Centre</p>
           <p>以深厚傳統功底結合舞台藝術與視覺力，呈現莊嚴、熱烈且富有文化精神的專業演出。</p>
@@ -466,43 +473,6 @@
       </div>
     </footer>
   </div>
-  <script>
-    const rpSVG = `<svg width="44" height="60" viewBox="0 0 44 60" fill="none">
-      <rect x="2" y="2" width="40" height="56" rx="5" fill="#c8232a"/>
-      <rect x="5" y="5" width="34" height="50" rx="3" stroke="#f5c842" stroke-width="1" fill="none" opacity="0.6"/>
-      <path d="M2 18 Q22 8 42 18" fill="#a81a20"/>
-      <path d="M2 18 Q22 10 42 18" stroke="#f5c842" stroke-width="1" fill="none" opacity="0.7"/>
-      <circle cx="22" cy="38" r="10" stroke="#f5c842" stroke-width="1.5" fill="none"/>
-      <text x="22" y="43" text-anchor="middle" font-size="14" font-weight="bold" fill="#f5c842" font-family="serif">福</text>
-      <path d="M10 52 L13 55 L10 58 L7 55 Z" fill="#f5c842" opacity="0.7"/>
-      <path d="M34 52 L37 55 L34 58 L31 55 Z" fill="#f5c842" opacity="0.7"/>
-    </svg>`;
-
-    function spawnPacket(side) {
-      const el = document.createElement('div');
-      el.className = 'rp-packet';
-      el.innerHTML = rpSVG;
-
-      const x = side === 'left'
-        ? Math.random() * 12
-        : 88 + Math.random() * 12;
-      el.style.left = x + 'vw';
-
-      const spin = (Math.random() > 0.5 ? 1 : -1) * (180 + Math.random() * 180);
-      el.style.setProperty('--spin', spin + 'deg');
-
-      const dur = 3.5 + Math.random() * 2.5;
-      el.style.animation = `redpacket-fall ${dur}s ease-in forwards`;
-
-      document.body.appendChild(el);
-      setTimeout(() => el.remove(), dur * 1000 + 100);
-    }
-
-    const sides = ['left', 'left', 'left', 'right', 'right', 'right'];
-    sides.forEach((side, i) => {
-      setTimeout(() => spawnPacket(side), i * 300);
-    });
-  </script>
   <script src="script.js"></script>
 </body>
 </html>

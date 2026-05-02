@@ -15,7 +15,8 @@
   transition: background-color 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease;
 }
 
-.site-header.is-scrolled {
+.site-header.is-scrolled,
+.site-header.scrolled {
   background: rgba(255, 252, 247, 0.995);
   border-bottom-color: rgba(22, 19, 17, 0.12);
   box-shadow: 0 14px 32px rgba(22, 19, 17, 0.08);

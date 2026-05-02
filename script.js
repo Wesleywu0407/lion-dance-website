@@ -5,14 +5,28 @@ const revealItems = document.querySelectorAll('.reveal');
 const hero = document.querySelector('.hero');
 const heroTransform = document.querySelector('[data-transform-title]');
 const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+const isHomePage = document.body.classList.contains('home-page');
 let lockedScrollY = 0;
 
 const syncHeader = () => {
-  header.classList.toggle('is-scrolled', window.scrollY > 24);
+  if (!header) {
+    return;
+  }
+
+  let isScrolled = window.scrollY > 24;
+
+  if (isHomePage && hero) {
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    isScrolled = heroBottom <= header.offsetHeight;
+  }
+
+  header.classList.toggle('scrolled', isScrolled);
+  header.classList.toggle('is-scrolled', isScrolled);
 };
 
 syncHeader();
 window.addEventListener('scroll', syncHeader, { passive: true });
+window.addEventListener('resize', syncHeader);
 
 const lockBodyScroll = () => {
   lockedScrollY = window.scrollY;
@@ -296,6 +310,90 @@ flipCards.forEach((card) => {
   });
 });
 
+const performanceDiary = document.querySelector('.performance-diary');
+
+if (performanceDiary) {
+  const serviceItems = Array.from(performanceDiary.querySelectorAll('.service-item[data-image]'));
+  const currentPhoto = performanceDiary.querySelector('[data-service-photo-current]');
+  const nextPhoto = performanceDiary.querySelector('[data-service-photo-next]');
+  let activeItem = serviceItems[0] || null;
+  let isTransitioning = false;
+
+  if (activeItem && currentPhoto && nextPhoto) {
+    const initialSource = activeItem.dataset.image;
+    const initialAlt = activeItem.dataset.alt || `${activeItem.querySelector('h3')?.textContent || ''}演出照`;
+
+    if (initialSource) {
+      currentPhoto.src = initialSource;
+      currentPhoto.alt = initialAlt;
+      nextPhoto.src = initialSource;
+      nextPhoto.alt = '';
+    }
+  }
+
+  const setDiaryPhoto = (item) => {
+    if (!item || item === activeItem || !currentPhoto || !nextPhoto || isTransitioning) {
+      return;
+    }
+
+    const nextSource = item.dataset.image;
+
+    if (!nextSource) {
+      return;
+    }
+
+    isTransitioning = true;
+    const nextAlt = item.dataset.alt || `${item.querySelector('h3')?.textContent || ''}演出照`;
+    nextPhoto.src = nextSource;
+    nextPhoto.alt = nextAlt;
+    nextPhoto.classList.add('is-visible');
+
+    const clearTransition = () => {
+      window.clearTimeout(fallbackTimer);
+      nextPhoto.removeEventListener('transitionend', onFadeComplete);
+      currentPhoto.src = nextSource;
+      currentPhoto.alt = nextAlt;
+      nextPhoto.classList.remove('is-visible');
+      isTransitioning = false;
+    };
+
+    const onFadeComplete = (event) => {
+      if (event.propertyName !== 'opacity' || !nextPhoto.classList.contains('is-visible')) {
+        return;
+      }
+      clearTransition();
+    };
+
+    const fallbackTimer = window.setTimeout(clearTransition, 650);
+    nextPhoto.addEventListener('transitionend', onFadeComplete);
+    activeItem = item;
+  };
+
+  if (activeItem) {
+    activeItem.classList.add('is-active');
+  }
+
+  if ('IntersectionObserver' in window && serviceItems.length) {
+    const performanceObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        serviceItems.forEach((item) => {
+          item.classList.toggle('is-active', item === entry.target);
+        });
+
+        setDiaryPhoto(entry.target);
+      });
+    }, { threshold: 0.5 });
+
+    serviceItems.forEach((item) => {
+      performanceObserver.observe(item);
+    });
+  }
+}
+
 const albumLightbox = document.querySelector('[data-album-lightbox]');
 
 if (albumLightbox) {
@@ -475,94 +573,3 @@ if (caseCategoryCards.length) {
 
   blocks.forEach((block) => io.observe(block));
 }());
-
-/* ── Lion intro animation ──────────────────────────────────
-   Scroll-triggered: cute Southern lion appears in the centre
-   of the performance grid, chomps, then the 6 cards spring
-   out from its mouth one by one.  Plays once per page load.
-   ─────────────────────────────────────────────────────────── */
-
-(function initLionAnimation() {
-  const stage = document.querySelector('.lion-intro-stage');
-  if (!stage) return;
-
-  /* Respect reduced-motion preference — skip animation entirely */
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    stage.classList.add('has-played');
-    return;
-  }
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      io.unobserve(entry.target);
-      playLionAnimation(stage);
-    });
-  }, { threshold: 0.3 });
-
-  io.observe(stage);
-}());
-
-function playLionAnimation(stage) {
-  const lion  = stage.querySelector('.lion-svg');
-  const cards = [...stage.querySelectorAll('.lion-card')];
-
-  /* Mark as played + pre-hide cards (synchronous, no repaint flash) */
-  stage.classList.add('has-played');
-  cards.forEach((c) => {
-    c.style.opacity    = '0';
-    c.style.visibility = 'visible';
-  });
-
-  /* ① Lion pops in */
-  lion.classList.add('is-appearing');
-
-  /* ② Jaw chomps (starts while lion is still bouncing in) */
-  setTimeout(() => lion.classList.add('is-chomping'), 370);
-
-  /* ③ Cards fly out one by one from the lion's mouth */
-  setTimeout(() => {
-    const stageRect = stage.getBoundingClientRect();
-    /* Mouth centre: horizontally centred, ~55 % down the stage */
-    const mouthX = stageRect.left + stageRect.width  * 0.5;
-    const mouthY = stageRect.top  + stageRect.height * 0.46;
-
-    cards.forEach((card, i) => {
-      setTimeout(() => {
-        const r   = card.getBoundingClientRect();
-        const dx  = mouthX - (r.left + r.width  * 0.5);
-        const dy  = mouthY - (r.top  + r.height * 0.5);
-        /* Alternate slight rotation for a natural scatter feel */
-        const rot = (i % 2 === 0 ? 1 : -1) * (6 + i * 3);
-
-        /* Teleport card to lion mouth (no transition) */
-        card.style.transition = 'none';
-        card.style.transform  = `translate(${dx}px,${dy}px) scale(0.1) rotate(${rot}deg)`;
-        card.style.opacity    = '0.85';
-        card.style.zIndex     = '25';
-
-        void card.offsetWidth; /* force reflow */
-
-        /* Spring to natural grid position */
-        card.style.transition = 'transform 0.65s cubic-bezier(0.34,1.56,0.64,1), opacity 0.22s ease';
-        card.style.transform  = '';
-        card.style.opacity    = '1';
-
-        /* Clean up inline styles once landed */
-        setTimeout(() => {
-          card.style.transition = '';
-          card.style.transform  = '';
-          card.style.opacity    = '';
-          card.style.visibility = '';
-          card.style.zIndex     = '';
-        }, 700);
-
-      }, i * 150);
-    });
-
-    /* ④ Lion shrinks away after the last card has landed */
-    const exitDelay = (cards.length - 1) * 150 + 680;
-    setTimeout(() => lion.classList.add('is-exiting'), exitDelay);
-
-  }, 600);
-}
