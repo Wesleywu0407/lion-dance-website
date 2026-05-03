@@ -67,6 +67,22 @@
 
   .nav-toggle {
     display: inline-block;
+    border-color: #9b3f2f;
+    color: #3b2118;
+  }
+
+  .nav-toggle span {
+    background: currentColor;
+  }
+
+  .home-page .site-header:not(.scrolled) .nav-toggle {
+    border-color: #9b3f2f;
+    color: #3b2118;
+    background: rgba(251, 247, 241, 0.9);
+  }
+
+  .home-page .site-header:not(.scrolled) .nav-toggle span {
+    background: currentColor;
   }
 
   .site-nav {
