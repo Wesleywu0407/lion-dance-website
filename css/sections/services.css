@@ -885,13 +885,15 @@ a.learn-more:focus-visible {
     transform: none !important;
     transition: none !important;
     min-height: auto !important;
+    scroll-margin-top: 96px;
   }
 
   .service-item:first-child {
-    background: transparent !important;
-    color: inherit !important;
-    box-shadow: none !important;
-    border-color: transparent !important;
+    background:
+      linear-gradient(180deg, rgba(255, 252, 247, 0.88), rgba(246, 238, 228, 0.62)) !important;
+    color: var(--ink) !important;
+    box-shadow: 0 18px 42px rgba(45, 25, 13, 0.045) !important;
+    border-color: rgba(61, 26, 10, 0.08) !important;
   }
 
   .performance-diary::before {
@@ -918,6 +920,7 @@ a.learn-more:focus-visible {
     gap: 1.5rem !important;
     padding: 3rem 1rem !important;
     margin-bottom: 2rem;
+    border: 1px solid rgba(61, 26, 10, 0.08);
     border-bottom: 1px solid rgba(184, 80, 66, 0.15);
   }
 
