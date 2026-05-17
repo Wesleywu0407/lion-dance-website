@@ -877,15 +877,30 @@ a.learn-more:focus-visible {
 }
 
 @media (max-width: 768px) {
+  .service-item,
+  .service-item.is-active,
+  .service-item:first-child,
+  .service-item:first-child.is-active {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    min-height: auto !important;
+  }
+
+  .service-item:first-child {
+    background: transparent !important;
+    color: inherit !important;
+    box-shadow: none !important;
+    border-color: transparent !important;
+  }
+
   .performance-diary::before {
     inset: -18px -12px auto;
     height: 320px;
   }
 
   .performance-diary-media {
-    display: block;
-    height: 290px;
-    margin: 0 20px 28px;
+    display: none;
   }
 
   .performance-diary-photo {
@@ -898,20 +913,44 @@ a.learn-more:focus-visible {
 
   .service-item,
   .service-item:first-child {
-    margin-bottom: 22px;
-    padding: 2.7rem 1.2rem 2.2rem;
-    border-bottom: 1px solid rgba(61, 26, 10, 0.08);
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    padding: 3rem 1rem !important;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(184, 80, 66, 0.15);
+  }
+
+  .service-item:last-child,
+  .service-item:first-child:last-child {
+    border-bottom: none;
   }
 
   .service-item-photo {
-    border-radius: 4px;
+    width: 100%;
+    height: auto !important;
+    max-height: 50vh;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
     box-shadow: 0 16px 32px rgba(45, 25, 13, 0.12);
+  }
+
+  .service-item-body {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
   }
 
   .service-item-step {
     position: static;
     writing-mode: horizontal-tb;
-    margin-bottom: 12px;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #B85042;
+    opacity: 0.7;
+    display: block;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.1em;
   }
 
   .service-item h3,
