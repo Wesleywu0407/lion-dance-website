@@ -1,11 +1,11 @@
-.reveal {
+.js .reveal {
   opacity: 0;
   transform: translateY(42px) scale(0.98);
   transition: opacity 0.95s ease, transform 0.95s ease, filter 0.95s ease;
   filter: blur(6px);
 }
 
-.reveal.is-visible {
+.js .reveal.is-visible {
   opacity: 1;
   transform: translateY(0) scale(1);
   filter: blur(0);

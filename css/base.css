@@ -28,6 +28,28 @@ html {
   scroll-behavior: smooth;
 }
 
+@keyframes pageLoad {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 html,
 body {
   min-height: 100%;
@@ -44,6 +66,11 @@ body {
     var(--bg);
   line-height: 1.7;
   overflow-x: hidden;
+  animation: pageLoad 0.6s ease-out;
+}
+
+img {
+  filter: saturate(1.04) contrast(1.03);
 }
 
 body.is-nav-open {
@@ -163,13 +190,16 @@ h3.section-heading {
 .page-hero {
   position: relative;
   min-height: 380px;
-  padding: 168px 0 72px;
+  padding: 176px 0 78px;
   display: grid;
   align-items: end;
   background:
-    linear-gradient(180deg, rgba(245, 239, 230, 0.82), rgba(245, 239, 230, 0.72)),
-    linear-gradient(135deg, rgba(143, 58, 47, 0.08), rgba(185, 146, 94, 0.04)),
+    linear-gradient(90deg, rgba(32, 14, 8, 0.08), transparent 42%),
+    linear-gradient(180deg, rgba(245, 239, 230, 0.88), rgba(245, 239, 230, 0.72)),
+    radial-gradient(circle at 86% 22%, rgba(143, 58, 47, 0.12), transparent 22%),
+    linear-gradient(135deg, rgba(143, 58, 47, 0.11), rgba(185, 146, 94, 0.05)),
     var(--bg);
+  overflow: hidden;
 }
 
 .page-hero::before {
@@ -222,6 +252,7 @@ h3.section-heading {
   border: 1px solid rgba(143, 58, 47, 0.12);
   color: var(--ink);
   box-shadow: var(--shadow);
+  overflow: hidden;
 }
 
 .cta-band::before {

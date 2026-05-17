@@ -27,11 +27,46 @@
   border-color: rgba(249, 239, 226, 0.14);
 }
 
+.btn-primary {
+  background: #B85042;
+  color: #fff;
+  border: none;
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  box-shadow: 0 4px 20px rgba(184, 80, 66, 0.35);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(184, 80, 66, 0.5);
+}
+
 .button-secondary {
   background: rgba(251, 247, 241, 0.72);
   color: var(--ink);
   border-color: rgba(22, 19, 17, 0.14);
   backdrop-filter: blur(8px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
 }
 
 .button::before,

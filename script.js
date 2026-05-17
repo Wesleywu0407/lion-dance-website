@@ -1,3 +1,5 @@
+document.documentElement.classList.add('js');
+
 const header = document.querySelector('.site-header');
 const navToggle = document.querySelector('.nav-toggle');
 const siteNav = document.querySelector('.site-nav');
@@ -7,6 +9,10 @@ const heroTransform = document.querySelector('[data-transform-title]');
 const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 const isHomePage = document.body.classList.contains('home-page');
 let lockedScrollY = 0;
+
+document.querySelectorAll('#current-year').forEach((year) => {
+  year.textContent = new Date().getFullYear();
+});
 
 const syncHeader = () => {
   if (!header) {
@@ -211,6 +217,21 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 revealItems.forEach((item) => {
   revealObserver.observe(item);
+});
+
+const motionAwareObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) {
+      return;
+    }
+
+    entry.target.classList.add('visible');
+    motionAwareObserver.unobserve(entry.target);
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.service-item, .about-block').forEach((item) => {
+  motionAwareObserver.observe(item);
 });
 
 const syncHeroState = () => {

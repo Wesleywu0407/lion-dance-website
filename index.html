@@ -8,6 +8,17 @@
     name="description"
     content="臺灣南仙龍獅體育會，以專業舞龍舞獅、戰鼓與民俗藝陣演出，傳承文化精神，打造兼具氣勢與美感的表演體驗。"
   >
+  <link rel="canonical" href="https://nanxiancrew.com.tw/">
+  <meta property="og:site_name" content="臺灣南仙龍獅體育會">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="臺灣南仙龍獅體育會 | Taiwan Nan Sieng Dragon &amp; Lion Dance">
+  <meta property="og:description" content="臺灣南仙龍獅體育會，以專業舞龍舞獅、戰鼓與民俗藝陣演出，傳承文化精神，打造兼具氣勢與美感的表演體驗。">
+  <meta property="og:url" content="https://nanxiancrew.com.tw/">
+  <meta property="og:image" content="https://nanxiancrew.com.tw/images/IMG_1799%202.JPG">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="臺灣南仙龍獅體育會 | Taiwan Nan Sieng Dragon &amp; Lion Dance">
+  <meta name="twitter:description" content="臺灣南仙龍獅體育會，以專業舞龍舞獅、戰鼓與民俗藝陣演出，傳承文化精神，打造兼具氣勢與美感的表演體驗。">
+  <meta name="twitter:image" content="https://nanxiancrew.com.tw/images/IMG_1799%202.JPG">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@900&display=swap" rel="stylesheet">
@@ -15,8 +26,22 @@
     href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap"
     rel="stylesheet"
   >
-  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
+  <link rel="icon" type="image/png" href="favicon.png?v=3">
   <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "臺灣南仙龍獅體育會",
+      "alternateName": "Taiwan Nan Sieng Dragon & Lion Dance Activity Centre",
+      "url": "https://nanxiancrew.com.tw/",
+      "logo": "https://nanxiancrew.com.tw/images/lion-icon-white.png",
+      "image": "https://nanxiancrew.com.tw/images/IMG_1799%202.JPG",
+      "sameAs": [
+        "https://www.facebook.com/p/%E8%87%BA%E5%8C%97%E5%BE%B7%E5%8B%9D%E8%88%98%E8%87%BA%E7%81%A3%E5%8D%97%E4%BB%99%E9%BE%8D%E7%8D%85%E9%AB%94%E8%82%B2%E6%9C%83-61556516607768/"
+      ]
+    }
+  </script>
   <style>
     .about-fade-paragraph {
       opacity: 0;
@@ -37,7 +62,7 @@
   <div class="page-shell">
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="回到首頁">
-        <img src="images/nanxian_seal.svg" class="brand-logo" width="40" height="40" alt="臺灣南仙龍獅體育會">
+        <img src="images/lion-icon-white.png" class="brand-logo" width="40" height="40" alt="臺灣南仙龍獅體育會" loading="lazy">
         <span class="brand-text">
           <strong>臺灣南仙龍獅體育會</strong>
           <small>Taiwan Nan Sieng Dragon &amp; Lion Dance Activity Centre</small>
@@ -47,7 +72,7 @@
         <span></span>
         <span></span>
       </button>
-      <nav class="site-nav" id="site-nav">
+      <nav class="site-nav" id="site-nav" aria-label="主要導覽">
         <a href="index.html" aria-current="page">首頁</a>
         <a href="about.html">關於我們</a>
         <div class="nav-services">
@@ -114,10 +139,10 @@
       </nav>
     </header>
 
-    <main>
+    <main id="main-content">
       <section class="hero" id="home" data-transform-title>
         <div class="hero-photo" aria-hidden="true">
-          <img src="images/IMG_1799%202.JPG" alt="">
+          <img src="images/IMG_1799%202.JPG" alt="臺灣南仙龍獅體育會舞獅演出現場" fetchpriority="high" decoding="async">
         </div>
         <div class="hero-backdrop"></div>
         <div class="hero-stage">
@@ -131,9 +156,10 @@
                   <span>龍獅體育會</span>
                 </h1>
               </div>
-              <div class="hero-actions">
-                <a class="button button-primary" href="contact.html">立即洽詢</a>
-                <a class="button button-secondary" href="gallery.html">欣賞活動案例</a>
+              <p class="hero-tagline">專業舞龍舞獅與文化表演團隊</p>
+              <div class="hero-actions cta-group">
+                <a class="button button-primary btn-primary" href="contact.html">立即洽詢</a>
+                <a class="button button-secondary btn-secondary" href="gallery.html">欣賞活動案例</a>
               </div>
             </div>
           </div>
@@ -144,7 +170,12 @@
         <div class="narrative-layout">
           <div class="narrative-intro reveal">
             <p class="section-tag">關於臺灣南仙</p>
-            <h2 class="section-heading">讓每一次出場，<br>都帶著文化的重量</h2>
+            <h2 class="section-heading narrative-heading">
+              <span class="narrative-heading-line">以臺灣獅藝</span>
+              <span class="narrative-heading-line">
+                <span class="narrative-heading-phrase">傳承東方文化</span><span class="narrative-heading-phrase">與傳統精神</span>
+              </span>
+            </h2>
           </div>
           <div class="narrative-copy reveal">
             <p>
@@ -162,7 +193,6 @@
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-brand">
-          <img src="images/nanxian_seal.svg" class="footer-seal" width="60" height="60" alt="臺灣南仙龍獅體育會">
           <h3>臺灣南仙龍獅體育會</h3>
           <p>Taiwan Nan Sieng Dragon &amp; Lion Dance Activity Centre</p>
           <p>以深厚傳統功底結合舞台藝術與視覺力，呈現莊嚴、熱烈且富有文化精神的專業演出。</p>
@@ -188,7 +218,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 臺灣南仙龍獅體育會 版權所有</span>
+        <span>© <span id="current-year">2026</span> 臺灣南仙龍獅體育會 版權所有</span>
       </div>
     </footer>
   </div>
