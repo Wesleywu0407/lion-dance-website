@@ -28,6 +28,21 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hash target offset: keep anchored sections clear of the fixed header. */
+section[id],
+article[id],
+main[id] {
+  scroll-margin-top: 112px;
+}
+
+@media (max-width: 760px) {
+  section[id],
+  article[id],
+  main[id] {
+    scroll-margin-top: 96px;
+  }
+}
+
 @keyframes pageLoad {
   from {
     opacity: 0;

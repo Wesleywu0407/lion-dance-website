@@ -972,3 +972,50 @@ a.learn-more:focus-visible {
     right: 16px;
   }
 }
+
+/* Mobile service refinement: compact cards and clearer inquiry text without changing desktop layout. */
+@media (max-width: 767px) {
+  .performance-diary-list {
+    gap: 36px;
+  }
+
+  .service-item,
+  .service-item:first-child {
+    gap: 1.15rem !important;
+    padding: 2.2rem 0.9rem !important;
+    margin-bottom: 1.2rem;
+  }
+
+  .service-item-photo {
+    height: auto !important;
+    max-height: 42vh;
+    object-fit: contain;
+  }
+
+  .service-item-step {
+    margin-bottom: 0.15rem;
+    font-size: 2rem;
+  }
+
+  .service-item h3,
+  .service-item:first-child h3 {
+    font-size: clamp(2rem, 10vw, 2.65rem);
+    line-height: 1.12;
+  }
+
+  .service-item-description {
+    margin-top: 0.85rem;
+  }
+
+  .service-item-link[data-mobile-label] {
+    min-height: 44px;
+    align-items: center;
+    font-size: 0;
+  }
+
+  .service-item-link[data-mobile-label]::before {
+    content: attr(data-mobile-label);
+    font-size: 0.92rem;
+    line-height: 1.4;
+  }
+}

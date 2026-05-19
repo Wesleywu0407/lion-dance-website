@@ -106,6 +106,11 @@
   line-height: 1.9;
 }
 
+.gallery-hero-mobile-note,
+.gallery-hero-mobile-tags {
+  display: none;
+}
+
 .subbox-corner {
   position: absolute;
   width: 12px;
@@ -534,6 +539,21 @@
   text-shadow: 0 8px 18px rgba(0, 0, 0, 0.36);
 }
 
+.card-description {
+  display: -webkit-box;
+  max-width: min(22rem, 88%);
+  overflow: hidden;
+  color: rgba(255, 248, 239, 0.76);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  text-align: center;
+  text-shadow: 0 6px 16px rgba(0, 0, 0, 0.34);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
 .card-deco {
   display: flex;
   align-items: center;
@@ -585,6 +605,10 @@
   letter-spacing: 0.14em;
   line-height: 1.72;
   text-align: center;
+}
+
+.case-summary-mobile {
+  display: none;
 }
 
 @media (min-width: 760px) {
@@ -908,6 +932,13 @@
     min-height: 2.7em;
   }
 
+  .card-description {
+    max-width: min(19rem, 92%);
+    font-size: 0.74rem;
+    letter-spacing: 0.03em;
+    line-height: 1.45;
+  }
+
   .case-helper {
     margin-top: 20px;
     font-size: 0.78rem;
@@ -1061,5 +1092,237 @@ body.is-lightbox-open {
     background:
       linear-gradient(180deg, rgba(24, 12, 7, 0.28), rgba(24, 12, 7, 0.74)),
       url("../../images/展演服務/遊行活動巨獅遊街.jpg") center/cover;
+  }
+}
+
+/* Gallery mobile refinement */
+@media (max-width: 768px) {
+  .gallery-page .page-hero.gallery-page-hero {
+    padding-bottom: 12px;
+  }
+
+  .gallery-page .gallery-hero-frame {
+    padding: 12px 12px 16px;
+    border-width: 1px;
+    outline: 0;
+    box-shadow: 0 16px 34px rgba(76, 29, 17, 0.08);
+  }
+
+  .gallery-page .gallery-hero-image-wrap {
+    height: 196px;
+    border-width: 1px;
+    border-radius: 12px;
+  }
+
+  .gallery-page .gallery-hero-image {
+    border-radius: 12px;
+  }
+
+  .gallery-page .gallery-hero-title {
+    margin-top: 14px;
+    color: rgba(92, 26, 16, 0.72);
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+  }
+
+  .gallery-page .gallery-hero-title::after {
+    content: "";
+    display: block;
+    width: 34px;
+    margin: 8px auto 0;
+    border-top: 1px solid rgba(200, 169, 110, 0.72);
+  }
+
+  .gallery-page .gallery-hero-left::before {
+    content: none;
+  }
+
+  .gallery-page .gallery-hero-subbox {
+    display: grid;
+    width: 100%;
+    margin: 7px auto 6px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    gap: 6px;
+  }
+
+  .gallery-page .gallery-hero-sub {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: "Noto Serif TC", serif;
+    line-height: 1.25;
+    letter-spacing: 0.04em;
+  }
+
+  .gallery-page .gallery-hero-desktop-break {
+    display: none;
+  }
+
+  .gallery-page .gallery-hero-sub-main {
+    color: #5C1A10;
+    font-size: clamp(1.75rem, 8vw, 2.25rem);
+    font-weight: 900;
+  }
+
+  .gallery-page .gallery-hero-sub-separator {
+    display: none;
+  }
+
+  .gallery-page .gallery-hero-sub-tag {
+    display: none;
+  }
+
+  .gallery-page .gallery-hero-mobile-note {
+    display: block;
+    max-width: 20rem;
+    margin: 0 auto;
+    color: #7f6656;
+    font-size: 0.8rem;
+    line-height: 1.65;
+    letter-spacing: 0.03em;
+    text-align: center;
+  }
+
+  .gallery-page .gallery-hero-mobile-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 0;
+  }
+
+  .gallery-page .gallery-hero-mobile-tags span {
+    min-height: 26px;
+    padding: 4px 10px;
+    border: 1px solid rgba(139, 58, 42, 0.22);
+    border-radius: 999px;
+    background: rgba(255, 252, 246, 0.72);
+    color: #7b3a2b;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+  }
+
+  .gallery-page .gallery-hero-footer p {
+    padding: 4px 12px 8px;
+    color: #7f6656;
+  }
+
+  .gallery-page .case-landing {
+    margin-top: 0;
+    padding-top: 22px;
+    padding-bottom: 24px;
+  }
+
+  .gallery-page .case-landing::after {
+    height: 220px;
+    opacity: 0.54;
+  }
+
+  .gallery-page .case-category-grid {
+    gap: 14px;
+  }
+
+  .gallery-page .case-category-card {
+    min-height: 126px;
+    justify-content: center;
+    gap: 6px;
+    padding: 20px 18px;
+    overflow: visible;
+  }
+
+  .gallery-page .card-icon {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 4px;
+  }
+
+  .gallery-page .card-title {
+    min-height: auto;
+    font-size: 1.04rem;
+    letter-spacing: 0.1em;
+  }
+
+  .gallery-page .card-description {
+    display: none;
+  }
+
+  .gallery-page .card-deco {
+    margin-bottom: 0;
+    opacity: 0.7;
+  }
+
+  .gallery-page .case-summary-mobile {
+    display: block;
+    max-width: 22rem;
+    margin: 18px auto 0;
+    color: #7f6656;
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+    line-height: 1.75;
+    text-align: center;
+  }
+
+  .gallery-page .case-helper {
+    margin-top: 12px;
+    padding-top: 8px;
+    color: #8a7769;
+  }
+
+  .gallery-page .site-footer {
+    position: relative;
+    margin-top: 0;
+    padding-top: 34px;
+    padding-bottom: 18px;
+    border-top-width: 2px;
+  }
+
+  .gallery-page .site-footer::before {
+    content: "";
+    position: absolute;
+    inset: -20px 0 auto;
+    height: 20px;
+    background: linear-gradient(180deg, rgba(245, 240, 232, 0), #181311);
+    pointer-events: none;
+  }
+
+  .gallery-page .footer-inner {
+    gap: 22px;
+  }
+
+  .gallery-page .footer-brand h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 1.28rem;
+  }
+
+  .gallery-page .footer-brand p {
+    margin: 7px 0;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .gallery-page .footer-socials {
+    margin-top: 16px;
+  }
+
+  .gallery-page .footer-links {
+    gap: 18px !important;
+  }
+
+  .gallery-page .footer-links h4 {
+    margin: 0 0 10px;
+    font-size: 1.08rem;
+  }
+
+  .gallery-page .footer-links a {
+    margin: 8px 0;
+    font-size: 0.9rem;
   }
 }
