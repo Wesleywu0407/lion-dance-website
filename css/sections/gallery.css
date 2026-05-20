@@ -1420,3 +1420,586 @@ body.is-lightbox-open {
     font-size: 0.9rem;
   }
 }
+
+@media (max-width: 768px) {
+  .gallery-page .case-category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .gallery-page .case-category-card {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    min-height: 0;
+    padding: 14px 14px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0;
+    overflow: hidden;
+    border: 1.5px solid #B85042;
+    border-radius: 4px;
+    box-shadow: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .gallery-page .case-category-card:hover,
+  .gallery-page .case-category-card:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(143, 58, 47, 0.2);
+    border-color: #B85042;
+  }
+
+  .gallery-page .case-category-card::after,
+  .gallery-page .case-category-card .corner-bl,
+  .gallery-page .case-category-card .corner-br,
+  .gallery-page .card-icon,
+  .gallery-page .card-deco,
+  .gallery-page .firecracker {
+    display: none;
+  }
+
+  .gallery-page .case-category-card::before {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    transition: none;
+    transform: none;
+    opacity: 1;
+    z-index: 0;
+  }
+
+  .gallery-page .case-category-card > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  .gallery-page .card-num {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    margin: 0;
+    font-size: clamp(2.5rem, 11vw, 4.5rem);
+    font-weight: 200;
+    font-style: italic;
+    line-height: 1;
+    letter-spacing: 0;
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  .gallery-page .card-title {
+    min-height: 0;
+    margin: 0;
+    color: inherit;
+    font-size: clamp(1rem, 4vw, 1.4rem);
+    font-weight: 600;
+    line-height: 1.28;
+    letter-spacing: 0;
+    text-align: left;
+    justify-content: flex-start;
+    text-shadow: none;
+    border: 0;
+  }
+
+  .gallery-page .card-description {
+    display: -webkit-box;
+    max-width: 100%;
+    margin-top: 6px;
+    overflow: hidden;
+    color: inherit;
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.42;
+    letter-spacing: 0;
+    text-align: left;
+    text-shadow: none;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .gallery-page .case-category-card:nth-child(1),
+  .gallery-page .case-category-card:nth-child(4),
+  .gallery-page .case-category-card:nth-child(5),
+  .gallery-page .case-category-card:nth-child(8),
+  .gallery-page .case-category-card:nth-child(9) {
+    justify-content: flex-end;
+    color: #F5F0E8;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .gallery-page .case-category-card:nth-child(1)::before,
+  .gallery-page .case-category-card:nth-child(4)::before,
+  .gallery-page .case-category-card:nth-child(5)::before,
+  .gallery-page .case-category-card:nth-child(8)::before,
+  .gallery-page .case-category-card:nth-child(9)::before {
+    inset: 0;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(26, 10, 4, 0) 0%,
+        rgba(26, 10, 4, 0) 56%,
+        rgba(26, 10, 4, 0.35) 72%,
+        rgba(26, 10, 4, 0.82) 100%
+      );
+  }
+
+  .gallery-page .case-category-card:nth-child(1) {
+    background-image: url("../../images/開幕開工/開幕熱場.jpg");
+  }
+
+  .gallery-page .case-category-card:nth-child(4) {
+    background-image: url("../../images/追思儀式/靈獅4.jpg");
+  }
+
+  .gallery-page .case-category-card:nth-child(5) {
+    background-image: url("../../images/動土上樑/動土開場戰鼓.jpg");
+  }
+
+  .gallery-page .case-category-card:nth-child(8) {
+    background-image: url("../../images/學校社團企業教學/2026香港龍獅節.jpg");
+  }
+
+  .gallery-page .case-category-card:nth-child(9) {
+    background-image: url("../../images/展演服務/遊行活動巨獅遊街.jpg");
+  }
+
+  .gallery-page .case-category-card:nth-child(1) .card-num,
+  .gallery-page .case-category-card:nth-child(4) .card-num,
+  .gallery-page .case-category-card:nth-child(5) .card-num,
+  .gallery-page .case-category-card:nth-child(8) .card-num,
+  .gallery-page .case-category-card:nth-child(9) .card-num {
+    color: #F5F0E8;
+    opacity: 0.5;
+  }
+
+  .gallery-page .case-category-card:nth-child(1) .card-title,
+  .gallery-page .case-category-card:nth-child(4) .card-title,
+  .gallery-page .case-category-card:nth-child(5) .card-title,
+  .gallery-page .case-category-card:nth-child(8) .card-title,
+  .gallery-page .case-category-card:nth-child(9) .card-title {
+    margin-top: auto;
+  }
+
+  .gallery-page .case-category-card:nth-child(2),
+  .gallery-page .case-category-card:nth-child(3),
+  .gallery-page .case-category-card:nth-child(6),
+  .gallery-page .case-category-card:nth-child(7) {
+    justify-content: flex-start;
+    padding-bottom: calc(45% + 18px);
+    background: #F5F0E8 !important;
+    background-image: none !important;
+    color: #B85042;
+  }
+
+  .gallery-page .case-category-card:nth-child(2)::before,
+  .gallery-page .case-category-card:nth-child(3)::before,
+  .gallery-page .case-category-card:nth-child(6)::before,
+  .gallery-page .case-category-card:nth-child(7)::before {
+    top: auto;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    height: 40%;
+    border-radius: 8px;
+    border: 1px solid rgba(184, 80, 66, 0.24);
+    box-shadow: 0 10px 18px rgba(139, 58, 47, 0.12);
+    background-position: center;
+    background-size: cover;
+  }
+
+  .gallery-page .case-category-card:nth-child(2)::before {
+    background-image: url("../../images/春酒尾牙/尾牙活動.jpg");
+  }
+
+  .gallery-page .case-category-card:nth-child(3)::before {
+    background-image: url("../../images/觀光表演/吉首國際鼓文化節.jpg");
+  }
+
+  .gallery-page .case-category-card:nth-child(6)::before {
+    background-image: url("../../images/百貨春節周年慶/101開春演出祥獅跳高樁.jpg");
+  }
+
+  .gallery-page .case-category-card:nth-child(7)::before {
+    background-image: url("../../images/廟會繞境祝壽/祥獅戰鼓繞境.jpg");
+  }
+
+  .gallery-page .case-category-card:nth-child(2) .card-num,
+  .gallery-page .case-category-card:nth-child(3) .card-num,
+  .gallery-page .case-category-card:nth-child(6) .card-num,
+  .gallery-page .case-category-card:nth-child(7) .card-num {
+    color: #B85042;
+    opacity: 0.3;
+  }
+
+  .gallery-page .case-category-card:nth-child(2) .card-title,
+  .gallery-page .case-category-card:nth-child(3) .card-title,
+  .gallery-page .case-category-card:nth-child(6) .card-title,
+  .gallery-page .case-category-card:nth-child(7) .card-title,
+  .gallery-page .case-category-card:nth-child(2) .card-description,
+  .gallery-page .case-category-card:nth-child(3) .card-description,
+  .gallery-page .case-category-card:nth-child(6) .card-description,
+  .gallery-page .case-category-card:nth-child(7) .card-description {
+    color: #B85042 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-page .case-category-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.65rem !important;
+    padding: 0 0.85rem !important;
+  }
+
+  .gallery-page .case-category-card {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    min-height: 0;
+    display: block;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid rgba(184, 80, 66, 0.4);
+    border-radius: 6px;
+    background-color: #F5F0E8;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    box-shadow: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .gallery-page .case-category-card:hover,
+  .gallery-page .case-category-card:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(143, 58, 47, 0.25);
+    border-color: rgba(184, 80, 66, 0.4);
+  }
+
+  .gallery-page .case-category-card:nth-child(9) {
+    display: none !important;
+  }
+
+  .gallery-page .case-category-card::before {
+    content: none !important;
+  }
+
+  .gallery-page .case-category-card::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 45%;
+    background: linear-gradient(180deg, transparent 0%, rgba(20, 10, 5, 0.7) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .gallery-page .case-category-card > * {
+    position: static;
+    z-index: auto;
+  }
+
+  .gallery-page .case-category-card .corner-bl,
+  .gallery-page .case-category-card .corner-br,
+  .gallery-page .card-icon,
+  .gallery-page .card-deco,
+  .gallery-page .firecracker,
+  .gallery-page .card-description,
+  .gallery-page .case-category-card p,
+  .gallery-page .case-category-card .desc,
+  .gallery-page .case-category-card [class*="description"] {
+    display: none !important;
+  }
+
+  .gallery-page .card-num {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.85rem;
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-style: normal;
+    letter-spacing: 0.15em;
+    line-height: 1;
+    color: #F5F0E8 !important;
+    opacity: 0.85;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .gallery-page .card-title {
+    position: absolute;
+    right: 0.85rem;
+    bottom: 0.6rem;
+    left: auto;
+    min-height: 0;
+    max-width: calc(100% - 5.7rem);
+    margin: 0;
+    color: #F5F0E8 !important;
+    font-size: clamp(0.95rem, 3.8vw, 1.2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-align: right;
+    text-shadow: 0 2px 10px rgba(20, 10, 5, 0.36);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    justify-content: flex-start;
+    z-index: 2;
+  }
+
+  .gallery-page .case-category-card:nth-child(1) {
+    background-image: url("../../images/開幕開工/開幕熱場.jpg") !important;
+  }
+
+  .gallery-page .case-category-card:nth-child(2) {
+    background-image: url("../../images/春酒尾牙/尾牙活動.jpg") !important;
+  }
+
+  .gallery-page .case-category-card:nth-child(3) {
+    background-image: url("../../images/觀光表演/吉首國際鼓文化節.jpg") !important;
+  }
+
+  .gallery-page .case-category-card:nth-child(4) {
+    background-image: url("../../images/追思儀式/靈獅4.jpg") !important;
+  }
+
+  .gallery-page .case-category-card:nth-child(5) {
+    background-image: url("../../images/動土上樑/動土開場戰鼓.jpg") !important;
+  }
+
+  .gallery-page .case-category-card:nth-child(6) {
+    background-image: url("../../images/百貨春節周年慶/101開春演出祥獅跳高樁.jpg") !important;
+  }
+
+  .gallery-page .case-category-card:nth-child(7) {
+    background-image: url("../../images/廟會繞境祝壽/祥獅戰鼓繞境.jpg") !important;
+  }
+
+  .gallery-page .case-category-card:nth-child(8) {
+    background-image: url("../../images/學校社團企業教學/2026香港龍獅節.jpg") !important;
+  }
+
+  .gallery-page .case-category-card:nth-child(1) .card-num,
+  .gallery-page .case-category-card:nth-child(2) .card-num,
+  .gallery-page .case-category-card:nth-child(3) .card-num,
+  .gallery-page .case-category-card:nth-child(4) .card-num,
+  .gallery-page .case-category-card:nth-child(5) .card-num,
+  .gallery-page .case-category-card:nth-child(6) .card-num,
+  .gallery-page .case-category-card:nth-child(7) .card-num,
+  .gallery-page .case-category-card:nth-child(8) .card-num,
+  .gallery-page .case-category-card:nth-child(1) .card-title,
+  .gallery-page .case-category-card:nth-child(2) .card-title,
+  .gallery-page .case-category-card:nth-child(3) .card-title,
+  .gallery-page .case-category-card:nth-child(4) .card-title,
+  .gallery-page .case-category-card:nth-child(5) .card-title,
+  .gallery-page .case-category-card:nth-child(6) .card-title,
+  .gallery-page .case-category-card:nth-child(7) .card-title,
+  .gallery-page .case-category-card:nth-child(8) .card-title {
+    color: #F5F0E8 !important;
+  }
+}
+/* === GALLERY PAGE CARD CLEANUP === */
+.case-category-card .card-description,
+.case-category-card p,
+.case-category-card .desc,
+.case-category-card [class*="description"],
+.case-category-card .corner-bl,
+.case-category-card .corner-br,
+.case-category-card .card-icon,
+.case-category-card .card-deco,
+.case-category-card .firecracker {
+  display: none !important;
+}
+
+.case-category-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+  padding: 0 0.85rem;
+}
+
+.case-category-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 3 / 4;
+  min-height: 0;
+  padding: 0;
+  border: 1px solid rgba(184, 80, 66, 0.4);
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #F5F0E8;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  text-decoration: none;
+  box-shadow: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.case-category-card::before {
+  content: none !important;
+}
+
+.case-category-card::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 45%;
+  background: linear-gradient(180deg, transparent 0%, transparent 50%, rgba(20, 10, 5, 0.7) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.case-category-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.case-category-card .card-num {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.85rem;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  color: #F5F0E8;
+  opacity: 0.9;
+}
+
+.case-category-card .card-title {
+  position: absolute;
+  bottom: 0.85rem;
+  left: 0.85rem;
+  right: 0.85rem;
+  margin: 0;
+  font-size: clamp(0.95rem, 4vw, 1.2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  color: #F5F0E8;
+  white-space: nowrap;
+}
+
+.case-category-card:hover,
+.case-category-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(143, 58, 47, 0.25);
+  outline: none;
+}
+
+@media (min-width: 769px) {
+  .case-category-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    padding: 0;
+  }
+}
+
+.gallery-page .case-category-card .card-num {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.85rem;
+  bottom: auto;
+  left: auto;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  color: #F5F0E8 !important;
+  opacity: 0.9;
+  z-index: 2;
+}
+
+.gallery-page .case-category-card .card-title {
+  position: absolute;
+  bottom: 0.85rem;
+  left: 0.85rem;
+  right: 0.85rem;
+  margin: 0;
+  max-width: none;
+  text-align: left;
+  font-size: clamp(0.95rem, 4vw, 1.2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  color: #F5F0E8 !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 2;
+}
+
+.gallery-page .gallery-page-hero {
+  min-height: auto;
+  padding: 120px 24px 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.gallery-page .gallery-page-hero .eyebrow {
+  margin: 0;
+  color: #8B5E3C;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+
+.gallery-page .gallery-page-hero h1 {
+  margin: 0;
+  color: #5C1A10;
+}
+
+.gallery-page .gallery-page-hero .hero-sub {
+  margin: 0;
+  max-width: 28rem;
+  color: #6E5A4E;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.gallery-page .case-summary {
+  max-width: 42rem;
+  margin: 28px auto 0;
+  padding: 0 0.85rem;
+  color: #6E5A4E;
+  text-align: center;
+}
+
+.gallery-page .case-summary h2 {
+  margin: 0 0 12px;
+  color: #5C1A10;
+  font-size: 1.25rem;
+  line-height: 1.35;
+}
+
+.gallery-page .case-summary p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.85;
+  letter-spacing: 0.02em;
+}
+
+.gallery-page .case-summary .case-helper {
+  margin: 18px auto 0;
+  padding: 10px 0 0;
+}
+
+@media (min-width: 769px) {
+  .gallery-page .gallery-page-hero {
+    padding: 136px 24px 56px;
+  }
+}
