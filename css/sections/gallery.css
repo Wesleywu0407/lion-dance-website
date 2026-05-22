@@ -1835,6 +1835,15 @@ body.is-lightbox-open {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.gallery-page .case-category-card {
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  aspect-ratio: 3 / 4;
+  min-height: 0;
+  overflow: hidden;
+}
+
 .case-category-card::before {
   content: none !important;
 }
