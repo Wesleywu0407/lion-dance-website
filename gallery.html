@@ -184,7 +184,7 @@
     .gallery-page .case-category-card {
       position: relative;
       display: block;
-      aspect-ratio: 3 / 4;
+      aspect-ratio: 1 / 1.08;
       min-height: 0;
       padding: 0;
       overflow: hidden;
@@ -197,6 +197,15 @@
       box-shadow: none;
       text-decoration: none;
       transition: transform 0.45s ease, box-shadow 0.45s ease;
+    }
+
+    .gallery-page .case-category-card:nth-child(7),
+    .gallery-page .case-category-card:nth-child(8) {
+      background-position: center bottom !important;
+    }
+
+    .gallery-page .case-category-card:nth-child(6) {
+      background-position: 35% bottom !important;
     }
 
     .gallery-page .case-category-card::before {
@@ -318,6 +327,12 @@
         grid-template-columns: repeat(4, 1fr);
         gap: 1rem;
         padding: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .gallery-page .case-category-card {
+        aspect-ratio: 4 / 3;
       }
     }
 
