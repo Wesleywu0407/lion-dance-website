@@ -730,7 +730,7 @@
   .page-hero.gallery-page-hero,
   .gallery-hero,
   .gallery-hero-shell {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr;
     text-align: center;
   }
 
@@ -738,7 +738,7 @@
   .gallery-hero [class*="vertical"],
   .gallery-hero-title,
   .gallery-hero-sub {
-    writing-mode: horizontal-tb !important;
+    writing-mode: horizontal-tb;
     text-orientation: mixed;
     font-size: clamp(2.5rem, 10vw, 4rem);
     text-align: center;

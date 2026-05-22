@@ -1,15 +1,6 @@
 .page-hero.gallery-page-hero {
   position: relative;
-  min-height: 78vh;
-  padding: 112px 64px 58px;
-  overflow: hidden;
-  background-color: #F5F0E8;
-  background-image:
-    radial-gradient(circle at 16% 20%, rgba(200, 169, 110, 0.08), transparent 33%),
-    radial-gradient(circle at 82% 16%, rgba(139, 26, 26, 0.06), transparent 31%),
-    radial-gradient(circle at 25% 76%, rgba(200, 169, 110, 0.05), transparent 36%),
-    repeating-linear-gradient(90deg, rgba(200, 169, 110, 0.022) 0 1px, transparent 1px 5px),
-    repeating-linear-gradient(0deg, rgba(92, 26, 16, 0.016) 0 1px, transparent 1px 6px);
+  background: #F5F0E8;
 }
 
 .page-hero.gallery-page-hero::before {

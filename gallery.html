@@ -327,6 +327,24 @@
         transition: none;
       }
     }
+
+    /* Gallery hero visibility fix */
+    .gallery-page .page-hero {
+      padding: clamp(4rem, 10vw, 7rem) 1.5rem clamp(2.5rem, 5vw, 3.5rem) !important;
+      text-align: center;
+      background: #F5F0E8 !important;
+      background-image: none !important;
+      overflow: visible !important;
+      min-height: auto !important;
+    }
+
+    .gallery-page .page-hero h1,
+    .gallery-page .page-hero .eyebrow,
+    .gallery-page .page-hero .hero-sub {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
   </style>
 </head>
 <body class="gallery-page">
