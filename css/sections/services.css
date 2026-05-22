@@ -1019,3 +1019,67 @@ a.learn-more:focus-visible {
     line-height: 1.4;
   }
 }
+
+/* Services scale correction: reduce visual pressure and avoid harsh image crops. */
+@media (min-width: 769px) {
+  .service-page-hero {
+    padding-bottom: 8px;
+  }
+
+  .service-page-hero .section-heading {
+    font-size: clamp(3.1rem, 5.6vw, 5.4rem);
+    line-height: 1.08;
+  }
+
+  .performance-diary {
+    padding-top: 12px;
+  }
+
+  .performance-diary-list {
+    gap: clamp(44px, 5vw, 72px);
+  }
+
+  .service-item,
+  .service-item:first-child {
+    gap: clamp(34px, 4vw, 58px);
+    padding: clamp(1.65rem, 2.8vw, 2.45rem);
+    min-height: auto;
+  }
+
+  .service-item-photo {
+    width: min(38%, 430px);
+    flex: 0 0 min(38%, 430px);
+    max-height: 430px;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    background: rgba(61, 26, 10, 0.035);
+  }
+
+  .service-item:first-child h3,
+  .service-item h3 {
+    font-size: clamp(2rem, 3.2vw, 2.9rem);
+    line-height: 1.18;
+  }
+
+  .service-item-step,
+  .service-item:first-child .service-item-step {
+    margin-bottom: 10px;
+    font-size: 11px;
+  }
+
+  .service-item-tags {
+    margin-top: 10px;
+  }
+
+  .service-item-description,
+  .service-item:first-child .service-item-description {
+    margin-top: 14px;
+    max-width: 42ch;
+    font-size: 0.96rem;
+    line-height: 1.74;
+  }
+
+  .service-item-link {
+    margin-top: 14px;
+  }
+}
