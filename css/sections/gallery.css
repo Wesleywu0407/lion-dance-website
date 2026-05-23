@@ -1942,37 +1942,36 @@ body.is-lightbox-open {
 
 .gallery-page .case-category-card .card-num {
   position: absolute;
-  top: 0.6rem;
-  right: 0.85rem;
-  bottom: auto;
-  left: auto;
-  margin: 0;
+  top: 0.85rem;
+  right: 1rem;
+  z-index: 2;
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   line-height: 1;
   color: #F5F0E8 !important;
   opacity: 0.9;
-  z-index: 2;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.8);
 }
 
 .gallery-page .case-category-card .card-title {
   position: absolute;
-  bottom: 0.85rem;
-  left: 0.85rem;
-  right: 0.85rem;
+  left: 1rem;
+  bottom: 0.9rem;
+  z-index: 2;
   margin: 0;
   max-width: none;
   text-align: left;
-  font-size: clamp(0.95rem, 4vw, 1.2rem);
-  font-weight: 600;
+  font-family: "Noto Serif TC", serif;
+  font-size: 1.1rem;
+  font-weight: 700;
   line-height: 1.2;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   color: #F5F0E8 !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  z-index: 2;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
 }
 
 .gallery-page .gallery-page-hero {
@@ -2078,4 +2077,22 @@ body.is-lightbox-open {
 
 .gallery-page .case-category-card:nth-child(8) {
   background: linear-gradient(180deg, rgba(24, 12, 7, 0.1), rgba(24, 12, 7, 0.68)), url("../../images/學校社團企業教學/2026香港龍獅節.jpg") center bottom / cover no-repeat !important;
+}
+
+.gallery-page .case-category-card::before {
+  content: "" !important;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0) 40%,
+    rgba(0,0,0,0.75) 100%
+  );
+  pointer-events: none;
+}
+
+.gallery-page .case-category-card::after {
+  content: none !important;
 }
