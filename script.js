@@ -331,6 +331,100 @@ flipCards.forEach((card) => {
   });
 });
 
+const processConsultation = document.querySelector('[data-process-consultation]');
+
+if (processConsultation) {
+  const processCards = Array.from(document.querySelectorAll('[data-process-card]'));
+  const processTitle = processConsultation.querySelector('[data-process-title]');
+  const processText = processConsultation.querySelector('[data-process-text]');
+  const processTags = Array.from(processConsultation.querySelectorAll('[data-process-tag]'));
+  const defaultConsultation = {
+    title: processTitle?.textContent || '',
+    text: processText?.textContent || '',
+    tags: []
+  };
+  let activeProcessCard = null;
+  let processUpdateTimer = null;
+
+  const setActiveTags = (activeTags) => {
+    processTags.forEach((tag) => {
+      const isActive = activeTags.includes(tag.dataset.processTag);
+      tag.classList.toggle('is-active', isActive);
+      tag.classList.toggle('is-gold', isActive && tag.dataset.processTag === '綜合演出');
+    });
+  };
+
+  const renderProcessConsultation = (card = null) => {
+    const nextTitle = card?.dataset.processTitle || defaultConsultation.title;
+    const nextText = card?.dataset.processText || defaultConsultation.text;
+    const nextTags = card?.dataset.processTags
+      ? card.dataset.processTags.split(',').map((tag) => tag.trim()).filter(Boolean)
+      : defaultConsultation.tags;
+
+    window.clearTimeout(processUpdateTimer);
+    processConsultation.classList.add('is-changing');
+
+    processUpdateTimer = window.setTimeout(() => {
+      if (processTitle) {
+        processTitle.textContent = nextTitle;
+      }
+
+      if (processText) {
+        processText.textContent = nextText;
+      }
+
+      setActiveTags(nextTags);
+      processConsultation.classList.toggle('is-active', Boolean(card));
+      processConsultation.classList.remove('is-changing');
+    }, 120);
+  };
+
+  const setActiveProcessCard = (card = null) => {
+    processCards.forEach((item) => {
+      const isActive = item === card;
+      item.classList.toggle('is-active', isActive);
+      item.setAttribute('aria-pressed', String(isActive));
+    });
+  };
+
+  processCards.forEach((card) => {
+    card.addEventListener('mouseenter', () => {
+      renderProcessConsultation(card);
+      setActiveProcessCard(card);
+    });
+
+    card.addEventListener('mouseleave', () => {
+      renderProcessConsultation(activeProcessCard);
+      setActiveProcessCard(activeProcessCard);
+    });
+
+    card.addEventListener('focus', () => {
+      renderProcessConsultation(card);
+      setActiveProcessCard(card);
+    });
+
+    card.addEventListener('blur', () => {
+      renderProcessConsultation(activeProcessCard);
+      setActiveProcessCard(activeProcessCard);
+    });
+
+    card.addEventListener('click', () => {
+      activeProcessCard = activeProcessCard === card ? null : card;
+      renderProcessConsultation(activeProcessCard);
+      setActiveProcessCard(activeProcessCard);
+    });
+
+    card.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') {
+        return;
+      }
+
+      event.preventDefault();
+      card.click();
+    });
+  });
+}
+
 const performanceDiary = document.querySelector('.performance-diary');
 
 if (performanceDiary) {

@@ -11,6 +11,9 @@
   background:
     linear-gradient(180deg, rgba(251, 247, 239, 0.88), rgba(244, 236, 223, 0.8));
   box-shadow: 0 14px 30px rgba(20, 19, 17, 0.04);
+  cursor: pointer;
+  outline: 0;
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease, background-color 0.28s ease;
 }
 
 .process-step::before {
@@ -18,7 +21,9 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, rgba(154, 48, 32, 0.06), transparent 60%);
+  opacity: 0.72;
   pointer-events: none;
+  transition: opacity 0.28s ease;
 }
 
 .process-step::after {
@@ -28,6 +33,7 @@
   border: 1px solid rgba(155, 119, 64, 0.12);
   border-radius: 10px;
   pointer-events: none;
+  transition: border-color 0.28s ease, inset 0.28s ease;
 }
 
 .process-step span {
@@ -38,6 +44,7 @@
   font-weight: 800;
   letter-spacing: 0.22em;
   text-transform: uppercase;
+  transition: color 0.28s ease, transform 0.28s ease;
 }
 
 .process-step h3 {
@@ -48,4 +55,179 @@
 .process-step p {
   margin: 0;
   color: var(--ink-soft);
+}
+
+.process-step:hover,
+.process-step:focus-visible,
+.process-step.is-active {
+  transform: translateY(-6px);
+  border-color: rgba(155, 63, 47, 0.48);
+  background:
+    linear-gradient(180deg, rgba(255, 251, 244, 0.96), rgba(246, 237, 222, 0.9));
+  box-shadow: 0 22px 44px rgba(55, 32, 23, 0.11);
+}
+
+.process-step:hover::before,
+.process-step:focus-visible::before,
+.process-step.is-active::before {
+  opacity: 1;
+}
+
+.process-step:hover::after,
+.process-step:focus-visible::after,
+.process-step.is-active::after {
+  inset: 10px;
+  border-color: rgba(200, 169, 110, 0.34);
+}
+
+.process-step:hover span,
+.process-step:focus-visible span,
+.process-step.is-active span {
+  color: var(--gold);
+  transform: translateX(2px);
+}
+
+.process-step:focus-visible {
+  box-shadow:
+    0 0 0 3px rgba(200, 169, 110, 0.18),
+    0 22px 44px rgba(55, 32, 23, 0.11);
+}
+
+.process-consultation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.34fr);
+  grid-template-areas:
+    "copy tags"
+    "actions tags";
+  align-items: start;
+  gap: clamp(22px, 4vw, 48px);
+  border-left-color: var(--accent-deep);
+  transition: border-color 0.28s ease, box-shadow 0.28s ease, transform 0.28s ease;
+}
+
+.process-consultation.is-active {
+  border-left-color: var(--gold);
+  box-shadow: 0 26px 58px rgba(39, 25, 18, 0.13);
+}
+
+.process-consultation h2,
+.process-consultation p {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.process-consultation-content {
+  grid-area: copy;
+}
+
+.process-consultation.is-changing h2,
+.process-consultation.is-changing p {
+  opacity: 0;
+  transform: translateY(5px);
+}
+
+.process-consultation-actions {
+  grid-area: actions;
+}
+
+.process-consultation-actions .button {
+  margin-top: 24px;
+}
+
+.process-tag-group {
+  grid-area: tags;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 8px;
+}
+
+.process-tag {
+  min-width: 86px;
+  padding: 10px 14px;
+  border: 1px solid rgba(155, 119, 64, 0.22);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 251, 244, 0.84), rgba(239, 225, 205, 0.62));
+  color: rgba(74, 48, 37, 0.78);
+  font-family: var(--font-serif);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: center;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.32);
+  transition: color 0.24s ease, border-color 0.24s ease, background-color 0.24s ease, transform 0.24s ease, box-shadow 0.24s ease;
+}
+
+.process-tag.is-active {
+  border-color: rgba(155, 63, 47, 0.5);
+  background:
+    linear-gradient(180deg, rgba(155, 63, 47, 0.94), rgba(95, 43, 34, 0.94));
+  color: #fff7ee;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(95, 43, 34, 0.18);
+}
+
+.process-tag.is-gold {
+  border-color: rgba(200, 169, 110, 0.56);
+  background:
+    linear-gradient(180deg, rgba(229, 199, 132, 0.92), rgba(173, 128, 58, 0.92));
+  color: #241714;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-step,
+  .process-step::before,
+  .process-step::after,
+  .process-step span,
+  .process-consultation,
+  .process-consultation h2,
+  .process-consultation p,
+  .process-tag {
+    transition: none;
+  }
+
+  .process-step:hover,
+  .process-step:focus-visible,
+  .process-step.is-active,
+  .process-tag.is-active {
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .process-step {
+    padding: 22px;
+    border-radius: 14px;
+  }
+
+  .process-step span {
+    margin-bottom: 10px;
+  }
+
+  .process-consultation {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "copy"
+      "tags"
+      "actions";
+    gap: 18px;
+    padding: 30px 24px;
+  }
+
+  .process-consultation-actions .button {
+    margin-top: 0;
+  }
+
+  .process-tag-group {
+    justify-content: flex-start;
+    gap: 8px;
+    padding-top: 0;
+  }
+
+  .process-tag {
+    min-width: auto;
+    padding: 9px 12px;
+    font-size: 0.86rem;
+  }
 }

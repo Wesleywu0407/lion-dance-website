@@ -1,6 +1,6 @@
 .service-page-hero {
   min-height: 0;
-  padding: 158px 0 34px;
+  padding: max(158px, calc(var(--header-height) + 48px)) 0 34px;
 }
 
 .service-page-hero .page-hero-inner {
@@ -35,24 +35,14 @@
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 52%) minmax(0, 48%);
-  gap: clamp(28px, 5vw, 72px);
+  gap: clamp(24px, 4vw, 56px);
   align-items: start;
-  padding: 28px 0 10px;
+  padding: 12px 0 0;
   isolation: isolate;
 }
 
 .performance-diary::before {
-  content: "";
-  position: absolute;
-  inset: -38px -28px auto;
-  z-index: -1;
-  height: 54%;
-  background:
-    linear-gradient(135deg, rgba(143, 58, 47, 0.08), transparent 40%),
-    radial-gradient(circle at 20% 18%, rgba(185, 146, 94, 0.14), transparent 24%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='180' viewBox='0 0 240 180'%3E%3Cg fill='none' stroke='%23763126' stroke-opacity='.055' stroke-width='1.2'%3E%3Cpath d='M0 54c34 18 64 19 92 3 28-16 56-15 84 2 21 13 42 17 64 12'/%3E%3Cpath d='M0 112c30 15 59 14 86-3 29-18 58-17 87 2 22 14 44 17 67 8'/%3E%3C/g%3E%3C/svg%3E") center/240px 180px repeat;
-  opacity: 0.9;
-  pointer-events: none;
+  content: none;
 }
 
 .performance-diary-media {
@@ -171,7 +161,7 @@
 .service-item.is-active {
   transform: translateY(-4px);
   border-color: rgba(143, 58, 47, 0.24);
-  box-shadow: 0 28px 56px rgba(45, 25, 13, 0.09);
+  box-shadow: 0 18px 34px rgba(45, 25, 13, 0.055);
 }
 
 .service-item:last-child {
@@ -321,20 +311,23 @@
 
 .performance-diary-list {
   display: grid;
-  gap: 120px;
+  gap: 64px;
 }
 
 .service-item,
 .service-item:first-child {
   display: flex;
   align-items: center;
-  gap: 80px;
+  gap: clamp(30px, 4vw, 56px);
   min-height: auto;
   margin: 0;
-  padding: clamp(2rem, 4vw, 3rem);
+  padding: clamp(1.35rem, 2.4vw, 2.1rem);
   color: var(--ink);
   background:
-    linear-gradient(180deg, rgba(255, 252, 247, 0.88), rgba(246, 238, 228, 0.62));
+    linear-gradient(90deg, rgba(255, 252, 247, 0.58), rgba(246, 238, 228, 0.24));
+  border-top: 1px solid rgba(143, 58, 47, 0.1);
+  border-bottom: 1px solid rgba(185, 146, 94, 0.12);
+  box-shadow: none;
   opacity: 0;
   transform: translateY(40px);
   transition:
@@ -361,8 +354,8 @@
 
 .service-item-photo {
   display: block;
-  width: min(46%, 520px);
-  flex: 0 0 min(46%, 520px);
+  width: min(42%, 500px);
+  flex: 0 0 min(42%, 500px);
   aspect-ratio: 4 / 3;
   object-fit: cover;
   object-position: center;
@@ -378,8 +371,19 @@
 }
 
 .service-item-body {
+  position: relative;
   flex: 1 1 0;
   min-width: 0;
+  max-width: 48ch;
+  padding-left: clamp(18px, 2vw, 28px);
+  border-left: 1px solid rgba(143, 58, 47, 0.16);
+}
+
+.service-item:nth-child(even) .service-item-body {
+  padding-left: 0;
+  padding-right: clamp(18px, 2vw, 28px);
+  border-left: 0;
+  border-right: 1px solid rgba(143, 58, 47, 0.16);
 }
 
 .service-item-step,
@@ -447,7 +451,7 @@ a.learn-more:focus-visible {
 
 @media (max-width: 768px) {
   .performance-diary-list {
-    gap: 52px;
+    gap: 40px;
     padding: 0;
   }
 
@@ -920,6 +924,11 @@ a.learn-more:focus-visible {
   .service-item-body {
     flex: 1 1 auto !important;
     min-width: 0 !important;
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+    border-left: 0;
+    border-right: 0;
   }
 
   .service-item-step {
@@ -1014,22 +1023,22 @@ a.learn-more:focus-visible {
   }
 
   .performance-diary-list {
-    gap: clamp(44px, 5vw, 72px);
+    gap: clamp(26px, 3.2vw, 42px);
   }
 
   .service-item,
   .service-item:first-child {
-    gap: clamp(34px, 4vw, 58px);
-    padding: clamp(1.65rem, 2.8vw, 2.45rem);
+    gap: clamp(22px, 2.8vw, 36px);
+    padding: clamp(1.1rem, 1.8vw, 1.55rem);
     min-height: auto;
   }
 
   .service-item-photo {
-    width: min(38%, 430px);
-    flex: 0 0 min(38%, 430px);
-    max-height: 430px;
+    width: min(42%, 440px);
+    flex: 0 0 min(42%, 440px);
+    max-height: 360px;
     aspect-ratio: 4 / 3;
-    object-fit: contain;
+    object-fit: cover;
     background: rgba(61, 26, 10, 0.035);
   }
 
@@ -1041,23 +1050,23 @@ a.learn-more:focus-visible {
 
   .service-item-step,
   .service-item:first-child .service-item-step {
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     font-size: 11px;
   }
 
   .service-item-tags {
-    margin-top: 10px;
+    margin-top: 8px;
   }
 
   .service-item-description,
   .service-item:first-child .service-item-description {
-    margin-top: 14px;
-    max-width: 42ch;
-    font-size: 0.96rem;
-    line-height: 1.74;
+    margin-top: 10px;
+    max-width: 44ch;
+    font-size: 0.94rem;
+    line-height: 1.62;
   }
 
   .service-item-link {
-    margin-top: 14px;
+    margin-top: 10px;
   }
 }

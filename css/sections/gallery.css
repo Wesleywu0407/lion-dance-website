@@ -166,6 +166,7 @@
   height: 20px;
   transform: translateX(-50%);
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 20'%3E%3Cpath d='M0 20 Q15 0 30 8 Q45 0 60 20' fill='none' stroke='%23C8A96E' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat center;
+  opacity: 0.35;
   pointer-events: none;
   z-index: 4;
 }
@@ -264,8 +265,9 @@
 .case-landing {
   position: relative;
   isolation: isolate;
-  margin-top: -34px;
-  padding-top: 74px;
+  margin-top: -24px;
+  padding-top: 54px;
+  padding-bottom: 36px;
   overflow-x: clip;
   z-index: 2;
 }
@@ -279,19 +281,7 @@
 }
 
 .case-landing::before {
-  content: "";
-  position: absolute;
-  inset: 0 50% auto auto;
-  z-index: -1;
-  width: min(520px, 100%);
-  height: 280px;
-  transform: translateX(50%);
-  background:
-    radial-gradient(circle at 18% 28%, rgba(185, 146, 94, 0.13), transparent 28%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 280'%3E%3Cg fill='none' stroke='%238f3a2f' stroke-opacity='.08' stroke-width='2'%3E%3Cpath d='M0 74c82 31 154 33 216 7 69-29 138-25 207 11 71 37 148 38 232 3 91-38 173-38 245 2'/%3E%3Cpath d='M0 172c92 24 174 20 246-13 67-30 132-28 197 8 74 41 152 45 234 12 84-34 158-36 223-6'/%3E%3C/g%3E%3C/svg%3E")
-      center/cover no-repeat;
-  opacity: 0.9;
-  pointer-events: none;
+  content: none;
 }
 
 .case-landing::after {
@@ -299,10 +289,10 @@
   position: absolute;
   inset: 28px -48px auto;
   z-index: -1;
-  height: 420px;
+  height: 340px;
   background:
-    linear-gradient(180deg, rgba(56, 24, 12, 0.08), transparent),
-    radial-gradient(circle at 50% 0, rgba(143, 58, 47, 0.11), transparent 30%);
+    linear-gradient(180deg, rgba(56, 24, 12, 0.045), transparent),
+    radial-gradient(circle at 50% 0, rgba(143, 58, 47, 0.065), transparent 30%);
   border-top: 1px solid rgba(185, 146, 94, 0.18);
   pointer-events: none;
 }
@@ -627,8 +617,8 @@
 .album-hero {
   display: grid;
   gap: 10px;
-  padding-top: 78px;
-  margin-bottom: 20px;
+  padding-top: max(70px, calc(var(--header-height) + 40px));
+  margin-bottom: 16px;
 }
 
 .album-back {
@@ -733,7 +723,7 @@
 @media (max-width: 768px) {
   .page-hero.gallery-page-hero {
     min-height: auto;
-    padding: 100px 16px 20px;
+    padding: max(88px, calc(var(--header-height) + 32px)) 16px 14px;
     background: #F5F0E8;
   }
 
@@ -874,7 +864,8 @@
 
   .case-landing {
     margin-top: -10px;
-    padding-top: 30px;
+    padding-top: 24px;
+    padding-bottom: 36px;
   }
 
   .case-category-grid {
@@ -933,7 +924,7 @@
   }
 
   .album-hero {
-    padding-top: 66px;
+    padding-top: max(62px, calc(var(--header-height) + 40px));
     margin-bottom: 14px;
   }
 
@@ -1200,12 +1191,12 @@ body.is-lightbox-open {
 
   .gallery-page .case-landing {
     margin-top: 0;
-    padding-top: 22px;
-    padding-bottom: 24px;
+    padding-top: 16px;
+    padding-bottom: 18px;
   }
 
   .gallery-page .case-landing::after {
-    height: 220px;
+    height: 180px;
     opacity: 0.54;
   }
 
@@ -1245,7 +1236,7 @@ body.is-lightbox-open {
   .gallery-page .case-summary-mobile {
     display: block;
     max-width: 22rem;
-    margin: 18px auto 0;
+    margin: 12px auto 0;
     color: #7f6656;
     font-size: 0.8rem;
     letter-spacing: 0.03em;
@@ -1254,8 +1245,8 @@ body.is-lightbox-open {
   }
 
   .gallery-page .case-helper {
-    margin-top: 12px;
-    padding-top: 8px;
+    margin-top: 8px;
+    padding-top: 6px;
     color: #8a7769;
   }
 
@@ -1821,7 +1812,7 @@ body.is-lightbox-open {
 
 .gallery-page .gallery-page-hero {
   min-height: auto;
-  padding: 120px 24px 44px;
+  padding: max(104px, calc(var(--header-height) + 36px)) 24px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1852,7 +1843,7 @@ body.is-lightbox-open {
 
 .gallery-page .case-summary {
   max-width: 42rem;
-  margin: 28px auto 0;
+  margin: 18px auto 0;
   padding: 0 0.85rem;
   color: #6E5A4E;
   text-align: center;
@@ -1873,13 +1864,16 @@ body.is-lightbox-open {
 }
 
 .gallery-page .case-summary .case-helper {
-  margin: 18px auto 0;
-  padding: 10px 0 0;
+  margin: 12px auto 0;
+  padding: 8px 0 0;
+}
+
+.gallery-page .site-footer {
+  margin-top: 24px;
 }
 
 @media (min-width: 769px) {
   .gallery-page .gallery-page-hero {
-    padding: 136px 24px 56px;
+    padding: max(116px, calc(var(--header-height) + 36px)) 24px 36px;
   }
 }
-

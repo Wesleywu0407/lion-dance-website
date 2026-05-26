@@ -512,14 +512,12 @@
 }
 
 .site-footer {
-  margin-top: 56px;
+  margin-top: 36px;
   border-top: 3px solid #9b3f2f;
-  padding: 56px 0 24px;
+  padding: 52px 0 24px;
   background:
-    linear-gradient(180deg, #181311, #0f0d0c 76%),
-    radial-gradient(circle at 20% 10%, rgba(143, 58, 47, 0.14), transparent 28%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 400'%3E%3Cg fill='none' stroke='%23f4e4d1' stroke-opacity='.05' stroke-width='2'%3E%3Cpath d='M0 110c125 42 218 47 325 18 121-33 236-35 342 5 123 47 265 51 456-7 111-34 203-39 277-27'/%3E%3Cpath d='M0 272c130 26 231 22 324-11 116-41 234-44 365-7 135 37 281 42 490-18 98-28 173-30 221-18'/%3E%3C/g%3E%3C/svg%3E")
-    center/cover no-repeat;
+    radial-gradient(circle at 18% 0%, rgba(159, 53, 31, 0.18), transparent 30%),
+    linear-gradient(180deg, #181311, #0f0d0c 76%);
   color: rgba(255, 255, 255, 0.88);
 }
 
@@ -531,8 +529,9 @@
 
 .footer-inner {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 60px;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  gap: clamp(36px, 6vw, 72px);
+  align-items: start;
 }
 
 .footer-seal {
@@ -552,12 +551,14 @@
   max-width: 40rem;
   color: rgba(255, 255, 255, 0.7);
   font-size: 1rem;
+  line-height: 1.75;
 }
 
 .footer-links {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 40px;
+  gap: clamp(28px, 4vw, 46px);
+  padding-top: 4px;
 }
 
 .footer-links h4 {
@@ -568,29 +569,76 @@
 
 .footer-links a {
   display: block;
-  margin: 12px 0;
+  margin: 10px 0;
   color: rgba(255, 255, 255, 0.72);
   text-decoration: none;
+  transition: color 0.22s ease, transform 0.22s ease;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  color: rgba(240, 217, 168, 0.96);
+  transform: translateX(3px);
 }
 
 .footer-socials {
   display: flex;
-  gap: 16px;
-  margin-top: 28px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  max-width: 320px;
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(240, 217, 168, 0.16);
+}
+
+.footer-socials::before {
+  content: "Follow Nan Sian";
+  flex: 0 0 100%;
+  color: rgba(240, 217, 168, 0.78);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 .footer-socials a {
-  width: 56px;
-  height: 56px;
-  display: grid;
-  place-items: center;
+  width: auto;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 18px 0 12px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: rgba(255, 247, 238, 0.9);
   text-decoration: none;
+  font-size: 0;
   font-weight: 700;
   transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.footer-socials a::before {
+  content: "f";
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(240, 217, 168, 0.16);
+  color: rgba(255, 247, 238, 0.96);
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.footer-socials a::after {
+  content: "Facebook";
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
 }
 
 .footer-socials a:hover,
@@ -602,9 +650,9 @@
 
 .footer-bottom {
   display: flex;
-  justify-content: flex-end;
-  padding-top: 26px;
-  margin-top: 34px;
+  justify-content: flex-start;
+  padding-top: 22px;
+  margin-top: 32px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.76);
 }

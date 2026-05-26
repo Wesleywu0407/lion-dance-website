@@ -125,7 +125,7 @@
   <style>
     .gallery-page .gallery-page-hero {
       min-height: auto;
-      padding: clamp(4rem, 10vw, 7rem) 1.5rem clamp(2.5rem, 5vw, 3.5rem);
+      padding: max(clamp(3.5rem, 8vw, 6rem), calc(var(--header-height) + 36px)) 1.5rem clamp(1.6rem, 3vw, 2.4rem);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -271,7 +271,7 @@
 
     .gallery-page .case-summary {
       max-width: 640px;
-      margin: clamp(3rem, 6vw, 4.5rem) auto 0;
+      margin: clamp(1.5rem, 3vw, 2.4rem) auto 0;
       padding: 0 1.25rem;
       color: rgba(92, 26, 16, 0.78);
       text-align: center;
@@ -297,8 +297,8 @@
 
     .gallery-page .case-summary .case-helper {
       width: fit-content;
-      margin: 1.25rem auto 0;
-      padding: 0.85rem 0 0;
+      margin: 0.95rem auto 0;
+      padding: 0.65rem 0 0;
       border-top: 1px solid rgba(185, 146, 94, 0.35);
       color: #8B1A1A;
       font-size: 0.82rem;
@@ -354,7 +354,7 @@
 
     /* Gallery hero visibility fix */
     .gallery-page .page-hero {
-      padding: clamp(4rem, 10vw, 7rem) 1.5rem clamp(2.5rem, 5vw, 3.5rem) !important;
+      padding: max(clamp(3.5rem, 8vw, 6rem), calc(var(--header-height) + 36px)) 1.5rem clamp(1.6rem, 3vw, 2.4rem) !important;
       text-align: center;
       background: #F5F0E8 !important;
       background-image: none !important;
