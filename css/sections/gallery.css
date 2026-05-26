@@ -17,8 +17,6 @@
   padding: 0 28px 40px;
   background-color: #F5F0E8;
   border: 1.5px solid #C8A96E;
-  outline: 1px solid #C8A96E;
-  outline-offset: -20px;
 }
 
 .gallery-page-hero .page-hero-inner {
@@ -173,13 +171,7 @@
 }
 
 .gallery-hero-image-wrap::after {
-  content: "";
-  position: absolute;
-  inset: 4px;
-  border: 1px solid #C8A96E;
-  border-radius: 34px;
-  pointer-events: none;
-  z-index: 2;
+  content: none;
 }
 
 .gallery-hero-image {

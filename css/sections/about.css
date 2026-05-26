@@ -143,8 +143,8 @@
 }
 
 .ctb:nth-child(even) {
-  align-items: flex-end;
-  text-align: right;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .ctb::after {
@@ -156,7 +156,7 @@
 }
 
 .ctb:nth-child(even)::after {
-  background: linear-gradient(270deg, rgba(143, 58, 47, 0.4), rgba(185, 146, 94, 0.12), transparent);
+  background: linear-gradient(90deg, rgba(143, 58, 47, 0.4), rgba(185, 146, 94, 0.12), transparent);
 }
 
 /* ── Key phrase ─────────────────────────────────────────── */
@@ -246,8 +246,7 @@
     inset: -24px -12px;
   }
 
-  .ctb,
-  .ctb:nth-child(even) {
+  .ctb {
     align-items: flex-start;
     width: 100%;
     padding: 3.4rem 1.2rem;

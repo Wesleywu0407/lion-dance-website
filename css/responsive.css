@@ -39,11 +39,11 @@
 
   .narrative-intro {
     position: static;
-    max-width: 42rem;
+    max-width: 100%;
   }
 
   .narrative-intro .narrative-heading {
-    max-width: 42rem;
+    max-width: 100%;
   }
 }
 

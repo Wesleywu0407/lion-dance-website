@@ -215,7 +215,8 @@
 
 .home-narrative {
   position: relative;
-  padding-top: 138px;
+  padding-top: 160px;
+  padding-bottom: 140px;
 }
 
 .home-narrative::after,
@@ -232,13 +233,13 @@
 
 .narrative-layout {
   display: grid;
-  grid-template-columns: minmax(650px, 1fr) minmax(0, 0.82fr);
-  gap: 48px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 80px;
   align-items: start;
 }
 
 .narrative-intro {
-  max-width: 680px;
+  max-width: 520px;
   position: sticky;
   top: 118px;
 }
@@ -283,13 +284,19 @@
 
 .narrative-copy {
   max-width: 44rem;
+  padding-top: 0.5rem;
 }
 
 .narrative-copy p {
-  margin: 0 0 1.3rem;
+  margin: 0 0 1.6rem;
   color: var(--ink-soft);
-  font-size: 1.04rem;
-  line-height: 2;
+  font-size: 1.06rem;
+  line-height: 2.1;
+  text-align: left;
+}
+
+.narrative-copy p:last-child {
+  margin-bottom: 0;
 }
 
 .manifesto-list {
