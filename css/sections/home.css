@@ -527,3 +527,115 @@
 .contact-home .cta-band h2 {
   max-width: 16ch;
 }
+
+/* ── 如何邀請南仙：流程區塊 ────────────────────────────── */
+
+.process-invite {
+  padding-top: 140px;
+  padding-bottom: 160px;
+  position: relative;
+}
+
+.process-invite::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(185, 146, 94, 0.3), transparent);
+}
+
+.process-invite-header {
+  margin-bottom: 72px;
+}
+
+.process-heading {
+  margin: 0;
+  max-width: 18ch;
+  padding: 10px 18px 12px;
+  font-family: var(--font-display-serif);
+  font-weight: 900;
+  font-size: clamp(2.2rem, 3.6vw, 3.4rem);
+  line-height: 1.14;
+  letter-spacing: 0.06em;
+}
+
+.process-invite-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  max-width: 860px;
+}
+
+.process-invite-step {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 0 24px;
+  align-items: start;
+  padding: 40px 0;
+  border-top: 1px solid rgba(185, 146, 94, 0.22);
+  text-align: left;
+}
+
+.process-invite-step:last-child {
+  border-bottom: 1px solid rgba(185, 146, 94, 0.22);
+}
+
+.step-num {
+  font-family: var(--font-display-serif);
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--gold);
+  letter-spacing: -0.02em;
+  padding-top: 2px;
+}
+
+.step-body {
+  padding-top: 4px;
+}
+
+.step-body h3 {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 1.8vw, 1.28rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+}
+
+.step-body p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.88;
+  text-align: left;
+}
+
+.process-invite-cta {
+  margin-top: 56px;
+}
+
+@media (max-width: 760px) {
+  .process-invite {
+    padding-top: 100px;
+    padding-bottom: 110px;
+  }
+
+  .process-invite-header {
+    margin-bottom: 48px;
+  }
+
+  .process-invite-step {
+    grid-template-columns: 72px 1fr;
+    gap: 0 16px;
+    padding: 30px 0;
+  }
+
+  .step-num {
+    font-size: clamp(2rem, 10vw, 2.8rem);
+  }
+}

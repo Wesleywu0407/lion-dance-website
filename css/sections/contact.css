@@ -321,6 +321,49 @@
   font-size: 1.1rem;
 }
 
+/* ── 詢問前資訊清單 ──────────────────────────────────── */
+
+.contact-checklist {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(185, 146, 94, 0.22);
+  text-align: left;
+}
+
+.contact-checklist-heading {
+  margin: 0 0 18px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.72;
+}
+
+.contact-checklist ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 11px;
+}
+
+.contact-checklist li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 0.96rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  text-align: left;
+}
+
+.contact-checklist li::before {
+  content: "·";
+  flex: 0 0 auto;
+  color: var(--gold);
+  font-size: 1.4rem;
+  line-height: 0.8;
+}
+
 /* Contact mobile refinement */
 @media (max-width: 760px) {
   .contact-page .page-hero {
