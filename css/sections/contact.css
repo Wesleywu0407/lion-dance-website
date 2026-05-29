@@ -321,6 +321,64 @@
   font-size: 1.1rem;
 }
 
+.contact-faq {
+  width: min(100%, 980px);
+  margin: 56px auto 0;
+  padding: clamp(2rem, 5vw, 4rem);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(251, 247, 241, 0.96), rgba(245, 238, 228, 0.92)),
+    var(--paper);
+  border: 1px solid rgba(22, 19, 17, 0.08);
+  box-shadow: 0 18px 42px rgba(39, 25, 18, 0.07);
+}
+
+.contact-faq-heading {
+  margin-bottom: clamp(1.4rem, 3vw, 2.4rem);
+}
+
+.contact-faq-heading h2 {
+  margin: 0;
+  font-family: var(--font-display-serif);
+  font-size: clamp(2.1rem, 5vw, 3.8rem);
+  line-height: 1.1;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+}
+
+.contact-faq-list {
+  display: grid;
+  gap: 0;
+}
+
+.contact-faq-item {
+  padding: clamp(1.4rem, 3vw, 2.2rem) 0;
+  border-top: 1px solid rgba(185, 146, 94, 0.24);
+}
+
+.contact-faq-item:first-child {
+  border-top-color: rgba(143, 58, 47, 0.18);
+}
+
+.contact-faq-item h3 {
+  margin: 0 0 1rem;
+  max-width: 28em;
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+}
+
+.contact-faq-item p {
+  margin: 0;
+  max-width: 44rem;
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.2vw, 1.08rem);
+  line-height: 1.88;
+  overflow-wrap: anywhere;
+}
+
 /* ── 詢問前資訊清單 ──────────────────────────────────── */
 
 .contact-checklist {
@@ -333,8 +391,8 @@
 .contact-checklist-heading {
   margin: 0 0 18px;
   font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--ink);
+  font-weight: 400;
+  color: var(--ink-soft);
   line-height: 1.72;
 }
 
@@ -524,6 +582,33 @@
 
   .contact-page .contact-quote {
     margin-top: 28px;
+  }
+
+  .contact-page .contact-faq {
+    width: calc(100vw - 24px);
+    max-width: calc(100vw - 24px);
+    margin-top: 34px;
+    padding: 2rem 1.2rem;
+    border-radius: 18px;
+  }
+
+  .contact-page .contact-faq-heading h2 {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .contact-page .contact-faq-item h3,
+  .contact-page .contact-faq-item p {
+    max-width: min(100%, 20em);
+  }
+
+  .contact-page .contact-faq-item h3 {
+    font-size: 1.24rem;
+  }
+
+  .contact-page .contact-faq-item p {
+    font-size: 0.98rem;
+    line-height: 1.82;
+    word-break: break-all;
   }
 }
 
