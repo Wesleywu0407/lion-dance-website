@@ -617,6 +617,9 @@
 
 .process-invite-cta {
   margin-top: 56px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
 }
 
 @media (max-width: 760px) {
@@ -633,6 +636,11 @@
     grid-template-columns: 72px 1fr;
     gap: 0 16px;
     padding: 30px 0;
+  }
+
+  .process-invite-cta .button {
+    width: 100%;
+    min-width: 0;
   }
 
   .step-num {

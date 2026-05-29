@@ -7,8 +7,10 @@ const revealItems = document.querySelectorAll('.reveal');
 const hero = document.querySelector('.hero');
 const heroTransform = document.querySelector('[data-transform-title]');
 const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+const finePointerQuery = window.matchMedia('(pointer: fine)');
 const isHomePage = document.body.classList.contains('home-page');
 let lockedScrollY = 0;
+let scrollFrame = null;
 
 document.querySelectorAll('#current-year').forEach((year) => {
   year.textContent = new Date().getFullYear();
@@ -30,9 +32,39 @@ const syncHeader = () => {
   header.classList.toggle('is-scrolled', isScrolled);
 };
 
-syncHeader();
-window.addEventListener('scroll', syncHeader, { passive: true });
-window.addEventListener('resize', syncHeader);
+const syncHeroState = () => {
+  if (!hero) {
+    return;
+  }
+
+  if (!heroTransform) {
+    return;
+  }
+
+  const rect = heroTransform.getBoundingClientRect();
+  const travel = Math.max(heroTransform.offsetHeight - window.innerHeight, 1);
+  const progress = Math.min(Math.max((-rect.top) / travel, 0), 1);
+
+  heroTransform.style.setProperty('--hero-progress', progress.toFixed(4));
+};
+
+const syncScrollState = () => {
+  scrollFrame = null;
+  syncHeader();
+  syncHeroState();
+};
+
+const requestScrollSync = () => {
+  if (scrollFrame) {
+    return;
+  }
+
+  scrollFrame = window.requestAnimationFrame(syncScrollState);
+};
+
+syncScrollState();
+window.addEventListener('scroll', requestScrollSync, { passive: true });
+window.addEventListener('resize', requestScrollSync);
 
 const lockBodyScroll = () => {
   lockedScrollY = window.scrollY;
@@ -83,6 +115,7 @@ if (navToggle && siteNav) {
   const setNavOpen = (isOpen) => {
     siteNav.classList.toggle('is-open', isOpen);
     navToggle.setAttribute('aria-expanded', String(isOpen));
+    navToggle.setAttribute('aria-label', isOpen ? '關閉主要導覽' : '開啟主要導覽');
 
     if (window.innerWidth <= 760) {
       if (isOpen) {
@@ -213,7 +246,7 @@ const revealObserver = new IntersectionObserver((entries) => {
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.18 });
+}, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
 
 revealItems.forEach((item) => {
   revealObserver.observe(item);
@@ -228,38 +261,19 @@ const motionAwareObserver = new IntersectionObserver((entries) => {
     entry.target.classList.add('visible');
     motionAwareObserver.unobserve(entry.target);
   });
-}, { threshold: 0.15 });
+}, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
 
 document.querySelectorAll('.service-item, .about-block').forEach((item) => {
   motionAwareObserver.observe(item);
 });
 
-const syncHeroState = () => {
-  if (!hero) {
-    return;
-  }
-
-  if (!heroTransform) {
-    return;
-  }
-
-  const rect = heroTransform.getBoundingClientRect();
-  const travel = Math.max(heroTransform.offsetHeight - window.innerHeight, 1);
-  const progress = Math.min(Math.max((-rect.top) / travel, 0), 1);
-
-  heroTransform.style.setProperty('--hero-progress', progress.toFixed(4));
-};
-
-syncHeroState();
-window.addEventListener('scroll', syncHeroState, { passive: true });
-window.addEventListener('resize', syncHeroState);
-
-if (hero && !reduceMotionQuery.matches) {
+if (hero && !reduceMotionQuery.matches && finePointerQuery.matches) {
   let pointerTargetX = 0;
   let pointerTargetY = 0;
   let pointerCurrentX = 0;
   let pointerCurrentY = 0;
   let heroFrame = null;
+  let isPointerActive = false;
 
   const animateHeroPointer = () => {
     pointerCurrentX += (pointerTargetX - pointerCurrentX) * 0.08;
@@ -268,7 +282,21 @@ if (hero && !reduceMotionQuery.matches) {
     hero.style.setProperty('--hero-pointer-x', `${pointerCurrentX.toFixed(2)}px`);
     hero.style.setProperty('--hero-pointer-y', `${pointerCurrentY.toFixed(2)}px`);
 
-    heroFrame = window.requestAnimationFrame(animateHeroPointer);
+    if (
+      isPointerActive ||
+      Math.abs(pointerTargetX - pointerCurrentX) > 0.05 ||
+      Math.abs(pointerTargetY - pointerCurrentY) > 0.05
+    ) {
+      heroFrame = window.requestAnimationFrame(animateHeroPointer);
+    } else {
+      heroFrame = null;
+    }
+  };
+
+  const requestHeroPointerFrame = () => {
+    if (!heroFrame) {
+      heroFrame = window.requestAnimationFrame(animateHeroPointer);
+    }
   };
 
   const updateHeroPointer = (event) => {
@@ -278,24 +306,27 @@ if (hero && !reduceMotionQuery.matches) {
 
     pointerTargetX = offsetX * 28;
     pointerTargetY = offsetY * 18;
+    isPointerActive = true;
+    requestHeroPointerFrame();
   };
 
   const resetHeroPointer = () => {
     pointerTargetX = 0;
     pointerTargetY = 0;
+    isPointerActive = false;
+    requestHeroPointerFrame();
   };
 
   hero.addEventListener('pointermove', updateHeroPointer);
   hero.addEventListener('pointerleave', resetHeroPointer);
   hero.addEventListener('pointercancel', resetHeroPointer);
 
-  animateHeroPointer();
-
   reduceMotionQuery.addEventListener('change', (event) => {
     if (event.matches) {
       if (heroFrame) {
         window.cancelAnimationFrame(heroFrame);
       }
+      heroFrame = null;
       hero.style.setProperty('--hero-pointer-x', '0px');
       hero.style.setProperty('--hero-pointer-y', '0px');
     }

@@ -86,6 +86,8 @@ body {
 }
 
 img {
+  max-width: 100%;
+  height: auto;
   filter: saturate(1.04) contrast(1.03);
 }
 
@@ -140,6 +142,19 @@ h2.section-title,
   margin: 0 auto;
   padding: 76px 0;
   position: relative;
+}
+
+@supports (content-visibility: auto) {
+  main > .section:not(:first-child),
+  main > .page-section-stack,
+  main > .performance-diary,
+  main > .process,
+  main > .cta-band,
+  .album-grid,
+  .site-footer {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 640px;
+  }
 }
 
 .section::before {

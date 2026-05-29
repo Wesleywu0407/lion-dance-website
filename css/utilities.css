@@ -11,6 +11,14 @@
   filter: blur(0);
 }
 
+@media (max-width: 760px) {
+  .js .reveal {
+    transform: translateY(22px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+    filter: none;
+  }
+}
+
 @keyframes scrollPulse {
   0%, 100% {
     opacity: 0.35;

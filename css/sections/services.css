@@ -733,35 +733,35 @@ a.learn-more:focus-visible {
 }
 
 .service-lion {
-  background: url("../../images/祥獅獻瑞.JPG") center/cover no-repeat;
+  background: image-set(url("../../images/%E7%A5%A5%E7%8D%85%E7%8D%BB%E7%91%9E-720.webp") 1x, url("../../images/%E7%A5%A5%E7%8D%85%E7%8D%BB%E7%91%9E-1440.webp") 2x) center/cover no-repeat;
 }
 
 .service-lion-pole {
-  background: url("../../images/梅花樁獅.jpg") center/cover no-repeat;
+  background: image-set(url("../../images/%E6%A2%85%E8%8A%B1%E6%A8%81%E7%8D%85-720.webp") 1x, url("../../images/%E6%A2%85%E8%8A%B1%E6%A8%81%E7%8D%85-1440.webp") 2x) center/cover no-repeat;
 }
 
 .service-dragon {
-  background: url("../../images/祥龍搶珠.jpg") center/cover no-repeat;
+  background: image-set(url("../../images/%E7%A5%A5%E9%BE%8D%E6%90%B6%E7%8F%A0-720.webp") 1x, url("../../images/%E7%A5%A5%E9%BE%8D%E6%90%B6%E7%8F%A0-1440.webp") 2x) center/cover no-repeat;
 }
 
 .service-drum {
-  background: url("../../images/雷鳴戰鼓.jpg") center/cover no-repeat;
+  background: image-set(url("../../images/%E9%9B%B7%E9%B3%B4%E6%88%B0%E9%BC%93-720.webp") 1x, url("../../images/%E9%9B%B7%E9%B3%B4%E6%88%B0%E9%BC%93-1440.webp") 2x) center/cover no-repeat;
 }
 
 .service-folk {
-  background: url("../../images/民俗藝陣-變臉.jpg") center/cover no-repeat;
+  background: image-set(url("../../images/%E6%B0%91%E4%BF%97%E8%97%9D%E9%99%A3-%E8%AE%8A%E8%87%89-720.webp") 1x, url("../../images/%E6%B0%91%E4%BF%97%E8%97%9D%E9%99%A3-%E8%AE%8A%E8%87%89-1440.webp") 2x) center/cover no-repeat;
 }
 
 .service-nezha {
-  background: url("../../images/電音三太子.jpg") center/cover no-repeat;
+  background: image-set(url("../../images/%E9%9B%BB%E9%9F%B3%E4%B8%89%E5%A4%AA%E5%AD%90-720.webp") 1x, url("../../images/%E9%9B%BB%E9%9F%B3%E4%B8%89%E5%A4%AA%E5%AD%90-1440.webp") 2x) center/cover no-repeat;
 }
 
 .service-lion-plum {
-  background: url("../../images/梅花樁獅.jpg") center/cover no-repeat;
+  background: image-set(url("../../images/%E6%A2%85%E8%8A%B1%E6%A8%81%E7%8D%85-720.webp") 1x, url("../../images/%E6%A2%85%E8%8A%B1%E6%A8%81%E7%8D%85-1440.webp") 2x) center/cover no-repeat;
 }
 
 .service-god {
-  background: url("../../images/文武財神駕到.jpg") center/cover no-repeat;
+  background: image-set(url("../../images/%E6%96%87%E6%AD%A6%E8%B2%A1%E7%A5%9E%E9%A7%95%E5%88%B0-720.webp") 1x, url("../../images/%E6%96%87%E6%AD%A6%E8%B2%A1%E7%A5%9E%E9%A7%95%E5%88%B0-1440.webp") 2x) center/cover no-repeat;
 }
 
 .service-body {
@@ -964,10 +964,13 @@ a.learn-more:focus-visible {
 @media (max-width: 767px) {
   .performance-diary-list {
     gap: 36px;
+    padding-inline: 12px;
+    box-sizing: border-box;
   }
 
   .service-item,
   .service-item:first-child {
+    width: 100%;
     gap: 1.15rem !important;
     padding: 2.2rem 0.9rem !important;
     margin-bottom: 1.2rem;
@@ -992,6 +995,7 @@ a.learn-more:focus-visible {
 
   .service-item-description {
     margin-top: 0.85rem;
+    overflow-wrap: anywhere;
   }
 
   .service-item-link[data-mobile-label] {

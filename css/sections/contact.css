@@ -372,11 +372,14 @@
 
   .contact-page .page-hero .page-hero-inner {
     gap: 12px;
+    min-width: 0;
   }
 
   .contact-page .page-hero .page-hero-inner > p:not(.section-tag) {
     margin-top: 4px;
     line-height: 1.65;
+    max-width: calc(100vw - 40px);
+    overflow-wrap: anywhere;
   }
 
   .contact-page .page-section-stack {
@@ -386,10 +389,12 @@
   .contact-page .contact-layout {
     display: grid;
     gap: 22px;
+    min-width: 0;
   }
 
   .contact-page .contact-info {
     gap: 10px;
+    min-width: 0;
   }
 
   .contact-page .contact-line {
@@ -402,6 +407,17 @@
 
   .contact-page .contact-email {
     order: 3;
+  }
+
+  .contact-page .contact-checklist {
+    order: 4;
+    min-width: 0;
+  }
+
+  .contact-page .contact-checklist-heading,
+  .contact-page .contact-checklist li {
+    max-width: calc(100vw - 48px);
+    overflow-wrap: anywhere;
   }
 
   .contact-page .contact-info article,

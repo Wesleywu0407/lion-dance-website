@@ -188,12 +188,15 @@
 
 .ctb-support {
   margin: 0;
+  width: 100%;
   font-size: clamp(1rem, 1.2vw, 1.08rem);
   line-height: 1.9;
   color: var(--ink-soft);
-  max-width: 46rem;
+  max-width: min(46rem, 100%);
   padding: 18px 0 0;
   border-top: 1px solid rgba(185, 146, 94, 0.22);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* ── Entrance animation: hidden state ───────────────────── */
@@ -247,11 +250,31 @@
     inset: -24px -12px;
   }
 
+  .about-cinematic {
+    width: min(calc(100vw - 24px), 100%);
+    max-width: calc(100vw - 24px);
+    overflow: hidden;
+  }
+
   .ctb {
     align-items: flex-start;
-    width: 100%;
+    width: calc(100vw - 24px);
+    max-width: calc(100vw - 24px);
     padding: 3.4rem 1.2rem;
     text-align: left;
+    overflow-x: hidden;
+  }
+
+  .ctb-support {
+    max-width: min(100%, 20em);
+    font-size: 0.98rem;
+    line-height: 1.82;
+    word-break: break-all;
+  }
+
+  .about-page .page-hero .page-hero-inner > p:not(.section-tag) {
+    max-width: min(100%, 20em);
+    overflow-wrap: anywhere;
   }
 
   .ctb::before {
@@ -274,7 +297,7 @@
   }
 
   .ctb-support {
-    max-width: none;
+    max-width: min(100%, 20em);
     font-size: 0.98rem;
   }
 }

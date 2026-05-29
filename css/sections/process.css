@@ -127,6 +127,9 @@
 
 .process-consultation-actions {
   grid-area: actions;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
 }
 
 .process-consultation-actions .button {
@@ -217,6 +220,8 @@
 
   .process-consultation-actions .button {
     margin-top: 0;
+    width: 100%;
+    min-width: 0;
   }
 
   .process-tag-group {

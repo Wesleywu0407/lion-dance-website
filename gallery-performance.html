@@ -26,65 +26,656 @@
   <meta name="twitter:image:alt" content="臺灣南仙龍獅體育會醒獅與舞龍舞獅表演現場">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon.png" type="image/png" sizes="512x512">
-  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/favicon-180.png">
   <meta name="theme-color" content="#181311">
   <link rel="stylesheet" href="css/style.css">
 
   <script type="application/ld+json">
-    {
+  {
     "@context": "https://schema.org",
-    "@type": "ImageGallery",
-    "@id": "https://nansiengtaiwan.com/gallery-performance.html#gallery",
-    "url": "https://nansiengtaiwan.com/gallery-performance.html",
-    "name": "展演服務｜活動案例｜臺灣南仙龍獅體育會",
-    "description": "南仙展演服務案例涵蓋舞台演出、節目錄影、廣告拍攝與品牌合作，以專業舞龍舞獅團隊呈現具文化厚度的視覺演出。",
-    "inLanguage": "zh-TW",
-    "publisher": {
-        "@type": "SportsOrganization",
+    "@graph": [
+      {
+        "@type": "Brand",
+        "@id": "https://nansiengtaiwan.com/#brand",
         "name": "臺灣南仙龍獅體育會",
-        "url": "https://nansiengtaiwan.com/"
-    },
-    "breadcrumb": {
-        "@type": "BreadcrumbList",
+        "alternateName": "Taiwan Nan Sieng Dragon & Lion Dance Activity Centre",
+        "slogan": "以傳統龍獅文化呈現莊嚴、熱烈且富有精神的現場演出。"
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "https://nansiengtaiwan.com/#logo",
+        "url": "https://nansiengtaiwan.com/favicon.png",
+        "contentUrl": "https://nansiengtaiwan.com/favicon.png",
+        "width": 512,
+        "height": 512,
+        "caption": "臺灣南仙龍獅體育會品牌標誌"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://nansiengtaiwan.com/#organization",
+        "name": "臺灣南仙龍獅體育會",
+        "alternateName": "Taiwan Nan Sieng Dragon & Lion Dance Activity Centre",
+        "legalName": "臺灣南仙龍獅體育會",
+        "url": "https://nansiengtaiwan.com/",
+        "logo": {
+          "@id": "https://nansiengtaiwan.com/#logo"
+        },
+        "image": {
+          "@id": "https://nansiengtaiwan.com/#primary-brand-image"
+        },
+        "sameAs": [
+          "https://www.facebook.com/p/%E8%87%BA%E5%8C%97%E5%BE%B7%E5%8B%9D%E8%88%98%E8%87%BA%E7%81%A3%E5%8D%97%E4%BB%99%E9%BE%8D%E7%8D%85%E9%AB%94%E8%82%B2%E6%9C%83-61556516607768/"
+        ],
+        "description": "臺灣南仙龍獅體育會以傳統龍獅文化為根，提供舞龍舞獅、醒獅表演、戰鼓演出與商業活動演出，適合開幕慶典、廟會繞境、節慶活動與品牌展演。",
+        "slogan": "專業舞龍舞獅與文化表演團隊",
+        "brand": {
+          "@id": "https://nansiengtaiwan.com/#brand"
+        },
+        "knowsAbout": [
+          "舞龍舞獅",
+          "醒獅表演",
+          "戰鼓演出",
+          "商業活動演出",
+          "廟會演出",
+          "開幕活動",
+          "節慶表演",
+          "傳統文化活動"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+886-922-140-496",
+          "contactType": "演出洽詢",
+          "areaServed": "TW",
+          "availableLanguage": [
+            "zh-Hant",
+            "zh-TW"
+          ]
+        }
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://nansiengtaiwan.com/#localbusiness",
+        "name": "臺灣南仙龍獅體育會",
+        "alternateName": "Taiwan Nan Sieng Dragon & Lion Dance Activity Centre",
+        "url": "https://nansiengtaiwan.com/",
+        "telephone": "+886-922-140-496",
+        "image": {
+          "@id": "https://nansiengtaiwan.com/#primary-brand-image"
+        },
+        "logo": {
+          "@id": "https://nansiengtaiwan.com/#logo"
+        },
+        "sameAs": [
+          "https://www.facebook.com/p/%E8%87%BA%E5%8C%97%E5%BE%B7%E5%8B%9D%E8%88%98%E8%87%BA%E7%81%A3%E5%8D%97%E4%BB%99%E9%BE%8D%E7%8D%85%E9%AB%94%E8%82%B2%E6%9C%83-61556516607768/"
+        ],
+        "description": "服務台灣各地開幕典禮、廟會繞境、商業活動、企業尾牙與節慶表演的龍獅文化演出團隊。",
+        "priceRange": "依活動需求報價",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "TW",
+          "addressRegion": "Taiwan"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "台灣"
+        },
+        "serviceArea": {
+          "@type": "Country",
+          "name": "台灣"
+        },
+        "parentOrganization": {
+          "@id": "https://nansiengtaiwan.com/#organization"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+886-922-140-496",
+          "contactType": "舞龍舞獅與文化演出洽詢",
+          "areaServed": "TW",
+          "availableLanguage": [
+            "zh-Hant",
+            "zh-TW"
+          ]
+        },
+        "hasOfferCatalog": {
+          "@id": "https://nansiengtaiwan.com/#performance-service-catalog"
+        }
+      },
+      {
+        "@type": "PerformingGroup",
+        "@id": "https://nansiengtaiwan.com/#performinggroup",
+        "name": "臺灣南仙龍獅體育會",
+        "alternateName": "Taiwan Nan Sieng Dragon & Lion Dance Activity Centre",
+        "url": "https://nansiengtaiwan.com/",
+        "description": "以舞龍舞獅、醒獅表演、戰鼓演出與傳統文化活動為核心的台灣文化演出團隊，服務商業活動、廟會慶典、開幕典禮與節慶展演。",
+        "image": {
+          "@id": "https://nansiengtaiwan.com/#primary-brand-image"
+        },
+        "sameAs": [
+          "https://www.facebook.com/p/%E8%87%BA%E5%8C%97%E5%BE%B7%E5%8B%9D%E8%88%98%E8%87%BA%E7%81%A3%E5%8D%97%E4%BB%99%E9%BE%8D%E7%8D%85%E9%AB%94%E8%82%B2%E6%9C%83-61556516607768/"
+        ],
+        "genre": [
+          "舞龍舞獅",
+          "醒獅表演",
+          "戰鼓演出",
+          "傳統文化活動"
+        ],
+        "keywords": "舞龍舞獅, 醒獅表演, 戰鼓演出, 商業活動演出, 廟會演出, 開幕活動, 節慶表演, 台灣傳統文化表演",
+        "areaServed": {
+          "@type": "Country",
+          "name": "台灣"
+        },
+        "memberOf": {
+          "@id": "https://nansiengtaiwan.com/#organization"
+        },
+        "hasOfferCatalog": {
+          "@id": "https://nansiengtaiwan.com/#performance-service-catalog"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://nansiengtaiwan.com/#website",
+        "url": "https://nansiengtaiwan.com/",
+        "name": "臺灣南仙龍獅體育會官方網站",
+        "alternateName": "Taiwan Nan Sieng Dragon & Lion Dance Activity Centre",
+        "inLanguage": "zh-Hant",
+        "publisher": {
+          "@id": "https://nansiengtaiwan.com/#organization"
+        }
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "https://nansiengtaiwan.com/#primary-brand-image",
+        "url": "https://nansiengtaiwan.com/images/og-lion-dance.jpg",
+        "contentUrl": "https://nansiengtaiwan.com/images/og-lion-dance.jpg",
+        "width": 1477,
+        "height": 1108,
+        "caption": "臺灣南仙龍獅體育會醒獅與舞龍舞獅表演現場",
+        "name": "臺灣南仙龍獅體育會醒獅與舞龍舞獅表演現場",
+        "creator": {
+          "@id": "https://nansiengtaiwan.com/#organization"
+        },
+        "creditText": "臺灣南仙龍獅體育會"
+      },
+      {
+        "@type": "OfferCatalog",
+        "@id": "https://nansiengtaiwan.com/#performance-service-catalog",
+        "name": "舞龍舞獅與傳統文化演出服務",
         "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "首頁",
-                "item": "https://nansiengtaiwan.com/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "活動案例",
-                "item": "https://nansiengtaiwan.com/gallery.html"
-            },
-            {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "展演服務",
-                "item": "https://nansiengtaiwan.com/gallery-performance.html"
+          {
+            "@type": "Offer",
+            "position": 1,
+            "itemOffered": {
+              "@id": "https://nansiengtaiwan.com/services.html#service-commercial-event-performance"
             }
+          },
+          {
+            "@type": "Offer",
+            "position": 2,
+            "itemOffered": {
+              "@id": "https://nansiengtaiwan.com/services.html#service-opening-ceremony-performance"
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 3,
+            "itemOffered": {
+              "@id": "https://nansiengtaiwan.com/services.html#service-temple-festival-performance"
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 4,
+            "itemOffered": {
+              "@id": "https://nansiengtaiwan.com/services.html#service-festival-performance"
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 5,
+            "itemOffered": {
+              "@id": "https://nansiengtaiwan.com/services.html#service-dragon-dance-performance"
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 6,
+            "itemOffered": {
+              "@id": "https://nansiengtaiwan.com/services.html#service-lion-dance-performance"
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 7,
+            "itemOffered": {
+              "@id": "https://nansiengtaiwan.com/services.html#service-war-drum-performance"
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 8,
+            "itemOffered": {
+              "@id": "https://nansiengtaiwan.com/services.html#service-folk-cultural-performance"
+            }
+          }
         ]
-    }
-}
+      },
+      {
+        "@type": "Service",
+        "@id": "https://nansiengtaiwan.com/services.html#service-commercial-event-performance",
+        "name": "商業活動演出",
+        "serviceType": "商業活動演出",
+        "category": "Event Performance",
+        "description": "為品牌活動、企業年會、商場展演與重要場合安排醒獅、舞龍、戰鼓與綜合演出。",
+        "url": "https://nansiengtaiwan.com/services.html",
+        "image": "https://nansiengtaiwan.com/images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E9%96%8B%E5%B9%95%E7%86%B1%E5%A0%B4.jpg",
+        "provider": {
+          "@id": "https://nansiengtaiwan.com/#performinggroup"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "台灣"
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "商業活動、廟會慶典、開幕典禮、節慶活動與文化展演主辦單位"
+        }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://nansiengtaiwan.com/services.html#service-opening-ceremony-performance",
+        "name": "開幕活動演出",
+        "serviceType": "開幕活動",
+        "category": "Opening Ceremony Performance",
+        "description": "適合開幕剪綵、店面開幕、品牌開工與工程典禮，以醒獅採青與戰鼓節奏建立儀式感。",
+        "url": "https://nansiengtaiwan.com/services.html",
+        "image": "https://nansiengtaiwan.com/images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E7%A5%A5%E7%8D%85%E9%96%8B%E5%B8%82.jpg",
+        "provider": {
+          "@id": "https://nansiengtaiwan.com/#performinggroup"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "台灣"
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "商業活動、廟會慶典、開幕典禮、節慶活動與文化展演主辦單位"
+        }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://nansiengtaiwan.com/services.html#service-temple-festival-performance",
+        "name": "廟會演出",
+        "serviceType": "廟會演出",
+        "category": "Temple Festival Performance",
+        "description": "結合舞龍舞獅、戰鼓與民俗藝陣，服務宮廟慶典、神明祝壽、進香遶境與地方節慶。",
+        "url": "https://nansiengtaiwan.com/services.html",
+        "image": "https://nansiengtaiwan.com/images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85%E6%88%B0%E9%BC%93%E7%B9%9E%E5%A2%83.jpg",
+        "provider": {
+          "@id": "https://nansiengtaiwan.com/#performinggroup"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "台灣"
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "商業活動、廟會慶典、開幕典禮、節慶活動與文化展演主辦單位"
+        }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://nansiengtaiwan.com/services.html#service-festival-performance",
+        "name": "節慶表演",
+        "serviceType": "節慶表演",
+        "category": "Festival Performance",
+        "description": "為春節、周年慶、城市活動與觀光節慶安排具文化厚度與現場能量的傳統文化表演。",
+        "url": "https://nansiengtaiwan.com/services.html",
+        "image": "https://nansiengtaiwan.com/images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/101%E9%96%8B%E6%98%A5%E6%BC%94%E5%87%BA%E7%A5%A5%E7%8D%85%E8%B7%B3%E9%AB%98%E6%A8%81.jpg",
+        "provider": {
+          "@id": "https://nansiengtaiwan.com/#performinggroup"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "台灣"
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "商業活動、廟會慶典、開幕典禮、節慶活動與文化展演主辦單位"
+        }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://nansiengtaiwan.com/services.html#service-dragon-dance-performance",
+        "name": "舞龍演出",
+        "serviceType": "舞龍演出",
+        "category": "Dragon Dance Performance",
+        "description": "以祥龍搶珠、多尾龍陣與戶外大型動線呈現壯闊的台灣舞龍舞獅團隊演出。",
+        "url": "https://nansiengtaiwan.com/services.html",
+        "image": "https://nansiengtaiwan.com/images/%E7%A5%A5%E9%BE%8D%E6%90%B6%E7%8F%A0.jpg",
+        "provider": {
+          "@id": "https://nansiengtaiwan.com/#performinggroup"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "台灣"
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "商業活動、廟會慶典、開幕典禮、節慶活動與文化展演主辦單位"
+        }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://nansiengtaiwan.com/services.html#service-lion-dance-performance",
+        "name": "醒獅表演",
+        "serviceType": "醒獅表演",
+        "category": "Lion Dance Performance",
+        "description": "提供傳統醒獅、祥獅獻瑞、採青互動、梅花樁獅與大型活動舞獅表演。",
+        "url": "https://nansiengtaiwan.com/services.html",
+        "image": "https://nansiengtaiwan.com/images/%E7%A5%A5%E7%8D%85%E7%8D%BB%E7%91%9E.JPG",
+        "provider": {
+          "@id": "https://nansiengtaiwan.com/#performinggroup"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "台灣"
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "商業活動、廟會慶典、開幕典禮、節慶活動與文化展演主辦單位"
+        }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://nansiengtaiwan.com/services.html#service-war-drum-performance",
+        "name": "戰鼓表演",
+        "serviceType": "戰鼓演出",
+        "category": "Drum Performance",
+        "description": "以雷鳴戰鼓、大同鼓與鼓陣節奏作為典禮開場、品牌發布與節慶活動的強勢開場。",
+        "url": "https://nansiengtaiwan.com/services.html",
+        "image": "https://nansiengtaiwan.com/images/%E9%9B%B7%E9%B3%B4%E6%88%B0%E9%BC%93.jpg",
+        "provider": {
+          "@id": "https://nansiengtaiwan.com/#performinggroup"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "台灣"
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "商業活動、廟會慶典、開幕典禮、節慶活動與文化展演主辦單位"
+        }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://nansiengtaiwan.com/services.html#service-folk-cultural-performance",
+        "name": "民俗藝陣與傳統文化活動",
+        "serviceType": "傳統文化活動",
+        "category": "Traditional Cultural Performance",
+        "description": "整合電音三太子、文武財神、民俗藝陣與龍獅文化，呈現傳統而現代的文化演出。",
+        "url": "https://nansiengtaiwan.com/services.html",
+        "image": "https://nansiengtaiwan.com/images/%E6%B0%91%E4%BF%97%E8%97%9D%E9%99%A3-%E8%AE%8A%E8%87%89.jpg",
+        "provider": {
+          "@id": "https://nansiengtaiwan.com/#performinggroup"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "台灣"
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "商業活動、廟會慶典、開幕典禮、節慶活動與文化展演主辦單位"
+        }
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "https://nansiengtaiwan.com/gallery-performance.html#primaryimage",
+        "url": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E7%AF%80%E7%9B%AE%E9%8C%84%E5%BD%B1.jpg",
+        "contentUrl": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E7%AF%80%E7%9B%AE%E9%8C%84%E5%BD%B1.jpg",
+        "name": "南仙龍獅節目錄影展演服務",
+        "caption": "南仙龍獅節目錄影展演服務",
+        "representativeOfPage": true,
+        "creator": {
+          "@id": "https://nansiengtaiwan.com/#organization"
+        },
+        "creditText": "臺灣南仙龍獅體育會"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://nansiengtaiwan.com/gallery-performance.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "首頁",
+            "item": "https://nansiengtaiwan.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "活動案例",
+            "item": "https://nansiengtaiwan.com/gallery.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "展演服務",
+            "item": "https://nansiengtaiwan.com/gallery-performance.html"
+          }
+        ]
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "https://nansiengtaiwan.com/gallery-performance.html#image-1",
+        "url": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E7%AF%80%E7%9B%AE%E9%8C%84%E5%BD%B1.jpg",
+        "contentUrl": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E7%AF%80%E7%9B%AE%E9%8C%84%E5%BD%B1.jpg",
+        "thumbnailUrl": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E7%AF%80%E7%9B%AE%E9%8C%84%E5%BD%B1.jpg",
+        "name": "南仙龍獅節目錄影展演服務",
+        "caption": "南仙龍獅節目錄影展演服務",
+        "description": "南仙龍獅節目錄影展演服務，臺灣南仙龍獅體育會活動案例攝影。",
+        "inLanguage": "zh-Hant",
+        "creator": {
+          "@id": "https://nansiengtaiwan.com/#organization"
+        },
+        "creditText": "臺灣南仙龍獅體育會"
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "https://nansiengtaiwan.com/gallery-performance.html#image-2",
+        "url": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E5%BB%A3%E5%91%8A%E6%94%9D%E5%BD%B1.jpg",
+        "contentUrl": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E5%BB%A3%E5%91%8A%E6%94%9D%E5%BD%B1.jpg",
+        "thumbnailUrl": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E5%BB%A3%E5%91%8A%E6%94%9D%E5%BD%B1.jpg",
+        "name": "龍獅表演廣告攝影活動",
+        "caption": "龍獅表演廣告攝影活動",
+        "description": "龍獅表演廣告攝影活動，臺灣南仙龍獅體育會活動案例攝影。",
+        "inLanguage": "zh-Hant",
+        "creator": {
+          "@id": "https://nansiengtaiwan.com/#organization"
+        },
+        "creditText": "臺灣南仙龍獅體育會"
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "https://nansiengtaiwan.com/gallery-performance.html#image-3",
+        "url": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E6%B3%B0%E5%B1%B1%E7%8D%85%E7%8E%8B%E6%96%87%E5%8C%96%E7%A5%AD.jpg",
+        "contentUrl": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E6%B3%B0%E5%B1%B1%E7%8D%85%E7%8E%8B%E6%96%87%E5%8C%96%E7%A5%AD.jpg",
+        "thumbnailUrl": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E6%B3%B0%E5%B1%B1%E7%8D%85%E7%8E%8B%E6%96%87%E5%8C%96%E7%A5%AD.jpg",
+        "name": "泰山獅王文化祭醒獅演出",
+        "caption": "泰山獅王文化祭醒獅演出",
+        "description": "泰山獅王文化祭醒獅演出，臺灣南仙龍獅體育會活動案例攝影。",
+        "inLanguage": "zh-Hant",
+        "creator": {
+          "@id": "https://nansiengtaiwan.com/#organization"
+        },
+        "creditText": "臺灣南仙龍獅體育會"
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "https://nansiengtaiwan.com/gallery-performance.html#image-4",
+        "url": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%81%8A%E8%A1%8C%E6%B4%BB%E5%8B%95%E5%B7%A8%E7%8D%85%E9%81%8A%E8%A1%97.jpg",
+        "contentUrl": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%81%8A%E8%A1%8C%E6%B4%BB%E5%8B%95%E5%B7%A8%E7%8D%85%E9%81%8A%E8%A1%97.jpg",
+        "thumbnailUrl": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%81%8A%E8%A1%8C%E6%B4%BB%E5%8B%95%E5%B7%A8%E7%8D%85%E9%81%8A%E8%A1%97.jpg",
+        "name": "遊行活動巨獅遊街展演服務",
+        "caption": "遊行活動巨獅遊街展演服務",
+        "description": "遊行活動巨獅遊街展演服務，臺灣南仙龍獅體育會活動案例攝影。",
+        "inLanguage": "zh-Hant",
+        "creator": {
+          "@id": "https://nansiengtaiwan.com/#organization"
+        },
+        "creditText": "臺灣南仙龍獅體育會"
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "https://nansiengtaiwan.com/gallery-performance.html#image-5",
+        "url": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E5%9C%9F%E5%9C%B0%E5%85%AC%E7%A5%9D%E5%A3%BD%E7%A4%BE%E5%8D%80%E6%B4%BB%E5%8B%95%E6%88%B0%E9%BC%93%E8%A1%A8%E6%BC%94.jpg",
+        "contentUrl": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E5%9C%9F%E5%9C%B0%E5%85%AC%E7%A5%9D%E5%A3%BD%E7%A4%BE%E5%8D%80%E6%B4%BB%E5%8B%95%E6%88%B0%E9%BC%93%E8%A1%A8%E6%BC%94.jpg",
+        "thumbnailUrl": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E5%9C%9F%E5%9C%B0%E5%85%AC%E7%A5%9D%E5%A3%BD%E7%A4%BE%E5%8D%80%E6%B4%BB%E5%8B%95%E6%88%B0%E9%BC%93%E8%A1%A8%E6%BC%94.jpg",
+        "name": "土地公祝壽社區活動戰鼓表演",
+        "caption": "土地公祝壽社區活動戰鼓表演",
+        "description": "土地公祝壽社區活動戰鼓表演，臺灣南仙龍獅體育會活動案例攝影。",
+        "inLanguage": "zh-Hant",
+        "creator": {
+          "@id": "https://nansiengtaiwan.com/#organization"
+        },
+        "creditText": "臺灣南仙龍獅體育會"
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "https://nansiengtaiwan.com/gallery-performance.html#image-6",
+        "url": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%97%9C%E5%85%AC%E6%96%87%E5%8C%96%E7%A5%AD.jpg",
+        "contentUrl": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%97%9C%E5%85%AC%E6%96%87%E5%8C%96%E7%A5%AD.jpg",
+        "thumbnailUrl": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%97%9C%E5%85%AC%E6%96%87%E5%8C%96%E7%A5%AD.jpg",
+        "name": "關公文化祭龍獅展演服務",
+        "caption": "關公文化祭龍獅展演服務",
+        "description": "關公文化祭龍獅展演服務，臺灣南仙龍獅體育會活動案例攝影。",
+        "inLanguage": "zh-Hant",
+        "creator": {
+          "@id": "https://nansiengtaiwan.com/#organization"
+        },
+        "creditText": "臺灣南仙龍獅體育會"
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "https://nansiengtaiwan.com/gallery-performance.html#image-7",
+        "url": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E4%B8%96%E5%A3%AF%E9%81%8B%E9%96%89%E5%B9%95%E5%85%B8%E7%A6%AE.jpg",
+        "contentUrl": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E4%B8%96%E5%A3%AF%E9%81%8B%E9%96%89%E5%B9%95%E5%85%B8%E7%A6%AE.jpg",
+        "thumbnailUrl": "https://nansiengtaiwan.com/images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E4%B8%96%E5%A3%AF%E9%81%8B%E9%96%89%E5%B9%95%E5%85%B8%E7%A6%AE.jpg",
+        "name": "世壯運閉幕典禮文化表演",
+        "caption": "世壯運閉幕典禮文化表演",
+        "description": "世壯運閉幕典禮文化表演，臺灣南仙龍獅體育會活動案例攝影。",
+        "inLanguage": "zh-Hant",
+        "creator": {
+          "@id": "https://nansiengtaiwan.com/#organization"
+        },
+        "creditText": "臺灣南仙龍獅體育會"
+      },
+      {
+        "@type": "ImageGallery",
+        "@id": "https://nansiengtaiwan.com/gallery-performance.html#webpage",
+        "url": "https://nansiengtaiwan.com/gallery-performance.html",
+        "name": "展演服務案例｜舞台演出・節目錄影・品牌合作",
+        "description": "南仙展演服務案例涵蓋舞台演出、節目錄影、廣告拍攝與品牌合作，以專業舞龍舞獅團隊呈現具文化厚度的視覺演出。",
+        "inLanguage": "zh-Hant",
+        "isPartOf": {
+          "@id": "https://nansiengtaiwan.com/#website"
+        },
+        "publisher": {
+          "@id": "https://nansiengtaiwan.com/#organization"
+        },
+        "about": [
+          {
+            "@id": "https://nansiengtaiwan.com/#performinggroup"
+          },
+          {
+            "@id": "https://nansiengtaiwan.com/#localbusiness"
+          },
+          {
+            "@type": "Thing",
+            "name": "舞台展演與品牌合作"
+          }
+        ],
+        "primaryImageOfPage": {
+          "@id": "https://nansiengtaiwan.com/gallery-performance.html#primaryimage"
+        },
+        "breadcrumb": {
+          "@id": "https://nansiengtaiwan.com/gallery-performance.html#breadcrumb"
+        },
+        "mainEntity": {
+          "@type": "ItemList",
+          "@id": "https://nansiengtaiwan.com/gallery-performance.html#image-list",
+          "name": "展演服務活動案例照片",
+          "numberOfItems": 7,
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@id": "https://nansiengtaiwan.com/gallery-performance.html#image-1"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@id": "https://nansiengtaiwan.com/gallery-performance.html#image-2"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@id": "https://nansiengtaiwan.com/gallery-performance.html#image-3"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "item": {
+                "@id": "https://nansiengtaiwan.com/gallery-performance.html#image-4"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "item": {
+                "@id": "https://nansiengtaiwan.com/gallery-performance.html#image-5"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 6,
+              "item": {
+                "@id": "https://nansiengtaiwan.com/gallery-performance.html#image-6"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 7,
+              "item": {
+                "@id": "https://nansiengtaiwan.com/gallery-performance.html#image-7"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
   </script>
 </head>
 <body>
   <div class="page-shell">
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="回到首頁">
-        <img src="images/lion-icon-white.png" class="brand-logo" width="40" height="40" alt="臺灣南仙龍獅體育會會徽" loading="lazy" decoding="async">
+        <img src="images/lion-icon-white-80.webp" class="brand-logo" width="40" height="40" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span class="brand-text">
           <strong>臺灣南仙龍獅體育會</strong>
           <small>Taiwan Nan Sieng Dragon &amp; Lion Dance Activity Centre</small>
         </span>
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <button class="nav-toggle" type="button" aria-label="開啟主要導覽" aria-expanded="false" aria-controls="site-nav">
         <span></span>
         <span></span>
       </button>
@@ -107,13 +698,13 @@
           </div>
         </div>
         <div class="album-grid reveal" aria-label="展演服務照片">
-          <button class="album-photo" type="button" data-album-photo data-lightbox-src="images/展演服務/節目錄影.jpg" aria-label="展演服務照片 1"><img src="images/展演服務/節目錄影.jpg" alt="南仙龍獅節目錄影展演服務" loading="lazy" decoding="async"></button>
-          <button class="album-photo" type="button" data-album-photo data-lightbox-src="images/展演服務/廣告攝影.jpg" aria-label="展演服務照片 2"><img src="images/展演服務/廣告攝影.jpg" alt="龍獅表演廣告攝影活動" loading="lazy" decoding="async"></button>
-          <button class="album-photo" type="button" data-album-photo data-lightbox-src="images/展演服務/泰山獅王文化祭.jpg" aria-label="展演服務照片 3"><img src="images/展演服務/泰山獅王文化祭.jpg" alt="泰山獅王文化祭醒獅演出" loading="lazy" decoding="async"></button>
-          <button class="album-photo" type="button" data-album-photo data-lightbox-src="images/展演服務/遊行活動巨獅遊街.jpg" aria-label="展演服務照片 4"><img src="images/展演服務/遊行活動巨獅遊街.jpg" alt="遊行活動巨獅遊街展演服務" loading="lazy" decoding="async"></button>
-          <button class="album-photo" type="button" data-album-photo data-lightbox-src="images/展演服務/土地公祝壽社區活動戰鼓表演.jpg" aria-label="展演服務照片 5"><img src="images/展演服務/土地公祝壽社區活動戰鼓表演.jpg" alt="土地公祝壽社區活動戰鼓表演" loading="lazy" decoding="async"></button>
-          <button class="album-photo" type="button" data-album-photo data-lightbox-src="images/展演服務/關公文化祭.jpg" aria-label="展演服務照片 6"><img src="images/展演服務/關公文化祭.jpg" alt="關公文化祭龍獅展演服務" loading="lazy" decoding="async"></button>
-          <button class="album-photo" type="button" data-album-photo data-lightbox-src="images/展演服務/世壯運閉幕典禮.jpg" aria-label="展演服務照片 7"><img src="images/展演服務/世壯運閉幕典禮.jpg" alt="世壯運閉幕典禮文化表演" loading="lazy" decoding="async"></button>
+          <button class="album-photo" type="button" data-album-photo data-lightbox-src="images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E7%AF%80%E7%9B%AE%E9%8C%84%E5%BD%B1-1440.webp" aria-label="放大檢視：南仙龍獅節目錄影展演服務"><img src="images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E7%AF%80%E7%9B%AE%E9%8C%84%E5%BD%B1-720.webp" srcset="images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E7%AF%80%E7%9B%AE%E9%8C%84%E5%BD%B1-720.webp 720w, images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E7%AF%80%E7%9B%AE%E9%8C%84%E5%BD%B1-1440.webp 1440w" sizes="(max-width: 760px) 92vw, 720px" alt="南仙龍獅節目錄影展演服務" loading="lazy" decoding="async"></button>
+          <button class="album-photo" type="button" data-album-photo data-lightbox-src="images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E5%BB%A3%E5%91%8A%E6%94%9D%E5%BD%B1-1440.webp" aria-label="放大檢視：龍獅表演廣告攝影活動"><img src="images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E5%BB%A3%E5%91%8A%E6%94%9D%E5%BD%B1-720.webp" srcset="images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E5%BB%A3%E5%91%8A%E6%94%9D%E5%BD%B1-720.webp 720w, images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E5%BB%A3%E5%91%8A%E6%94%9D%E5%BD%B1-1440.webp 1440w" sizes="(max-width: 760px) 92vw, 720px" alt="龍獅表演廣告攝影活動" loading="lazy" decoding="async"></button>
+          <button class="album-photo" type="button" data-album-photo data-lightbox-src="images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E6%B3%B0%E5%B1%B1%E7%8D%85%E7%8E%8B%E6%96%87%E5%8C%96%E7%A5%AD-1440.webp" aria-label="放大檢視：泰山獅王文化祭醒獅演出"><img src="images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E6%B3%B0%E5%B1%B1%E7%8D%85%E7%8E%8B%E6%96%87%E5%8C%96%E7%A5%AD-720.webp" srcset="images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E6%B3%B0%E5%B1%B1%E7%8D%85%E7%8E%8B%E6%96%87%E5%8C%96%E7%A5%AD-720.webp 720w, images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E6%B3%B0%E5%B1%B1%E7%8D%85%E7%8E%8B%E6%96%87%E5%8C%96%E7%A5%AD-1440.webp 1440w" sizes="(max-width: 760px) 92vw, 720px" alt="泰山獅王文化祭醒獅演出" loading="lazy" decoding="async"></button>
+          <button class="album-photo" type="button" data-album-photo data-lightbox-src="images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%81%8A%E8%A1%8C%E6%B4%BB%E5%8B%95%E5%B7%A8%E7%8D%85%E9%81%8A%E8%A1%97-1440.webp" aria-label="放大檢視：遊行活動巨獅遊街展演服務"><img src="images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%81%8A%E8%A1%8C%E6%B4%BB%E5%8B%95%E5%B7%A8%E7%8D%85%E9%81%8A%E8%A1%97-720.webp" srcset="images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%81%8A%E8%A1%8C%E6%B4%BB%E5%8B%95%E5%B7%A8%E7%8D%85%E9%81%8A%E8%A1%97-720.webp 720w, images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%81%8A%E8%A1%8C%E6%B4%BB%E5%8B%95%E5%B7%A8%E7%8D%85%E9%81%8A%E8%A1%97-1440.webp 1440w" sizes="(max-width: 760px) 92vw, 720px" alt="遊行活動巨獅遊街展演服務" loading="lazy" decoding="async"></button>
+          <button class="album-photo" type="button" data-album-photo data-lightbox-src="images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E5%9C%9F%E5%9C%B0%E5%85%AC%E7%A5%9D%E5%A3%BD%E7%A4%BE%E5%8D%80%E6%B4%BB%E5%8B%95%E6%88%B0%E9%BC%93%E8%A1%A8%E6%BC%94-1440.webp" aria-label="放大檢視：土地公祝壽社區活動戰鼓表演"><img src="images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E5%9C%9F%E5%9C%B0%E5%85%AC%E7%A5%9D%E5%A3%BD%E7%A4%BE%E5%8D%80%E6%B4%BB%E5%8B%95%E6%88%B0%E9%BC%93%E8%A1%A8%E6%BC%94-720.webp" srcset="images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E5%9C%9F%E5%9C%B0%E5%85%AC%E7%A5%9D%E5%A3%BD%E7%A4%BE%E5%8D%80%E6%B4%BB%E5%8B%95%E6%88%B0%E9%BC%93%E8%A1%A8%E6%BC%94-720.webp 720w, images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E5%9C%9F%E5%9C%B0%E5%85%AC%E7%A5%9D%E5%A3%BD%E7%A4%BE%E5%8D%80%E6%B4%BB%E5%8B%95%E6%88%B0%E9%BC%93%E8%A1%A8%E6%BC%94-1440.webp 1440w" sizes="(max-width: 760px) 92vw, 720px" alt="土地公祝壽社區活動戰鼓表演" loading="lazy" decoding="async"></button>
+          <button class="album-photo" type="button" data-album-photo data-lightbox-src="images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%97%9C%E5%85%AC%E6%96%87%E5%8C%96%E7%A5%AD-1440.webp" aria-label="放大檢視：關公文化祭龍獅展演服務"><img src="images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%97%9C%E5%85%AC%E6%96%87%E5%8C%96%E7%A5%AD-720.webp" srcset="images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%97%9C%E5%85%AC%E6%96%87%E5%8C%96%E7%A5%AD-720.webp 720w, images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%97%9C%E5%85%AC%E6%96%87%E5%8C%96%E7%A5%AD-1440.webp 1440w" sizes="(max-width: 760px) 92vw, 720px" alt="關公文化祭龍獅展演服務" loading="lazy" decoding="async"></button>
+          <button class="album-photo" type="button" data-album-photo data-lightbox-src="images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E4%B8%96%E5%A3%AF%E9%81%8B%E9%96%89%E5%B9%95%E5%85%B8%E7%A6%AE-1440.webp" aria-label="放大檢視：世壯運閉幕典禮文化表演"><img src="images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E4%B8%96%E5%A3%AF%E9%81%8B%E9%96%89%E5%B9%95%E5%85%B8%E7%A6%AE-720.webp" srcset="images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E4%B8%96%E5%A3%AF%E9%81%8B%E9%96%89%E5%B9%95%E5%85%B8%E7%A6%AE-720.webp 720w, images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E4%B8%96%E5%A3%AF%E9%81%8B%E9%96%89%E5%B9%95%E5%85%B8%E7%A6%AE-1440.webp 1440w" sizes="(max-width: 760px) 92vw, 720px" alt="世壯運閉幕典禮文化表演" loading="lazy" decoding="async"></button>
         </div>
       </section>
     </main>
@@ -125,7 +716,7 @@
           <p>Taiwan Nan Sieng Dragon &amp; Lion Dance Activity Centre</p>
           <p>以深厚傳統功底結合舞台藝術與視覺力，呈現莊嚴、熱烈且富有文化精神的專業演出。</p>
           <div class="footer-socials">
-            <a href="https://www.facebook.com/p/%E8%87%BA%E5%8C%97%E5%BE%B7%E5%8B%9D%E8%88%98%E8%87%BA%E7%81%A3%E5%8D%97%E4%BB%99%E9%BE%8D%E7%8D%85%E9%AB%94%E8%82%B2%E6%9C%83-61556516607768/" target="_blank" rel="noreferrer" aria-label="Facebook">f</a>
+            <a href="https://www.facebook.com/p/%E8%87%BA%E5%8C%97%E5%BE%B7%E5%8B%9D%E8%88%98%E8%87%BA%E7%81%A3%E5%8D%97%E4%BB%99%E9%BE%8D%E7%8D%85%E9%AB%94%E8%82%B2%E6%9C%83-61556516607768/" target="_blank" rel="noreferrer" aria-label="前往臺灣南仙龍獅體育會 Facebook 粉絲專頁">f</a>
           </div>
         </div>
         <div class="footer-links">
@@ -154,10 +745,10 @@
     </footer>
   </div>
   <div class="album-lightbox" data-album-lightbox aria-hidden="true">
-    <button class="album-lightbox-close" type="button" data-album-lightbox-close aria-label="關閉">✕</button>
+    <button class="album-lightbox-close" type="button" data-album-lightbox-close aria-label="關閉照片放大檢視">✕</button>
     <img data-album-lightbox-image alt="展演服務活動案例照片放大檢視" decoding="async">
     <div class="album-lightbox-placeholder" aria-hidden="true"></div>
   </div>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

@@ -196,11 +196,12 @@
   align-content: start;
 }
 
-.service-mega-group h3 {
+.service-mega-group .mega-heading {
   margin: 0 0 6px;
   font-family: var(--font-display-serif);
   font-size: 1.08rem;
   letter-spacing: 0.08em;
+  font-weight: 700;
 }
 
 .service-mega-group a {

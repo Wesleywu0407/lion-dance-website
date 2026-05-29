@@ -332,55 +332,55 @@
 .case-category-card:nth-child(1) {
   background:
     linear-gradient(180deg, rgba(24, 12, 7, 0.24), rgba(24, 12, 7, 0.72)),
-    url("../../images/開幕開工/開幕熱場.jpg") center/cover;
+    image-set(url("../../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E9%96%8B%E5%B9%95%E7%86%B1%E5%A0%B4-720.webp") 1x, url("../../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E9%96%8B%E5%B9%95%E7%86%B1%E5%A0%B4-1440.webp") 2x) center/cover;
 }
 
 .case-category-card:nth-child(2) {
   background:
     linear-gradient(180deg, rgba(24, 12, 7, 0.24), rgba(24, 12, 7, 0.72)),
-    url("../../images/春酒尾牙/尾牙活動.jpg") center/cover;
+    image-set(url("../../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%99%E6%B4%BB%E5%8B%95-720.webp") 1x, url("../../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%99%E6%B4%BB%E5%8B%95-1440.webp") 2x) center/cover;
 }
 
 .case-category-card:nth-child(3) {
   background:
     linear-gradient(180deg, rgba(24, 12, 7, 0.24), rgba(24, 12, 7, 0.72)),
-    url("../../images/觀光表演/吉首國際鼓文化節.jpg") center/cover;
+    image-set(url("../../images/%E8%A7%80%E5%85%89%E8%A1%A8%E6%BC%94/%E5%90%89%E9%A6%96%E5%9C%8B%E9%9A%9B%E9%BC%93%E6%96%87%E5%8C%96%E7%AF%80-720.webp") 1x, url("../../images/%E8%A7%80%E5%85%89%E8%A1%A8%E6%BC%94/%E5%90%89%E9%A6%96%E5%9C%8B%E9%9A%9B%E9%BC%93%E6%96%87%E5%8C%96%E7%AF%80-1440.webp") 2x) center/cover;
 }
 
 .case-category-card:nth-child(4) {
   background:
     linear-gradient(180deg, rgba(24, 12, 7, 0.24), rgba(24, 12, 7, 0.72)),
-    url("../../images/追思儀式/靈獅4.jpg") center/cover;
+    image-set(url("../../images/%E8%BF%BD%E6%80%9D%E5%84%80%E5%BC%8F/%E9%9D%88%E7%8D%854-720.webp") 1x, url("../../images/%E8%BF%BD%E6%80%9D%E5%84%80%E5%BC%8F/%E9%9D%88%E7%8D%854-1440.webp") 2x) center/cover;
 }
 
 .case-category-card:nth-child(5) {
   background:
     linear-gradient(180deg, rgba(24, 12, 7, 0.24), rgba(24, 12, 7, 0.72)),
-    url("../../images/動土上樑/動土開場戰鼓.jpg") center/cover;
+    image-set(url("../../images/%E5%8B%95%E5%9C%9F%E4%B8%8A%E6%A8%91/%E5%8B%95%E5%9C%9F%E9%96%8B%E5%A0%B4%E6%88%B0%E9%BC%93-720.webp") 1x, url("../../images/%E5%8B%95%E5%9C%9F%E4%B8%8A%E6%A8%91/%E5%8B%95%E5%9C%9F%E9%96%8B%E5%A0%B4%E6%88%B0%E9%BC%93-1440.webp") 2x) center/cover;
 }
 
 .case-category-card:nth-child(6) {
   background:
     linear-gradient(180deg, rgba(24, 12, 7, 0.24), rgba(24, 12, 7, 0.72)),
-    url("../../images/百貨春節周年慶/101開春演出祥獅跳高樁.jpg") center/cover;
+    image-set(url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/101%E9%96%8B%E6%98%A5%E6%BC%94%E5%87%BA%E7%A5%A5%E7%8D%85%E8%B7%B3%E9%AB%98%E6%A8%81-720.webp") 1x, url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/101%E9%96%8B%E6%98%A5%E6%BC%94%E5%87%BA%E7%A5%A5%E7%8D%85%E8%B7%B3%E9%AB%98%E6%A8%81-1440.webp") 2x) center/cover;
 }
 
 .case-category-card:nth-child(7) {
   background:
     linear-gradient(180deg, rgba(24, 12, 7, 0.24), rgba(24, 12, 7, 0.72)),
-    url("../../images/廟會繞境祝壽/祥獅戰鼓繞境.jpg") center/cover;
+    image-set(url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85%E6%88%B0%E9%BC%93%E7%B9%9E%E5%A2%83-720.webp") 1x, url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85%E6%88%B0%E9%BC%93%E7%B9%9E%E5%A2%83-1440.webp") 2x) center/cover;
 }
 
 .case-category-card:nth-child(8) {
   background:
     linear-gradient(180deg, rgba(24, 12, 7, 0.24), rgba(24, 12, 7, 0.72)),
-    url("../../images/學校社團企業教學/2026香港龍獅節.jpg") center/cover;
+    image-set(url("../../images/%E5%AD%B8%E6%A0%A1%E7%A4%BE%E5%9C%98%E4%BC%81%E6%A5%AD%E6%95%99%E5%AD%B8/2026%E9%A6%99%E6%B8%AF%E9%BE%8D%E7%8D%85%E7%AF%80-720.webp") 1x, url("../../images/%E5%AD%B8%E6%A0%A1%E7%A4%BE%E5%9C%98%E4%BC%81%E6%A5%AD%E6%95%99%E5%AD%B8/2026%E9%A6%99%E6%B8%AF%E9%BE%8D%E7%8D%85%E7%AF%80-1440.webp") 2x) center/cover;
 }
 
 .case-category-card:nth-child(9) {
   background:
     linear-gradient(180deg, rgba(24, 12, 7, 0.24), rgba(24, 12, 7, 0.72)),
-    url("../../images/展演服務/遊行活動巨獅遊街.jpg") center/cover;
+    image-set(url("../../images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%81%8A%E8%A1%8C%E6%B4%BB%E5%8B%95%E5%B7%A8%E7%8D%85%E9%81%8A%E8%A1%97-720.webp") 1x, url("../../images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%81%8A%E8%A1%8C%E6%B4%BB%E5%8B%95%E5%B7%A8%E7%8D%85%E9%81%8A%E8%A1%97-1440.webp") 2x) center/cover;
 }
 
 .case-category-card > * {
@@ -1018,55 +1018,55 @@ body.is-lightbox-open {
   .case-category-card:nth-child(1) {
     background:
       linear-gradient(180deg, rgba(24, 12, 7, 0.28), rgba(24, 12, 7, 0.74)),
-      url("../../images/開幕開工/開幕熱場.jpg") center/cover;
+      image-set(url("../../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E9%96%8B%E5%B9%95%E7%86%B1%E5%A0%B4-720.webp") 1x, url("../../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E9%96%8B%E5%B9%95%E7%86%B1%E5%A0%B4-1440.webp") 2x) center/cover;
   }
 
   .case-category-card:nth-child(2) {
     background:
       linear-gradient(180deg, rgba(24, 12, 7, 0.28), rgba(24, 12, 7, 0.74)),
-      url("../../images/春酒尾牙/尾牙活動.jpg") center/cover;
+      image-set(url("../../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%99%E6%B4%BB%E5%8B%95-720.webp") 1x, url("../../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%99%E6%B4%BB%E5%8B%95-1440.webp") 2x) center/cover;
   }
 
   .case-category-card:nth-child(3) {
     background:
       linear-gradient(180deg, rgba(24, 12, 7, 0.28), rgba(24, 12, 7, 0.74)),
-      url("../../images/觀光表演/吉首國際鼓文化節.jpg") center/cover;
+      image-set(url("../../images/%E8%A7%80%E5%85%89%E8%A1%A8%E6%BC%94/%E5%90%89%E9%A6%96%E5%9C%8B%E9%9A%9B%E9%BC%93%E6%96%87%E5%8C%96%E7%AF%80-720.webp") 1x, url("../../images/%E8%A7%80%E5%85%89%E8%A1%A8%E6%BC%94/%E5%90%89%E9%A6%96%E5%9C%8B%E9%9A%9B%E9%BC%93%E6%96%87%E5%8C%96%E7%AF%80-1440.webp") 2x) center/cover;
   }
 
   .case-category-card:nth-child(4) {
     background:
       linear-gradient(180deg, rgba(24, 12, 7, 0.28), rgba(24, 12, 7, 0.74)),
-      url("../../images/追思儀式/靈獅4.jpg") center/cover;
+      image-set(url("../../images/%E8%BF%BD%E6%80%9D%E5%84%80%E5%BC%8F/%E9%9D%88%E7%8D%854-720.webp") 1x, url("../../images/%E8%BF%BD%E6%80%9D%E5%84%80%E5%BC%8F/%E9%9D%88%E7%8D%854-1440.webp") 2x) center/cover;
   }
 
   .case-category-card:nth-child(5) {
     background:
       linear-gradient(180deg, rgba(24, 12, 7, 0.28), rgba(24, 12, 7, 0.74)),
-      url("../../images/動土上樑/動土開場戰鼓.jpg") center/cover;
+      image-set(url("../../images/%E5%8B%95%E5%9C%9F%E4%B8%8A%E6%A8%91/%E5%8B%95%E5%9C%9F%E9%96%8B%E5%A0%B4%E6%88%B0%E9%BC%93-720.webp") 1x, url("../../images/%E5%8B%95%E5%9C%9F%E4%B8%8A%E6%A8%91/%E5%8B%95%E5%9C%9F%E9%96%8B%E5%A0%B4%E6%88%B0%E9%BC%93-1440.webp") 2x) center/cover;
   }
 
   .case-category-card:nth-child(6) {
     background:
       linear-gradient(180deg, rgba(24, 12, 7, 0.28), rgba(24, 12, 7, 0.74)),
-      url("../../images/百貨春節周年慶/101開春演出祥獅跳高樁.jpg") center/cover;
+      image-set(url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/101%E9%96%8B%E6%98%A5%E6%BC%94%E5%87%BA%E7%A5%A5%E7%8D%85%E8%B7%B3%E9%AB%98%E6%A8%81-720.webp") 1x, url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/101%E9%96%8B%E6%98%A5%E6%BC%94%E5%87%BA%E7%A5%A5%E7%8D%85%E8%B7%B3%E9%AB%98%E6%A8%81-1440.webp") 2x) center/cover;
   }
 
   .case-category-card:nth-child(7) {
     background:
       linear-gradient(180deg, rgba(24, 12, 7, 0.28), rgba(24, 12, 7, 0.74)),
-      url("../../images/廟會繞境祝壽/祥獅戰鼓繞境.jpg") center/cover;
+      image-set(url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85%E6%88%B0%E9%BC%93%E7%B9%9E%E5%A2%83-720.webp") 1x, url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85%E6%88%B0%E9%BC%93%E7%B9%9E%E5%A2%83-1440.webp") 2x) center/cover;
   }
 
   .case-category-card:nth-child(8) {
     background:
       linear-gradient(180deg, rgba(24, 12, 7, 0.28), rgba(24, 12, 7, 0.74)),
-      url("../../images/學校社團企業教學/2026香港龍獅節.jpg") center/cover;
+      image-set(url("../../images/%E5%AD%B8%E6%A0%A1%E7%A4%BE%E5%9C%98%E4%BC%81%E6%A5%AD%E6%95%99%E5%AD%B8/2026%E9%A6%99%E6%B8%AF%E9%BE%8D%E7%8D%85%E7%AF%80-720.webp") 1x, url("../../images/%E5%AD%B8%E6%A0%A1%E7%A4%BE%E5%9C%98%E4%BC%81%E6%A5%AD%E6%95%99%E5%AD%B8/2026%E9%A6%99%E6%B8%AF%E9%BE%8D%E7%8D%85%E7%AF%80-1440.webp") 2x) center/cover;
   }
 
   .case-category-card:nth-child(9) {
     background:
       linear-gradient(180deg, rgba(24, 12, 7, 0.28), rgba(24, 12, 7, 0.74)),
-      url("../../images/展演服務/遊行活動巨獅遊街.jpg") center/cover;
+      image-set(url("../../images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%81%8A%E8%A1%8C%E6%B4%BB%E5%8B%95%E5%B7%A8%E7%8D%85%E9%81%8A%E8%A1%97-720.webp") 1x, url("../../images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%81%8A%E8%A1%8C%E6%B4%BB%E5%8B%95%E5%B7%A8%E7%8D%85%E9%81%8A%E8%A1%97-1440.webp") 2x) center/cover;
   }
 }
 
@@ -1428,23 +1428,23 @@ body.is-lightbox-open {
   }
 
   .gallery-page .case-category-card:nth-child(1) {
-    background-image: url("../../images/開幕開工/開幕熱場.jpg");
+    background-image: image-set(url("../../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E9%96%8B%E5%B9%95%E7%86%B1%E5%A0%B4-720.webp") 1x, url("../../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E9%96%8B%E5%B9%95%E7%86%B1%E5%A0%B4-1440.webp") 2x);
   }
 
   .gallery-page .case-category-card:nth-child(4) {
-    background-image: url("../../images/追思儀式/靈獅4.jpg");
+    background-image: image-set(url("../../images/%E8%BF%BD%E6%80%9D%E5%84%80%E5%BC%8F/%E9%9D%88%E7%8D%854-720.webp") 1x, url("../../images/%E8%BF%BD%E6%80%9D%E5%84%80%E5%BC%8F/%E9%9D%88%E7%8D%854-1440.webp") 2x);
   }
 
   .gallery-page .case-category-card:nth-child(5) {
-    background-image: url("../../images/動土上樑/動土開場戰鼓.jpg");
+    background-image: image-set(url("../../images/%E5%8B%95%E5%9C%9F%E4%B8%8A%E6%A8%91/%E5%8B%95%E5%9C%9F%E9%96%8B%E5%A0%B4%E6%88%B0%E9%BC%93-720.webp") 1x, url("../../images/%E5%8B%95%E5%9C%9F%E4%B8%8A%E6%A8%91/%E5%8B%95%E5%9C%9F%E9%96%8B%E5%A0%B4%E6%88%B0%E9%BC%93-1440.webp") 2x);
   }
 
   .gallery-page .case-category-card:nth-child(8) {
-    background-image: url("../../images/學校社團企業教學/2026香港龍獅節.jpg");
+    background-image: image-set(url("../../images/%E5%AD%B8%E6%A0%A1%E7%A4%BE%E5%9C%98%E4%BC%81%E6%A5%AD%E6%95%99%E5%AD%B8/2026%E9%A6%99%E6%B8%AF%E9%BE%8D%E7%8D%85%E7%AF%80-720.webp") 1x, url("../../images/%E5%AD%B8%E6%A0%A1%E7%A4%BE%E5%9C%98%E4%BC%81%E6%A5%AD%E6%95%99%E5%AD%B8/2026%E9%A6%99%E6%B8%AF%E9%BE%8D%E7%8D%85%E7%AF%80-1440.webp") 2x);
   }
 
   .gallery-page .case-category-card:nth-child(9) {
-    background-image: url("../../images/展演服務/遊行活動巨獅遊街.jpg");
+    background-image: image-set(url("../../images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%81%8A%E8%A1%8C%E6%B4%BB%E5%8B%95%E5%B7%A8%E7%8D%85%E9%81%8A%E8%A1%97-720.webp") 1x, url("../../images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%81%8A%E8%A1%8C%E6%B4%BB%E5%8B%95%E5%B7%A8%E7%8D%85%E9%81%8A%E8%A1%97-1440.webp") 2x);
   }
 
   .gallery-page .case-category-card:nth-child(1) .card-num,
@@ -1575,35 +1575,35 @@ body.is-lightbox-open {
   }
 
   .gallery-page .case-category-card:nth-child(1) {
-    background-image: url("../../images/開幕開工/開幕熱場.jpg") !important;
+    background-image: image-set(url("../../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E9%96%8B%E5%B9%95%E7%86%B1%E5%A0%B4-720.webp") 1x, url("../../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E9%96%8B%E5%B9%95%E7%86%B1%E5%A0%B4-1440.webp") 2x) !important;
   }
 
   .gallery-page .case-category-card:nth-child(2) {
-    background-image: url("../../images/春酒尾牙/尾牙活動.jpg") !important;
+    background-image: image-set(url("../../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%99%E6%B4%BB%E5%8B%95-720.webp") 1x, url("../../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%99%E6%B4%BB%E5%8B%95-1440.webp") 2x) !important;
   }
 
   .gallery-page .case-category-card:nth-child(3) {
-    background-image: url("../../images/觀光表演/吉首國際鼓文化節.jpg") !important;
+    background-image: image-set(url("../../images/%E8%A7%80%E5%85%89%E8%A1%A8%E6%BC%94/%E5%90%89%E9%A6%96%E5%9C%8B%E9%9A%9B%E9%BC%93%E6%96%87%E5%8C%96%E7%AF%80-720.webp") 1x, url("../../images/%E8%A7%80%E5%85%89%E8%A1%A8%E6%BC%94/%E5%90%89%E9%A6%96%E5%9C%8B%E9%9A%9B%E9%BC%93%E6%96%87%E5%8C%96%E7%AF%80-1440.webp") 2x) !important;
   }
 
   .gallery-page .case-category-card:nth-child(4) {
-    background-image: url("../../images/追思儀式/靈獅4.jpg") !important;
+    background-image: image-set(url("../../images/%E8%BF%BD%E6%80%9D%E5%84%80%E5%BC%8F/%E9%9D%88%E7%8D%854-720.webp") 1x, url("../../images/%E8%BF%BD%E6%80%9D%E5%84%80%E5%BC%8F/%E9%9D%88%E7%8D%854-1440.webp") 2x) !important;
   }
 
   .gallery-page .case-category-card:nth-child(5) {
-    background-image: url("../../images/動土上樑/動土開場戰鼓.jpg") !important;
+    background-image: image-set(url("../../images/%E5%8B%95%E5%9C%9F%E4%B8%8A%E6%A8%91/%E5%8B%95%E5%9C%9F%E9%96%8B%E5%A0%B4%E6%88%B0%E9%BC%93-720.webp") 1x, url("../../images/%E5%8B%95%E5%9C%9F%E4%B8%8A%E6%A8%91/%E5%8B%95%E5%9C%9F%E9%96%8B%E5%A0%B4%E6%88%B0%E9%BC%93-1440.webp") 2x) !important;
   }
 
   .gallery-page .case-category-card:nth-child(6) {
-    background-image: url("../../images/百貨春節周年慶/101開春演出祥獅跳高樁.jpg") !important;
+    background-image: image-set(url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/101%E9%96%8B%E6%98%A5%E6%BC%94%E5%87%BA%E7%A5%A5%E7%8D%85%E8%B7%B3%E9%AB%98%E6%A8%81-720.webp") 1x, url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/101%E9%96%8B%E6%98%A5%E6%BC%94%E5%87%BA%E7%A5%A5%E7%8D%85%E8%B7%B3%E9%AB%98%E6%A8%81-1440.webp") 2x) !important;
   }
 
   .gallery-page .case-category-card:nth-child(7) {
-    background-image: url("../../images/廟會繞境祝壽/祥獅戰鼓繞境.jpg") !important;
+    background-image: image-set(url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85%E6%88%B0%E9%BC%93%E7%B9%9E%E5%A2%83-720.webp") 1x, url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85%E6%88%B0%E9%BC%93%E7%B9%9E%E5%A2%83-1440.webp") 2x) !important;
   }
 
   .gallery-page .case-category-card:nth-child(8) {
-    background-image: url("../../images/學校社團企業教學/2026香港龍獅節.jpg") !important;
+    background-image: image-set(url("../../images/%E5%AD%B8%E6%A0%A1%E7%A4%BE%E5%9C%98%E4%BC%81%E6%A5%AD%E6%95%99%E5%AD%B8/2026%E9%A6%99%E6%B8%AF%E9%BE%8D%E7%8D%85%E7%AF%80-720.webp") 1x, url("../../images/%E5%AD%B8%E6%A0%A1%E7%A4%BE%E5%9C%98%E4%BC%81%E6%A5%AD%E6%95%99%E5%AD%B8/2026%E9%A6%99%E6%B8%AF%E9%BE%8D%E7%8D%85%E7%AF%80-1440.webp") 2x) !important;
   }
 
   .gallery-page .case-category-card:nth-child(1) .card-num,
@@ -1683,22 +1683,22 @@ body.is-lightbox-open {
 }
 
 .gallery-page .case-category-card:nth-child(2) {
-  background-image: url("../../images/春酒尾牙/尾牙活動.jpg") !important;
+  background-image: image-set(url("../../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%99%E6%B4%BB%E5%8B%95-720.webp") 1x, url("../../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%99%E6%B4%BB%E5%8B%95-1440.webp") 2x) !important;
   padding-bottom: 0 !important;
 }
 
 .gallery-page .case-category-card:nth-child(3) {
-  background-image: url("../../images/觀光表演/吉首國際鼓文化節.jpg") !important;
+  background-image: image-set(url("../../images/%E8%A7%80%E5%85%89%E8%A1%A8%E6%BC%94/%E5%90%89%E9%A6%96%E5%9C%8B%E9%9A%9B%E9%BC%93%E6%96%87%E5%8C%96%E7%AF%80-720.webp") 1x, url("../../images/%E8%A7%80%E5%85%89%E8%A1%A8%E6%BC%94/%E5%90%89%E9%A6%96%E5%9C%8B%E9%9A%9B%E9%BC%93%E6%96%87%E5%8C%96%E7%AF%80-1440.webp") 2x) !important;
   padding-bottom: 0 !important;
 }
 
 .gallery-page .case-category-card:nth-child(6) {
-  background-image: url("../../images/百貨春節周年慶/101開春演出祥獅跳高樁.jpg") !important;
+  background-image: image-set(url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/101%E9%96%8B%E6%98%A5%E6%BC%94%E5%87%BA%E7%A5%A5%E7%8D%85%E8%B7%B3%E9%AB%98%E6%A8%81-720.webp") 1x, url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/101%E9%96%8B%E6%98%A5%E6%BC%94%E5%87%BA%E7%A5%A5%E7%8D%85%E8%B7%B3%E9%AB%98%E6%A8%81-1440.webp") 2x) !important;
   padding-bottom: 0 !important;
 }
 
 .gallery-page .case-category-card:nth-child(7) {
-  background-image: url("../../images/廟會繞境祝壽/祥獅戰鼓繞境.jpg") !important;
+  background-image: image-set(url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85%E6%88%B0%E9%BC%93%E7%B9%9E%E5%A2%83-720.webp") 1x, url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85%E6%88%B0%E9%BC%93%E7%B9%9E%E5%A2%83-1440.webp") 2x) !important;
   padding-bottom: 0 !important;
 }
 
@@ -1868,8 +1868,27 @@ body.is-lightbox-open {
   padding: 8px 0 0;
 }
 
+.gallery-page .case-summary-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.gallery-page .case-summary-actions .button {
+  min-width: 156px;
+}
+
 .gallery-page .site-footer {
   margin-top: 24px;
+}
+
+@media (max-width: 760px) {
+  .gallery-page .case-summary-actions .button {
+    width: 100%;
+    min-width: 0;
+  }
 }
 
 @media (min-width: 769px) {
