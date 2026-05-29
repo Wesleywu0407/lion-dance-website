@@ -415,7 +415,7 @@
 .service-item-link,
 .read-more,
 a.learn-more {
-  color: #B85042 !important;
+  color: var(--gold) !important;
   font-weight: 500;
   position: relative;
   display: inline-block;
@@ -431,7 +431,7 @@ a.learn-more::after {
   left: 0;
   width: 0;
   height: 1px;
-  background: #B85042;
+  background: var(--gold);
   transition: width 0.3s ease;
 }
 
@@ -440,12 +440,14 @@ a.learn-more:hover::after,
 .read-more:focus-visible::after,
 a.learn-more:focus-visible::after {
   width: 100%;
+  background: #a07d4f;
 }
 
 .read-more:hover,
 a.learn-more:hover,
 .read-more:focus-visible,
 a.learn-more:focus-visible {
+  color: #a07d4f !important;
   transform: translateX(4px);
 }
 

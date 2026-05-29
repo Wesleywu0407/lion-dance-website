@@ -172,8 +172,14 @@
 }
 
 .hero .button-primary {
-  background: #B85042;
-  color: #fff;
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.hero .button-primary:hover,
+.hero .button-primary:focus-visible {
+  background: #a07d4f;
+  color: var(--ink);
 }
 
 .hero .button-secondary {

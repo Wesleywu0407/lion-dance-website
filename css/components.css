@@ -21,28 +21,32 @@
 }
 
 .button-primary {
-  background: linear-gradient(180deg, #984438, #8f3a2f);
-  color: #fffaf4;
-  box-shadow: 0 10px 22px rgba(143, 58, 47, 0.14);
+  background: var(--gold);
+  color: var(--ink);
+  box-shadow: 0 10px 22px rgba(185, 146, 94, 0.18);
   border-color: rgba(249, 239, 226, 0.14);
 }
 
 .btn-primary {
-  background: #B85042;
-  color: #fff;
+  background: var(--gold);
+  color: var(--ink);
   border: none;
   padding: 16px 40px;
   font-size: 1.1rem;
   letter-spacing: 0.1em;
-  box-shadow: 0 4px 20px rgba(184, 80, 66, 0.35);
+  box-shadow: 0 4px 20px rgba(185, 146, 94, 0.35);
   transition: all 0.3s ease;
   cursor: pointer;
 }
 
+.button-primary:hover,
+.button-primary:focus-visible,
 .btn-primary:hover,
 .btn-primary:focus-visible {
+  background: #a07d4f;
+  color: var(--ink);
   transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(184, 80, 66, 0.5);
+  box-shadow: 0 8px 28px rgba(160, 125, 79, 0.42);
 }
 
 .button-secondary {
