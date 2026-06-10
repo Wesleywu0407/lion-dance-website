@@ -86,12 +86,13 @@
     right: 18px;
     z-index: 2;
     display: inline-block;
-    flex: 0 0 48px;
+    flex: 0 0 auto;
     transform: translateY(-50%);
-    border-color: #9b3f2f;
-    color: #3b2118;
-    background: rgba(251, 247, 241, 0.94);
-    box-shadow: 0 10px 22px rgba(22, 19, 17, 0.08);
+    border: none;
+    border-radius: 0;
+    color: var(--ink);
+    background: transparent;
+    box-shadow: none;
   }
 
   .nav-toggle span {
@@ -99,9 +100,10 @@
   }
 
   .home-page .site-header:not(.scrolled) .nav-toggle {
-    border-color: #9b3f2f;
-    color: #3b2118;
-    background: rgba(251, 247, 241, 0.9);
+    border: none;
+    color: var(--ink);
+    background: transparent;
+    box-shadow: none;
   }
 
   .home-page .site-header:not(.scrolled) .nav-toggle span {

@@ -272,20 +272,23 @@ body.is-nav-open::after {
 
 .nav-toggle {
   display: none;
-  width: 48px;
-  height: 48px;
-  border: 1px solid rgba(22, 19, 17, 0.1);
-  border-radius: 14px;
-  background: rgba(251, 247, 241, 0.9);
+  width: auto;
+  height: auto;
+  padding: 8px;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
   cursor: pointer;
 }
 
 .nav-toggle span {
   display: block;
-  width: 18px;
+  width: 22px;
   height: 2px;
   margin: 0 auto;
   background: var(--ink);
+  border-radius: 0;
 }
 
 .nav-toggle span + span {
