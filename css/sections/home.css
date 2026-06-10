@@ -534,6 +534,49 @@
   max-width: 16ch;
 }
 
+/* ── 服務範疇 SEO 介紹段落 ──────────────────────────────── */
+
+.home-seo-intro {
+  padding-top: 0;
+  padding-bottom: 120px;
+}
+
+.seo-intro-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 64px;
+  align-items: start;
+}
+
+.seo-intro-heading {
+  margin: 0;
+  padding: 10px 18px 12px;
+  font-family: var(--font-display-serif);
+  font-weight: 900;
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+}
+
+.seo-intro-body p {
+  margin: 0 0 1.4rem;
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+  line-height: 2;
+  text-align: left;
+}
+
+.seo-intro-body p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 1100px) {
+  .seo-intro-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
 /* ── 如何邀請南仙：流程區塊 ────────────────────────────── */
 
 .process-invite {
