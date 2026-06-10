@@ -696,3 +696,305 @@
     font-size: clamp(2rem, 10vw, 2.8rem);
   }
 }
+
+/* ======================================================
+   手機版首頁重設計 (max-width: 760px)
+   - 全部以 .home-page 為作用域，不污染其他頁
+   - 目標：打破奶茶感、拔掉膠囊按鈕、左對齊、強化層次
+   ====================================================== */
+@media (max-width: 760px) {
+
+  /* ── A. 背景分層：三段明暗交替 ────────────────────
+     Hero(深色圖) → 關於(近白) → 服務/流程(暖米)
+     ──────────────────────────────────────────────── */
+
+  /* 把 .section 的寬度限制解除，讓色塊可以滿版 */
+  .home-page .home-narrative,
+  .home-page .home-seo-intro,
+  .home-page .process-invite {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+
+  /* 關於區 → 近白，給文字呼吸空間 */
+  .home-page .home-narrative {
+    background: #fbf9f5;
+    padding-top: 60px;
+    padding-bottom: 68px;
+  }
+
+  /* 服務範疇 → 承接暖米，與流程視覺合併 */
+  .home-page .home-seo-intro {
+    background: #f4ede3;
+    padding-top: 48px;
+    padding-bottom: 52px;
+  }
+
+  /* 流程區 → 暖米，與服務範疇連成一氣 */
+  .home-page .process-invite {
+    background: #f4ede3;
+    padding-top: 52px;
+    padding-bottom: 72px;
+  }
+
+  /* ── B. CTA 按鈕重做 ────────────────────────────
+     主按鈕：朱紅、直角、滿版
+     次按鈕：純文字 + 箭頭、靠左、無膠囊
+     ──────────────────────────────────────────────── */
+
+  /* Hero 按鈕容器已由 responsive.css 改為 display: grid，
+     這裡讓主按鈕滿版、次按鈕靠左縮回 */
+  .home-page .hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .home-page .process-invite-cta {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    margin-top: 36px;
+  }
+
+  /* 主按鈕：朱紅底、直角、白字 */
+  .home-page .hero-actions .button-primary,
+  .home-page .process-invite-cta .button-primary {
+    background: #a8321f;
+    color: #fff;
+    border-radius: 6px;
+    border: none;
+    min-width: 0;
+    width: 100%;
+    justify-content: center;
+    letter-spacing: 0.12em;
+    box-shadow: 0 4px 16px rgba(168, 50, 31, 0.3);
+  }
+
+  .home-page .hero-actions .button-primary:hover,
+  .home-page .hero-actions .button-primary:focus-visible,
+  .home-page .process-invite-cta .button-primary:hover,
+  .home-page .process-invite-cta .button-primary:focus-visible {
+    background: #8c2817;
+    transform: none;
+    box-shadow: 0 2px 10px rgba(168, 50, 31, 0.28);
+  }
+
+  /* 主按鈕角括號裝飾移除 */
+  .home-page .hero-actions .button-primary::before,
+  .home-page .hero-actions .button-primary::after,
+  .home-page .process-invite-cta .button-primary::before,
+  .home-page .process-invite-cta .button-primary::after {
+    display: none;
+  }
+
+  /* 次按鈕（hero 深色背景上）：白字、底線、靠左 */
+  .home-page .hero-actions .button-secondary {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(251, 249, 245, 0.45);
+    color: rgba(251, 249, 245, 0.88);
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 6px 0;
+    min-width: 0;
+    width: auto;
+    align-self: flex-start;
+    backdrop-filter: none;
+    justify-content: flex-start;
+    gap: 0;
+  }
+
+  .home-page .hero-actions .button-secondary:hover,
+  .home-page .hero-actions .button-secondary:focus-visible {
+    color: #fff;
+    border-bottom-color: rgba(251, 249, 245, 0.7);
+    transform: none;
+  }
+
+  /* 移除角括號，換成文字箭頭 */
+  .home-page .hero-actions .button-secondary::before {
+    display: none;
+  }
+
+  .home-page .hero-actions .button-secondary::after {
+    content: " →";
+    width: auto;
+    height: auto;
+    border: none;
+    opacity: 1;
+    font-size: inherit;
+    font-weight: 400;
+  }
+
+  /* ── C. Process 步驟精修 ────────────────────────
+     左大數字（半透明朱紅）+ 右內容 + 細線分隔
+     ──────────────────────────────────────────────── */
+
+  .home-page .process-invite-steps {
+    max-width: 100%;
+  }
+
+  .home-page .process-invite-step {
+    grid-template-columns: 56px 1fr;
+    gap: 0 20px;
+    padding: 22px 0;
+    border-top: 1px solid rgba(26, 20, 17, 0.11);
+    border-bottom: none;
+    align-items: start;
+  }
+
+  /* 第一個步驟不要上邊線 */
+  .home-page .process-invite-steps > .process-invite-step:first-child {
+    border-top: none;
+  }
+
+  /* 最後一個步驟加下邊線 */
+  .home-page .process-invite-step:last-child {
+    border-bottom: 1px solid rgba(26, 20, 17, 0.11);
+  }
+
+  /* 步驟大數字：半透明朱紅當視覺錨點 */
+  .home-page .step-num {
+    font-size: clamp(2.2rem, 10vw, 3rem);
+    color: rgba(168, 50, 31, 0.28);
+    line-height: 1;
+    padding-top: 2px;
+  }
+
+  .home-page .step-body {
+    padding-top: 0;
+  }
+
+  .home-page .step-body h3 {
+    font-size: 1.06rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+
+  .home-page .step-body p {
+    font-size: 0.94rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+  }
+
+  /* Process 區的 CTA 只剩主按鈕，樣式沿用 B 區已設 */
+  .home-page .process-invite-cta .button {
+    width: 100%;
+    min-width: 0;
+    border-radius: 6px;
+  }
+
+  /* ── D. Eyebrow 英文小標 ────────────────────────
+     在 .section-tag 上方注入 ABOUT / SERVICES / PROCESS
+     ──────────────────────────────────────────────── */
+
+  .home-page .home-narrative .section-tag::before {
+    content: "ABOUT";
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    font-weight: 700;
+    color: #a8321f;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .home-page .home-seo-intro .section-tag::before {
+    content: "SERVICES";
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    font-weight: 700;
+    color: #a8321f;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .home-page .process-invite .section-tag::before {
+    content: "PROCESS";
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    font-weight: 700;
+    color: #a8321f;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  /* ── E. 全面左對齊 ──────────────────────────────
+     hero 維持原本（不動）；其餘區塊全部靠左
+     ──────────────────────────────────────────────── */
+
+  .home-page .home-narrative,
+  .home-page .narrative-intro,
+  .home-page .narrative-copy,
+  .home-page .home-seo-intro,
+  .home-page .seo-intro-layout,
+  .home-page .seo-intro-header,
+  .home-page .seo-intro-body,
+  .home-page .process-invite,
+  .home-page .process-invite-header {
+    text-align: left;
+  }
+
+  /* narrative 已是單欄（1100px 斷點已處理），強化大標 */
+  .home-page .narrative-intro .narrative-heading {
+    font-size: clamp(2rem, 8vw, 2.6rem);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: 0.02em;
+    padding: 8px 12px 10px;
+  }
+
+  .home-page .narrative-copy p {
+    font-size: 1rem;
+    line-height: 1.85;
+    text-align: left;
+  }
+
+  /* process 標題大字 */
+  .home-page .process-heading {
+    font-size: clamp(2rem, 8vw, 2.6rem);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: 0.02em;
+    padding: 8px 12px 10px;
+  }
+
+  .home-page .process-invite-header {
+    margin-bottom: 28px;
+  }
+
+  /* seo-intro 標題 */
+  .home-page .seo-intro-heading {
+    font-size: clamp(1.8rem, 7vw, 2.4rem);
+    font-weight: 900;
+    line-height: 1.15;
+    padding: 8px 12px 10px;
+  }
+
+  .home-page .seo-intro-layout {
+    gap: 20px;
+  }
+
+  .home-page .seo-intro-body p {
+    font-size: 0.97rem;
+    line-height: 1.82;
+    text-align: left;
+  }
+
+}
