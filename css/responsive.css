@@ -328,9 +328,17 @@
 
   .hero-title-layer,
   .hero-title {
-    font-size: clamp(2.9rem, 14vw, 4.8rem);
-    letter-spacing: 0.06em;
+    max-width: calc(100vw - 56px);
+    font-size: clamp(3rem, 13.2vw, 4.55rem);
+    letter-spacing: 0.02em;
     line-height: 0.98;
+  }
+
+  .hero-title-layer span,
+  .hero-title span {
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: normal;
   }
 
   .hero-tagline {
