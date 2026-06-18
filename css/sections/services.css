@@ -835,6 +835,87 @@ a.learn-more:focus-visible {
   font-size: 0.96rem;
 }
 
+.about-service-summary {
+  position: relative;
+  width: min(100%, 980px);
+  margin: clamp(2rem, 4vw, 3rem) 0 clamp(2.2rem, 5vw, 3.5rem);
+  padding: clamp(2rem, 4vw, 3.5rem) 0 clamp(1.8rem, 4vw, 3rem) 24px;
+  border-left: 3px solid var(--gold);
+}
+
+.about-service-summary-head,
+.about-service-summary-body {
+  position: relative;
+  z-index: 1;
+}
+
+.about-service-summary h2 {
+  margin: 0;
+  max-width: 15em;
+  font-family: var(--font-display-serif);
+  font-size: clamp(1.9rem, 3.2vw, 3rem);
+  line-height: 1.16;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+}
+
+.about-service-summary-body {
+  margin-top: clamp(1.4rem, 3vw, 2.2rem);
+  padding-top: clamp(1.2rem, 2.5vw, 1.8rem);
+  border-top: 1px solid rgba(185, 146, 94, 0.22);
+}
+
+.about-service-summary-body p {
+  margin: 0;
+  max-width: 42rem;
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.2vw, 1.08rem);
+  line-height: 1.86;
+}
+
+.about-service-list {
+  list-style: none;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 24px;
+  max-width: 42rem;
+}
+
+.about-service-list li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: clamp(1.08rem, 1.5vw, 1.24rem);
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+}
+
+.about-service-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.about-service-list a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.about-service-list a:hover,
+.about-service-list a:focus-visible {
+  color: var(--gold);
+}
+
 @media (max-width: 980px) {
   .performance-diary {
     grid-template-columns: 1fr;
@@ -959,6 +1040,21 @@ a.learn-more:focus-visible {
     height: 36px;
     top: 16px;
     right: 16px;
+  }
+
+  .about-service-summary {
+    width: min(calc(100% - 40px), 980px);
+    margin: 1.5rem auto 2.2rem;
+    padding: 1.6rem 0 1.2rem 18px;
+  }
+
+  .about-service-summary h2 {
+    font-size: clamp(1.7rem, 7vw, 2.35rem);
+  }
+
+  .about-service-list {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 }
 
