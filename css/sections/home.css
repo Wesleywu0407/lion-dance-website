@@ -28,11 +28,13 @@
 }
 
 .home-page .site-header:not(.scrolled) .nav-toggle span {
-  background: var(--ink);
+  background: #FAECE7;
 }
 
 .home-page .section::before,
-.home-page :where(div, section, article).section-heading::after {
+.home-page :where(div,
+section,
+article).section-heading::after {
   content: none;
 }
 
@@ -115,7 +117,7 @@
 .hero-title {
   font-family: var(--font-display-serif);
   font-weight: 900;
-  font-size: clamp(4rem, 10vw, 8rem);
+  font-size: clamp(3.2rem, 8.4vw, 7rem);
   line-height: 0.94;
   letter-spacing: 0.04em;
 }
@@ -167,20 +169,19 @@
 
 .hero p,
 .hero .section-tag,
-.hero .hero-subtitle,
 .hero .hero-tagline {
   color: #FAECE7;
 }
 
 .hero .button-primary {
-  background: var(--gold);
-  color: var(--ink);
+  background: var(--accent);
+  color: #fff;
 }
 
 .hero .button-primary:hover,
 .hero .button-primary:focus-visible {
-  background: #a07d4f;
-  color: var(--ink);
+  background: var(--accent-deep);
+  color: #fff;
 }
 
 .hero .button-secondary {
@@ -205,13 +206,11 @@
   animation: fadeInUp 1.2s ease-out;
 }
 
-.hero .subtitle,
 .hero p {
   animation: fadeInUp 1.2s ease-out 0.3s backwards;
 }
 
-.hero .cta-group,
-.hero .buttons {
+.hero .cta-group {
   animation: fadeInUp 1.2s ease-out 0.6s backwards;
 }
 
@@ -226,9 +225,7 @@
   padding-bottom: 140px;
 }
 
-.home-narrative::after,
-.performance-language::after,
-.practical-conversion::after {
+.home-narrative::after {
   content: "";
   position: absolute;
   left: 0;
@@ -285,10 +282,6 @@
   bottom: 0;
 }
 
-.narrative-intro .section-lead {
-  margin-top: 1rem;
-}
-
 .narrative-copy {
   max-width: 44rem;
   padding-top: 0.5rem;
@@ -306,19 +299,6 @@
   margin-bottom: 0;
 }
 
-.manifesto-list {
-  display: grid;
-  gap: 24px;
-  align-content: start;
-}
-
-.manifesto-list article {
-  padding-top: 18px;
-  border-top: 1px solid rgba(185, 146, 94, 0.28);
-}
-
-.manifesto-list span,
-.language-index,
 .process-step span {
   display: inline-flex;
   margin-bottom: 10px;
@@ -328,211 +308,20 @@
   letter-spacing: 0.16em;
 }
 
-.manifesto-list h3,
-.conversion-column h3,
 .process-step h3 {
   margin: 0 0 8px;
   font-family: var(--font-serif);
   font-size: 1.32rem;
 }
 
-.manifesto-list p,
-.conversion-column p,
 .process-step p {
   margin: 0;
   color: var(--ink-soft);
 }
 
-.performance-language {
-  position: relative;
-}
-
-.language-flow {
-  display: grid;
-  gap: 10px;
-}
-
-.language-item {
-  display: grid;
-  grid-template-columns: 72px minmax(0, 1fr);
-  gap: 18px 26px;
-  align-items: end;
-  padding: 30px 0;
-  border-bottom: 1px solid rgba(185, 146, 94, 0.24);
-}
-
-.language-item:nth-child(even) {
-  margin-left: auto;
-  width: min(100%, 92%);
-}
-
-.language-item h3 {
-  margin: 0;
-  font-family: var(--font-calligraphy);
-  font-weight: 400;
-  font-size: clamp(2.4rem, 5vw, 4.6rem);
-  line-height: 1;
-  letter-spacing: 0.14em;
-}
-
-.language-item p {
-  margin: 0 0 0.3rem;
-  color: var(--ink-soft);
-  font-size: clamp(1rem, 1.8vw, 1.22rem);
-  letter-spacing: 0.06em;
-}
-
-.language-footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 18px;
-  margin-top: 28px;
-  color: var(--ink-soft);
-}
-
-.language-footer p {
-  margin: 0;
-  max-width: 40rem;
-}
-
-.identity-moment {
-  padding-top: 126px;
-  padding-bottom: 126px;
-}
-
-.identity-stage {
-  display: grid;
-  grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1fr);
-  gap: 72px;
-  align-items: center;
-}
-
-.identity-mark {
-  position: relative;
-  display: grid;
-  justify-items: center;
-  gap: 0.75rem;
-  padding: 3rem 0;
-  color: rgba(32, 25, 21, 0.92);
-  font-family: var(--font-calligraphy);
-  font-size: clamp(4.2rem, 10vw, 7.8rem);
-  line-height: 1;
-  letter-spacing: 0.18em;
-}
-
-.identity-mark::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 1px solid rgba(185, 146, 94, 0.24);
-  border-radius: 50%;
-}
-
-.identity-mark::after {
-  content: "";
-  position: absolute;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  width: 5.5rem;
-  height: 5.5rem;
-  border: 1px solid rgba(143, 58, 47, 0.45);
-  background: rgba(143, 58, 47, 0.03);
-}
-
-.identity-copy {
-  max-width: 38rem;
-}
-
-.identity-copy p:not(.section-tag) {
-  margin: 0;
-  color: var(--ink-soft);
-  font-size: 1.05rem;
-  line-height: 2;
-}
-
-.identity-words {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  margin-top: 2rem;
-}
-
-.identity-words span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 3.2rem;
-  height: 3.2rem;
-  border: 1px solid rgba(185, 146, 94, 0.24);
-  color: var(--accent-deep);
-  font-family: var(--font-serif);
-  font-size: 1.2rem;
-}
-
-.practical-conversion {
-  position: relative;
-}
-
-.conversion-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 34px;
-}
-
-.conversion-column {
-  padding-top: 18px;
-  border-top: 1px solid rgba(185, 146, 94, 0.32);
-}
-
-.conversion-column ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 12px;
-  color: var(--ink-soft);
-}
-
-.conversion-actions {
-  display: grid;
-  gap: 12px;
-  margin-top: 1.4rem;
-}
-
-.process-home {
-  padding-top: 92px;
-}
-
-.process-ribbon {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 24px;
-}
-
 .process-step {
   padding-top: 18px;
   border-top: 1px solid rgba(185, 146, 94, 0.26);
-}
-
-.contact-home {
-  padding-top: 90px;
-}
-
-.contact-home .cta-band {
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-}
-
-.contact-home .cta-band::before {
-  content: none;
-}
-
-.contact-home .cta-band h2 {
-  max-width: 16ch;
 }
 
 /* ── 服務範疇 SEO 介紹段落 ──────────────────────────────── */
@@ -551,12 +340,14 @@
 
 .seo-intro-heading {
   margin: 0;
-  padding: 10px 18px 12px;
+  padding: 10px 14px 12px;
   font-family: var(--font-display-serif);
   font-weight: 900;
-  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+  font-size: clamp(1.8rem, 2.5vw, 2.6rem);
   line-height: 1.2;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  width: fit-content;
 }
 
 .seo-intro-body p {
@@ -952,13 +743,13 @@
     text-align: left;
   }
 
-  /* narrative 已是單欄（1100px 斷點已處理），強化大標 */
+  /* narrative 已是單欄（1100px 斷點已處理），強化大標；字級須讓「傳承東方文化與傳統精神」單行放下 */
   .home-page .narrative-intro .narrative-heading {
-    font-size: clamp(2rem, 8vw, 2.6rem);
+    font-size: clamp(1.6rem, 7.2vw, 2.5rem);
     font-weight: 900;
-    line-height: 1.15;
+    line-height: 1.2;
     letter-spacing: 0.02em;
-    padding: 8px 12px 10px;
+    padding: 8px 8px 10px;
   }
 
   .home-page .narrative-copy p {
@@ -980,9 +771,9 @@
     margin-bottom: 28px;
   }
 
-  /* seo-intro 標題 */
+  /* seo-intro 標題：11 字須單行放下 */
   .home-page .seo-intro-heading {
-    font-size: clamp(1.8rem, 7vw, 2.4rem);
+    font-size: clamp(1.4rem, 6.6vw, 2.4rem);
     font-weight: 900;
     line-height: 1.15;
     padding: 8px 12px 10px;
@@ -998,4 +789,187 @@
     text-align: left;
   }
 
+}
+
+/* ── 信任背書列（hero 下方） ─────────────────────────── */
+
+.home-trust {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 56px 48px 8px;
+}
+
+.home-trust-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.home-trust-list li {
+  display: grid;
+  gap: 4px;
+  padding-left: 16px;
+  border-left: 3px solid var(--gold);
+}
+
+.home-trust-list strong {
+  font-family: var(--font-serif);
+  font-size: 1.16rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+}
+
+.home-trust-list span {
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.03em;
+}
+
+/* ── 表演項目照片牆（首頁） ──────────────────────────── */
+
+.home-show-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 56px;
+}
+
+.show-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 12px;
+  aspect-ratio: 4 / 3;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  background: var(--surface-soft);
+}
+
+.show-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.show-card:hover img,
+.show-card:focus-visible img {
+  transform: scale(1.05);
+}
+
+.show-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 46%, rgba(15, 11, 9, 0.78) 100%);
+  pointer-events: none;
+}
+
+.show-card-body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: grid;
+  gap: 2px;
+  padding: 18px 20px 16px;
+}
+
+.show-card-body strong {
+  font-family: var(--font-serif);
+  font-size: 1.22rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #fff;
+}
+
+.show-card-body span {
+  font-size: 0.84rem;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.seo-intro-footer {
+  margin-top: 44px;
+  max-width: 720px;
+}
+
+.seo-intro-footer p {
+  margin: 0 0 1.6rem;
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+  line-height: 2;
+  text-align: left;
+}
+
+/* ── 預約 CTA 補充 ───────────────────────────────────── */
+
+.process-invite-note {
+  margin: 18px 0 0;
+  font-size: 0.92rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+
+@media (max-width: 1100px) {
+  .home-trust-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .home-trust {
+    padding: 40px 20px 0;
+  }
+
+  .home-trust-list {
+    gap: 20px 16px;
+  }
+
+  .home-trust-list strong {
+    font-size: 1.02rem;
+  }
+
+  .home-trust-list span {
+    font-size: 0.82rem;
+  }
+
+  .home-show-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 36px;
+  }
+
+  .show-card {
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+  }
+
+  .show-card-body {
+    padding: 12px 14px 12px;
+  }
+
+  .show-card-body strong {
+    font-size: 1.02rem;
+    letter-spacing: 0.06em;
+  }
+
+  .show-card-body span {
+    font-size: 0.76rem;
+  }
+
+  .seo-intro-footer {
+    margin-top: 32px;
+  }
+
+  .seo-intro-footer .button {
+    width: 100%;
+  }
 }

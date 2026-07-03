@@ -635,13 +635,6 @@
   align-items: start;
 }
 
-.footer-seal {
-  display: block;
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-}
-
 .footer-brand h3 {
   margin: 22px 0 10px;
   font-family: "Noto Serif TC", serif;

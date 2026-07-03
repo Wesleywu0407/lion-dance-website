@@ -21,20 +21,20 @@
 }
 
 .button-primary {
-  background: var(--gold);
-  color: var(--ink);
-  box-shadow: 0 10px 22px rgba(185, 146, 94, 0.18);
-  border-color: rgba(249, 239, 226, 0.14);
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(143, 58, 47, 0.2);
+  border-color: rgba(143, 58, 47, 0.18);
 }
 
 .btn-primary {
-  background: var(--gold);
-  color: var(--ink);
+  background: var(--accent);
+  color: #fff;
   border: none;
   padding: 16px 40px;
   font-size: 1.1rem;
   letter-spacing: 0.1em;
-  box-shadow: 0 4px 20px rgba(185, 146, 94, 0.35);
+  box-shadow: 0 4px 20px rgba(143, 58, 47, 0.34);
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -43,10 +43,10 @@
 .button-primary:focus-visible,
 .btn-primary:hover,
 .btn-primary:focus-visible {
-  background: #a07d4f;
-  color: var(--ink);
+  background: var(--accent-deep);
+  color: #fff;
   transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(160, 125, 79, 0.42);
+  box-shadow: 0 8px 28px rgba(118, 49, 38, 0.42);
 }
 
 .button-secondary {
@@ -89,4 +89,72 @@
 
 .button::after {
   border-right: 1px solid currentColor;
+}
+
+/* LINE 品牌按鈕：台灣使用者最熟悉的洽詢入口 */
+.button-line {
+  background: #06c755;
+  color: #fff;
+  border-color: rgba(6, 199, 85, 0.4);
+  box-shadow: 0 10px 22px rgba(6, 199, 85, 0.22);
+}
+
+.button-line:hover,
+.button-line:focus-visible {
+  background: #05b34c;
+  color: #fff;
+  box-shadow: 0 8px 28px rgba(5, 179, 76, 0.34);
+}
+
+/* ── 手機快速聯絡列（script.js 注入，僅 ≤760px 顯示） ── */
+.quickbar {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .quickbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.2fr;
+    background: rgba(24, 19, 17, 0.96);
+    backdrop-filter: blur(10px);
+    padding-bottom: env(safe-area-inset-bottom);
+    box-shadow: 0 -6px 24px rgba(22, 19, 17, 0.28);
+  }
+
+  .quickbar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 14px 6px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .quickbar .quickbar-line {
+    color: #fff;
+    background: #06c755;
+  }
+
+  .quickbar .quickbar-book {
+    color: #fff;
+    background: var(--accent);
+  }
+
+  body.is-nav-open .quickbar,
+  body.is-lightbox-open .quickbar {
+    display: none;
+  }
+
+  body.has-quickbar .site-footer {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom));
+  }
 }

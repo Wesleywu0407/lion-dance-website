@@ -6,15 +6,28 @@ const siteNav = document.querySelector('.site-nav');
 const revealItems = document.querySelectorAll('.reveal');
 const hero = document.querySelector('.hero');
 const heroTransform = document.querySelector('[data-transform-title]');
-const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-const finePointerQuery = window.matchMedia('(pointer: fine)');
 const isHomePage = document.body.classList.contains('home-page');
 let lockedScrollY = 0;
 let scrollFrame = null;
+let isBodyScrollLocked = false;
 
 document.querySelectorAll('#current-year').forEach((year) => {
   year.textContent = new Date().getFullYear();
 });
+
+// 手機快速聯絡列：全站注入，CSS 控制僅在 ≤760px 顯示
+if (!document.querySelector('.quickbar')) {
+  const quickbar = document.createElement('nav');
+  quickbar.className = 'quickbar';
+  quickbar.setAttribute('aria-label', '快速聯絡');
+  quickbar.innerHTML = [
+    '<a class="quickbar-tel" href="tel:0922140496" aria-label="撥打電話 0922-140-496">撥打電話</a>',
+    '<a class="quickbar-line" href="https://line.me/ti/p/~lion6869" target="_blank" rel="noopener noreferrer" aria-label="加 LINE 洽詢演出">LINE 洽詢</a>',
+    '<a class="quickbar-book" href="/contact.html" aria-label="前往聯絡頁預約演出">預約演出</a>'
+  ].join('');
+  document.body.appendChild(quickbar);
+  document.body.classList.add('has-quickbar');
+}
 
 const syncHeader = () => {
   if (!header) {
@@ -67,7 +80,12 @@ window.addEventListener('scroll', requestScrollSync, { passive: true });
 window.addEventListener('resize', requestScrollSync);
 
 const lockBodyScroll = () => {
+  if (isBodyScrollLocked) {
+    return;
+  }
+
   lockedScrollY = window.scrollY;
+  isBodyScrollLocked = true;
   document.body.classList.add('is-nav-open');
   document.body.style.position = 'fixed';
   document.body.style.top = `-${lockedScrollY}px`;
@@ -77,12 +95,17 @@ const lockBodyScroll = () => {
 };
 
 const unlockBodyScroll = () => {
+  if (!isBodyScrollLocked && !document.body.classList.contains('is-nav-open')) {
+    return;
+  }
+
   document.body.classList.remove('is-nav-open');
   document.body.style.position = '';
   document.body.style.top = '';
   document.body.style.left = '';
   document.body.style.right = '';
   document.body.style.width = '';
+  isBodyScrollLocked = false;
   window.scrollTo(0, lockedScrollY);
 };
 
@@ -117,13 +140,14 @@ if (navToggle && siteNav) {
     navToggle.setAttribute('aria-expanded', String(isOpen));
     navToggle.setAttribute('aria-label', isOpen ? '關閉主要導覽' : '開啟主要導覽');
 
-    if (window.innerWidth <= 760) {
-      if (isOpen) {
-        lockBodyScroll();
-      } else {
-        unlockBodyScroll();
-        resetMobileNavState();
-      }
+    if (isOpen && window.innerWidth <= 760) {
+      lockBodyScroll();
+    } else {
+      unlockBodyScroll();
+    }
+
+    if (!isOpen && window.innerWidth <= 760) {
+      resetMobileNavState();
     }
   };
 
@@ -265,101 +289,6 @@ const motionAwareObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.service-item, .about-block').forEach((item) => {
   motionAwareObserver.observe(item);
-});
-
-if (hero && !reduceMotionQuery.matches && finePointerQuery.matches) {
-  let pointerTargetX = 0;
-  let pointerTargetY = 0;
-  let pointerCurrentX = 0;
-  let pointerCurrentY = 0;
-  let heroFrame = null;
-  let isPointerActive = false;
-
-  const animateHeroPointer = () => {
-    pointerCurrentX += (pointerTargetX - pointerCurrentX) * 0.08;
-    pointerCurrentY += (pointerTargetY - pointerCurrentY) * 0.08;
-
-    hero.style.setProperty('--hero-pointer-x', `${pointerCurrentX.toFixed(2)}px`);
-    hero.style.setProperty('--hero-pointer-y', `${pointerCurrentY.toFixed(2)}px`);
-
-    if (
-      isPointerActive ||
-      Math.abs(pointerTargetX - pointerCurrentX) > 0.05 ||
-      Math.abs(pointerTargetY - pointerCurrentY) > 0.05
-    ) {
-      heroFrame = window.requestAnimationFrame(animateHeroPointer);
-    } else {
-      heroFrame = null;
-    }
-  };
-
-  const requestHeroPointerFrame = () => {
-    if (!heroFrame) {
-      heroFrame = window.requestAnimationFrame(animateHeroPointer);
-    }
-  };
-
-  const updateHeroPointer = (event) => {
-    const rect = hero.getBoundingClientRect();
-    const offsetX = (event.clientX - rect.left) / rect.width - 0.5;
-    const offsetY = (event.clientY - rect.top) / rect.height - 0.5;
-
-    pointerTargetX = offsetX * 28;
-    pointerTargetY = offsetY * 18;
-    isPointerActive = true;
-    requestHeroPointerFrame();
-  };
-
-  const resetHeroPointer = () => {
-    pointerTargetX = 0;
-    pointerTargetY = 0;
-    isPointerActive = false;
-    requestHeroPointerFrame();
-  };
-
-  hero.addEventListener('pointermove', updateHeroPointer);
-  hero.addEventListener('pointerleave', resetHeroPointer);
-  hero.addEventListener('pointercancel', resetHeroPointer);
-
-  reduceMotionQuery.addEventListener('change', (event) => {
-    if (event.matches) {
-      if (heroFrame) {
-        window.cancelAnimationFrame(heroFrame);
-      }
-      heroFrame = null;
-      hero.style.setProperty('--hero-pointer-x', '0px');
-      hero.style.setProperty('--hero-pointer-y', '0px');
-    }
-  });
-}
-
-const flipCards = document.querySelectorAll('.service-card-flip');
-
-const toggleFlipCard = (card) => {
-  const willFlip = !card.classList.contains('is-flipped');
-
-  flipCards.forEach((item) => {
-    item.classList.remove('is-flipped');
-    item.setAttribute('aria-pressed', 'false');
-  });
-
-  if (willFlip) {
-    card.classList.add('is-flipped');
-    card.setAttribute('aria-pressed', 'true');
-  }
-};
-
-flipCards.forEach((card) => {
-  card.addEventListener('click', () => {
-    toggleFlipCard(card);
-  });
-
-  card.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      toggleFlipCard(card);
-    }
-  });
 });
 
 const processConsultation = document.querySelector('[data-process-consultation]');
@@ -593,88 +522,6 @@ if (albumLightbox) {
     if (event.key === 'Escape' && albumLightbox.classList.contains('is-open')) {
       closeAlbumLightbox();
     }
-  });
-}
-
-const caseCategoryCards = document.querySelectorAll('.case-category-card');
-
-if (caseCategoryCards.length) {
-  const sparkColors = ['#e84a4a', '#f5a623', '#f5c842', '#ff6b35', '#ffd700'];
-  const sparkTimers = new WeakMap();
-  const sparkState = new WeakMap();
-
-  const spawnCaseSparks = (card) => {
-    const firecracker = card.querySelector('.firecracker');
-
-    if (!firecracker) {
-      return;
-    }
-
-    const rect = firecracker.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    for (let index = 0; index < 10; index += 1) {
-      const particle = document.createElement('div');
-      const size = 4 + Math.random() * 5;
-      const angle = Math.random() * Math.PI * 2;
-      const distance = 20 + Math.random() * 40;
-      const offsetX = Math.cos(angle) * distance;
-      const offsetY = Math.sin(angle) * distance - 10;
-      const color = sparkColors[Math.floor(Math.random() * sparkColors.length)];
-
-      particle.className = 'spark-particle';
-      particle.style.width = `${size}px`;
-      particle.style.height = `${size}px`;
-      particle.style.left = `${centerX}px`;
-      particle.style.top = `${centerY}px`;
-      particle.style.background = color;
-      particle.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-      document.body.appendChild(particle);
-
-      particle.animate([
-        {
-          opacity: 1,
-          transform: 'translate(-50%, -50%) scale(1)'
-        },
-        {
-          opacity: 0,
-          transform: `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px)) scale(0)`
-        }
-      ], {
-        duration: 500 + Math.random() * 300,
-        easing: 'ease-out'
-      }).onfinish = () => {
-        particle.remove();
-      };
-    }
-  };
-
-  caseCategoryCards.forEach((card) => {
-    card.addEventListener('mouseenter', () => {
-      sparkState.set(card, false);
-
-      const timer = window.setTimeout(() => {
-        if (sparkState.get(card)) {
-          return;
-        }
-
-        spawnCaseSparks(card);
-        sparkState.set(card, true);
-      }, 350);
-
-      sparkTimers.set(card, timer);
-    });
-
-    card.addEventListener('mouseleave', () => {
-      const timer = sparkTimers.get(card);
-
-      if (timer) {
-        window.clearTimeout(timer);
-      }
-
-      sparkState.set(card, false);
-    });
   });
 }
 

@@ -261,13 +261,15 @@
   display: none;
 }
 
-body.is-nav-open::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(22, 19, 17, 0.22);
-  backdrop-filter: blur(2px);
-  z-index: 110;
+@media (max-width: 760px) {
+  body.is-nav-open::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(22, 19, 17, 0.22);
+    backdrop-filter: blur(2px);
+    z-index: 110;
+  }
 }
 
 .nav-toggle {
