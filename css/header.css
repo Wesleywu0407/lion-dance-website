@@ -119,6 +119,29 @@
   width: 70%;
 }
 
+/* 桌面版導覽的「聯絡我們」轉換入口：朱紅膠囊（最重要 CTA 才用朱紅） */
+@media (min-width: 761px) {
+  .site-nav > a[href$="contact.html"] {
+    padding: 10px 22px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(143, 58, 47, 0.24);
+    transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  }
+
+  .site-nav > a[href$="contact.html"]:hover,
+  .site-nav > a[href$="contact.html"]:focus-visible {
+    background: var(--accent-deep);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(118, 49, 38, 0.32);
+  }
+
+  .site-nav > a[href$="contact.html"]::after {
+    display: none;
+  }
+}
+
 .service-mega {
   position: absolute;
   top: calc(100% + 18px);

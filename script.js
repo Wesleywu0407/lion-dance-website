@@ -29,6 +29,78 @@ if (!document.querySelector('.quickbar')) {
   document.body.classList.add('has-quickbar');
 }
 
+// 聯絡表單送出後回跳 ?submitted=1：顯示成功訊息，避免使用者以為送出失敗
+const contactFormForNotice = document.querySelector('.contact-form');
+
+if (contactFormForNotice && new URLSearchParams(window.location.search).get('submitted') === '1') {
+  const successNotice = document.createElement('div');
+  successNotice.className = 'contact-success';
+  successNotice.setAttribute('role', 'status');
+  successNotice.innerHTML = [
+    '<strong>已收到您的洽詢！</strong>',
+    '<p>我們會盡快與您聯繫，您也會收到一封自動回覆信。若想更快確認檔期，歡迎直接加 LINE：<a href="https://line.me/ti/p/~lion6869" target="_blank" rel="noopener noreferrer">lion6869</a></p>'
+  ].join('');
+
+  const contactLayout = document.querySelector('.contact-layout');
+
+  if (contactLayout && contactLayout.parentElement) {
+    contactLayout.parentElement.insertBefore(successNotice, contactLayout);
+  } else {
+    contactFormForNotice.parentElement.insertBefore(successNotice, contactFormForNotice);
+  }
+
+  window.requestAnimationFrame(() => {
+    successNotice.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+}
+
+// Hero 輪播：首張維持預載不動（顧及 LCP），其餘照片等頁面載完才補上 src
+const heroSlideshow = document.querySelector('[data-hero-slides]');
+
+if (heroSlideshow && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const heroSlides = Array.from(heroSlideshow.querySelectorAll('.hero-slide'));
+
+  if (heroSlides.length > 1) {
+    let activeSlideIndex = 0;
+
+    const hydrateSlide = (slide) => {
+      if (slide.dataset.srcset) {
+        slide.srcset = slide.dataset.srcset;
+        slide.removeAttribute('data-srcset');
+      }
+
+      if (slide.dataset.src) {
+        slide.src = slide.dataset.src;
+        slide.removeAttribute('data-src');
+      }
+    };
+
+    const startHeroSlideshow = () => {
+      heroSlides.forEach(hydrateSlide);
+
+      window.setInterval(() => {
+        if (document.hidden) {
+          return;
+        }
+
+        heroSlides[activeSlideIndex].classList.remove('is-active');
+        activeSlideIndex = (activeSlideIndex + 1) % heroSlides.length;
+        heroSlides[activeSlideIndex].classList.add('is-active');
+      }, 6400);
+    };
+
+    const scheduleHeroSlideshow = () => {
+      window.setTimeout(startHeroSlideshow, 1800);
+    };
+
+    if (document.readyState === 'complete') {
+      scheduleHeroSlideshow();
+    } else {
+      window.addEventListener('load', scheduleHeroSlideshow, { once: true });
+    }
+  }
+}
+
 const syncHeader = () => {
   if (!header) {
     return;
@@ -265,7 +337,8 @@ if (navToggle && siteNav) {
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
-    if (entry.isIntersecting) {
+    // 已捲過視窗上緣的元素也直接顯示，避免快速捲動時內容永遠停留在透明狀態
+    if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
       entry.target.classList.add('is-visible');
       revealObserver.unobserve(entry.target);
     }
@@ -296,7 +369,7 @@ document.querySelectorAll('.contact-faq').forEach((faq) => {
 
 const motionAwareObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
-    if (!entry.isIntersecting) {
+    if (!entry.isIntersecting && entry.boundingClientRect.top >= 0) {
       return;
     }
 
@@ -566,7 +639,7 @@ if (albumLightbox) {
 
   const io = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
+      if (!entry.isIntersecting && entry.boundingClientRect.top >= 0) return;
 
       const phrase  = entry.target.querySelector('.ctb-phrase');
       const support = entry.target.querySelector('.ctb-support');

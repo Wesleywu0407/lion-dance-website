@@ -585,8 +585,11 @@
 
     <main id="main-content">
       <section class="hero" id="home" data-transform-title>
-        <div class="hero-photo">
-          <img src="/images/IMG_1799%202-720.webp" srcset="/images/IMG_1799%202-720.webp 720w, /images/IMG_1799%202-1440.webp 1440w" sizes="100vw" alt="臺灣南仙龍獅體育會紅色醒獅開幕舞獅表演" width="1477" height="1108" fetchpriority="high" decoding="async">
+        <div class="hero-photo" data-hero-slides>
+          <img class="hero-slide is-active" src="/images/IMG_1799%202-720.webp" srcset="/images/IMG_1799%202-720.webp 720w, /images/IMG_1799%202-1440.webp 1440w" sizes="100vw" alt="臺灣南仙龍獅體育會紅色醒獅開幕舞獅表演" width="1477" height="1108" fetchpriority="high" decoding="async">
+          <img class="hero-slide" data-src="/images/%E6%A2%85%E8%8A%B1%E6%A8%81%E7%8D%85-720.webp" data-srcset="/images/%E6%A2%85%E8%8A%B1%E6%A8%81%E7%8D%85-720.webp 720w, /images/%E6%A2%85%E8%8A%B1%E6%A8%81%E7%8D%85-1440.webp 1440w" sizes="100vw" alt="" aria-hidden="true" width="1440" height="775" decoding="async">
+          <img class="hero-slide" data-src="/images/%E7%A5%A5%E9%BE%8D%E6%90%B6%E7%8F%A0-720.webp" data-srcset="/images/%E7%A5%A5%E9%BE%8D%E6%90%B6%E7%8F%A0-720.webp 720w, /images/%E7%A5%A5%E9%BE%8D%E6%90%B6%E7%8F%A0-1440.webp 1440w" sizes="100vw" alt="" aria-hidden="true" width="1256" height="878" decoding="async">
+          <img class="hero-slide" data-src="/images/%E9%9B%B7%E9%B3%B4%E6%88%B0%E9%BC%93-hero-720.webp" data-srcset="/images/%E9%9B%B7%E9%B3%B4%E6%88%B0%E9%BC%93-hero-720.webp 720w, /images/%E9%9B%B7%E9%B3%B4%E6%88%B0%E9%BC%93-hero-1440.webp 1440w" sizes="100vw" alt="" aria-hidden="true" width="1440" height="848" decoding="async">
         </div>
         <div class="hero-backdrop"></div>
         <div class="hero-stage">
@@ -600,8 +603,9 @@
                 </h1>
               </div>
               <p class="hero-tagline">台北・全台專業舞龍舞獅與文化表演團隊</p>
+              <p class="hero-proof">2012 年創立・台北 101 開春演出・全台皆可出團</p>
               <div class="hero-actions cta-group">
-                <a class="button button-primary btn-primary" href="/pages/contact.html" aria-label="聯絡洽詢舞龍舞獅與醒獅表演">聯絡洽詢</a>
+                <a class="button button-line" href="https://line.me/ti/p/~lion6869" target="_blank" rel="noopener noreferrer" aria-label="加 LINE 洽詢舞龍舞獅演出檔期與報價">LINE 詢問檔期與報價</a>
                 <a class="button button-secondary btn-secondary" href="/pages/services.html" aria-label="了解臺灣南仙舞龍舞獅與戰鼓演出項目">了解演出項目</a>
               </div>
             </div>
@@ -782,7 +786,7 @@
 
       var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
-          if (!entry.isIntersecting) {
+          if (!entry.isIntersecting && entry.boundingClientRect.top >= 0) {
             return;
           }
 

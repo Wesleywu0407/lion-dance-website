@@ -113,6 +113,35 @@
   height: 26px;
 }
 
+/* 表單送出成功訊息（script.js 於 ?submitted=1 時注入） */
+.contact-success {
+  padding: 22px 26px;
+  border-left: 3px solid #06c755;
+  border-radius: 0 14px 14px 0;
+  background: linear-gradient(180deg, rgba(6, 199, 85, 0.08), rgba(6, 199, 85, 0.04));
+  text-align: left;
+}
+
+.contact-success strong {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-serif);
+  font-size: 1.16rem;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+
+.contact-success p {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.9;
+}
+
+.contact-success a {
+  color: #059a44;
+  font-weight: 700;
+}
+
 .contact-form {
   display: grid;
   gap: 22px;
@@ -536,6 +565,15 @@
     box-shadow: 0 10px 22px rgba(76, 29, 17, 0.04);
   }
 
+  .contact-page .contact-info article > div:last-child,
+  .contact-page .contact-channel.contact-card > div:last-child {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    gap: 10px;
+    min-width: 0;
+  }
+
   .contact-page .contact-line.contact-card {
     border-color: rgba(143, 58, 47, 0.2);
     background:
@@ -545,6 +583,14 @@
 
   .contact-page .contact-line article {
     display: contents;
+  }
+
+  .contact-page .contact-line article > div:last-child {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    gap: 10px;
+    min-width: 0;
   }
 
   .contact-page .contact-icon {
@@ -561,12 +607,14 @@
   .contact-page .contact-info span {
     margin-bottom: 2px;
     font-size: 0.88rem;
+    white-space: nowrap;
   }
 
   .contact-page .contact-info p {
     margin: 0;
     font-size: 0.94rem;
     line-height: 1.45;
+    white-space: nowrap;
   }
 
   .contact-page .contact-info p a,
@@ -577,6 +625,7 @@
   .contact-page .contact-info p a {
     display: inline-flex;
     align-items: center;
+    min-height: 0;
   }
 
   .contact-page .contact-form {
