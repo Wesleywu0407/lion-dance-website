@@ -495,7 +495,7 @@
   rebuild();
 
   // ============ 捲動主迴圈 ============
-  var target = 0, displayed = 0, time = 0, lastTs = 0, prevDisp = 0;
+  var target = 0, displayed = 0, time = 0, lastTs = 0;
   function readScroll() {
     var max = document.documentElement.scrollHeight - window.innerHeight;
     target = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
@@ -510,8 +510,6 @@
     displayed += (target - displayed) * LERP;
     if (Math.abs(target - displayed) < 0.0004) displayed = target;
     if (!reduced) time += dt;
-    prevDisp = displayed;
-
     var p = displayed;
     var introT = Math.min(1, p / INTRO_END);
     var runT = Math.max(0, (p - INTRO_END) / (1 - INTRO_END));
@@ -617,7 +615,7 @@
     get progress() { return displayed; },
     set target(v) { target = v; },
     get target() { return target; },
-    snap: function (v) { target = displayed = prevDisp = Math.min(1, Math.max(0, v)); }
+    snap: function (v) { target = displayed = Math.min(1, Math.max(0, v)); }
   };
 })();
 </script>
