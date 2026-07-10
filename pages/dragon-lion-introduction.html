@@ -25,9 +25,8 @@
   <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="../favicon-180.png">
   <meta name="theme-color" content="#f6f0e7">
-  <link rel="preload" as="image" href="../images/ink-lion-hero.jpg" fetchpriority="high">
   <link rel="stylesheet" href="../css/style.css?v=20260708-nav">
-  <link rel="stylesheet" href="../css/pages/dragon-lion-introduction.css?v=20260710-complete">
+  <link rel="stylesheet" href="../css/pages/dragon-lion-introduction.css?v=20260710-scroll">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -181,24 +180,27 @@
     </header>
 
     <main id="main-content" class="intro-main">
-      <section class="intro-feature" aria-labelledby="intro-feature-title">
-        <img
-          class="intro-feature-art"
-          src="../images/ink-lion-hero.jpg"
-          width="1490"
-          height="1055"
-          alt="以紅、白、黑水墨描繪的傳統南獅"
-          fetchpriority="high"
-          decoding="async"
-        >
-        <div class="intro-feature-copy">
-          <p class="intro-feature-kicker">舞龍舞獅文化</p>
-          <h1 id="intro-feature-title">舞龍舞獅介紹</h1>
-          <p class="intro-feature-lede">一頭醒獅，醒的是神采；一聲鼓響，迎的是祝福。從造型、步法與禮俗，看見龍獅文化裡的精神與生命力。</p>
-          <a class="intro-feature-link" href="#dragon-lion-difference">
-            認識舞龍與舞獅
-            <span aria-hidden="true">↓</span>
-          </a>
+      <section class="ink-scroll-space" data-ink-scroll aria-labelledby="intro-feature-title">
+        <div class="ink-scroll-stage">
+          <iframe
+            class="ink-scroll-frame"
+            src="./ink-dragon-scroll.html?embedded=1&amp;v=20260710"
+            title="水墨醒獅手卷動畫"
+            tabindex="-1"
+            aria-hidden="true"
+          ></iframe>
+          <noscript>
+            <img class="ink-scroll-fallback" src="../images/ink-lion-hero.jpg" width="1490" height="1055" alt="以紅、白、黑水墨描繪的傳統南獅">
+          </noscript>
+          <div class="ink-scroll-copy">
+            <p>DRAGON &amp; LION DANCE CULTURE</p>
+            <h1 id="intro-feature-title">舞龍舞獅介紹</h1>
+            <span>向下捲動，展開水墨手卷</span>
+          </div>
+          <div class="ink-scroll-hint" aria-hidden="true">
+            <span>SCROLL</span>
+            <i></i>
+          </div>
         </div>
       </section>
 
@@ -470,5 +472,6 @@
     </footer>
   </div>
   <script src="../script.js" defer></script>
+  <script src="../assets/js/ink-scroll-bridge.js?v=20260710" defer></script>
 </body>
 </html>

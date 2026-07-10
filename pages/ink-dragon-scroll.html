@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>水墨龍獅 · 手卷</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #F5F0E6; overscroll-behavior: none; }
+
+  /* 500vh 卷軸：往下滑 = 手卷由右至左展開 */
+  .scroll-space { height: 500vh; position: relative; }
+
+  .stage {
+    position: sticky; top: 0;
+    width: 100vw; height: 100vh; height: 100dvh;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #F5F0E6 0%, #EDE6DA 100%);
+  }
+  .stage svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+  .grain {
+    position: fixed; inset: 0; pointer-events: none; opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 240px 240px;
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-space">
+  <div class="stage">
+    <svg id="scene" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <filter id="brush" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.02 0.03" numOctaves="2" seed="7" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="5"/>
+        </filter>
+        <filter id="wash" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="5"/>
+        </filter>
+        <filter id="washSoft" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur stdDeviation="14"/>
+        </filter>
+        <filter id="bloom" x="-80%" y="-80%" width="260%" height="260%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="11" result="bn"/>
+          <feDisplacementMap in="SourceGraphic" in2="bn" scale="90"/>
+          <feGaussianBlur stdDeviation="7"/>
+        </filter>
+        <mask id="reveal">
+          <g filter="url(#bloom)">
+            <circle id="rv1" cx="0" cy="0" r="10" fill="#fff"/>
+            <circle id="rv2" cx="0" cy="0" r="10" fill="#fff"/>
+            <circle id="rv3" cx="0" cy="0" r="10" fill="#fff"/>
+          </g>
+        </mask>
+        <linearGradient id="mgrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#8A8072"/>
+          <stop offset="0.4" stop-color="#8A8072" stop-opacity="0"/>
+          <stop offset="1" stop-color="#8A8072" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+
+      <!-- 遠山 / 中山 -->
+      <g id="far"><path id="farA" fill="url(#mgrad)" opacity="0.09" filter="url(#wash)"/></g>
+      <g id="mid"><path id="midA" fill="url(#mgrad)" opacity="0.14" filter="url(#wash)"/></g>
+
+      <!-- 雲霧 -->
+      <g id="mist" opacity="0.6">
+        <ellipse id="mist1" rx="330" ry="60" fill="#7A7266" opacity="0.07" filter="url(#washSoft)"/>
+        <ellipse id="mist2" rx="420" ry="75" fill="#7A7266" opacity="0.055" filter="url(#washSoft)"/>
+      </g>
+
+      <!-- 遠龍（極淡） -->
+      <path id="fardragon" fill="none" stroke="#6B6155" stroke-width="5"
+            stroke-linecap="round" opacity="0" filter="url(#wash)"/>
+
+      <!-- 地面筆觸 -->
+      <g id="ground" stroke="#6B5B49" stroke-linecap="round" opacity="0.8"></g>
+
+      <!-- 開場墨團 -->
+      <g id="blooms" filter="url(#bloom)">
+        <circle id="bl1" fill="#4A4038" opacity="0"/>
+        <circle id="bl2" fill="#5C5248" opacity="0"/>
+        <circle id="bl3" fill="#4A4038" opacity="0"/>
+      </g>
+
+      <!-- 水墨獅向量場景：外層 transform 控制跑動、跳躍與收勢。 -->
+      <g id="lionRoot" mask="url(#reveal)">
+        <g id="lion">
+          <path id="trail" fill="none" stroke="#6B5B49" stroke-width="26"
+                stroke-linecap="round" opacity="0" filter="url(#washSoft)"/>
+          <g id="legsBack"></g>
+          <g id="clothG">
+            <path id="clothWash" fill="#7A7060" opacity="0.16" filter="url(#wash)"/>
+            <path id="clothWash2" fill="#5C5044" opacity="0.10" filter="url(#wash)"/>
+            <g id="clothStrokes"></g>
+            <g id="clothFringe"></g>
+          </g>
+          <g id="tailG"></g>
+          <g id="legsFront"></g>
+          <g id="headG">
+            <g id="headWash"></g>
+            <g id="mouthInner"></g>
+            <g id="jawG"></g>
+            <g id="headArt"></g>
+          </g>
+        </g>
+      </g>
+
+      <!-- 印章 -->
+      <g id="seal" opacity="0">
+        <rect x="-26" y="-26" width="52" height="52" rx="6" fill="none"
+              stroke="#B23B2E" stroke-width="6"/>
+        <path d="M -12 -10 q 12 -10 24 0 M -14 4 h 28 M -6 4 q -2 14 -8 18 M 6 4 q 4 12 10 16"
+              fill="none" stroke="#B23B2E" stroke-width="4.5" stroke-linecap="round"/>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<div class="grain"></div>
+
+<script>
+(function () {
+  'use strict';
+  var NS = 'http://www.w3.org/2000/svg';
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var embedded = new URLSearchParams(window.location.search).has('embedded');
+  var sealY = embedded ? 170 : 96;
+  var mobile = Math.min(window.innerWidth, window.innerHeight) < 700;
+  var svg = document.getElementById('scene');
+  var $ = function (id) { return document.getElementById(id); };
+
+  // ============ 毛筆引擎：變寬度筆鋒 ============
+  // Catmull-Rom 取樣
+  function spine(ctrl, n) {
+    var pts = [];
+    for (var i = 0; i < n; i++) {
+      var t = i / (n - 1) * (ctrl.length - 1);
+      var k = Math.min(ctrl.length - 2, Math.floor(t));
+      var u = t - k;
+      var p0 = ctrl[Math.max(0, k - 1)], p1 = ctrl[k], p2 = ctrl[k + 1], p3 = ctrl[Math.min(ctrl.length - 1, k + 2)];
+      var x = 0.5 * ((2 * p1[0]) + (-p0[0] + p2[0]) * u + (2 * p0[0] - 5 * p1[0] + 4 * p2[0] - p3[0]) * u * u + (-p0[0] + 3 * p1[0] - 3 * p2[0] + p3[0]) * u * u * u);
+      var y = 0.5 * ((2 * p1[1]) + (-p0[1] + p2[1]) * u + (2 * p0[1] - 5 * p1[1] + 4 * p2[1] - p3[1]) * u * u + (-p0[1] + 3 * p1[1] - 3 * p2[1] + p3[1]) * u * u * u);
+      pts.push([x, y]);
+    }
+    return pts;
+  }
+  // 筆壓輪廓：'t'=兩頭尖 'h'=起筆重收筆尖 'r'=起筆尖收筆重 'e'=均勻略收
+  function widthAt(profile, t, w) {
+    if (profile === 't') return w * (0.18 + 0.82 * Math.pow(Math.sin(t * Math.PI), 0.7));
+    if (profile === 'h') return w * (1 - 0.85 * t * t);
+    if (profile === 'r') return w * (0.15 + 0.85 * Math.pow(t, 0.8));
+    return w * (0.85 + 0.15 * Math.sin(t * Math.PI));
+  }
+  function brushD(pts, w, profile) {
+    var n = pts.length, L = [], R = [];
+    for (var i = 0; i < n; i++) {
+      var p0 = pts[Math.max(0, i - 1)], p1 = pts[Math.min(n - 1, i + 1)];
+      var tx = p1[0] - p0[0], ty = p1[1] - p0[1], len = Math.hypot(tx, ty) || 1;
+      var hw = widthAt(profile, i / (n - 1), w) / 2;
+      L.push([pts[i][0] - ty / len * hw, pts[i][1] + tx / len * hw]);
+      R.push([pts[i][0] + ty / len * hw, pts[i][1] - tx / len * hw]);
+    }
+    var d = 'M ' + L[0][0].toFixed(1) + ' ' + L[0][1].toFixed(1);
+    for (i = 1; i < n; i++) d += ' L ' + L[i][0].toFixed(1) + ' ' + L[i][1].toFixed(1);
+    for (i = n - 1; i >= 0; i--) d += ' L ' + R[i][0].toFixed(1) + ' ' + R[i][1].toFixed(1);
+    return d + ' Z';
+  }
+  function stroke(parent, ctrl, w, profile, color, op, samples) {
+    var el = document.createElementNS(NS, 'path');
+    el.setAttribute('d', brushD(spine(ctrl, samples || 16), w, profile));
+    el.setAttribute('fill', color);
+    el.setAttribute('opacity', op);
+    parent.appendChild(el);
+    return el;
+  }
+  function blob(parent, cx, cy, rx, ry, color, op, rot) {
+    var el = document.createElementNS(NS, 'ellipse');
+    el.setAttribute('cx', cx); el.setAttribute('cy', cy);
+    el.setAttribute('rx', rx); el.setAttribute('ry', ry);
+    el.setAttribute('fill', color); el.setAttribute('opacity', op);
+    el.setAttribute('filter', 'url(#wash)');
+    if (rot) el.setAttribute('transform', 'rotate(' + rot + ' ' + cx + ' ' + cy + ')');
+    parent.appendChild(el);
+    return el;
+  }
+
+  // 墨色
+  var INK = '#2E241C', INK2 = '#4A3E32', INK3 = '#6B5B49', WASH = '#7A7060', RED = '#B23B2E', PAPER = '#F5F0E6';
+
+  // ============ 獅頭（頭在南獅是靈魂，佔全身近四成） ============
+  // 頭局部座標：原點=頸樞紐，臉朝左。
+  function buildHead() {
+    var hw = $('headWash'), art = $('headArt'), jaw = $('jawG'), mouth = $('mouthInner');
+    hw.innerHTML = ''; art.innerHTML = ''; jaw.innerHTML = ''; mouth.innerHTML = '';
+    function circle(parent, cx, cy, r, fill, op, id) {
+      var c = document.createElementNS(NS, 'circle');
+      c.setAttribute('cx', cx); c.setAttribute('cy', cy); c.setAttribute('r', r);
+      c.setAttribute('fill', fill); c.setAttribute('opacity', op);
+      if (id) c.id = id;
+      parent.appendChild(c);
+      return c;
+    }
+
+    // ===== 大寫意南獅頭：十餘筆粗獷筆觸，重氣勢不重裝飾 =====
+
+    // --- 淡墨底 + 一抹極淡朱暈（呼應獅頭紅） ---
+    blob(hw, -66, -60, 88, 80, WASH, 0.15);
+    blob(hw, -60, -90, 62, 40, RED, 0.06, -8);
+
+    // --- 口腔：寬嘴內的暗色 + 朱舌 ---
+    blob(mouth, -105, 26, 55, 16, INK, 0.4);
+    blob(mouth, -120, 26, 22, 9, RED, 0.5);
+
+    // --- 下顎：寬厚一槓（jawG 樞紐 -50,40） ---
+    stroke(jaw, [[-168, 34], [-120, 46], [-70, 46], [-40, 36]], 16, 't', INK, 0.92, 18);
+    // 牙（紙色方點）
+    circle(jaw, -148, 32, 4.5, PAPER, 0.95);
+    circle(jaw, -128, 36, 4.5, PAPER, 0.95);
+    circle(jaw, -108, 38, 4.5, PAPER, 0.95);
+    circle(jaw, -88, 38, 4.5, PAPER, 0.95);
+    // 顎下兩撮鬚
+    stroke(jaw, [[-130, 50], [-122, 70], [-108, 80]], 7, 'h', INK2, 0.5, 10);
+    stroke(jaw, [[-95, 52], [-84, 70], [-68, 76]], 6, 'h', INK2, 0.45, 10);
+
+    // --- 顱頂大弧：一筆定乾坤 ---
+    stroke(art, [[20, -58], [8, -110], [-62, -146], [-128, -116], [-150, -82]], 22, 't', INK, 0.9, 26);
+    // --- 前臉直落：額 → 鼻 ---
+    stroke(art, [[-152, -70], [-164, -34], [-162, -8]], 13, 'h', INK, 0.85, 14);
+    // --- 巨眉：半張臉寬的重按一槓 ---
+    stroke(art, [[-36, -88], [-100, -104], [-154, -72]], 26, 't', INK, 0.9, 18);
+    // --- 大眼：瞳被眉壓住一半，怒目 ---
+    circle(art, -100, -58, 19, INK, 1, 'pupil');
+    stroke(art, [[-128, -46], [-100, -72], [-72, -46]], 5, 't', RED, 0.5, 14);
+    circle(art, -106, -63, 4, PAPER, 0.9);
+    // --- 額鏡：一顆朱砂圓 + 粗墨圈 ---
+    circle(art, -26, -38, 20, RED, 0.78);
+    (function () {
+      var ring = document.createElementNS(NS, 'circle');
+      ring.setAttribute('cx', -26); ring.setAttribute('cy', -38); ring.setAttribute('r', 20);
+      ring.setAttribute('fill', 'none'); ring.setAttribute('stroke', INK);
+      ring.setAttribute('stroke-width', 5); ring.setAttribute('opacity', 0.85);
+      art.appendChild(ring);
+    })();
+    // --- 上唇：寬扁一槓，嘴縫下即口腔 ---
+    stroke(art, [[-164, 2], [-120, 12], [-72, 12], [-42, 2]], 14, 't', INK, 0.92, 18);
+    // --- 鼻球（朱砂） ---
+    circle(art, -152, -12, 8, RED, 0.6);
+    // --- 粗角：由顱頂向後平掠 ---
+    stroke(art, [[-18, -122], [28, -148], [72, -142]], 20, 'h', INK, 0.88, 18);
+    stroke(art, [[58, -146], [78, -138], [86, -124]], 8, 'r', INK2, 0.65, 10);
+    // --- 輪廓毛flick：貼著邊緣往後下 ---
+    stroke(art, [[-130, -112], [-148, -124], [-162, -122]], 8, 'h', INK2, 0.55, 8);
+    stroke(art, [[-58, -144], [-70, -160], [-84, -162]], 8, 'h', INK2, 0.55, 8);
+    stroke(art, [[-44, 4], [-30, 18], [-30, 30]], 7, 'h', INK2, 0.5, 8);
+    // --- 腦後鬃：三筆粗流蘇連向獅被 ---
+    stroke(art, [[18, -34], [30, -4], [30, 28]], 9, 'e', INK3, 0.5, 10);
+    stroke(art, [[6, -8], [16, 20], [14, 48]], 8, 'e', INK2, 0.45, 10);
+    stroke(art, [[-12, 10], [-4, 34], [-8, 58]], 7, 'e', INK3, 0.4, 10);
+  }
+
+  // ============ 獅被筆觸（靜態部分） ============
+  function buildCloth() {
+    var g = $('clothStrokes');
+    g.innerHTML = '';
+    // 背脊一筆（高拱，賦予奔跑的弓身張力）
+    stroke(g, [[-30, -82], [55, -122], [140, -98], [208, -48]], 14, 't', INK, 0.82, 20);
+    // 被面飄帶紋
+    stroke(g, [[0, -50], [50, -60], [95, -48]], 6, 't', INK2, 0.5, 12);
+    stroke(g, [[40, -20], [90, -30], [135, -16]], 6, 't', INK2, 0.45, 12);
+    stroke(g, [[90, 6], [135, -2], [175, 10]], 5, 't', INK2, 0.4, 12);
+  }
+
+  // ============ 獅尾 ============
+  function buildTail() {
+    var g = $('tailG');
+    g.innerHTML = '';
+    stroke(g, [[0, 0], [26, -18], [52, -22]], 8, 'h', INK, 0.8, 12);
+    stroke(g, [[2, 6], [30, -4], [58, -2]], 6, 'h', INK2, 0.65, 12);
+    stroke(g, [[0, 12], [24, 10], [46, 20]], 5, 'h', INK3, 0.55, 12);
+    var ball = document.createElementNS(NS, 'circle');
+    ball.setAttribute('cx', 56); ball.setAttribute('cy', -12); ball.setAttribute('r', 7);
+    ball.setAttribute('fill', RED); ball.setAttribute('opacity', 0.55);
+    g.appendChild(ball);
+  }
+
+  // ============ 腿（褲管寬、踝口窄，黑布鞋） ============
+  var LEG_GROUND = 150, LEG_STRIDE = 34, LEG_LIFT = 40;
+  function makeLegs(gid, hips) {
+    var g = $(gid);
+    g.innerHTML = '';
+    return hips.map(function (h) {
+      var trouser = document.createElementNS(NS, 'path');
+      trouser.setAttribute('fill', h.dark ? INK : INK2);
+      trouser.setAttribute('opacity', h.dark ? 0.8 : 0.72);
+      var shoe = document.createElementNS(NS, 'ellipse');
+      shoe.setAttribute('rx', 18); shoe.setAttribute('ry', 7.5);
+      shoe.setAttribute('fill', INK); shoe.setAttribute('opacity', 0.85);
+      g.appendChild(trouser); g.appendChild(shoe);
+      return { hip: h, trouser: trouser, shoe: shoe };
+    });
+  }
+  var legsFront = makeLegs('legsFront', [
+    { x: -98, y: 32, ph: 0, dark: true }, { x: -62, y: 36, ph: Math.PI, dark: false }
+  ]);
+  var legsBack = makeLegs('legsBack', [
+    { x: 118, y: 40, ph: Math.PI * 0.85, dark: false }, { x: 156, y: 42, ph: Math.PI * 1.85, dark: true }
+  ]);
+
+  function poseLegs(legs, phase, stance, tuck) {
+    legs.forEach(function (l) {
+      var ph = phase + l.hip.ph;
+      var s = Math.sin(ph), c = Math.cos(ph);
+      var lift = Math.max(0, s);
+      var fx = l.hip.x + LEG_STRIDE * c * (1 - stance) * (1 - tuck);
+      var fy = LEG_GROUND - LEG_LIFT * lift * (1 - stance) - tuck * 62;
+      fx += tuck * 14;
+      var kx = (l.hip.x + fx) / 2 - 14 * lift * (1 - stance) - 5 - tuck * 20;
+      var ky = (l.hip.y + fy) / 2 + 10;
+      var pts = spine([[l.hip.x, l.hip.y], [kx, ky], [fx, fy - 6]], 10);
+      l.trouser.setAttribute('d', brushD(pts, 30, 'h'));
+      l.shoe.setAttribute('cx', fx - 4); l.shoe.setAttribute('cy', fy);
+      l.shoe.setAttribute('transform', 'rotate(' + (-6 - lift * 14).toFixed(1) + ' ' + fx + ' ' + fy + ')');
+    });
+  }
+
+  // ============ 獅被動態（波動 + 流蘇） ============
+  function poseCloth(phase, billow) {
+    var xs = -34, xe = 208, n = 9;
+    var bot = [];
+    for (var i = 0; i <= n; i++) {
+      var t = i / n;
+      var x = xs + (xe - xs) * t;
+      var y = 42 + 12 * t + Math.sin(phase * 2 + t * 6.5) * (8 + billow * 16) * (0.35 + 0.65 * t);
+      bot.push([x, y]);
+    }
+    var d = 'M ' + xs + ' -74 C 50 -120 150 -102 ' + xe + ' -44';
+    d += ' L ' + xe + ' ' + bot[n][1].toFixed(1);
+    for (var j = n - 1; j >= 0; j--) {
+      var p0 = bot[j + 1], p1 = bot[j];
+      d += ' Q ' + ((p0[0] + p1[0]) / 2).toFixed(1) + ' ' + (Math.max(p0[1], p1[1]) + 12).toFixed(1) + ' ' + p1[0].toFixed(1) + ' ' + p1[1].toFixed(1);
+    }
+    d += ' Z';
+    $('clothWash').setAttribute('d', d);
+    $('clothWash2').setAttribute('d', d);
+    $('clothWash2').setAttribute('transform', 'translate(6 -14) scale(0.94)');
+    // 流蘇兩排
+    var fr = $('clothFringe');
+    var fd1 = '', fd2 = '';
+    for (var k = 0; k <= n; k++) {
+      var p = bot[k];
+      var sway = Math.sin(phase * 2 + k * 0.9) * (5 + billow * 9);
+      fd1 += 'M ' + p[0].toFixed(1) + ' ' + (p[1] - 2).toFixed(1) + ' q ' + sway.toFixed(1) + ' 12 ' + (sway * 1.5).toFixed(1) + ' 22 ';
+      if (k < n) {
+        var q = [(bot[k][0] + bot[k + 1][0]) / 2, (bot[k][1] + bot[k + 1][1]) / 2];
+        fd2 += 'M ' + q[0].toFixed(1) + ' ' + q[1].toFixed(1) + ' q ' + (sway * 0.8).toFixed(1) + ' 10 ' + (sway * 1.2).toFixed(1) + ' 17 ';
+      }
+    }
+    fr.innerHTML = '<path d="' + fd1 + '" fill="none" stroke="' + INK2 + '" stroke-width="6" stroke-linecap="round" opacity="0.72"/>' +
+                   '<path d="' + fd2 + '" fill="none" stroke="' + INK3 + '" stroke-width="4.5" stroke-linecap="round" opacity="0.5"/>';
+  }
+
+  // ============ 山巒 / 地面 ============
+  var VBH = 1000, VW = 1600, GROUND = 800, TILE = 3200;
+  function ridgePath(yBase, amp, f1, f2, seed) {
+    var d = 'M 0 ' + VBH;
+    for (var x = 0; x <= TILE * 2; x += 64) {
+      var y = yBase - amp * (0.5 + 0.5 * Math.sin(x * f1 + seed))
+                    - amp * 0.45 * Math.sin(x * f2 + seed * 2.3);
+      d += ' L ' + x + ' ' + y.toFixed(1);
+    }
+    return d + ' L ' + (TILE * 2) + ' ' + VBH + ' Z';
+  }
+  var groundMarks = [];
+  function buildGround() {
+    var g = $('ground');
+    g.innerHTML = '';
+    groundMarks = [];
+    var n = mobile ? 9 : 16;
+    for (var i = 0; i < n; i++) {
+      var el = document.createElementNS(NS, 'path');
+      el.setAttribute('stroke-width', (2.5 + Math.random() * 2.5).toFixed(1));
+      el.setAttribute('opacity', (0.08 + Math.random() * 0.09).toFixed(2));
+      g.appendChild(el);
+      groundMarks.push({ el: el, x: Math.random() * TILE, y: GROUND + 26 + Math.random() * 120, w: 26 + Math.random() * 60 });
+    }
+  }
+
+  // ============ 速度曲線 ============
+  var SPEED_LUT = (function () {
+    var lut = [0], d = 0;
+    for (var i = 1; i <= 200; i++) {
+      var t = i / 200;
+      var v = Math.max(0, Math.min(1, t / 0.10) * Math.min(1, (1 - t) / 0.12));
+      d += v / 200; lut.push(d);
+    }
+    var total = d;
+    return function (t) {
+      var i = Math.min(199, Math.max(0, Math.floor(t * 200)));
+      return (lut[i] + (lut[Math.min(200, i + 1)] - lut[i]) * (t * 200 - i)) / total;
+    };
+  })();
+  function speedAt(t) {
+    return Math.max(0, Math.min(1, t / 0.10) * Math.min(1, (1 - t) / 0.12));
+  }
+
+  var INTRO_END = 0.14, LERP = 0.08, MAX_DIST = 5200;
+  var lionScale = 1, lionX = 0;
+
+  function rebuild() {
+    mobile = Math.min(window.innerWidth, window.innerHeight) < 700;
+    VW = Math.max(340, Math.min(2600, VBH * window.innerWidth / Math.max(1, window.innerHeight)));
+    svg.setAttribute('viewBox', '0 0 ' + VW.toFixed(0) + ' ' + VBH);
+    $('farA').setAttribute('d', ridgePath(590, 85, 0.0011, 0.0042, 3.1));
+    $('midA').setAttribute('d', ridgePath(730, 58, 0.0017, 0.006, 8.7));
+    // 獅子全長約 640 局部單位（鼻 -310 → 尾 265）；自動縮放以入鏡
+    lionScale = Math.min(mobile ? 0.85 : 1.05, VW * 0.82 / 660);
+    lionX = VW * (mobile ? 0.54 : 0.46);
+    buildGround();
+    var bx = lionX, by = GROUND - 170 * lionScale;
+    [['bl1', -110, -70, 100], ['bl2', 130, 30, 130], ['bl3', 0, -180, 85]].forEach(function (b) {
+      var e = $(b[0]);
+      e.setAttribute('cx', bx + b[1] * lionScale);
+      e.setAttribute('cy', by + b[2] * lionScale);
+      e.setAttribute('r', b[3]);
+    });
+    [['rv1', -110, -90], ['rv2', 110, 50], ['rv3', 0, -190]].forEach(function (r) {
+      var e = $(r[0]);
+      e.setAttribute('cx', bx + r[1] * lionScale);
+      e.setAttribute('cy', by + r[2] * lionScale);
+    });
+    $('seal').setAttribute('transform', 'translate(' + (VW - 90) + ' ' + sealY + ') rotate(-4)');
+    $('mist1').setAttribute('cy', 300); $('mist2').setAttribute('cy', 480);
+    if (!mobile) $('lion').setAttribute('filter', 'url(#brush)');
+  }
+
+  buildHead(); buildCloth(); buildTail();
+  rebuild();
+
+  // ============ 捲動主迴圈 ============
+  var target = 0, displayed = 0, time = 0, lastTs = 0, prevDisp = 0;
+  function readScroll() {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    target = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+  }
+  window.addEventListener('scroll', readScroll, { passive: true });
+  window.addEventListener('resize', function () { rebuild(); readScroll(); });
+  readScroll();
+
+  function frame(ts) {
+    var dt = lastTs ? Math.min(0.05, (ts - lastTs) / 1000) : 0.016;
+    lastTs = ts;
+    displayed += (target - displayed) * LERP;
+    if (Math.abs(target - displayed) < 0.0004) displayed = target;
+    if (!reduced) time += dt;
+    prevDisp = displayed;
+
+    var p = displayed;
+    var introT = Math.min(1, p / INTRO_END);
+    var runT = Math.max(0, (p - INTRO_END) / (1 - INTRO_END));
+    var D = SPEED_LUT(runT) * MAX_DIST;
+    var v = speedAt(runT);
+
+    // 開場墨暈
+    var rGrow = 30 + introT * introT * 700;
+    $('rv1').setAttribute('r', rGrow);
+    $('rv2').setAttribute('r', rGrow * 0.85);
+    $('rv3').setAttribute('r', rGrow * 0.7);
+    var bloomOp = introT < 1 ? Math.sin(introT * Math.PI) * 0.16 : 0;
+    ['bl1', 'bl2', 'bl3'].forEach(function (id, i) {
+      $(id).setAttribute('opacity', (bloomOp * (1 - i * 0.2)).toFixed(3));
+    });
+
+    // 世界橫移
+    var farX = (D * 0.12) % TILE, midX = (D * 0.32) % TILE;
+    $('far').setAttribute('transform', 'translate(' + (-TILE + farX).toFixed(1) + ' 0)');
+    $('mid').setAttribute('transform', 'translate(' + (-TILE + midX).toFixed(1) + ' 0)');
+    $('far').setAttribute('opacity', introT);
+    $('mid').setAttribute('opacity', introT);
+
+    var m1 = (time * 12 + D * 0.18) % (VW + 900) - 450;
+    var m2 = (time * 8 + D * 0.22) % (VW + 1100) - 550;
+    $('mist1').setAttribute('cx', VW - m1);
+    $('mist2').setAttribute('cx', VW - m2);
+
+    groundMarks.forEach(function (mk) {
+      var x = ((mk.x + D) % TILE) - (TILE - VW) / 2;
+      mk.el.setAttribute('d', 'M ' + x.toFixed(1) + ' ' + mk.y + ' l ' + mk.w + ' ' + (mk.w * 0.06).toFixed(1));
+    });
+
+    // 遠龍
+    var dg = (runT - 0.30) / 0.34;
+    if (dg > 0 && dg < 1) {
+      var dx = VW + 500 - dg * (VW + 1200);
+      var dd = 'M ' + dx.toFixed(0) + ' 210';
+      for (var i = 1; i <= 10; i++) dd += ' q 45 ' + (i % 2 ? -26 : 26) + ' 90 0';
+      $('fardragon').setAttribute('d', dd);
+      $('fardragon').setAttribute('opacity', (Math.sin(dg * Math.PI) * 0.13).toFixed(3));
+    } else {
+      $('fardragon').setAttribute('opacity', 0);
+    }
+
+    // 獅子
+    var stance = Math.max(0, 1 - v * 3);
+    var legPhase = D / 46;
+    var jt = (runT - 0.43) / 0.16;
+    var jump = (jt > 0 && jt < 1) ? Math.sin(jt * Math.PI) : 0;
+    var tuck = jump > 0.35 ? (jump - 0.35) / 0.65 : 0;
+
+    var bob = -11 * Math.abs(Math.sin(legPhase)) * v * (1 - tuck);
+    var breathe = reduced ? 0 : Math.sin(time * 1.6) * 2.2 * stance;
+    var bodyY = GROUND - LEG_GROUND * lionScale + (bob + breathe) * lionScale - jump * 190;
+    var lean = -v * 5 - jump * 7;
+
+    $('lion').setAttribute('transform',
+      'translate(' + lionX.toFixed(1) + ' ' + bodyY.toFixed(1) + ') scale(' + lionScale.toFixed(3) + ') rotate(' + lean.toFixed(1) + ')');
+
+    poseLegs(legsFront, legPhase, stance, tuck);
+    poseLegs(legsBack, legPhase + 0.4, stance, tuck);
+    poseCloth(reduced ? legPhase : legPhase + time * 1.2, Math.max(v * 0.7, jump));
+
+    var nod = 5 * Math.sin(legPhase * 2 + 0.8) * v - jump * 10 + (reduced ? 0 : Math.sin(time * 1.1) * 1.5 * stance);
+    var headY = -6 * Math.abs(Math.sin(legPhase + 0.5)) * v;
+    $('headG').setAttribute('transform', 'translate(-58 -30) translate(0 ' + headY.toFixed(1) + ') scale(1.62) rotate(' + nod.toFixed(1) + ')');
+    var jawA = 4 + 7 * Math.max(0, Math.sin(legPhase + 1.2)) * v + jump * 10 + (reduced ? 0 : Math.max(0, Math.sin(time * 0.7)) * 3 * stance);
+    $('jawG').setAttribute('transform', 'rotate(' + jawA.toFixed(1) + ' -50 40)');
+    var blink = (!reduced && Math.sin(time * 0.9) > 0.985) ? 0.15 : 1;
+    var pupil = $('pupil');
+    if (pupil) {
+      pupil.setAttribute('transform', 'scale(1 ' + blink + ')');
+      pupil.setAttribute('transform-origin', '-100 -58');
+    }
+
+    $('tailG').setAttribute('transform',
+      'translate(206 -40) rotate(' + (Math.sin(legPhase + 1.1) * 14 * v + (reduced ? 0 : Math.sin(time * 1.4) * 5 * stance)).toFixed(1) + ')');
+
+    if (v > 0.15) {
+      $('trail').setAttribute('d', 'M 220 30 C 300 20 380 52 470 36');
+      $('trail').setAttribute('opacity', (0.10 * v).toFixed(3));
+    } else {
+      $('trail').setAttribute('opacity', 0);
+    }
+
+    // 印章
+    var st = (p - 0.92) / 0.06;
+    if (st > 0) {
+      var s = Math.min(1, st);
+      $('seal').setAttribute('opacity', (s * 0.85).toFixed(2));
+      $('seal').setAttribute('transform',
+        'translate(' + (VW - 90) + ' ' + sealY + ') rotate(-4) scale(' + (1.25 - 0.25 * s) + ')');
+    } else {
+      $('seal').setAttribute('opacity', 0);
+    }
+
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  window.__inkLion = {
+    get progress() { return displayed; },
+    set target(v) { target = v; },
+    get target() { return target; },
+    snap: function (v) { target = displayed = prevDisp = Math.min(1, Math.max(0, v)); }
+  };
+})();
+</script>
+</body>
+</html>
