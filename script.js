@@ -11,6 +11,13 @@ let lockedScrollY = 0;
 let scrollFrame = null;
 let isBodyScrollLocked = false;
 
+const siteBasePath = (() => {
+  const firstPathSegment = window.location.pathname.split('/').filter(Boolean)[0];
+  return firstPathSegment === 'lion-dance-website' ? '/lion-dance-website/' : '/';
+})();
+
+const sitePath = (path) => `${siteBasePath}${path}`;
+
 document.querySelectorAll('#current-year').forEach((year) => {
   year.textContent = new Date().getFullYear();
 });
@@ -23,7 +30,7 @@ if (!document.querySelector('.quickbar')) {
   quickbar.innerHTML = [
     '<a class="quickbar-tel" href="tel:0922140496" aria-label="撥打電話 0922-140-496">撥打電話</a>',
     '<a class="quickbar-line" href="https://line.me/ti/p/~lion6869" target="_blank" rel="noopener noreferrer" aria-label="加 LINE 洽詢演出">LINE 洽詢</a>',
-    '<a class="quickbar-book" href="pages/contact.html" aria-label="前往聯絡頁預約演出">預約演出</a>'
+    `<a class="quickbar-book" href="${sitePath('pages/contact.html')}" aria-label="前往聯絡頁預約演出">預約演出</a>`
   ].join('');
   document.body.appendChild(quickbar);
   document.body.classList.add('has-quickbar');

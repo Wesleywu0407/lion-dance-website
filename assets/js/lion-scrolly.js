@@ -4,6 +4,7 @@
  * mouse parallax, shadows, subtle floor sheen, and sparse atmosphere.
  */
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 const root = document.getElementById('lion-scrolly');
 
@@ -60,10 +61,11 @@ function initHero3DScene() {
   const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
   camera.position.set(-0.96, 0.18, 7.18);
 
-  const sculpture = createHeroSculpture();
+  const sculpture = new THREE.Group();
   sculpture.position.set(2.42, -0.12, -0.26);
   sculpture.scale.setScalar(0.96);
   scene.add(sculpture);
+  loadLionHead(sculpture);
 
   const floor = createMuseumFloor();
   scene.add(floor);
@@ -131,23 +133,24 @@ function initHero3DScene() {
     const finalPush = smoothstep(0.45, 1, scrollProgress);
     const readableLight = smoothstep(0.08, 0.62, scrollProgress);
 
+    const narrow = width > 0 && (width < 768 || width / height < 0.9);
     const orbit = Math.sin(time * 0.18) * 0.08;
     sculpture.rotation.y = lerp(-0.48, -0.16, reveal) + orbit + pointer.x * 0.1;
     sculpture.rotation.x = lerp(-0.1, -0.045, reveal) + Math.sin(time * 0.13) * 0.025 - pointer.y * 0.035;
     sculpture.rotation.z = lerp(-0.025, 0.018, finalPush) + pointer.x * 0.018;
-    sculpture.position.x = lerp(2.42, 2.08, reveal);
+    sculpture.position.x = lerp(2.42, narrow ? 2.1 : 2.24, reveal);
     sculpture.position.y = lerp(-0.12, -0.06, reveal) + Math.sin(time * 0.42) * 0.025;
     sculpture.position.z = lerp(-0.26, 0.02, reveal);
-    sculpture.scale.setScalar(lerp(0.96, 1.08, reveal));
+    sculpture.scale.setScalar(lerp(0.96, narrow ? 0.72 : 1.04, reveal));
 
     const targetCameraX = lerp(-0.96, -0.36, reveal) + pointer.x * 0.22;
     const targetCameraY = lerp(0.18, 0.32, reveal) - pointer.y * 0.12;
-    const targetCameraZ = lerp(7.18, 5.78, reveal) - finalPush * 0.16;
+    const targetCameraZ = lerp(7.18, narrow ? 7.5 : 6.05, reveal) - finalPush * 0.16;
     camera.position.x = lerp(camera.position.x, targetCameraX, 1 - Math.exp(-dt * 2.8));
     camera.position.y = lerp(camera.position.y, targetCameraY, 1 - Math.exp(-dt * 2.8));
     camera.position.z = lerp(camera.position.z, targetCameraZ, 1 - Math.exp(-dt * 2.8));
     camera.lookAt(
-      lerp(1.58, 1.34, reveal) + pointer.x * 0.08,
+      lerp(1.58, narrow ? 1.8 : 1.34, reveal) + pointer.x * 0.08,
       lerp(-0.06, 0.02, reveal) - pointer.y * 0.04,
       0
     );
@@ -192,6 +195,27 @@ function initHero3DScene() {
   root.classList.add('is-3d');
   resize();
   updateScrollState();
+
+  // Debug hook for headless/hidden-tab verification (rAF freezes when the
+  // tab is hidden). Enable with ?debug3d, then call window.__lionRender(p).
+  if (new URLSearchParams(window.location.search).has('debug3d')) {
+    window.__lionRender = (progress) => {
+      if (typeof progress === 'number') {
+        targetScroll = clamp(progress, 0, 1);
+      }
+      scrollProgress = targetScroll;
+      pointer.copy(pointerTarget);
+      const wasRunning = running;
+      running = false;
+      lastTime = 0;
+      const t0 = performance.now();
+      for (let i = 0; i < 180; i += 1) {
+        frame(t0 + i * 16.7);
+      }
+      running = wasRunning;
+      return scrollProgress;
+    };
+  }
   stage.addEventListener('pointermove', onPointerMove, { passive: true });
   window.addEventListener('scroll', updateScrollState, { passive: true });
   window.addEventListener('resize', resize, { passive: true });
@@ -225,6 +249,49 @@ function updateHeroText(copy, titleMark, serviceStrip, reveal) {
     serviceStrip.style.opacity = (0.66 + reveal * 0.22).toFixed(3);
     serviceStrip.style.transform = `translate3d(0, ${stripShift.toFixed(2)}px, 0)`;
   }
+}
+
+/* Photogrammetry-style lion head generated from the troupe's real 獅頭 photos.
+ * Falls back to the abstract sculpture if the GLB fails to load. */
+function loadLionHead(holder) {
+  const loader = new GLTFLoader();
+  const url = new URL('../../models/lion-head.glb', import.meta.url).href;
+
+  loader.load(
+    url,
+    (gltf) => {
+      const model = gltf.scene;
+
+      const box = new THREE.Box3().setFromObject(model);
+      const size = box.getSize(new THREE.Vector3());
+      const center = box.getCenter(new THREE.Vector3());
+      const fit = 2.62 / Math.max(size.x, size.y, size.z);
+
+      model.position.copy(center).negate();
+
+      const inner = new THREE.Group();
+      inner.add(model);
+      inner.scale.setScalar(fit);
+      inner.rotation.y = Math.PI * 0.06;
+
+      model.traverse((node) => {
+        if (node.isMesh) {
+          node.castShadow = true;
+          node.receiveShadow = true;
+          if (node.material) {
+            node.material.roughness = Math.min(0.72, node.material.roughness ?? 1);
+            node.material.envMapIntensity = 1.2;
+          }
+        }
+      });
+
+      holder.add(inner);
+    },
+    undefined,
+    () => {
+      holder.add(createHeroSculpture());
+    }
+  );
 }
 
 function createHeroSculpture() {

@@ -26,336 +26,143 @@
   <link rel="apple-touch-icon" href="../favicon-180.png">
   <meta name="theme-color" content="#181311">
   <link rel="stylesheet" href="../css/style.css?v=20260708-nav">
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "../assets/vendor/three/three.module.min.js",
-      "three/addons/": "../assets/vendor/three/"
-    }
-  }
-  </script>
   <style>
-    .intro-page .site-header,
-    .intro-page .site-header.is-scrolled,
-    .intro-page .site-header.scrolled {
-      border-bottom-color: rgba(244, 232, 216, 0.08);
-      background: rgba(6, 3, 4, 0.54);
-      color: #fff4e7;
-      backdrop-filter: blur(18px);
-      box-shadow: none;
+    .intro-empty-page {
+      min-height: calc(100vh - var(--header-height));
     }
 
-    .intro-page .site-header .brand-text small,
-    .intro-page .site-header .site-nav a {
-      color: rgba(255, 244, 231, 0.82);
-    }
-
-    .intro-page .site-header .site-nav a[aria-current="page"]::after,
-    .intro-page .site-header .site-nav a:hover::after,
-    .intro-page .site-header .site-nav a:focus-visible::after {
-      background: #B88A45;
-    }
-
-    .intro-page .site-header .brand-logo {
-      filter: sepia(0.9) saturate(0.75) hue-rotate(352deg) brightness(0.86);
-    }
-
-    @media (min-width: 761px) {
-      .intro-page .site-header .site-nav > a[href$="contact.html"] {
-        border: 1px solid rgba(184, 138, 69, 0.78);
-        background: rgba(6, 3, 4, 0.28);
-        color: #E7C67F;
-        box-shadow: 0 0 28px rgba(184, 138, 69, 0.12);
-      }
-    }
-
-    /* ── Premium cinematic 3D introduction ──
-       預設＝靜態 editorial；.is-3d 啟動 WebGL 沉浸版。 */
-    .lion3d {
-      --museum-black: #060304;
-      --museum-wine: #210508;
-      --museum-gold: #B88A45;
-      --museum-gold-soft: #E7C67F;
-      --museum-ivory: #F4E8D8;
-      --lion-scroll: 0;
+    .intro-page .page-hero {
       position: relative;
-      min-height: 100vh;
-      color: var(--museum-ivory);
-      background:
-        radial-gradient(circle at 74% 20%, rgba(87, 12, 16, 0.24), transparent 30rem),
-        linear-gradient(180deg, #080304 0%, #120506 48%, #060304 100%);
-      overflow: clip;
-    }
-
-    .lion3d-stage {
-      position: relative;
-      min-height: 100vh;
-      min-height: 100svh;
-      padding: calc(var(--header-height) + 32px) clamp(22px, 5vw, 76px) 64px;
-      display: flex;
+      min-height: min(560px, 70vh);
+      padding: max(128px, calc(var(--header-height) + 44px)) 0 58px;
+      display: grid;
       align-items: center;
+      background:
+        linear-gradient(90deg, rgba(251, 247, 241, 0.98) 0%, rgba(251, 247, 241, 0.94) 42%, rgba(251, 247, 241, 0.58) 68%, rgba(251, 247, 241, 0.26) 100%),
+        linear-gradient(180deg, rgba(245, 239, 230, 0.16), rgba(245, 239, 230, 0.78)),
+        image-set(url("../images/祥獅獻瑞-720.webp") 1x, url("../images/祥獅獻瑞-1440.webp") 2x) right center / cover no-repeat,
+        var(--bg);
+      border-bottom: 1px solid rgba(143, 58, 47, 0.12);
+      overflow: hidden;
     }
 
-    .lion3d-canvas {
-      display: none;
+    .intro-page {
+      overflow-x: hidden;
     }
 
-    .cinematic-copy {
-      max-width: 39rem;
+    .intro-page .page-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255, 252, 247, 0.28), rgba(255, 252, 247, 0.72)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 240'%3E%3Cg fill='none' stroke='%238f3a2f' stroke-opacity='.07' stroke-width='2'%3E%3Cpath d='M0 60c92 22 166 22 252-2s166-25 266 1c116 30 229 29 382-4'/%3E%3Cpath d='M0 158c106 28 193 29 284 2 89-26 166-25 251 2 123 39 233 39 365-6'/%3E%3C/g%3E%3C/svg%3E") center / cover no-repeat;
+      opacity: 0.72;
       pointer-events: none;
     }
 
-    .cinematic-kicker {
-      margin: 0 0 18px;
-      color: rgba(231, 198, 127, 0.76);
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.32em;
-      line-height: 1.7;
-      white-space: nowrap;
+    .intro-page .page-hero-inner {
+      max-width: min(calc(100% - 40px), 1120px);
     }
 
-    .cinematic-copy h1 {
-      margin: 0;
-      font-family: var(--font-display-serif);
-      font-size: clamp(2.7rem, 4.9vw, 5.4rem);
-      font-weight: 600;
-      color: #fff4e7;
-      letter-spacing: 0.085em;
-      line-height: 1.03;
-      text-wrap: balance;
-      white-space: nowrap;
+    .intro-page .page-hero .page-hero-inner > h1 {
+      max-width: 9.5em;
+      color: #5c4034;
     }
 
-    .cinematic-title-line {
-      display: inline;
-    }
-
-    .cinematic-copy p:not(.cinematic-kicker) {
-      margin: 22px 0 0;
+    .intro-page .page-hero .page-hero-inner > p:not(.section-tag) {
       max-width: 42rem;
-      color: rgba(244, 232, 216, 0.68);
-      font-size: clamp(0.98rem, 1.45vw, 1.14rem);
-      font-weight: 300;
-      line-height: 1.95;
-      letter-spacing: 0.04em;
+      color: #6f5547;
     }
 
-    .cinematic-copy {
-      position: absolute;
-      top: 31vh;
-      left: 0;
-      z-index: 4;
-      max-width: 54rem;
-      padding-left: clamp(13rem, 16vw, 17rem);
-    }
-
-    .cinematic-title-mark {
-      position: absolute;
-      left: clamp(22px, 5vw, 76px);
-      top: calc(var(--header-height) + 52px);
-      z-index: 5;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.45rem;
-      font-family: var(--font-display-serif);
-      font-size: clamp(2.2rem, 3.8vw, 4.8rem);
-      line-height: 0.9;
-      letter-spacing: 0.16em;
-      color: rgba(255, 244, 231, 0.88);
-      text-shadow: 0 0 32px rgba(184, 138, 69, 0.16);
-    }
-
-    .cinematic-title-mark span {
-      writing-mode: vertical-rl;
-    }
-
-    .cinematic-title-mark span + span {
-      order: 4;
-      color: rgba(184, 138, 69, 0.82);
-    }
-
-    .cinematic-title-mark span:first-child {
-      order: 1;
-    }
-
-    .cinematic-title-mark::before {
-      content: "";
-      width: 1px;
-      height: 64px;
-      margin: -0.3rem auto;
-      order: 2;
-      background: linear-gradient(180deg, rgba(184, 138, 69, 0.16), rgba(184, 138, 69, 0.8), rgba(184, 138, 69, 0.16));
-    }
-
-    .cinematic-title-mark::after {
-      content: "";
-      width: 10px;
-      height: 10px;
-      margin: -2.25rem auto 0;
-      order: 3;
-      border: 1px solid rgba(184, 138, 69, 0.84);
-      border-radius: 50%;
-      background: rgba(6, 3, 4, 0.88);
-      box-shadow: 0 0 18px rgba(184, 138, 69, 0.26);
-    }
-
-    .cinematic-service-strip {
-      position: absolute;
-      left: clamp(13rem, 16vw, 17rem);
-      bottom: 86px;
-      z-index: 5;
+    .intro-hero-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.7rem clamp(0.9rem, 2.2vw, 1.8rem);
-      align-items: center;
-      color: rgba(244, 232, 216, 0.68);
-      font-size: 0.78rem;
-      letter-spacing: 0.22em;
+      gap: 10px;
+      max-width: 44rem;
+      margin: 24px 0 0;
     }
 
-    .cinematic-service-strip span + span::before {
-      content: "/";
-      margin-right: clamp(0.9rem, 2.2vw, 1.8rem);
-      color: rgba(184, 138, 69, 0.58);
-    }
-
-    .lion3d-hint {
-      position: absolute;
-      left: 50%;
-      bottom: 38px;
-      z-index: 6;
+    .intro-hero-tags span {
       display: inline-flex;
-      gap: 8px;
       align-items: center;
-      color: rgba(231, 198, 127, 0.72);
-      font-size: 0.72rem;
-      letter-spacing: 0.26em;
-      transform: translateX(-50%);
-      transition: opacity 0.35s ease;
+      min-height: 34px;
+      padding: 7px 13px;
+      border: 1px solid rgba(143, 58, 47, 0.18);
+      border-radius: 999px;
+      background: rgba(255, 252, 247, 0.72);
+      color: var(--ink-soft);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
     }
 
-    .lion3d-hint.is-hidden {
-      opacity: 0;
+    .intro-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
     }
 
-    .lion3d-hint span {
-      animation: lionBob 1.6s ease-in-out infinite;
-    }
-
-    @keyframes lionBob {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(6px); }
-    }
-
-    .lion3d.is-3d {
-      height: auto;
-      min-height: 220vh;
-      min-height: 220svh;
-      border-top: 1px solid rgba(184, 138, 69, 0.2);
-      border-bottom: 1px solid rgba(184, 138, 69, 0.2);
-      overflow: visible;
-    }
-
-    .is-3d .lion3d-stage {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      max-width: none;
-      height: 100vh;
-      height: 100svh;
-      margin: 0;
-      padding: 0;
-      display: block;
-      overflow: hidden;
-      background:
-        radial-gradient(ellipse 88% 70% at 73% 22%, rgba(92, 10, 15, 0.34), transparent 58%),
-        radial-gradient(ellipse 120% 78% at 60% 100%, rgba(68, 16, 12, 0.34), transparent 60%),
-        linear-gradient(180deg, #080304 0%, #100405 48%, #050203 100%);
-    }
-
-    .is-3d .lion3d-canvas {
-      display: block;
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .is-3d .cinematic-copy,
-    .is-3d .cinematic-title-mark,
-    .is-3d .cinematic-service-strip {
-      will-change: opacity, transform;
-    }
-
-    @media (max-width: 767px) {
-      .lion3d.is-3d {
-        height: auto;
-        min-height: 205vh;
-        min-height: 205svh;
+    @media (max-width: 760px) {
+      .intro-page .nav-toggle {
+        position: absolute;
+        top: 50%;
+        right: 18px;
+        z-index: 150;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(143, 58, 47, 0.16);
+        border-radius: 999px;
+        background: rgba(255, 252, 247, 0.86);
+        color: var(--ink);
+        box-shadow: 0 8px 18px rgba(76, 29, 17, 0.08);
+        transform: translateY(-50%);
       }
 
-      .lion3d-stage {
-        padding-inline: 20px;
+      .intro-page .page-hero {
+        min-height: 500px;
+        padding: max(112px, calc(var(--header-height) + 30px)) 0 40px;
+        background:
+          linear-gradient(180deg, rgba(251, 247, 241, 0.98) 0%, rgba(251, 247, 241, 0.94) 52%, rgba(251, 247, 241, 0.72) 100%),
+          image-set(url("../images/祥獅獻瑞-720.webp") 1x, url("../images/祥獅獻瑞-1440.webp") 2x) center top / cover no-repeat,
+          var(--bg);
       }
 
-      .cinematic-copy {
-        padding-left: 0;
-        margin-top: 26vh;
-        margin-left: 20px;
-        margin-right: 20px;
-        max-width: calc(100vw - 40px);
+      .intro-page .page-hero .page-hero-inner > h1 {
+        max-width: 100%;
       }
 
-      .cinematic-title-mark {
-        left: 20px;
-        top: calc(var(--header-height) + 26px);
-        writing-mode: horizontal-tb;
-        flex-direction: column;
-        gap: 0.2rem;
-        font-size: clamp(2.1rem, 9vw, 3.2rem);
+      .intro-hero-tags {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        max-width: 100%;
       }
 
-      .cinematic-title-mark span + span {
-        transform: none;
+      .intro-hero-tags span {
+        justify-content: center;
+        min-width: 0;
+        min-height: 32px;
+        padding: 7px 9px;
+        font-size: 0.76rem;
+        letter-spacing: 0.03em;
+        text-align: center;
       }
 
-      .cinematic-title-mark span {
-        writing-mode: horizontal-tb;
+      .intro-hero-actions {
+        width: min(100%, 20rem);
+        margin-right: auto;
+        margin-left: auto;
       }
 
-      .cinematic-title-mark::before,
-      .cinematic-title-mark::after {
-        display: none;
-      }
-
-      .cinematic-copy h1 {
-        font-size: clamp(2.55rem, 13vw, 4rem);
-        white-space: normal;
-      }
-
-      .cinematic-title-line {
-        display: block;
-      }
-
-      .cinematic-kicker {
-        white-space: normal;
-      }
-
-      .cinematic-copy p:not(.cinematic-kicker) {
-        max-width: min(21rem, calc(100vw - 48px));
-        font-size: 0.92rem;
-        line-height: 1.75;
-        overflow-wrap: anywhere;
-      }
-
-      .cinematic-service-strip {
-        left: 20px;
-        right: 20px;
-        bottom: calc(70px + env(safe-area-inset-bottom));
-        font-size: 0.68rem;
-        letter-spacing: 0.16em;
+      .intro-hero-actions .button {
+        width: 100%;
+        min-width: 0;
       }
     }
 
@@ -684,111 +491,7 @@
       </nav>
     </header>
 
-    <main id="main-content">
-      <section class="lion3d" id="lion-scrolly" aria-label="舞龍舞獅三大精神">
-        <div class="lion3d-stage">
-          <canvas class="lion3d-canvas" aria-hidden="true"></canvas>
-          <div class="cinematic-title-mark" aria-hidden="true">
-            <span>獅頭領路</span>
-            <span>鼓點起舞</span>
-          </div>
-          <div class="cinematic-copy">
-            <p class="cinematic-kicker">DRAGON &amp; LION DANCE CULTURE</p>
-            <h1><span class="cinematic-title-line">舞龍舞獅</span><span class="cinematic-title-line">介紹</span></h1>
-            <p>黑石、銅光與深紅漆面構成一座獅意雕塑。往下捲動，讓光線慢慢揭示「獅頭領路，鼓點起舞」背後的精神。</p>
-          </div>
-          <div class="cinematic-service-strip" aria-label="演出項目">
-            <span>醒獅演出</span>
-            <span>舞龍展演</span>
-            <span>電音三太子</span>
-          </div>
-          <div class="lion3d-hint" aria-hidden="true">往下捲動<span>↓</span></div>
-        </div>
-      </section>
-
-      <section class="section page-section-stack">
-        <div class="intro-compare">
-          <article class="intro-panel reveal">
-            <img src="../images/%E7%A5%A5%E7%8D%85%E7%8D%BB%E7%91%9E-720.webp" alt="祥獅獻瑞舞獅表演" width="720" height="540" loading="lazy" decoding="async">
-            <div class="intro-panel-body">
-              <p class="section-tag">舞獅</p>
-              <h2>靈動、喜慶，適合近距離互動</h2>
-              <p>舞獅以獅頭表情、步伐、採青與跳樁技巧展現靈性與喜氣，常見於開幕、商場活動、公司春酒、尾牙與新春迎財。獅子的眨眼、抖鬃、探路與採青，能讓觀眾感受到親近又熱烈的現場氛圍。</p>
-              <ul class="intro-list">
-                <li>適合開幕剪綵、迎賓、品牌門市活動</li>
-                <li>可安排點睛、採青、吐聯、迎財等儀式</li>
-                <li>梅花樁獅適合需要視覺高度與技術張力的舞台</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="intro-panel reveal">
-            <img src="../images/%E9%9B%B7%E9%B3%B4%E6%88%B0%E9%BC%93-hero-720.webp" alt="戰鼓搭配舞龍舞獅演出" width="1440" height="848" loading="lazy" decoding="async">
-            <div class="intro-panel-body">
-              <p class="section-tag">舞龍</p>
-              <h2>壯闊、流動，適合大型場域開場</h2>
-              <p>舞龍以龍珠引路，透過盤旋、穿梭、翻騰與隊形變化呈現龍的氣勢。相比舞獅，舞龍需要較大的活動空間，也更適合大型舞台、戶外廣場、遊行繞境與節慶主秀。</p>
-              <ul class="intro-list">
-                <li>適合大型開場、節慶主秀、廟會繞境</li>
-                <li>視覺張力強，能快速聚集現場目光</li>
-                <li>可搭配戰鼓、祥獅、民俗藝陣形成完整演出</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-
-        <div class="intro-faq reveal">
-          <div>
-            <p class="section-tag">常見問題</p>
-            <h2>舞龍舞獅常見問題</h2>
-          </div>
-          <div class="intro-faq-list">
-            <details class="intro-faq-item">
-              <summary><h3>舞獅採青是什麼意思？</h3></summary>
-              <p>採青是舞獅最經典的橋段。「青」通常以紅包與生菜綁成，懸掛於門口或高處。獅子透過探路、試探、跳躍後「採」下青，象徵開市大吉、生意興隆、財源廣進，是開幕與開工儀式中最受歡迎的環節。</p>
-            </details>
-            <details class="intro-faq-item">
-              <summary><h3>醒獅點睛儀式是什麼？</h3></summary>
-              <p>演出前以硃砂為獅頭點睛，象徵獅子「甦醒」有靈，正式為活動揭開序幕。點睛通常由主辦方的重要人物（老闆、長輩、貴賓）主持，帶有加持祝福的意義，也是很好的合影亮點。</p>
-            </details>
-            <details class="intro-faq-item">
-              <summary><h3>舞龍舞獅幾人一組？</h3></summary>
-              <p>舞獅通常一頭獅由兩人操作（獅頭與獅尾），加上鑼鼓鈸樂手組成完整陣容；舞龍則依龍身節數需要多位舞者，並由龍珠在前引導。實際人數會依演出內容與場地規模安排。</p>
-            </details>
-            <details class="intro-faq-item">
-              <summary><h3>一場表演大約多長時間？</h3></summary>
-              <p>常見的演出長度約 15 至 30 分鐘，包含開場、主秀、互動與收勢。也可以依活動流程調整為精簡開場或加入戰鼓、藝陣的完整版本。</p>
-            </details>
-            <details class="intro-faq-item">
-              <summary><h3>室內場地也能表演嗎？</h3></summary>
-              <p>可以。舞獅室內外皆適合，建議天花板淨高 3 米以上較能完整呈現動作；舞龍因需要展開身長與隊形變化，較適合戶外廣場或挑高的大型室內場地。</p>
-            </details>
-            <details class="intro-faq-item">
-              <summary><h3>需要提前多久預約？</h3></summary>
-              <p>建議至少提前 2 至 4 週洽詢，農曆春節前後為旺季，建議提前 1 至 2 個月鎖定檔期。可透過 LINE（ID：lion6869）或聯絡表單告訴我們活動日期與需求。</p>
-            </details>
-            <details class="intro-faq-item">
-              <summary><h3>表演會自備鑼鼓音效嗎？</h3></summary>
-              <p>會。我們自備鑼、鼓、鈸現場演奏，不需要主辦方另外準備音響設備；若場地有音響系統，也可以配合擴音讓效果更好。</p>
-            </details>
-            <details class="intro-faq-item">
-              <summary><h3>服務範圍有哪些地區？</h3></summary>
-              <p>服務台灣全區，北、中、南各縣市皆可安排演出。離島或特殊場地請提早聯繫，我們會協助確認檔期與交通安排。</p>
-            </details>
-          </div>
-        </div>
-
-        <div class="cta-band reveal">
-          <p class="section-tag">預約洽詢</p>
-          <h2>想把舞龍舞獅放進你的活動流程嗎？</h2>
-          <p>可以先告訴我們活動日期、地點、活動類型、預計流程與場地大小，我們會協助判斷適合舞獅、舞龍、戰鼓或綜合演出方案。</p>
-          <div class="cta-band-actions">
-            <a class="button button-primary" href="../pages/contact.html">聯絡洽詢</a>
-            <a class="button button-secondary" href="../pages/services.html">查看表演項目</a>
-          </div>
-        </div>
-      </section>
-    </main>
+    <main id="main-content" class="intro-empty-page" aria-label="舞龍舞獅介紹"></main>
 
     <footer class="site-footer">
       <div class="footer-inner">
@@ -830,6 +533,5 @@
     </footer>
   </div>
   <script src="../script.js" defer></script>
-  <script type="module" src="../assets/js/lion-scrolly.js?v=20260709-clarity"></script>
 </body>
 </html>
