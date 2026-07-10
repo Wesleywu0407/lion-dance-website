@@ -93,8 +93,8 @@
                 stroke-linecap="round" opacity="0" filter="url(#washSoft)"/>
           <g id="legsBack"></g>
           <g id="clothG">
-            <path id="clothWash" fill="#7A7060" opacity="0.16" filter="url(#wash)"/>
-            <path id="clothWash2" fill="#5C5044" opacity="0.10" filter="url(#wash)"/>
+            <path id="clothWash" fill="#7A7060" opacity="0.20" filter="url(#wash)"/>
+            <path id="clothWash2" fill="#5C5044" opacity="0.13" filter="url(#wash)"/>
             <g id="clothStrokes"></g>
             <g id="clothFringe"></g>
           </g>
@@ -204,87 +204,135 @@
       parent.appendChild(c);
       return c;
     }
+    function ring(parent, cx, cy, r, color, width, op) {
+      var c = document.createElementNS(NS, 'circle');
+      c.setAttribute('cx', cx); c.setAttribute('cy', cy); c.setAttribute('r', r);
+      c.setAttribute('fill', 'none'); c.setAttribute('stroke', color);
+      c.setAttribute('stroke-width', width); c.setAttribute('opacity', op);
+      parent.appendChild(c);
+      return c;
+    }
 
-    // ===== 大寫意南獅頭：十餘筆粗獷筆觸，重氣勢不重裝飾 =====
+    // 淡墨先塑出獅頭體積，輪廓仍由乾筆留白完成。
+    blob(hw, -72, -58, 88, 78, WASH, 0.14, -5);
+    blob(hw, -92, -76, 56, 42, PAPER, 0.78, -8);
+    blob(hw, -58, -96, 54, 32, RED, 0.055, -10);
+    blob(hw, -118, -18, 44, 30, WASH, 0.07, -12);
 
-    // --- 淡墨底 + 一抹極淡朱暈（呼應獅頭紅） ---
-    blob(hw, -66, -60, 88, 80, WASH, 0.15);
-    blob(hw, -60, -90, 62, 40, RED, 0.06, -8);
+    // 口腔與朱舌，藏在上下唇之間。
+    blob(mouth, -108, 27, 58, 17, INK, 0.54, 2);
+    stroke(mouth, [[-145, 29], [-119, 34], [-91, 31]], 10, 't', RED, 0.68, 14);
+    stroke(mouth, [[-116, 24], [-105, 29], [-94, 26]], 3, 't', PAPER, 0.32, 10);
 
-    // --- 口腔：寬嘴內的暗色 + 朱舌 ---
-    blob(mouth, -105, 26, 55, 16, INK, 0.4);
-    blob(mouth, -120, 26, 22, 9, RED, 0.5);
+    // 可活動下顎：弧線、五齒與層疊鬚毛。
+    stroke(jaw, [[-171, 34], [-137, 47], [-91, 50], [-46, 37]], 17, 't', INK, 0.94, 20);
+    [-151, -133, -114, -95, -77].forEach(function (x, i) {
+      circle(jaw, x, 32 + Math.sin(i * 0.8) * 3, 4.3, PAPER, 0.98);
+    });
+    stroke(jaw, [[-148, 48], [-141, 68], [-125, 82]], 7, 'h', INK2, 0.54, 10);
+    stroke(jaw, [[-123, 52], [-113, 75], [-96, 86]], 6, 'h', INK3, 0.48, 10);
+    stroke(jaw, [[-94, 53], [-81, 72], [-64, 78]], 6, 'h', INK2, 0.48, 10);
+    stroke(jaw, [[-69, 48], [-57, 63], [-42, 66]], 5, 'h', INK3, 0.42, 10);
 
-    // --- 下顎：寬厚一槓（jawG 樞紐 -50,40） ---
-    stroke(jaw, [[-168, 34], [-120, 46], [-70, 46], [-40, 36]], 16, 't', INK, 0.92, 18);
-    // 牙（紙色方點）
-    circle(jaw, -148, 32, 4.5, PAPER, 0.95);
-    circle(jaw, -128, 36, 4.5, PAPER, 0.95);
-    circle(jaw, -108, 38, 4.5, PAPER, 0.95);
-    circle(jaw, -88, 38, 4.5, PAPER, 0.95);
-    // 顎下兩撮鬚
-    stroke(jaw, [[-130, 50], [-122, 70], [-108, 80]], 7, 'h', INK2, 0.5, 10);
-    stroke(jaw, [[-95, 52], [-84, 70], [-68, 76]], 6, 'h', INK2, 0.45, 10);
+    // 頭頂、面頰和前額的外輪廓。
+    stroke(art, [[18, -55], [8, -108], [-48, -145], [-110, -132], [-151, -88]], 16, 't', INK, 0.91, 28);
+    stroke(art, [[-151, -80], [-165, -45], [-164, -14]], 12, 'h', INK, 0.86, 14);
+    stroke(art, [[-153, -16], [-142, -7], [-130, -4]], 9, 't', INK2, 0.7, 10);
 
-    // --- 顱頂大弧：一筆定乾坤 ---
-    stroke(art, [[20, -58], [8, -110], [-62, -146], [-128, -116], [-150, -82]], 22, 't', INK, 0.9, 26);
-    // --- 前臉直落：額 → 鼻 ---
-    stroke(art, [[-152, -70], [-164, -34], [-162, -8]], 13, 'h', INK, 0.85, 14);
-    // --- 巨眉：半張臉寬的重按一槓 ---
-    stroke(art, [[-36, -88], [-100, -104], [-154, -72]], 26, 't', INK, 0.9, 18);
-    // --- 大眼：瞳被眉壓住一半，怒目 ---
-    circle(art, -100, -58, 19, INK, 1, 'pupil');
-    stroke(art, [[-128, -46], [-100, -72], [-72, -46]], 5, 't', RED, 0.5, 14);
-    circle(art, -106, -63, 4, PAPER, 0.9);
-    // --- 額鏡：一顆朱砂圓 + 粗墨圈 ---
-    circle(art, -26, -38, 20, RED, 0.78);
-    (function () {
-      var ring = document.createElementNS(NS, 'circle');
-      ring.setAttribute('cx', -26); ring.setAttribute('cy', -38); ring.setAttribute('r', 20);
-      ring.setAttribute('fill', 'none'); ring.setAttribute('stroke', INK);
-      ring.setAttribute('stroke-width', 5); ring.setAttribute('opacity', 0.85);
-      art.appendChild(ring);
-    })();
-    // --- 上唇：寬扁一槓，嘴縫下即口腔 ---
-    stroke(art, [[-164, 2], [-120, 12], [-72, 12], [-42, 2]], 14, 't', INK, 0.92, 18);
-    // --- 鼻球（朱砂） ---
-    circle(art, -152, -12, 8, RED, 0.6);
-    // --- 粗角：由顱頂向後平掠 ---
-    stroke(art, [[-18, -122], [28, -148], [72, -142]], 20, 'h', INK, 0.88, 18);
-    stroke(art, [[58, -146], [78, -138], [86, -124]], 8, 'r', INK2, 0.65, 10);
-    // --- 輪廓毛flick：貼著邊緣往後下 ---
-    stroke(art, [[-130, -112], [-148, -124], [-162, -122]], 8, 'h', INK2, 0.55, 8);
-    stroke(art, [[-58, -144], [-70, -160], [-84, -162]], 8, 'h', INK2, 0.55, 8);
-    stroke(art, [[-44, 4], [-30, 18], [-30, 30]], 7, 'h', INK2, 0.5, 8);
-    // --- 腦後鬃：三筆粗流蘇連向獅被 ---
-    stroke(art, [[18, -34], [30, -4], [30, 28]], 9, 'e', INK3, 0.5, 10);
-    stroke(art, [[6, -8], [16, 20], [14, 48]], 8, 'e', INK2, 0.45, 10);
-    stroke(art, [[-12, 10], [-4, 34], [-8, 58]], 7, 'e', INK3, 0.4, 10);
+    // 分層眉鬃，保留霸氣但讓眼睛真正被看見。
+    stroke(art, [[-32, -91], [-81, -113], [-132, -94], [-153, -70]], 15, 't', INK, 0.92, 22);
+    stroke(art, [[-35, -99], [-76, -127], [-117, -119]], 7, 't', INK3, 0.5, 14);
+    stroke(art, [[-148, -83], [-159, -104], [-174, -108]], 7, 'h', INK2, 0.55, 10);
+
+    // 南獅醒目大眼：紙白眼眶、墨瞳、朱砂眼線。
+    circle(art, -103, -58, 27, PAPER, 0.96);
+    ring(art, -103, -58, 27, INK2, 5, 0.84);
+    stroke(art, [[-132, -48], [-106, -79], [-75, -49]], 5, 't', RED, 0.72, 16);
+    circle(art, -100, -58, 17, INK, 1, 'pupil');
+    circle(art, -106, -65, 5, PAPER, 0.95);
+    circle(art, -95, -52, 2.5, PAPER, 0.55);
+
+    // 額鏡移到眉心上方，縮小並加上雙圈與朱砂寶珠。
+    circle(art, -52, -111, 14, PAPER, 0.94);
+    ring(art, -52, -111, 14, INK, 4, 0.9);
+    ring(art, -52, -111, 8, RED, 3, 0.76);
+    circle(art, -52, -111, 3.8, RED, 0.88);
+    stroke(art, [[-55, -128], [-52, -140], [-46, -130]], 5, 't', RED, 0.56, 9);
+
+    // 後側小眼與耳飾，交代獅頭的三分之四角度。
+    blob(art, -28, -61, 18, 15, PAPER, 0.9, -5);
+    ring(art, -28, -61, 14, INK2, 4, 0.76);
+    circle(art, -30, -60, 7, RED, 0.72);
+    circle(art, -32, -63, 2.5, PAPER, 0.8);
+    stroke(art, [[-5, -74], [14, -83], [24, -69]], 10, 't', INK2, 0.72, 12);
+    stroke(art, [[2, -67], [13, -70], [20, -61]], 4, 't', RED, 0.55, 9);
+
+    // 鼻、頰髯與寬唇，讓臉部焦點往前集中。
+    circle(art, -154, -10, 10, RED, 0.72);
+    ring(art, -154, -10, 10, INK2, 3, 0.56);
+    stroke(art, [[-164, 4], [-126, 15], [-82, 15], [-43, 2]], 14, 't', INK, 0.94, 20);
+    stroke(art, [[-156, 7], [-130, 18], [-100, 18]], 4, 't', RED, 0.48, 12);
+    stroke(art, [[-61, -18], [-46, -4], [-39, 16]], 8, 'h', INK3, 0.46, 10);
+
+    // 額角與外圈鬃毛，以多段乾筆取代單一粗黑弧。
+    stroke(art, [[-24, -126], [14, -151], [55, -147]], 12, 'h', INK, 0.88, 18);
+    stroke(art, [[47, -149], [71, -143], [83, -126]], 7, 'r', INK2, 0.62, 10);
+    stroke(art, [[-98, -132], [-111, -153], [-129, -158]], 7, 'h', INK2, 0.5, 10);
+    stroke(art, [[-65, -145], [-70, -164], [-83, -171]], 7, 'h', INK3, 0.48, 10);
+    stroke(art, [[-36, -132], [-34, -151], [-24, -160]], 6, 'h', RED, 0.42, 10);
+    stroke(art, [[-44, 2], [-31, 20], [-31, 34]], 7, 'h', INK2, 0.5, 8);
+
+    // 腦後鬃與頸部流蘇銜接獅被。
+    stroke(art, [[18, -38], [32, -10], [33, 24]], 9, 'e', INK3, 0.56, 11);
+    stroke(art, [[8, -12], [20, 18], [17, 48]], 8, 'e', INK2, 0.5, 11);
+    stroke(art, [[-8, 9], [2, 36], [-2, 61]], 7, 'e', INK3, 0.44, 11);
+    stroke(art, [[20, -20], [40, -8], [47, 10]], 5, 'h', RED, 0.34, 9);
   }
 
   // ============ 獅被筆觸（靜態部分） ============
   function buildCloth() {
     var g = $('clothStrokes');
     g.innerHTML = '';
-    // 背脊一筆（高拱，賦予奔跑的弓身張力）
-    stroke(g, [[-30, -82], [55, -122], [140, -98], [208, -48]], 14, 't', INK, 0.82, 20);
-    // 被面飄帶紋
-    stroke(g, [[0, -50], [50, -60], [95, -48]], 6, 't', INK2, 0.5, 12);
-    stroke(g, [[40, -20], [90, -30], [135, -16]], 6, 't', INK2, 0.45, 12);
-    stroke(g, [[90, 6], [135, -2], [175, 10]], 5, 't', INK2, 0.4, 12);
+    // 背脊以雙層筆觸立起輪廓，內層留白像白獅被上的灰墨滾邊。
+    stroke(g, [[-30, -82], [48, -128], [136, -106], [208, -48]], 16, 't', INK, 0.86, 24);
+    stroke(g, [[-18, -75], [52, -111], [132, -93], [194, -48]], 6, 't', INK3, 0.42, 20);
+
+    // 雲浪紋與朱砂點睛，奔跑時仍可讀成完整的獅被圖樣。
+    stroke(g, [[-2, -48], [22, -65], [49, -54], [69, -66], [96, -50]], 7, 't', INK2, 0.56, 18);
+    stroke(g, [[18, -18], [46, -35], [72, -20], [98, -33], [126, -17]], 6, 't', INK3, 0.5, 18);
+    stroke(g, [[76, 9], [105, -6], [132, 8], [158, -2], [181, 10]], 5, 't', INK2, 0.44, 18);
+    stroke(g, [[10, -42], [31, -48], [49, -42]], 3.5, 't', RED, 0.46, 10);
+    stroke(g, [[102, -27], [124, -32], [145, -24]], 3.5, 't', RED, 0.42, 10);
+
+    // 肩部圓章，呼應獅頭額鏡。
+    var medallion = document.createElementNS(NS, 'path');
+    medallion.setAttribute('d', 'M 25 -37 L 38 -22 L 25 -7 L 12 -22 Z');
+    medallion.setAttribute('fill', PAPER); medallion.setAttribute('stroke', INK2);
+    medallion.setAttribute('stroke-width', 4); medallion.setAttribute('opacity', 0.72);
+    g.appendChild(medallion);
+    var jewel = document.createElementNS(NS, 'circle');
+    jewel.setAttribute('cx', 25); jewel.setAttribute('cy', -22); jewel.setAttribute('r', 5);
+    jewel.setAttribute('fill', RED); jewel.setAttribute('opacity', 0.62);
+    g.appendChild(jewel);
   }
 
   // ============ 獅尾 ============
   function buildTail() {
     var g = $('tailG');
     g.innerHTML = '';
-    stroke(g, [[0, 0], [26, -18], [52, -22]], 8, 'h', INK, 0.8, 12);
-    stroke(g, [[2, 6], [30, -4], [58, -2]], 6, 'h', INK2, 0.65, 12);
-    stroke(g, [[0, 12], [24, 10], [46, 20]], 5, 'h', INK3, 0.55, 12);
-    var ball = document.createElementNS(NS, 'circle');
-    ball.setAttribute('cx', 56); ball.setAttribute('cy', -12); ball.setAttribute('r', 7);
-    ball.setAttribute('fill', RED); ball.setAttribute('opacity', 0.55);
-    g.appendChild(ball);
+    blob(g, 57, -8, 20, 16, WASH, 0.13, -8);
+    stroke(g, [[0, 2], [27, -22], [62, -26]], 10, 'h', INK, 0.84, 14);
+    stroke(g, [[2, 8], [31, -7], [70, -5]], 8, 'h', INK2, 0.7, 14);
+    stroke(g, [[0, 14], [30, 13], [60, 28]], 7, 'h', INK3, 0.58, 14);
+    stroke(g, [[42, -6], [66, -29], [87, -24]], 7, 'h', INK2, 0.62, 12);
+    stroke(g, [[45, 3], [72, 8], [88, 22]], 6, 'h', INK3, 0.52, 12);
+    circleTail(g, 58, -6, 8, RED, 0.68);
+    function circleTail(parent, cx, cy, r, fill, op) {
+      var c = document.createElementNS(NS, 'circle');
+      c.setAttribute('cx', cx); c.setAttribute('cy', cy); c.setAttribute('r', r);
+      c.setAttribute('fill', fill); c.setAttribute('opacity', op);
+      parent.appendChild(c);
+    }
   }
 
   // ============ 腿（褲管寬、踝口窄，黑布鞋） ============
@@ -299,8 +347,12 @@
       var shoe = document.createElementNS(NS, 'ellipse');
       shoe.setAttribute('rx', 18); shoe.setAttribute('ry', 7.5);
       shoe.setAttribute('fill', INK); shoe.setAttribute('opacity', 0.85);
-      g.appendChild(trouser); g.appendChild(shoe);
-      return { hip: h, trouser: trouser, shoe: shoe };
+      var cuff = document.createElementNS(NS, 'ellipse');
+      cuff.setAttribute('rx', 17); cuff.setAttribute('ry', 7);
+      cuff.setAttribute('fill', PAPER); cuff.setAttribute('stroke', INK3);
+      cuff.setAttribute('stroke-width', 3.5); cuff.setAttribute('opacity', 0.86);
+      g.appendChild(trouser); g.appendChild(cuff); g.appendChild(shoe);
+      return { hip: h, trouser: trouser, cuff: cuff, shoe: shoe };
     });
   }
   var legsFront = makeLegs('legsFront', [
@@ -321,7 +373,9 @@
       var kx = (l.hip.x + fx) / 2 - 14 * lift * (1 - stance) - 5 - tuck * 20;
       var ky = (l.hip.y + fy) / 2 + 10;
       var pts = spine([[l.hip.x, l.hip.y], [kx, ky], [fx, fy - 6]], 10);
-      l.trouser.setAttribute('d', brushD(pts, 30, 'h'));
+      l.trouser.setAttribute('d', brushD(pts, 34, 'h'));
+      l.cuff.setAttribute('cx', fx); l.cuff.setAttribute('cy', fy - 6);
+      l.cuff.setAttribute('transform', 'rotate(' + (-6 - lift * 12).toFixed(1) + ' ' + fx + ' ' + (fy - 6) + ')');
       l.shoe.setAttribute('cx', fx - 4); l.shoe.setAttribute('cy', fy);
       l.shoe.setAttribute('transform', 'rotate(' + (-6 - lift * 14).toFixed(1) + ' ' + fx + ' ' + fy + ')');
     });
