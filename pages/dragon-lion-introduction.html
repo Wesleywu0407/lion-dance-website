@@ -26,7 +26,7 @@
   <link rel="apple-touch-icon" href="../favicon-180.png">
   <meta name="theme-color" content="#f6f0e7">
   <link rel="stylesheet" href="../css/style.css?v=20260711">
-  <link rel="stylesheet" href="../css/pages/dragon-lion-introduction.css?v=20260710-scroll">
+  <link rel="stylesheet" href="../css/pages/dragon-lion-introduction.css?v=20260715-inkrun">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -182,35 +182,49 @@
     <main id="main-content" class="intro-main">
       <section class="ink-scroll-space" data-ink-scroll aria-labelledby="intro-feature-title">
         <div class="ink-scroll-stage">
-          <iframe
-            class="ink-scroll-frame"
-            src="./ink-dragon-scroll.html?embedded=1&amp;v=20260710"
-            title="水墨醒獅手卷動畫"
-            tabindex="-1"
-            aria-hidden="true"
-          ></iframe>
-          <noscript>
-            <img class="ink-scroll-fallback" src="../images/ink-lion-hero.jpg" width="1490" height="1055" alt="以紅、白、黑水墨描繪的傳統南獅">
-          </noscript>
+          <iframe class="ink-scroll-frame" src="./ink-dragon-scroll.html?embedded=1&amp;v=20260715-inkrun" title="水墨手卷動畫" tabindex="-1" aria-hidden="true"></iframe>
           <div class="ink-scroll-copy">
             <p>DRAGON &amp; LION DANCE CULTURE</p>
             <h1 id="intro-feature-title">舞龍舞獅介紹</h1>
-            <span>向下捲動，展開水墨手卷</span>
+            <strong>一筆墨，展開醒、聚、納的文化精神。</strong>
+            <a class="ink-scroll-action" href="#culture">開始認識文化 <span aria-hidden="true">↓</span></a>
           </div>
-          <div class="ink-scroll-hint" aria-hidden="true">
-            <span>SCROLL</span>
-            <i></i>
-          </div>
+          <div class="ink-scroll-hint" aria-hidden="true"><span>SCROLL</span><i></i></div>
         </div>
       </section>
 
+      <aside class="intro-chapter-nav" aria-label="本頁內容導覽">
+        <div class="intro-section-shell intro-chapter-nav-inner">
+          <div class="intro-chapter-intro">
+            <span>讀懂龍獅文化</span>
+            <p>從文化寓意、表演差異到實際演出流程，一次找到你想了解的內容。</p>
+          </div>
+          <nav aria-label="章節導覽">
+            <a href="#culture"><span>01</span>文化精神</a>
+            <a href="#dragon-lion-difference"><span>02</span>龍獅差異</a>
+            <a href="#performance-process"><span>03</span>演出流程</a>
+            <a href="#intro-faq"><span>04</span>常見問題</a>
+          </nav>
+          <div class="intro-chapter-actions" aria-label="演出洽詢">
+            <a href="../pages/services.html">查看表演項目</a>
+            <a class="is-primary" href="../pages/contact.html">詢問檔期</a>
+          </div>
+        </div>
+      </aside>
+
       <section class="intro-overview" id="culture" aria-labelledby="culture-title">
         <div class="intro-section-shell intro-overview-layout">
-          <header class="intro-section-heading reveal">
-            <p class="intro-section-kicker">文化精神</p>
-            <h2 id="culture-title">醒、聚、納<br>每一步都有意義</h2>
-            <p>舞龍舞獅不只是熱鬧的表演。從點睛、起鼓到採青納福，每個動作都承載著開啟新局、凝聚人心與迎祥納福的文化心意。</p>
-          </header>
+          <div class="intro-overview-side">
+            <header class="intro-section-heading reveal">
+              <p class="intro-section-kicker">文化精神</p>
+              <h2 id="culture-title">醒、聚、納<br>每一步都有意義</h2>
+              <p>舞龍舞獅不只是熱鬧的表演。從點睛、起鼓到採青納福，每個動作都承載著開啟新局、凝聚人心與迎祥納福的文化心意。</p>
+            </header>
+            <figure class="intro-ink-figure reveal">
+              <img src="../images/ink-lion-head-1200.webp" width="1200" height="1485" alt="水墨筆觸繪成的醒獅獅頭，硃砂點綴眉眼與額鏡" loading="lazy" decoding="async">
+              <figcaption>醒獅・水墨<span>Awakening Lion in Ink</span></figcaption>
+            </figure>
+          </div>
           <ol class="intro-values reveal">
             <li>
               <span class="intro-value-number">01</span>
@@ -321,7 +335,7 @@
         </div>
       </section>
 
-      <section class="intro-process" aria-labelledby="process-title">
+      <section class="intro-process" id="performance-process" aria-labelledby="process-title">
         <div class="intro-section-shell">
           <header class="intro-process-heading reveal">
             <div>
@@ -363,7 +377,7 @@
         </div>
       </section>
 
-      <section class="intro-faq-section" aria-labelledby="faq-title">
+      <section class="intro-faq-section" id="intro-faq" aria-labelledby="faq-title">
         <div class="intro-section-shell intro-faq-layout">
           <header class="intro-faq-heading reveal">
             <p class="intro-section-kicker">常見問題</p>
@@ -472,6 +486,7 @@
     </footer>
   </div>
   <script src="../script.js" defer></script>
-  <script src="../assets/js/ink-scroll-bridge.js?v=20260710" defer></script>
+  <script src="../assets/js/ink-scroll-bridge.js?v=20260715" defer></script>
+  <script src="../assets/js/ink-text-reveal.js?v=20260714" defer></script>
 </body>
 </html>

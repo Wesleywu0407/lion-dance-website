@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "webgl": {
+      "source": "martinholovsky/claude-skills-generator",
+      "sourceType": "github",
+      "skillPath": "skills/webgl/SKILL.md",
+      "computedHash": "981e4742ad032bb9e44a13dc1e03266f207e56fdfe4ed33108731837de3686b8"
+    }
+  }
+}
