@@ -13,7 +13,7 @@
 .service-page-subtitle {
   max-width: 34rem;
   margin: 0;
-  color: #8B776B;
+  color: var(--ink-soft);
   font-size: 0.96rem;
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -121,7 +121,7 @@
   font-weight: 900;
   line-height: 1.2;
   letter-spacing: 0.08em;
-  color: #3d1a0a;
+  color: var(--ink);
 }
 
 .service-item:first-child h3 {
@@ -145,7 +145,7 @@
 
 .service-item-description {
   margin: 18px 0 0;
-  color: #5a3a2a;
+  color: var(--ink-soft);
   font-size: 15px;
   line-height: 1.8;
   max-width: 42ch;
@@ -160,7 +160,7 @@
 .service-item-link {
   display: inline-flex;
   margin-top: 18px;
-  color: #993C1D;
+  color: var(--accent);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -313,7 +313,7 @@
 
 .service-item:first-child h3,
 .service-item h3 {
-  color: #3d1a0a;
+  color: var(--ink);
   font-size: clamp(2rem, 4vw, 3.2rem);
 }
 
@@ -324,7 +324,7 @@
 
 .service-item:first-child .service-item-description,
 .service-item-description {
-  color: #5a3a2a;
+  color: var(--ink-soft);
   max-width: 48ch;
   font-size: 1rem;
 }
@@ -554,7 +554,7 @@ a.learn-more:focus-visible {
     writing-mode: horizontal-tb;
     font-size: 2.5rem;
     font-weight: 300;
-    color: #B85042;
+    color: var(--accent);
     opacity: 0.7;
     display: block;
     margin-bottom: 0.5rem;

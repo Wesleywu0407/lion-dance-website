@@ -50,7 +50,7 @@
 
 .contact-info p a:hover,
 .contact-info p a:focus-visible {
-  color: #B85042;
+  color: var(--accent);
 }
 
 .contact-info span {
@@ -116,9 +116,9 @@
 /* 表單送出成功訊息（script.js 於 ?submitted=1 時注入） */
 .contact-success {
   padding: 22px 26px;
-  border-left: 3px solid #06c755;
+  border-left: 3px solid #2f7d54;
   border-radius: 0 14px 14px 0;
-  background: linear-gradient(180deg, rgba(6, 199, 85, 0.08), rgba(6, 199, 85, 0.04));
+  background: linear-gradient(180deg, rgba(47, 125, 84, 0.08), rgba(47, 125, 84, 0.04));
   text-align: left;
 }
 
@@ -189,7 +189,7 @@
 .contact-form textarea:focus,
 .contact-form select:focus {
   outline: none;
-  border-color: #B85042;
+  border-color: var(--accent);
   background: #fff;
   box-shadow: 0 0 0 3px rgba(184, 80, 66, 0.1);
 }

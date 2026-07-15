@@ -9,6 +9,8 @@
   --accent: #8f3a2f;
   --accent-deep: #763126;
   --accent-soft: rgba(143, 58, 47, 0.1);
+  --cta: #a8321f;
+  --cta-deep: #8c2817;
   --gold: #b9925e;
   --line: rgba(22, 19, 17, 0.1);
   --shadow: 0 18px 40px rgba(22, 19, 17, 0.06);
@@ -163,14 +165,14 @@ h2.section-heading,
 h3.section-heading {
   position: relative;
   display: inline-block;
-  padding: 10px 18px;
+  padding: 0;
 }
 
 .section-tag {
   margin: 0 0 16px;
   padding-left: 12px;
   border-left: 3px solid var(--gold);
-  color: var(--accent-deep);
+  color: var(--accent);
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.28em;
@@ -236,14 +238,14 @@ h3.section-heading {
   font-size: clamp(3rem, 6vw, 5rem);
   line-height: 1.16;
   letter-spacing: 0.12em;
-  color: #6F5547;
+  color: var(--ink);
   text-rendering: optimizeLegibility;
 }
 
 .page-hero .page-hero-inner > p:not(.section-tag) {
   max-width: 54rem;
   margin: 18px 0 0;
-  color: #8B776B;
+  color: var(--ink-soft);
   font-size: 1.05rem;
   letter-spacing: 0.04em;
   line-height: 1.8;
@@ -285,56 +287,7 @@ h3.section-heading {
   margin-top: 24px;
 }
 
-.section-heading::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 72px;
-  height: 72px;
-  border-radius: 14px;
-  background:
-    linear-gradient(135deg, rgba(143, 58, 47, 0.14), rgba(185, 146, 94, 0.08));
-  opacity: 0.72;
-  mask:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M13 12h74v74H13z' fill='none' stroke='black' stroke-width='6'/%3E%3Cpath d='M29 27v46M50 27v46M71 27v46M27 50h46' stroke='black' stroke-width='6' stroke-linecap='square'/%3E%3C/svg%3E")
-    center/72% no-repeat;
-}
-
-h1.section-heading::before,
-h1.section-heading::after,
-h2.section-heading::before,
-h2.section-heading::after,
-h3.section-heading::before,
-h3.section-heading::after {
-  content: "";
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border-color: #993C1D;
-  border-style: solid;
-  border-radius: 0;
-  background: none;
-  mask: none;
-  opacity: 1;
-}
-
-h1.section-heading::before,
-h2.section-heading::before,
-h3.section-heading::before {
-  top: 0;
-  left: 0;
-  border-width: 2px 0 0 2px;
-}
-
-h1.section-heading::after,
-h2.section-heading::after,
-h3.section-heading::after {
-  top: auto;
-  right: 0;
-  bottom: 0;
-  border-width: 0 2px 2px 0;
-}
+/* Heading decorations removed: one idea per heading (eyebrow + title only). */
 
 .process-grid,
 .contact-layout,

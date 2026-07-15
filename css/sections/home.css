@@ -597,7 +597,7 @@ article).section-heading::after {
   /* 主按鈕：朱紅底、直角、白字 */
   .home-page .hero-actions .button-primary,
   .home-page .process-invite-cta .button-primary {
-    background: #a8321f;
+    background: var(--cta);
     color: #fff;
     border-radius: 6px;
     border: none;
@@ -612,7 +612,7 @@ article).section-heading::after {
   .home-page .hero-actions .button-primary:focus-visible,
   .home-page .process-invite-cta .button-primary:hover,
   .home-page .process-invite-cta .button-primary:focus-visible {
-    background: #8c2817;
+    background: var(--cta-deep);
     transform: none;
     box-shadow: 0 2px 10px rgba(168, 50, 31, 0.28);
   }
@@ -625,15 +625,15 @@ article).section-heading::after {
     display: none;
   }
 
-  /* LINE 主按鈕：品牌綠、直角、滿版（與朱紅主按鈕同形） */
+  /* LINE 主按鈕：品牌綠、圓弧、滿版 */
   .home-page .hero-actions .button-line {
-    border-radius: 6px;
+    border-radius: 999px;
     border: none;
     min-width: 0;
     width: 100%;
     justify-content: center;
     letter-spacing: 0.12em;
-    box-shadow: 0 4px 16px rgba(6, 199, 85, 0.3);
+    box-shadow: 0 4px 16px rgba(47, 125, 84, 0.3);
   }
 
   .home-page .hero-actions .button-line::before,
@@ -746,41 +746,41 @@ article).section-heading::after {
      ──────────────────────────────────────────────── */
 
   .home-page .home-narrative .section-tag::before {
-    content: "ABOUT";
-    display: block;
+    content: "ABOUT ·";
+    display: inline;
     font-family: var(--font-body);
     font-size: 0.72rem;
     letter-spacing: 0.22em;
     font-weight: 700;
-    color: #a8321f;
+    color: var(--accent);
     text-transform: uppercase;
-    margin-bottom: 8px;
+    margin-right: 8px;
     line-height: 1.2;
   }
 
   .home-page .home-seo-intro .section-tag::before {
-    content: "SERVICES";
-    display: block;
+    content: "SERVICES ·";
+    display: inline;
     font-family: var(--font-body);
     font-size: 0.72rem;
     letter-spacing: 0.22em;
     font-weight: 700;
-    color: #a8321f;
+    color: var(--accent);
     text-transform: uppercase;
-    margin-bottom: 8px;
+    margin-right: 8px;
     line-height: 1.2;
   }
 
   .home-page .process-invite .section-tag::before {
-    content: "PROCESS";
-    display: block;
+    content: "PROCESS ·";
+    display: inline;
     font-family: var(--font-body);
     font-size: 0.72rem;
     letter-spacing: 0.22em;
     font-weight: 700;
-    color: #a8321f;
+    color: var(--accent);
     text-transform: uppercase;
-    margin-bottom: 8px;
+    margin-right: 8px;
     line-height: 1.2;
   }
 
@@ -853,7 +853,7 @@ article).section-heading::after {
 .home-trust {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 56px 48px 8px;
+  padding: 56px 48px 16px;
 }
 
 .home-trust-list {
@@ -862,28 +862,30 @@ article).section-heading::after {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
+  gap: 32px;
 }
 
 .home-trust-list li {
   display: grid;
-  gap: 4px;
-  padding-left: 16px;
+  gap: 8px;
+  padding-left: 18px;
   border-left: 3px solid var(--gold);
 }
 
 .home-trust-list strong {
   font-family: var(--font-serif);
-  font-size: 1.16rem;
+  font-size: clamp(1.35rem, 1.6vw, 1.62rem);
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
   color: var(--ink);
 }
 
 .home-trust-list span {
-  font-size: 0.9rem;
-  color: var(--ink-muted);
+  font-size: 0.92rem;
+  color: var(--ink-soft);
   letter-spacing: 0.03em;
+  line-height: 1.5;
 }
 
 /* ── 表演項目照片牆（首頁） ──────────────────────────── */
@@ -983,19 +985,21 @@ article).section-heading::after {
 
 @media (max-width: 760px) {
   .home-trust {
-    padding: 40px 20px 0;
+    padding: 40px 20px 4px;
   }
 
   .home-trust-list {
-    gap: 20px 16px;
+    gap: 24px 16px;
   }
 
   .home-trust-list strong {
-    font-size: 1.02rem;
+    font-size: 1.12rem;
+    letter-spacing: 0.02em;
+    text-wrap: balance;
   }
 
   .home-trust-list span {
-    font-size: 0.82rem;
+    font-size: 0.84rem;
   }
 
   .home-show-grid {

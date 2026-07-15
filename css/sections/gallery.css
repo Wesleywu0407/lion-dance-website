@@ -235,7 +235,7 @@ circle) {
   width: fit-content;
   padding: 14px 20px 0;
   border-top: 1px solid rgba(185, 146, 94, 0.3);
-  color: #7f6656;
+  color: var(--ink-soft);
   font-size: 0.84rem;
   letter-spacing: 0.14em;
   line-height: 1.72;
@@ -287,7 +287,7 @@ circle) {
   border: 0;
   border-radius: 0;
   background: transparent;
-  color: #993C1D;
+  color: var(--accent);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -313,7 +313,7 @@ circle) {
 
 .album-title {
   margin: 0;
-  color: #2f170c;
+  color: var(--ink);
   font-family: var(--font-serif);
   font-size: clamp(2rem, 4.3vw, 3rem);
   font-weight: 900;
@@ -658,7 +658,7 @@ body.is-lightbox-open {
   }
 
   .gallery-page .gallery-hero-sub-main {
-    color: #5C1A10;
+    color: var(--ink);
     font-size: clamp(1.75rem, 8vw, 2.25rem);
     font-weight: 900;
   }
@@ -675,7 +675,7 @@ body.is-lightbox-open {
     display: block;
     max-width: 20rem;
     margin: 0 auto;
-    color: #7f6656;
+    color: var(--ink-soft);
     font-size: 0.8rem;
     line-height: 1.65;
     letter-spacing: 0.03em;
@@ -696,7 +696,7 @@ body.is-lightbox-open {
     border: 1px solid rgba(139, 58, 42, 0.22);
     border-radius: 999px;
     background: rgba(255, 252, 246, 0.72);
-    color: #7b3a2b;
+    color: var(--accent);
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.08em;
@@ -705,7 +705,7 @@ body.is-lightbox-open {
 
   .gallery-page .gallery-hero-footer p {
     padding: 4px 12px 8px;
-    color: #7f6656;
+    color: var(--ink-soft);
   }
 
   .gallery-page .case-landing {
@@ -756,7 +756,7 @@ body.is-lightbox-open {
     display: block;
     max-width: 22rem;
     margin: 12px auto 0;
-    color: #7f6656;
+    color: var(--ink-soft);
     font-size: 0.8rem;
     letter-spacing: 0.03em;
     line-height: 1.75;
@@ -766,7 +766,7 @@ body.is-lightbox-open {
   .gallery-page .case-helper {
     margin-top: 8px;
     padding-top: 6px;
-    color: #8a7769;
+    color: var(--ink-soft);
   }
 
   .gallery-page .site-footer {
@@ -848,7 +848,7 @@ body.is-lightbox-open {
 .gallery-page .case-category-card:focus-visible {
     transform: translateY(-3px);
     box-shadow: 0 10px 24px rgba(143, 58, 47, 0.2);
-    border-color: #B85042;
+    border-color: var(--accent);
   }
 
   .gallery-page .case-category-card::after {
@@ -1305,7 +1305,7 @@ body.is-lightbox-open {
 
 .gallery-page .gallery-page-hero .eyebrow {
   margin: 0;
-  color: #8B5E3C;
+  color: var(--accent);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.22em;
@@ -1313,13 +1313,13 @@ body.is-lightbox-open {
 
 .gallery-page .gallery-page-hero h1 {
   margin: 0;
-  color: #5C1A10;
+  color: var(--ink);
 }
 
 .gallery-page .gallery-page-hero .hero-sub {
   margin: 0;
   max-width: 28rem;
-  color: #6E5A4E;
+  color: var(--ink-soft);
   font-size: 1rem;
   line-height: 1.8;
 }
@@ -1328,13 +1328,13 @@ body.is-lightbox-open {
   max-width: 42rem;
   margin: 18px auto 0;
   padding: 0 0.85rem;
-  color: #6E5A4E;
+  color: var(--ink-soft);
   text-align: center;
 }
 
 .gallery-page .case-summary h2 {
   margin: 0 0 12px;
-  color: #5C1A10;
+  color: var(--ink);
   font-size: 1.25rem;
   line-height: 1.35;
 }

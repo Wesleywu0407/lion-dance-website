@@ -91,19 +91,19 @@
   border-right: 1px solid currentColor;
 }
 
-/* LINE 品牌按鈕：台灣使用者最熟悉的洽詢入口 */
+/* LINE 品牌按鈕：台灣使用者最熟悉的洽詢入口（品牌綠調和為與站內暖色調協調的深松綠） */
 .button-line {
-  background: #06c755;
+  background: #2f7d54;
   color: #fff;
-  border-color: rgba(6, 199, 85, 0.4);
-  box-shadow: 0 10px 22px rgba(6, 199, 85, 0.22);
+  border-color: rgba(47, 125, 84, 0.4);
+  box-shadow: 0 10px 22px rgba(47, 125, 84, 0.22);
 }
 
 .button-line:hover,
 .button-line:focus-visible {
-  background: #05b34c;
+  background: #266644;
   color: #fff;
-  box-shadow: 0 8px 28px rgba(5, 179, 76, 0.34);
+  box-shadow: 0 8px 28px rgba(38, 102, 68, 0.34);
 }
 
 /* ── 手機快速聯絡列（script.js 注入，僅 ≤760px 顯示） ── */
@@ -141,7 +141,7 @@
 
   .quickbar .quickbar-line {
     color: #fff;
-    background: #06c755;
+    background: #2f7d54;
   }
 
   .quickbar .quickbar-book {
