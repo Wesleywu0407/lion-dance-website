@@ -95,10 +95,15 @@
   .nav-toggle {
     position: absolute;
     top: 50%;
-    right: 18px;
+    right: 12px;
     z-index: 2;
-    display: inline-block;
+    display: inline-flex;
     flex: 0 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 44px;
+    min-height: 44px;
     transform: translateY(-50%);
     border: none;
     border-radius: 0;
@@ -648,7 +653,7 @@ select {
 
   .footer-socials a {
     width: auto;
-    min-height: 42px;
+    min-height: 44px;
     padding: 0 14px;
   }
 
@@ -663,7 +668,8 @@ select {
   }
 
   .footer-links a {
-    margin: 7px 0;
+    margin: 0;
+    padding: 12px 0;
     font-size: 0.9rem;
     line-height: 1.45;
   }

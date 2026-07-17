@@ -552,6 +552,11 @@ article).section-heading::after {
     box-sizing: border-box;
   }
 
+  /* 信任條併入近白帶，避免與關於區之間出現色塊接縫 */
+  .home-page .home-trust {
+    background: #fbf9f5;
+  }
+
   /* 關於區 → 近白，給文字呼吸空間 */
   .home-page .home-narrative {
     background: #fbf9f5;

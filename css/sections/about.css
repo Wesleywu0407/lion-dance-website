@@ -330,3 +330,178 @@
     font-size: 0.98rem;
   }
 }
+
+/* ── Story chapters (關於我們 敘事版) ─────────────────────
+   Each .ctb becomes a numbered chapter: oversized numeral,
+   text column and a photo that alternate sides. All entrance
+   choreography hangs off the .visible / .is-visible classes
+   the existing IntersectionObservers already toggle.
+   ─────────────────────────────────────────────────────────── */
+
+.story-chapter {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4.2rem);
+  width: min(100%, 1080px);
+}
+
+.story-chapter::after {
+  grid-column: 1 / -1;
+}
+
+.story-chapter:nth-of-type(even) .ctb-text {
+  order: 2;
+}
+
+.story-chapter:nth-of-type(even) .ctb-media {
+  order: 1;
+}
+
+/* Chapter numeral — oversized ink watermark */
+.ctb-num {
+  position: absolute;
+  top: clamp(0.6rem, 2vw, 1.6rem);
+  left: clamp(0.4rem, 1.5vw, 1.4rem);
+  z-index: 0;
+  font-family: var(--font-display-serif);
+  font-size: clamp(5.4rem, 11vw, 9rem);
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(143, 58, 47, 0.1);
+  letter-spacing: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.ctb-num::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: clamp(2.2rem, 5vw, 4rem);
+  margin: 10px auto 0;
+  background: linear-gradient(180deg, rgba(143, 58, 47, 0.4), transparent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.45s;
+}
+
+.ctb-text {
+  position: relative;
+  z-index: 1;
+}
+
+/* Chapter photo */
+.ctb-media {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.ctb-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.ctb-media figcaption {
+  padding: 12px 16px 14px;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  border-top: 1px solid rgba(185, 146, 94, 0.22);
+}
+
+/* ── Entrance choreography ──────────────────────────────── */
+
+.js .ctb-num {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity   1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.js .about-block.visible .ctb-num {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.js .about-block.visible .ctb-num::after {
+  transform: scaleY(1);
+}
+
+.js .ctb-media {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity   0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+}
+
+.js .about-block.visible .ctb-media {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Photo settles from a gentle zoom for a cinematic feel */
+.js .ctb-media img {
+  transform: scale(1.07);
+  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+}
+
+.js .about-block.visible .ctb-media img {
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .ctb-num,
+  .js .ctb-media,
+  .js .ctb-media img {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .ctb-num::after {
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .story-chapter {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+    padding-top: 4.6rem;
+  }
+
+  .story-chapter:nth-of-type(even) .ctb-text {
+    order: 1;
+  }
+
+  .story-chapter:nth-of-type(even) .ctb-media {
+    order: 2;
+  }
+
+  .ctb-num {
+    top: 1rem;
+    left: 1.1rem;
+    font-size: 4.2rem;
+  }
+
+  .ctb-num::after {
+    height: 1.6rem;
+  }
+
+  .ctb-media {
+    width: 100%;
+  }
+}

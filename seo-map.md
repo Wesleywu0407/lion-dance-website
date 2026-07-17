@@ -20,3 +20,5 @@
 | /landing/lion-dance-performance.html | 舞獅表演 | 舞獅表演｜祥獅獻瑞、開幕活動與節慶演出 | https://nansiengtaiwan.com/landing/lion-dance-performance.html | Done |
 | /landing/opening-lion-dance.html | 開幕舞獅表演 | 開幕舞獅表演｜祥獅獻瑞與開工開幕儀式 | https://nansiengtaiwan.com/landing/opening-lion-dance.html | Done |
 | /landing/company-event-lion-dance.html | 企業活動舞獅表演 | 企業活動舞獅表演｜春酒尾牙、品牌活動與商演服務 | https://nansiengtaiwan.com/landing/company-event-lion-dance.html | Done |
+| /landing/year-end-party-lion-dance.html | 尾牙舞獅表演 | 尾牙春酒舞獅表演｜企業尾牙節目、戰鼓開場與醒獅祝福 | https://nansiengtaiwan.com/landing/year-end-party-lion-dance.html | Done |
+| /landing/lion-dance-price-guide.html | 舞獅表演價格 | 舞獅表演價格與報價指南｜影響費用的因素與詢價方式 | https://nansiengtaiwan.com/landing/lion-dance-price-guide.html | Done |

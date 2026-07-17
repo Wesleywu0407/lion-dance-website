@@ -27,6 +27,7 @@
   display: inline-flex;
   align-items: center;
   gap: 18px;
+  min-height: 44px;
   text-decoration: none;
   color: inherit;
 }

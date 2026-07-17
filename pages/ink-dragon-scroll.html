@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
 <title>水墨龍獅 · 手卷</title>
+<meta name="description" content="以水墨手卷形式呈現的舞龍舞獅互動頁：向下滑動展開山水長卷，欣賞墨獅奔動的文化意象。臺灣南仙龍獅體育會製作。">
+<link rel="canonical" href="https://nansiengtaiwan.com/pages/ink-dragon-scroll.html">
+<meta property="og:site_name" content="臺灣南仙龍獅體育會">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:type" content="website">
+<meta property="og:title" content="水墨龍獅 · 手卷">
+<meta property="og:description" content="以水墨手卷形式呈現的舞龍舞獅互動頁：向下滑動展開山水長卷，欣賞墨獅奔動的文化意象。">
+<meta property="og:url" content="https://nansiengtaiwan.com/pages/ink-dragon-scroll.html">
+<meta property="og:image" content="https://nansiengtaiwan.com/images/og-cover.jpg">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { background: #F5F0E6; overscroll-behavior: none; }
@@ -241,9 +250,9 @@
         '  float lum = dot(c, vec3(0.299, 0.587, 0.114));',
         '  c = mix(c, vec3(1.0), smoothstep(0.82, 0.97, lum) * 0.92);',  // 紙面摺痕、雜紋推回純白
         '  vec2 q = (vUv - uAnchor) * vec2(uAspect, 1.0);',
-        '  float d = length(q) + (fbm(vUv * 4.0 + uTime * 0.03) - 0.5) * 0.35;',
-        '  float m = smoothstep(uReveal + 0.10, uReveal - 0.22, d);',
-        '  float edge = uReveal < 1.45 ? smoothstep(0.14, 0.0, abs(d - uReveal)) : 0.0;',
+        '  float d = length(q) + (fbm(vUv * 4.0 + uTime * 0.03) - 0.5) * 0.5;',
+        '  float m = smoothstep(uReveal + 0.04, uReveal - 0.10, d);',   // 窄過渡帶＝潑墨利邊，不見灰霧
+        '  float edge = uReveal < 1.7 ? smoothstep(0.1, 0.0, abs(d - uReveal)) : 0.0;',
         '  c = mix(vec3(1.0), c, m);',
         '  c *= 1.0 - edge * 0.08;',            // 顯影邊緣的濕墨痕
         '  gl_FragColor = vec4(c, 1.0);',
@@ -376,7 +385,10 @@
       var a = nearestLoaded(i0), b = nearestLoaded(i1);
       if (a < 0) return;
       if (b < 0) { b = a; mixT = 0; }
-      var reveal = Math.pow(state.introT, 0.8) * 1.6;
+      // 死區：頁面剛載入時保持素紙，避免半調顯影像灰污
+      var reveal = state.introT <= 0.04
+        ? -0.4
+        : Math.pow((state.introT - 0.04) / 0.96, 0.85) * 1.9;
       var offY = -state.jump * H * 0.18 * dpr;
 
       if (gl) {

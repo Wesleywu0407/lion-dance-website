@@ -28,6 +28,8 @@ liondancewebsite/
     lion-dance-performance.html
     opening-lion-dance.html
     company-event-lion-dance.html
+    year-end-party-lion-dance.html
+    lion-dance-price-guide.html
   css/                               Stylesheets
   js/                                Page scripts or future JS modules
   script.js                          Shared site script
@@ -93,6 +95,8 @@ SEO landing pages:
 - `landing/lion-dance-performance.html`
 - `landing/opening-lion-dance.html`
 - `landing/company-event-lion-dance.html`
+- `landing/year-end-party-lion-dance.html`
+- `landing/lion-dance-price-guide.html`
 
 ## Files To Update When Moving Or Renaming Pages
 
