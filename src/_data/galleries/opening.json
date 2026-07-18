@@ -1,0 +1,50 @@
+{
+  "key": "opening",
+  "title": "開幕開工",
+  "intro": "臺灣南仙龍獅體育會的開幕開工舞獅表演案例，服務台北及大台北地區的公司開幕、店面開幕、企業開工與品牌剪綵活動，以祥獅獻瑞、醒獅採青與雷鳴戰鼓營造熱鬧吉祥的開場氣氛。",
+  "lightboxAlt": "開幕開工活動案例照片放大檢視",
+  "photos": [
+    {
+      "full": "../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E9%96%8B%E5%B9%95%E7%86%B1%E5%A0%B4-1440.webp",
+      "thumbnail": "../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E9%96%8B%E5%B9%95%E7%86%B1%E5%A0%B4-720.webp",
+      "alt": "台灣南仙龍獅體育會紅色醒獅開幕熱場表演",
+      "width": 720,
+      "height": 540
+    },
+    {
+      "full": "../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E6%96%87%E6%AD%A6%E8%B2%A1%E7%A5%9E%E8%BF%8E%E6%96%B0%E6%98%A5-1440.webp",
+      "thumbnail": "../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E6%96%87%E6%AD%A6%E8%B2%A1%E7%A5%9E%E8%BF%8E%E6%96%B0%E6%98%A5-720.webp",
+      "alt": "文武財神迎新春開幕典禮表演",
+      "width": 540,
+      "height": 720
+    },
+    {
+      "full": "../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E8%B2%A1%E7%A5%9E-1440.webp",
+      "thumbnail": "../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E8%B2%A1%E7%A5%9E-720.webp",
+      "alt": "文武財神開幕活動祝賀演出",
+      "width": 540,
+      "height": 720
+    },
+    {
+      "full": "../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/101%E9%96%8B%E5%B7%A5%E8%A1%A8%E6%BC%94-1440.webp",
+      "thumbnail": "../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/101%E9%96%8B%E5%B7%A5%E8%A1%A8%E6%BC%94-720.webp",
+      "alt": "南仙龍獅企業開工醒獅表演",
+      "width": 720,
+      "height": 540
+    },
+    {
+      "full": "../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E7%BE%8E%E7%A6%8F%E9%A3%9F%E9%9B%86-1440.webp",
+      "thumbnail": "../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E7%BE%8E%E7%A6%8F%E9%A3%9F%E9%9B%86-720.webp",
+      "alt": "店面開幕醒獅剪綵活動演出",
+      "width": 720,
+      "height": 540
+    },
+    {
+      "full": "../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E7%A5%A5%E7%8D%85%E9%96%8B%E5%B8%82-1440.webp",
+      "thumbnail": "../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E7%A5%A5%E7%8D%85%E9%96%8B%E5%B8%82-720.webp",
+      "alt": "祥獅開市品牌開幕慶典表演",
+      "width": 720,
+      "height": 540
+    }
+  ]
+}

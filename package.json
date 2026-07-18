@@ -1,0 +1,21 @@
+{
+  "name": "nansien-lion-dance-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Eleventy build, CMS content, and deployment pipeline for the Taiwan Nan Sieng Dragon & Lion Dance website.",
+  "scripts": {
+    "prebuild": "node scripts/optimize-images.mjs",
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "check:links": "node scripts/check-local-links.mjs _site",
+    "test": "npm run build && npm run check:links"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@11ty/eleventy-img": "^6.0.4",
+    "sharp": "^0.35.3"
+  }
+}

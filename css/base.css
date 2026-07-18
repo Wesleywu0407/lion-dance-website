@@ -44,6 +44,23 @@ article[id],
 main[id] {
     scroll-margin-top: calc(var(--header-height) + 12px);
   }
+
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  summary {
+    touch-action: manipulation;
+  }
+
+  @supports (content-visibility: auto) {
+    .intro-main > section:not(:first-child),
+    .intro-main > aside {
+      content-visibility: auto;
+      contain-intrinsic-size: auto 720px;
+    }
+  }
 }
 
 @keyframes fadeInUp {

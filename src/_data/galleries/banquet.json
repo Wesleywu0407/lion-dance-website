@@ -1,0 +1,57 @@
+{
+  "key": "banquet",
+  "title": "春酒尾牙",
+  "intro": "台北及全台企業春酒尾牙的舞龍舞獅與戰鼓演出案例，為公司年會、尾牙晚會與品牌活動帶來熱鬧喜慶的現場氣氛與文化亮點。",
+  "lightboxAlt": "春酒尾牙活動案例照片放大檢視",
+  "photos": [
+    {
+      "full": "../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%99%E8%B7%B3%E6%A8%81%E6%BC%94%E5%87%BA-1440.webp",
+      "thumbnail": "../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%99%E8%B7%B3%E6%A8%81%E6%BC%94%E5%87%BA-720.webp",
+      "alt": "春酒尾牙醒獅跳樁舞台演出",
+      "width": 629,
+      "height": 720
+    },
+    {
+      "full": "../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E8%81%AF%E6%AD%A1%E6%99%9A%E6%9C%83%E6%88%B0%E9%BC%93%E6%BC%94%E5%87%BA-1440.webp",
+      "thumbnail": "../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E8%81%AF%E6%AD%A1%E6%99%9A%E6%9C%83%E6%88%B0%E9%BC%93%E6%BC%94%E5%87%BA-720.webp",
+      "alt": "南仙雷鳴戰鼓聯歡晚會演出",
+      "width": 720,
+      "height": 403
+    },
+    {
+      "full": "../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%99%E6%B4%BB%E5%8B%95%E6%88%B0%E9%BC%93%E6%BC%94%E5%87%BA-1440.webp",
+      "thumbnail": "../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%99%E6%B4%BB%E5%8B%95%E6%88%B0%E9%BC%93%E6%BC%94%E5%87%BA-720.webp",
+      "alt": "企業尾牙活動雷鳴戰鼓演出",
+      "width": 445,
+      "height": 720
+    },
+    {
+      "full": "../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%99%E6%88%B0%E9%BC%93%E8%A1%A8%E6%BC%942-1440.webp",
+      "thumbnail": "../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%99%E6%88%B0%E9%BC%93%E8%A1%A8%E6%BC%942-720.webp",
+      "alt": "尾牙晚會戰鼓舞台表演",
+      "width": 406,
+      "height": 720
+    },
+    {
+      "full": "../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%99%E6%B4%BB%E5%8B%95-1440.webp",
+      "thumbnail": "../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%99%E6%B4%BB%E5%8B%95-720.webp",
+      "alt": "企業春酒尾牙醒獅活動演出",
+      "width": 578,
+      "height": 720
+    },
+    {
+      "full": "../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E9%99%A4%E5%A4%95%E5%A4%9C%E8%A1%A8%E6%BC%94%E6%B4%BB%E5%8B%95-1440.webp",
+      "thumbnail": "../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E9%99%A4%E5%A4%95%E5%A4%9C%E8%A1%A8%E6%BC%94%E6%B4%BB%E5%8B%95-720.webp",
+      "alt": "除夕夜節慶醒獅表演活動",
+      "width": 540,
+      "height": 720
+    },
+    {
+      "full": "../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%998%E9%9A%BB%E7%8D%85%E8%B7%B3%E6%A8%81%E6%BC%94%E5%87%BA-1440.webp",
+      "thumbnail": "../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%998%E9%9A%BB%E7%8D%85%E8%B7%B3%E6%A8%81%E6%BC%94%E5%87%BA-720.webp",
+      "alt": "尾牙八隻醒獅跳樁大型演出",
+      "width": 720,
+      "height": 502
+    }
+  ]
+}

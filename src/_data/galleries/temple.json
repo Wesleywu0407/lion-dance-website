@@ -1,0 +1,50 @@
+{
+  "key": "temple",
+  "title": "廟會繞境・祝壽典禮",
+  "intro": "台北及全台廟會繞境、神明祝壽與宮廟慶典的舞龍舞獅、民俗藝陣與戰鼓演出案例，傳承傳統信仰文化的熱鬧場面。",
+  "lightboxAlt": "廟會繞境祝壽典禮活動案例照片放大檢視",
+  "photos": [
+    {
+      "full": "../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E5%B7%A8%E7%8D%85-1440.webp",
+      "thumbnail": "../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E5%B7%A8%E7%8D%85-720.webp",
+      "alt": "廟會繞境巨獅節慶表演",
+      "width": 540,
+      "height": 720
+    },
+    {
+      "full": "../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E6%88%B0%E9%BC%932-1440.webp",
+      "thumbnail": "../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E6%88%B0%E9%BC%932-720.webp",
+      "alt": "廟會慶典雷鳴戰鼓演出",
+      "width": 720,
+      "height": 405
+    },
+    {
+      "full": "../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85%E6%88%B0%E9%BC%93%E7%B9%9E%E5%A2%83-1440.webp",
+      "thumbnail": "../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85%E6%88%B0%E9%BC%93%E7%B9%9E%E5%A2%83-720.webp",
+      "alt": "祥獅戰鼓廟會繞境慶典演出",
+      "width": 720,
+      "height": 540
+    },
+    {
+      "full": "../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E6%88%B0%E9%BC%93-1440.webp",
+      "thumbnail": "../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E6%88%B0%E9%BC%93-720.webp",
+      "alt": "宮廟祝壽雷鳴戰鼓表演",
+      "width": 720,
+      "height": 540
+    },
+    {
+      "full": "../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E9%9B%BB%E9%9F%B3%E4%B8%89%E5%A4%AA%E5%AD%90-1440.webp",
+      "thumbnail": "../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E9%9B%BB%E9%9F%B3%E4%B8%89%E5%A4%AA%E5%AD%90-720.webp",
+      "alt": "電音三太子夜間節慶表演",
+      "width": 720,
+      "height": 405
+    },
+    {
+      "full": "../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85-1440.webp",
+      "thumbnail": "../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85-720.webp",
+      "alt": "祥獅廟會慶典祝壽表演",
+      "width": 720,
+      "height": 406
+    }
+  ]
+}

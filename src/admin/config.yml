@@ -1,0 +1,149 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: Wesleywu0407/lion-dance-website
+  branch: main
+  auth_methods: [token]
+  # 完成 docs/OAUTH_SETUP.md 後改為：
+  # auth_methods: [oauth]
+  # base_url: https://sveltia-cms-auth.<YOUR-CLOUDFLARE-SUBDOMAIN>.workers.dev
+  commit_messages:
+    update: '內容更新：{{collection}}「{{slug}}」'
+    create: '新增內容：{{collection}}「{{slug}}」'
+    delete: '刪除內容：{{collection}}「{{slug}}」'
+    uploadMedia: '上傳圖片：{{path}}'
+    deleteMedia: '刪除圖片：{{path}}'
+
+media_folder: images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: settings
+    label: 基本資料
+    files:
+      - name: site
+        label: 網站聯絡與社群資料
+        file: src/_data/site.json
+        format: json
+        fields:
+          - { label: 中文名稱, name: name, widget: string, required: true }
+          - { label: 英文名稱, name: nameEn, widget: string, required: true }
+          - { label: 顯示電話, name: phone, widget: string, required: true, hint: '格式範例：0922-140-496' }
+          - { label: 電話連結, name: phoneHref, widget: string, required: true, pattern: ['^09[0-9]{8}$', '請輸入 10 碼手機號碼，不含空格或連字號'] }
+          - { label: LINE ID, name: lineId, widget: string, required: true }
+          - { label: LINE 連結, name: lineUrl, widget: string, required: true }
+          - { label: 地址, name: address, widget: string, required: true }
+          - { label: Facebook 連結, name: facebookUrl, widget: string, required: true }
+          - { label: 網站網址, name: siteUrl, widget: string, required: true }
+
+  - name: services
+    label: 服務項目
+    files:
+      - name: services
+        label: 表演項目列表
+        file: src/_data/services.json
+        format: json
+        fields:
+          - { label: 頁面標題, name: pageTitle, widget: string, required: true }
+          - { label: 頁面說明, name: pageDescription, widget: text, required: true }
+          - label: 表演項目
+            name: items
+            widget: list
+            summary: '{{fields.step}}｜{{fields.title}}'
+            min: 1
+            fields:
+              - { label: 錨點 ID, name: id, widget: string, required: true, hint: '網址定位用，既有值請勿任意更改。' }
+              - { label: 排序編號, name: step, widget: string, required: true }
+              - { label: 標題, name: title, widget: string, required: true }
+              - { label: 標籤, name: tags, widget: string, required: true, hint: '多個標籤以「・」分隔。' }
+              - { label: 說明, name: description, widget: text, required: true }
+              - { label: 720px 圖片, name: image720, widget: image, required: true }
+              - { label: 1440px 圖片, name: image1440, widget: image, required: true }
+              - { label: 圖片替代文字, name: alt, widget: string, required: true, hint: '請具體描述畫面，不能留白。' }
+              - { label: 原始寬度, name: width, widget: number, value_type: int, min: 1, required: true }
+              - { label: 原始高度, name: height, widget: number, value_type: int, min: 1, required: true }
+
+  - name: pricing
+    label: 價格指南
+    files:
+      - name: pricing
+        label: 報價因素與詢價文案
+        file: src/_data/pricing.json
+        format: json
+        fields:
+          - label: 報價因素
+            name: factors
+            widget: list
+            summary: '{{fields.title}}'
+            fields:
+              - { label: 標題, name: title, widget: string, required: true }
+              - { label: 說明, name: text, widget: text, required: true }
+          - { label: CTA 標題, name: ctaTitle, widget: string, required: true }
+          - { label: CTA 說明, name: ctaText, widget: text, required: true }
+
+  - name: faq
+    label: 常見問題
+    files:
+      - name: faq
+        label: 龍獅介紹頁 FAQ
+        file: src/_data/faq.json
+        format: json
+        fields:
+          - label: 問答列表
+            name: items
+            widget: list
+            summary: '{{fields.question}}'
+            min: 1
+            fields:
+              - { label: 問題, name: question, widget: string, required: true }
+              - { label: 回答, name: answer, widget: text, required: true }
+
+  - name: galleries
+    label: 演出相簿
+    label_singular: 相簿
+    folder: src/_data/galleries
+    extension: json
+    format: json
+    create: false
+    identifier_field: title
+    fields:
+      - { label: 系統代碼, name: key, widget: hidden }
+      - { label: 相簿標題, name: title, widget: string, required: true }
+      - { label: 相簿說明, name: intro, widget: text, required: true }
+      - { label: 燈箱替代文字, name: lightboxAlt, widget: string, required: true }
+      - label: 相片
+        name: photos
+        widget: list
+        summary: '{{fields.alt}}'
+        min: 1
+        fields:
+          - { label: 大圖, name: full, widget: image, required: true, hint: '上傳原圖即可；建置管線會限制最大尺寸。' }
+          - { label: 縮圖, name: thumbnail, widget: image, required: false, hint: '可留白並沿用大圖；既有相簿保留 720px 縮圖。' }
+          - { label: 圖片替代文字, name: alt, widget: string, required: true, hint: '描述人物、演出與場合，不能只寫「照片」。' }
+          - { label: 圖片寬度, name: width, widget: number, value_type: int, min: 1, required: true }
+          - { label: 圖片高度, name: height, widget: number, value_type: int, min: 1, required: true }
+
+  - name: landing
+    label: 到達頁文案
+    label_singular: 到達頁
+    folder: src/_data/landing
+    extension: json
+    format: json
+    create: false
+    identifier_field: h1
+    fields:
+      - { label: 系統代碼, name: key, widget: hidden }
+      - { label: 小標, name: heroTag, widget: string, required: true }
+      - { label: 主標題 H1, name: h1, widget: string, required: true }
+      - { label: 首段說明, name: intro, widget: text, required: true }
+      - label: 內容段落
+        name: blocks
+        widget: list
+        summary: '{{fields.title}}'
+        min: 1
+        fields:
+          - { label: 標題, name: title, widget: string, required: true }
+          - { label: 內文, name: text, widget: text, required: true }
+      - { label: CTA 標題, name: ctaTitle, widget: string, required: true }
+      - { label: CTA 說明, name: ctaText, widget: text, required: true }

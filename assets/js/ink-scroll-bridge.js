@@ -5,9 +5,15 @@
   if (!scrollSpace) return;
 
   var frame = scrollSpace.querySelector('.ink-scroll-frame');
+  var mobileQuery = window.matchMedia('(max-width: 760px)');
+  var isMobile = mobileQuery.matches || Math.min(window.innerWidth, window.innerHeight) < 700;
+  var inkp = parseFloat(new URLSearchParams(window.location.search).get('inkp'));
+  var hasDebugProgress = !isNaN(inkp);
+  var debugProgress = hasDebugProgress ? clamp(inkp) : 0;
   var frameReady = false;
   var firstSync = true;
   var ticking = false;
+  var frameVisible = true;
 
   function clamp(value) {
     return Math.max(0, Math.min(1, value));
@@ -18,8 +24,6 @@
     return t * t * (3 - 2 * t);
   }
 
-  // 敘事節拍：data-range="起,迄"（0-1 進度）。子元素依序錯落浮現（印→題→文），
-  // 離場整組較快淡出；捲動倒退時完整可逆。
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var STAGGER = 0.05;
   var beats = Array.prototype.map.call(
@@ -35,7 +39,7 @@
     }
   );
 
-  function updateBeats(progress) {
+  function updateDesktopBeats(progress) {
     beats.forEach(function (beat) {
       var t = (progress - beat.from) / (beat.to - beat.from);
       var inRange = t > 0 && t < 1;
@@ -55,6 +59,31 @@
     });
   }
 
+  function initMobileBeats() {
+    beats.forEach(function (beat) {
+      Array.prototype.forEach.call(beat.parts, function (part) {
+        part.style.opacity = '';
+        part.style.transform = '';
+      });
+    });
+
+    if (!('IntersectionObserver' in window) || reducedMotion) {
+      beats.forEach(function (beat) { beat.el.classList.add('is-mobile-visible'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
+          entry.target.classList.add('is-mobile-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+    beats.forEach(function (beat) { observer.observe(beat.el); });
+  }
+
   function readProgress() {
     var rect = scrollSpace.getBoundingClientRect();
     var pageTop = window.scrollY + rect.top;
@@ -62,26 +91,47 @@
     return clamp((window.scrollY - pageTop) / range);
   }
 
-  function sendProgress(progress) {
-    if (!frameReady || !frame || !frame.contentWindow) return;
-
+  function getFrameApi() {
+    if (!frameReady || !frame || !frame.contentWindow) return null;
     try {
-      var api = frame.contentWindow.__inkLion;
-      if (!api) return;
-
-      if (firstSync && typeof api.snap === 'function') {
-        api.snap(progress);
-        firstSync = false;
-      } else {
-        api.target = progress;
-      }
+      return frame.contentWindow.__inkLion || null;
     } catch (error) {
       frameReady = false;
+      return null;
+    }
+  }
+
+  function syncFrame(progress) {
+    var api = getFrameApi();
+    if (!api) return;
+
+    if (typeof api.setActive === 'function') api.setActive(frameVisible && !document.hidden);
+
+    if (isMobile) {
+      if (typeof api.setMode === 'function') api.setMode(hasDebugProgress ? 'scrub' : 'autoplay');
+      if (hasDebugProgress && firstSync && typeof api.snap === 'function') {
+        api.snap(debugProgress);
+        firstSync = false;
+      }
+      return;
+    }
+
+    if (typeof api.setMode === 'function') api.setMode('scrub');
+    if (firstSync && typeof api.snap === 'function') {
+      api.snap(progress);
+      firstSync = false;
+    } else {
+      api.target = progress;
     }
   }
 
   function update() {
     ticking = false;
+
+    if (isMobile) {
+      syncFrame(0);
+      return;
+    }
 
     var progress = readProgress();
     var bounds = scrollSpace.getBoundingClientRect();
@@ -93,14 +143,22 @@
     scrollSpace.style.setProperty('--ink-intro-opacity', introOpacity.toFixed(4));
     scrollSpace.style.setProperty('--ink-hint-opacity', hintOpacity.toFixed(4));
     document.body.classList.toggle('ink-scroll-active', active);
-    updateBeats(progress);
-    sendProgress(progress);
+    updateDesktopBeats(progress);
+    syncFrame(progress);
   }
 
   function scheduleUpdate() {
     if (ticking) return;
     ticking = true;
     window.requestAnimationFrame(update);
+  }
+
+  if (frame && 'IntersectionObserver' in window) {
+    var frameObserver = new IntersectionObserver(function (entries) {
+      frameVisible = entries[0] ? entries[0].isIntersecting : false;
+      scheduleUpdate();
+    }, { threshold: 0.01 });
+    frameObserver.observe(frame);
   }
 
   if (frame) {
@@ -121,15 +179,24 @@
     }
   }
 
-  window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  if (isMobile) {
+    scrollSpace.classList.add('is-mobile-ink');
+    initMobileBeats();
+  } else {
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  }
+
   window.addEventListener('resize', scheduleUpdate);
   window.addEventListener('pageshow', scheduleUpdate);
+  document.addEventListener('visibilitychange', scheduleUpdate);
 
-  // 除錯把手：?inkp=0.3 載入即跳至該敘事進度（同 ?debug3d 傳統）
-  var inkp = parseFloat(new URLSearchParams(window.location.search).get('inkp'));
-  if (!isNaN(inkp)) {
-    var rangePx = scrollSpace.offsetHeight - window.innerHeight;
-    window.scrollTo({ top: rangePx * Math.max(0, Math.min(1, inkp)), behavior: 'instant' });
+  // 除錯把手：?inkp=0.3 載入即跳至指定敘事進度。手機上會暫停自動播放並顯示該影格。
+  if (hasDebugProgress) {
+    if (!isMobile) {
+      var rangePx = scrollSpace.offsetHeight - window.innerHeight;
+      window.scrollTo({ top: rangePx * debugProgress, behavior: 'instant' });
+    }
   }
+
   update();
 })();

@@ -41,60 +41,7 @@
   }
   </script>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "舞獅採青是什麼意思？",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "採青是舞獅最經典的橋段。青通常以紅包與生菜綁成，獅子透過探路、試探與跳躍後採下，象徵開市大吉、生意興隆與財源廣進。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "醒獅點睛儀式是什麼？",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "演出前以硃砂為獅頭點睛，象徵獅子甦醒有靈並正式為活動揭開序幕。點睛通常由主辦方的重要人物主持，具有祝福與開啟新局的意義。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "舞龍舞獅需要幾人？",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "舞獅通常一頭獅由兩人操作，加上鑼、鼓、鈸樂手組成完整陣容；舞龍則依龍身節數需要多位舞者，並由龍珠在前引導。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "一場表演大約多長時間？",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "常見演出長度約十五至三十分鐘，包含開場、主秀、互動與收勢，也可以依活動流程調整成精簡開場或完整綜合演出。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "室內場地也能表演嗎？",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "可以。舞獅適合多數室內外場地；舞龍需要較大的展開與隊形移動空間，較適合戶外廣場或挑高的大型室內場地。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "需要提前多久預約？",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "建議至少提前二至四週洽詢；農曆春節前後為旺季，建議提前一至二個月確認檔期。"
-        }
-      }
-    ]
-  }
+  {{ faq | faqJsonLd | safe }}
   </script>
 </head>
 <body class="intro-page">
@@ -421,48 +368,15 @@
             <p>演出內容會依場地、流程與檔期安排。先掌握基本條件，就能更快找到合適的演出形式。</p>
           </header>
           <div class="intro-faq-list reveal">
+            {% for item in faq.items %}
             <details class="intro-faq-row">
               <summary>
-                <h3>舞獅採青是什麼意思？</h3>
+                <h3>{{ item.question }}</h3>
                 <span class="intro-faq-icon" aria-hidden="true"></span>
               </summary>
-              <p>「青」通常以紅包與生菜綁成。獅子透過探路、試探與跳躍後採下，象徵開市大吉、生意興隆與財源廣進，是開幕與開工儀式中很受歡迎的環節。</p>
+              <p>{{ item.answer }}</p>
             </details>
-            <details class="intro-faq-row">
-              <summary>
-                <h3>醒獅點睛儀式是什麼？</h3>
-                <span class="intro-faq-icon" aria-hidden="true"></span>
-              </summary>
-              <p>演出前以硃砂為獅頭點睛，象徵獅子甦醒有靈並正式揭開序幕。點睛通常由主辦方的重要人物主持，具有祝福與開啟新局的意義。</p>
-            </details>
-            <details class="intro-faq-row">
-              <summary>
-                <h3>舞龍舞獅需要幾人？</h3>
-                <span class="intro-faq-icon" aria-hidden="true"></span>
-              </summary>
-              <p>舞獅通常一頭獅由兩人操作，再加上鑼、鼓、鈸樂手；舞龍則依龍身節數需要多位舞者，並由龍珠在前引導。實際人數會依演出內容與場地安排。</p>
-            </details>
-            <details class="intro-faq-row">
-              <summary>
-                <h3>一場表演大約多長時間？</h3>
-                <span class="intro-faq-icon" aria-hidden="true"></span>
-              </summary>
-              <p>常見演出長度約十五至三十分鐘，包含開場、主秀、互動與收勢。也可以依活動流程調整成精簡開場，或加入戰鼓、藝陣的完整版本。</p>
-            </details>
-            <details class="intro-faq-row">
-              <summary>
-                <h3>室內場地也能表演嗎？</h3>
-                <span class="intro-faq-icon" aria-hidden="true"></span>
-              </summary>
-              <p>可以。舞獅適合多數室內外場地；舞龍因需要展開身長與變換隊形，較適合戶外廣場或挑高的大型室內空間。洽詢時提供場地尺寸，我們會協助判斷。</p>
-            </details>
-            <details class="intro-faq-row">
-              <summary>
-                <h3>需要提前多久預約？</h3>
-                <span class="intro-faq-icon" aria-hidden="true"></span>
-              </summary>
-              <p>建議至少提前二至四週洽詢；農曆春節前後為旺季，建議提前一至二個月確認檔期。準備活動日期、地點、類型與場地大小即可開始討論。</p>
-            </details>
+            {% endfor %}
           </div>
         </div>
       </section>
@@ -521,7 +435,7 @@
       </div>
     </footer>
   </div>
-  <script src="../script.js" defer></script>
+  <script src="../script.js?v=20260718-fullstack1" defer></script>
   <script src="../assets/js/ink-scroll-bridge.js?v=20260718-mobile1" defer></script>
   <script src="../assets/js/ink-text-reveal.js?v=20260714" defer></script>
 </body>

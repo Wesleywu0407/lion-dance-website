@@ -235,6 +235,19 @@
   transition-delay: 0ms;
 }
 
+@media (max-width: 760px) {
+  .js .ctb-phrase,
+  .js .ctb-support {
+    transform: translateY(12px);
+    filter: none;
+    transition: opacity 0.42s ease, transform 0.42s ease;
+  }
+
+  .js .ctb-support {
+    --ctb-td: 80ms;
+  }
+}
+
 /* ── Reduced-motion fallback ────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>管理員圖片操作指南｜南仙網站後台</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #fffaf4;
+      --ink: #342922;
+      --soft: #725f55;
+      --line: #ddcec3;
+      --red: #8f3a2f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.75;
+    }
+
+    main {
+      width: min(760px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 44px 0 80px;
+    }
+
+    h1, h2 { line-height: 1.3; }
+    h1 { margin: 16px 0 10px; font-size: clamp(2rem, 7vw, 3.4rem); }
+    h2 { margin: 44px 0 12px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 1.4rem; }
+    p, li { color: var(--soft); }
+    strong { color: var(--ink); }
+    a { color: var(--red); }
+    ol, ul { padding-left: 1.4rem; }
+    li + li { margin-top: 8px; }
+
+    .back-link,
+    .backend-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 0 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .back-link { border: 1px solid var(--line); background: #fff; }
+    .backend-link { background: var(--red); color: #fff; }
+
+    .lead { max-width: 42rem; font-size: 1.05rem; }
+
+    .quick-steps,
+    .note,
+    .checklist {
+      margin: 24px 0;
+      padding: 20px 22px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+    }
+
+    .quick-steps { border-left: 5px solid var(--red); }
+    .note { background: #f4ece5; }
+    .example-good { color: #27643d; }
+    .example-bad { color: #9b3329; }
+
+    code {
+      padding: 2px 6px;
+      border-radius: 5px;
+      background: #efe7df;
+      color: var(--ink);
+    }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="back-link" href="./">← 回到管理後台</a>
+    <h1>圖片操作指南</h1>
+    <p class="lead">給負責新增、替換或整理網站演出照片的管理員。依照下面步驟操作，不需要接觸程式碼。</p>
+
+    <section class="quick-steps" aria-labelledby="quick-title">
+      <h2 id="quick-title">30 秒快速流程</h2>
+      <ol>
+        <li>在後台左側選擇 <strong>演出相簿</strong>。</li>
+        <li>開啟要修改的相簿。</li>
+        <li>在 <strong>相片</strong> 區塊新增、替換、排序或移除照片。</li>
+        <li>填寫替代文字、圖片寬度及高度。</li>
+        <li>按 <strong>Save / Publish</strong> 發布。</li>
+        <li>等待約 2 分鐘，重新整理網站確認。</li>
+      </ol>
+    </section>
+
+    <h2>新增相簿照片</h2>
+    <ol>
+      <li>按 <strong>演出相簿</strong>，選擇照片所屬相簿。</li>
+      <li>找到 <strong>相片</strong> 清單，按新增。</li>
+      <li>在 <strong>大圖</strong> 上傳原始照片。</li>
+      <li><strong>縮圖可留白</strong>；系統會在發布時自動產生適合網站的 WebP 尺寸。</li>
+      <li>填寫替代文字、圖片寬度和圖片高度。</li>
+      <li>按 <strong>Save / Publish</strong>。</li>
+    </ol>
+
+    <div class="note">
+      <strong>替代文字怎麼寫？</strong>
+      <p class="example-good">好：紅色醒獅在公司開幕舞台進行採青表演。</p>
+      <p class="example-bad">不好：照片1、活動照片、直接貼檔案名稱。</p>
+    </div>
+
+    <h2>查詢圖片寬度與高度</h2>
+    <ul>
+      <li><strong>macOS：</strong>Finder 選取照片，按 <code>Command + I</code>，查看「更多資訊 → 尺寸」。</li>
+      <li><strong>Windows：</strong>在檔案按右鍵，選「內容 → 詳細資料」。</li>
+      <li><strong>手機：</strong>開啟照片資訊或詳細資料，查看解析度。</li>
+    </ul>
+    <p>例如 <code>3024 × 4032</code>：3024 填入寬度，4032 填入高度。</p>
+
+    <h2>替換、排序或移除照片</h2>
+    <ul>
+      <li><strong>替換：</strong>在原本相片項目的大圖欄位上傳新照片，並更新替代文字與尺寸。</li>
+      <li><strong>排序：</strong>拖曳相片項目，把最重要、最清楚的照片放在前面。</li>
+      <li><strong>移除：</strong>按相片項目旁的刪除；相簿內至少保留一張照片。</li>
+    </ul>
+    <p>從相簿移除照片不一定會刪除媒體庫原檔。要永久刪除前，請先確認其他頁面沒有使用它。</p>
+
+    <h2>更換服務項目圖片</h2>
+    <ol>
+      <li>按 <strong>服務項目 → 表演項目列表</strong>。</li>
+      <li>展開要修改的表演項目。</li>
+      <li>更換 <strong>720px 圖片</strong>及 <strong>1440px 圖片</strong>。</li>
+      <li>更新替代文字、原始寬度與原始高度。</li>
+      <li>不要修改 <strong>錨點 ID</strong>，然後發布。</li>
+    </ol>
+    <p class="note">服務項目需要小圖與大圖兩個檔案。若只有未壓縮原圖，請交給技術管理者產生 720px 與 1440px 版本。</p>
+
+    <h2>圖片規格</h2>
+    <ul>
+      <li>格式使用 JPG、PNG 或 WebP。</li>
+      <li>長邊建議約 1920px，單張建議小於 10MB。</li>
+      <li>不要上傳模糊圖片、聊天截圖、含個資或未取得使用權的照片。</li>
+      <li>照片方向錯誤時，先旋轉並另存新檔，再重新上傳。</li>
+    </ul>
+
+    <h2>發布後沒有更新怎麼辦？</h2>
+    <ol>
+      <li>先等待 2–5 分鐘。</li>
+      <li>重新整理網站，或使用無痕視窗確認。</li>
+      <li>仍未更新時，截圖後台畫面，交給技術管理者查看 Netlify 部署紀錄。</li>
+      <li>不要連續重複發布。</li>
+    </ol>
+
+    <section class="checklist" aria-labelledby="check-title">
+      <h2 id="check-title">發布前檢查</h2>
+      <ul>
+        <li>照片放在正確相簿。</li>
+        <li>方向正確、畫面清楚。</li>
+        <li>替代文字有描述表演與場合。</li>
+        <li>寬度與高度填寫正確。</li>
+        <li>沒有修改系統代碼或錨點 ID。</li>
+        <li>發布後已用桌機與手機確認。</li>
+      </ul>
+    </section>
+
+    <div class="actions">
+      <a class="backend-link" href="./">回到管理後台</a>
+      <a class="back-link" href="https://nansiengtaiwan.com/" target="_blank" rel="noreferrer">查看網站</a>
+    </div>
+  </main>
+</body>
+</html>

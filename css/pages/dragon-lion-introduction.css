@@ -1355,25 +1355,80 @@
   50% { opacity: 1; transform: scaleY(1); }
 }
 
-@media (max-width: 760px) {
-  .ink-scroll-space { height: 340vh; }
+@media (max-width: 760px), (max-height: 700px) and (max-width: 1000px) {
+  .ink-scroll-space {
+    height: auto;
+  }
+
+  .ink-scroll-stage {
+    position: relative;
+    top: auto;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-top: 100vh;
+    padding-top: 100dvh;
+    overflow: visible;
+  }
+
+  .ink-scroll-frame {
+    bottom: auto;
+    height: 100vh;
+    height: 100dvh;
+  }
+
   .ink-scroll-copy {
-    top: 14%;
+    top: 14vh;
+    top: 14dvh;
     left: 20px;
     width: calc(100% - 40px);
+    opacity: 1;
+    transform: none;
   }
   .ink-scroll-copy h1 { font-size: 3.05rem; }
   .ink-scroll-copy strong { max-width: 18em; font-size: 0.92rem; }
 
-  /* 手機：獅子在下半部，節拍一律置頂靠左 */
+  .ink-scroll-hint {
+    top: calc(100dvh - 76px);
+    bottom: auto;
+    opacity: 1;
+  }
+
+  .ink-story {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    background:
+      radial-gradient(ellipse at 92% 18%, rgba(143, 58, 47, 0.04), transparent 30%),
+      #f5f0e6;
+  }
+
+  /* 手機：取消 pinned scroll-scrub；敘事回到一般文件流並用 IO 淡入。 */
   .ink-story-beat,
   .ink-story-beat.is-left,
   .ink-story-beat.is-right {
-    top: 12%;
-    left: 20px;
+    position: relative;
+    top: auto;
+    left: auto;
     right: auto;
-    width: calc(100% - 40px);
+    width: 100%;
+    min-height: 0;
+    padding: 56px 20px;
+    border-top: 1px solid rgba(76, 51, 41, 0.12);
     text-align: left;
+    pointer-events: auto;
+  }
+  .ink-story-beat .ink-anim {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    will-change: auto;
+  }
+  .ink-story-beat .ink-anim:nth-child(2) { transition-delay: 60ms; }
+  .ink-story-beat .ink-anim:nth-child(n + 3) { transition-delay: 120ms; }
+  .ink-story-beat.is-mobile-visible .ink-anim {
+    opacity: 1;
+    transform: translateY(0);
   }
   .ink-story-beat.is-right .ink-story-kicker { justify-content: flex-start; }
   .ink-story-beat.is-right .ink-story-seal { margin-right: 10px; margin-left: 0; order: 0; }
@@ -1385,6 +1440,12 @@
   .ink-story-duo { justify-content: flex-start; gap: 24px; }
   .ink-story-duo b { font-size: 2rem; }
   .ink-story-actions { flex-wrap: wrap; }
+
+  .js .ink-text-reveal {
+    clip-path: none;
+    transform: translateY(12px);
+    transition: opacity 0.4s ease var(--ink-delay), transform 0.4s ease var(--ink-delay);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
