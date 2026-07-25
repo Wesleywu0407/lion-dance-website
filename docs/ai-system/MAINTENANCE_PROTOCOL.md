@@ -72,5 +72,16 @@ Otherwise:
 
 ## Lessons Learned
 
-No recorded lessons yet.
+Date: 2026-07-25
 
+Project: liondancewebsite
+
+Mistake: Agent initially audited another website on the same Desktop instead of the lion-dance website.
+
+Root cause: The project was inferred from a nearby repository before confirming the user's reference to the lion-dance brand and the `101` homepage content.
+
+Bad instruction that allowed it: "Find the active web project" without first matching the user's brand-specific clues against candidate repositories.
+
+New rule: When multiple website repositories exist, search the user's distinctive terms and confirm the matching project before starting a visual audit or edits.
+
+Where this rule was added: `docs/ai-system/MAINTENANCE_PROTOCOL.md`.

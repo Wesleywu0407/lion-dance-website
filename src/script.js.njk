@@ -43,6 +43,54 @@ if (!document.querySelector('.quickbar')) {
 // 聯絡表單送出後回跳 ?submitted=1：顯示成功訊息，避免使用者以為送出失敗
 const contactFormForNotice = document.querySelector('.contact-form');
 
+if (contactFormForNotice) {
+  const query = new URLSearchParams(window.location.search);
+  const sourcePage = contactFormForNotice.querySelector('[name="sourcePage"]');
+  const sourceReferrer = contactFormForNotice.querySelector('[name="sourceReferrer"]');
+  const eventType = contactFormForNotice.querySelector('[name="eventType"]');
+  const service = contactFormForNotice.querySelector('[name="service"]');
+  const eventDate = contactFormForNotice.querySelector('[name="eventDate"]');
+  const dateFlexible = contactFormForNotice.querySelector('[name="dateFlexible"]');
+
+  const setFieldValue = (name, value) => {
+    const field = contactFormForNotice.querySelector(`[name="${name}"]`);
+    if (field && value) field.value = value;
+  };
+
+  if (sourcePage) {
+    sourcePage.value = query.get('source') || document.referrer || window.location.pathname;
+  }
+  if (sourceReferrer) sourceReferrer.value = document.referrer;
+
+  setFieldValue('utmSource', query.get('utm_source'));
+  setFieldValue('utmMedium', query.get('utm_medium'));
+  setFieldValue('utmCampaign', query.get('utm_campaign'));
+
+  const setKnownOption = (field, value) => {
+    if (!field || !value) return;
+    const optionExists = Array.from(field.options).some((option) => option.value === value);
+    if (optionExists) field.value = value;
+  };
+
+  setKnownOption(eventType, query.get('eventType'));
+  setKnownOption(service, query.get('service'));
+
+  const syncFlexibleDate = () => {
+    if (!eventDate || !dateFlexible) return;
+    eventDate.required = !dateFlexible.checked;
+    eventDate.disabled = dateFlexible.checked;
+    if (dateFlexible.checked) {
+      eventDate.value = '';
+      eventDate.setCustomValidity('');
+    }
+  };
+
+  if (dateFlexible) {
+    dateFlexible.addEventListener('change', syncFlexibleDate);
+    syncFlexibleDate();
+  }
+}
+
 if (contactFormForNotice && new URLSearchParams(window.location.search).get('submitted') === '1') {
   const successNotice = document.createElement('div');
   successNotice.className = 'contact-success';

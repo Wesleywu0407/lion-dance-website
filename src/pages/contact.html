@@ -25,7 +25,7 @@
   <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="../favicon-180.png">
   <meta name="theme-color" content="#181311">
-  <link rel="stylesheet" href="../css/style.css?v=20260717d">
+  <link rel="stylesheet" href="../css/style.css?v=20260725-leads1">
 
   <script type="application/ld+json">
   {
@@ -680,35 +680,100 @@
             <input type="hidden" name="_captcha" value="true">
             <input type="hidden" name="_next" value="https://nansiengtaiwan.com/pages/contact.html?submitted=1">
             <input type="hidden" name="_autoresponse" value="已收到您的洽詢，我們會盡快與您聯繫，謝謝您。">
+            <input type="hidden" name="sourcePage" value="">
+            <input type="hidden" name="sourceReferrer" value="">
+            <input type="hidden" name="utmSource" value="">
+            <input type="hidden" name="utmMedium" value="">
+            <input type="hidden" name="utmCampaign" value="">
             <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="contact-honeypot">
-            <label>
-              姓名 *
-              <input type="text" name="name" placeholder="請輸入您的姓名" required>
-            </label>
             <div class="contact-form-row">
               <label>
-                電子郵件
-                <input type="email" name="email" placeholder="your@email.com">
+                姓名 *
+                <input type="text" name="name" autocomplete="name" placeholder="請輸入您的姓名" required>
               </label>
               <label>
+                公司／單位
+                <input type="text" name="company" autocomplete="organization" placeholder="公司、學校、宮廟或主辦單位">
+              </label>
+            </div>
+            <div class="contact-form-row">
+              <label>
                 聯絡電話 *
-                <input type="tel" name="phone" placeholder="09xx-xxx-xxx" required>
+                <input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="09xx-xxx-xxx" required>
+              </label>
+              <label>
+                電子郵件
+                <input type="email" name="email" autocomplete="email" inputmode="email" placeholder="your@email.com">
+              </label>
+            </div>
+            <div class="contact-form-row">
+              <label>
+                LINE ID
+                <input type="text" name="lineId" autocomplete="off" placeholder="方便用 LINE 回覆時填寫">
+              </label>
+              <label>
+                希望的回覆方式
+                <select name="preferredContact">
+                  <option value="">皆可</option>
+                  <option value="phone">電話</option>
+                  <option value="line">LINE</option>
+                  <option value="email">電子郵件</option>
+                </select>
+              </label>
+            </div>
+            <div class="contact-form-row">
+              <label>
+                活動日期 *
+                <input id="event-date" type="date" name="eventDate" required aria-describedby="event-date-help">
+              </label>
+              <div class="contact-option-panel">
+                <span id="event-date-help">日期尚未確定？</span>
+                <label class="contact-check">
+                  <input id="date-flexible" type="checkbox" name="dateFlexible" value="yes">
+                  <span>先討論方案，日期之後確認</span>
+                </label>
+              </div>
+            </div>
+            <div class="contact-form-row">
+              <label>
+                活動縣市／地區 *
+                <input type="text" name="eventCity" autocomplete="address-level1" placeholder="例如：台北市信義區" required>
+              </label>
+              <label>
+                活動類型 *
+                <select name="eventType" required>
+                  <option value="" selected disabled>請選擇活動類型</option>
+                  <option value="opening">開幕／開工</option>
+                  <option value="company">企業／品牌活動</option>
+                  <option value="banquet">尾牙／春酒</option>
+                  <option value="festival">節慶表演</option>
+                  <option value="retail">百貨／商場活動</option>
+                  <option value="temple">廟會／祝壽</option>
+                  <option value="groundbreaking">動土／上樑</option>
+                  <option value="education">教學／校園</option>
+                  <option value="tourism">觀光展演</option>
+                  <option value="production">舞台／拍攝／遊行</option>
+                  <option value="memorial">追思儀式</option>
+                  <option value="other">其他</option>
+                </select>
               </label>
             </div>
             <label>
-              活動類型
-              <select name="eventType">
-                <option>請選擇活動類型</option>
-                <option>開幕典禮</option>
-                <option>商業活動</option>
-                <option>節慶表演</option>
-                <option>廟會／民俗</option>
-                <option>教學／校園</option>
+              希望的演出項目
+              <select name="service">
+                <option value="">還不確定，希望南仙建議</option>
+                {% for service in services.items %}
+                <option value="{{ service.id }}">{{ service.title }}</option>
+                {% endfor %}
               </select>
             </label>
             <label>
               需求說明 *
-              <textarea name="message" rows="7" placeholder="請描述活動日期、地點、活動類型、希望的演出項目與聯絡方式..." required></textarea>
+              <textarea name="message" rows="6" placeholder="請描述活動時間、場地、預計流程、人數規模或希望呈現的氣氛..." required></textarea>
+            </label>
+            <label class="contact-check contact-consent">
+              <input type="checkbox" name="contactConsent" value="yes" required>
+              <span>我同意南仙使用以上資料聯絡本次演出需求。*</span>
             </label>
             <button class="button button-primary btn-primary" type="submit">送出洽詢</button>
             <p class="contact-note">送出後我們會盡快與您聯繫，填寫者也會收到一封自動回覆。</p>
@@ -820,6 +885,6 @@
       </div>
     </footer>
   </div>
-  <script src="../script.js?v=20260718-fullstack1" defer></script>
+  <script src="../script.js?v=20260725-leads1" defer></script>
 </body>
 </html>
