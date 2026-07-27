@@ -25,7 +25,7 @@
   <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="../favicon-180.png">
   <meta name="theme-color" content="#181311">
-  <link rel="stylesheet" href="../css/style.css?v=20260727-cases2">
+  <link rel="stylesheet" href="../css/style.css?v=20260727-mobile1">
 
   <script type="application/ld+json">
   {
@@ -602,7 +602,7 @@
         <section class="performance-diary" aria-label="表演項目">
           <div class="performance-diary-list">
             <article class="service-item" id="{{ services.items[0].id }}" data-image="{{ services.items[0].image1440 | replace('../', '') }}" data-alt="{{ services.items[0].alt }}">
-              <img class="service-item-photo" src="{{ services.items[0].image720 }}" srcset="{{ services.items[0].image720 }} 720w, {{ services.items[0].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[0].alt }}" width="{{ services.items[0].width }}" height="{{ services.items[0].height }}" loading="lazy" decoding="async">
+              <img class="service-item-photo" src="{{ services.items[0].image720 }}" srcset="{{ services.items[0].image720 }} 720w, {{ services.items[0].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[0].alt }}" width="{{ services.items[0].width }}" height="{{ services.items[0].height }}" loading="eager" fetchpriority="high" decoding="async">
               <div class="service-item-body">
               <p class="service-item-step">{{ services.items[0].step }}</p>
               <h3>{{ services.items[0].title }}</h3>
