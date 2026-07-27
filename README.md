@@ -22,7 +22,9 @@
 - Nunjucks / HTML / CSS / JavaScript
 - Sveltia CMS：管理網站內容與圖片
 - GitHub Pages：目前的靜態網站部署方向
-- FormSubmit：目前的表單收件方式，將由自有詢價後台取代
+- FormSubmit：後端尚未啟用時的表單備援
+- Supabase migration / Auth / Edge Functions：詢價資料、權限、API、速率限制與通知佇列
+- `/crm/`：案件 Dashboard、篩選、詳細資料、跟進、狀態與 OWNER CSV 匯出
 
 重要：請編輯 `src/` 內的來源檔，不要直接修改 `_site/`。`_site/` 是每次建置重新產生的成果。
 
@@ -50,8 +52,11 @@ npm test
 - `src/landing/`：搜尋引擎到達頁
 - `src/_data/`：CMS 可編輯的聯絡資料、服務、FAQ、相簿與到達頁文案
 - `src/admin/`：Sveltia CMS
+- `src/crm/`：案件 CRM 靜態介面
 - `css/`：全站樣式
 - `src/script.js.njk`：全站互動與手機快速聯絡列
+- `supabase/`：資料庫 migration 與 Edge Functions
+- `tests/`：公開詢價驗證單元測試
 
 ## 本次規劃文件
 
@@ -59,12 +64,15 @@ npm test
 - [每一頁的任務與驗收標準](docs/PAGE_README.md)
 - [詢價後台與 CRM 規格](docs/BACKEND_SYSTEM_README.md)
 - [完整實作步驟與完成條件](docs/BUILD_ROADMAP.md)
+- [Supabase CRM 啟用手冊](docs/SUPABASE_CRM_SETUP.md)
 
 ## 現況
 
 - 靜態網站建置、圖片管線與本機連結檢查已可運作。
 - 手機有固定電話、LINE 與預約快速列。
-- 聯絡表單目前會送至第三方 FormSubmit 與電子郵件。
-- 尚未有「詢價案件資料庫、案件狀態、跟進紀錄、來源追蹤與後台報表」。
+- 聯絡表單已具備日期、地區、活動類型、演出項目、預算、來源追蹤、跨欄位驗證與成功／失敗／離線狀態。
+- 未設定 `src/_data/backend.json` 時，表單送至既有 FormSubmit；設定公開 API URL 後改走 Supabase。
+- 資料庫、Edge Functions 與 CRM 程式已完成，但尚未建立／部署業主的 Supabase 專案與 secrets。
+- 正式啟用前仍需業主確認管理員、資料保存期限、Email 寄件網域與備份復原。
 
 後續開發一律依 [完整實作步驟與完成條件](docs/BUILD_ROADMAP.md) 執行，每完成一階段才進入下一階段。

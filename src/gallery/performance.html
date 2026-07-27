@@ -25,7 +25,7 @@
   <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="../favicon-180.png">
   <meta name="theme-color" content="#181311">
-  <link rel="stylesheet" href="../css/style.css?v=20260725-leads1">
+  <link rel="stylesheet" href="../css/style.css?v=20260727-crm1">
 
   <script type="application/ld+json">
   {
@@ -694,6 +694,7 @@
             <p class="album-intro">{{ gallery.intro }}</p>
           </div>
         </div>
+        {% include "gallery-context.njk" %}
         <div class="album-grid reveal" aria-label="{{ gallery.title }}照片">
           {% for photo in gallery.photos %}
           <button class="album-photo" type="button" data-album-photo data-lightbox-src="{{ photo | galleryFull }}" aria-label="放大檢視：{{ photo.alt }}"><img src="{{ photo | galleryThumbnail }}" srcset="{{ photo | gallerySrcset }}" sizes="(max-width: 760px) 92vw, 720px" alt="{{ photo.alt }}" loading="lazy" decoding="async" width="{{ photo.width }}" height="{{ photo.height }}"></button>
@@ -751,6 +752,7 @@
     <img data-album-lightbox-image alt="{{ gallery.lightboxAlt }}" decoding="async">
     <div class="album-lightbox-placeholder" aria-hidden="true"></div>
   </div>
-  <script src="../script.js?v=20260725-leads1" defer></script>
+  <script src="../backend-config.js?v=20260727-crm1"></script>
+  <script src="../script.js?v=20260727-crm1" defer></script>
 </body>
 </html>

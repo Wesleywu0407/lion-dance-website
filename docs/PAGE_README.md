@@ -28,6 +28,7 @@
 | `/pages/dragon-lion-introduction.html` | 教育第一次接觸龍獅演出的訪客 | 詢問檔期 | `intro_cta_click`、FAQ 展開 |
 | `/pages/ink-dragon-scroll.html` | 水墨互動的技術支援頁，不作為獨立到達頁 | 無 | `noindex`、效能與降級驗收 |
 | `/pages/contact.html` | 蒐集可直接判斷檔期與報價的完整需求 | 送出洽詢 | 建立 Lead、通知、成功頁 |
+| `/pages/privacy.html` | 說明詢價資料如何蒐集、使用與刪除 | 聯絡資料窗口 | 保存期限需業主確認 |
 | `/gallery/` | 依活動類型找到相似案例 | 查看案例／洽詢相似活動 | 案例分類點擊 |
 | `/gallery/opening.html` | 證明開幕開工與儀式流程經驗 | 洽詢開幕演出 | 預填 `eventType=opening` |
 | `/gallery/banquet.html` | 證明春酒尾牙的炒場與流程配合 | 洽詢尾牙演出 | 預填 `eventType=banquet` |
@@ -46,6 +47,7 @@
 | `/landing/lion-dance-price-guide.html` | 解釋報價因素並篩選有效詢價 | 取得個別報價 | `price_guide_cta_click` |
 | `/admin/` | 管理網站文案、服務、FAQ、相簿與圖片 | 發布內容 | Sveltia CMS，不存業務案件 |
 | `/admin/image-guide.html` | 教編輯者準備與上傳圖片 | 返回內容後台 | 不需公開索引 |
+| `/crm/` | 管理詢價、跟進、狀態、匯出與銷售指標 | 處理待跟進案件 | Auth、RLS、稽核與 OWNER 匯出 |
 | `/googlec17fc805b7cef4a4.html` | Google 站點驗證 | 無 | 不改內容 |
 
 ## 首頁 `/`
@@ -102,7 +104,7 @@
 ### 必填欄位
 
 - 姓名
-- 電話或 LINE 至少一項
+- 電話、LINE 或 Email 至少一項
 - 活動日期；未知時可勾選「日期未定」
 - 活動縣市／地區
 - 活動類型
@@ -111,7 +113,6 @@
 
 ### 選填欄位
 
-- Email
 - 公司／單位
 - 預計演出項目
 - 場地類型
@@ -133,6 +134,12 @@
 - 提供前台預覽與圖片規範。
 - 發布後顯示建置狀態或說明等待時間。
 
-## 未來案件後台 `/crm/`
+## 案件後台 `/crm/`
 
-此頁尚未建立，詳細規格見 [BACKEND_SYSTEM_README.md](BACKEND_SYSTEM_README.md)。它負責詢價案件、跟進、狀態、搜尋、匯出與報表，不負責改網站內容。
+介面與 API 已建立；未設定公開 Supabase URL 時顯示安全的設定引導，不會假裝登入或顯示測試案件。詳細規格見 [BACKEND_SYSTEM_README.md](BACKEND_SYSTEM_README.md)，啟用步驟見 [SUPABASE_CRM_SETUP.md](SUPABASE_CRM_SETUP.md)。它負責詢價案件、跟進、狀態、搜尋、匯出與報表，不負責改網站內容。
+
+## 隱私政策 `/pages/privacy.html`
+
+- 說明蒐集欄位、使用目的、分享範圍、資料安全與聯絡窗口。
+- 正式保存期限與定期刪除流程不得由開發者猜測，必須由業主確認。
+- 聯絡表單同意文字直接連到此頁。

@@ -1,0 +1,5 @@
+---
+permalink: backend-config.js
+eleventyExcludeFromCollections: true
+---
+window.NANSIEN_BACKEND_CONFIG = Object.freeze({{ backend | json | safe }});

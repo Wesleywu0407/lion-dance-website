@@ -1554,3 +1554,47 @@ body.is-lightbox-open {
   .gallery-page .gallery-col:last-child .gallery-card:nth-child(4) { height: 104px; }
   .gallery-page .gallery-col:last-child .gallery-card:nth-child(5) { height: 143px; }
 }
+.album-context {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) auto;
+  gap: 28px;
+  align-items: center;
+  margin: 0 0 44px;
+  padding: 26px 28px;
+  border: 1px solid rgba(72, 54, 43, 0.16);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.album-context > div {
+  display: grid;
+  gap: 7px;
+}
+
+.album-context span {
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.album-context p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.album-context .button {
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .album-context {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .album-context .button {
+    width: 100%;
+  }
+}

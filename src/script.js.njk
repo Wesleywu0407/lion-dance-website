@@ -42,6 +42,38 @@ if (!document.querySelector('.quickbar')) {
 
 // 聯絡表單送出後回跳 ?submitted=1：顯示成功訊息，避免使用者以為送出失敗
 const contactFormForNotice = document.querySelector('.contact-form');
+const backendConfig = window.NANSIEN_BACKEND_CONFIG || {};
+
+const trackConversionEvent = (eventName, properties = {}) => {
+  if (!backendConfig.analyticsApiUrl) return;
+
+  const body = JSON.stringify({
+    eventName,
+    page: window.location.pathname,
+    occurredAt: new Date().toISOString(),
+    properties
+  });
+
+  window.fetch(backendConfig.analyticsApiUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body,
+    keepalive: true
+  }).catch(() => {});
+};
+
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('a');
+  if (!link) return;
+
+  const href = link.getAttribute('href') || '';
+  if (/^(tel:|https:\/\/line\.me\/|.*contact\.html)/.test(href)) {
+    trackConversionEvent('cta_click', {
+      destination: href.startsWith('tel:') ? 'phone' : href.includes('line.me') ? 'line' : 'contact',
+      label: (link.textContent || '').trim().slice(0, 80)
+    });
+  }
+});
 
 if (contactFormForNotice) {
   const query = new URLSearchParams(window.location.search);
@@ -51,6 +83,13 @@ if (contactFormForNotice) {
   const service = contactFormForNotice.querySelector('[name="service"]');
   const eventDate = contactFormForNotice.querySelector('[name="eventDate"]');
   const dateFlexible = contactFormForNotice.querySelector('[name="dateFlexible"]');
+  const contactMethods = ['phone', 'lineId', 'email']
+    .map((name) => contactFormForNotice.querySelector(`[name="${name}"]`))
+    .filter(Boolean);
+  const formStatus = contactFormForNotice.querySelector('[data-contact-form-status]');
+  const submitButton = contactFormForNotice.querySelector('[type="submit"]');
+  let formStarted = false;
+  let inquiryIdempotencyKey = '';
 
   const setFieldValue = (name, value) => {
     const field = contactFormForNotice.querySelector(`[name="${name}"]`);
@@ -89,6 +128,129 @@ if (contactFormForNotice) {
     dateFlexible.addEventListener('change', syncFlexibleDate);
     syncFlexibleDate();
   }
+
+  const setFormStatus = (message = '', state = '') => {
+    if (!formStatus) return;
+    formStatus.textContent = message;
+    formStatus.className = `contact-form-status${state ? ` is-${state}` : ''}`;
+    if (message) formStatus.focus({ preventScroll: true });
+  };
+
+  const validateContactMethod = () => {
+    const hasContactMethod = contactMethods.some((field) => field.value.trim());
+    const message = hasContactMethod ? '' : '請至少填寫聯絡電話、LINE ID 或電子郵件其中一項。';
+
+    contactMethods.forEach((field, index) => {
+      field.setCustomValidity(index === 0 ? message : '');
+      field.setAttribute('aria-invalid', hasContactMethod ? 'false' : 'true');
+    });
+
+    return hasContactMethod;
+  };
+
+  contactMethods.forEach((field) => {
+    field.addEventListener('input', validateContactMethod);
+  });
+
+  contactFormForNotice.addEventListener('input', () => {
+    if (formStarted) return;
+    formStarted = true;
+    trackConversionEvent('form_start', { source: sourcePage ? sourcePage.value : '' });
+  }, { once: true });
+
+  contactFormForNotice.addEventListener('submit', async (event) => {
+    const hasContactMethod = validateContactMethod();
+
+    if (!hasContactMethod || !contactFormForNotice.checkValidity()) {
+      event.preventDefault();
+      setFormStatus('請檢查標示的欄位後再送出。', 'error');
+      trackConversionEvent('form_error', { reason: hasContactMethod ? 'validation' : 'missing_contact_method' });
+      contactFormForNotice.reportValidity();
+      return;
+    }
+
+    if (!navigator.onLine) {
+      event.preventDefault();
+      setFormStatus('目前沒有網路連線。您的內容仍保留在畫面上，恢復連線後可再按一次送出。', 'error');
+      trackConversionEvent('form_error', { reason: 'offline' });
+      return;
+    }
+
+    if (!backendConfig.inquiryApiUrl) {
+      trackConversionEvent('form_submit', { transport: 'formsubmit' });
+      return;
+    }
+
+    event.preventDefault();
+    const data = new FormData(contactFormForNotice);
+    if (!inquiryIdempotencyKey) {
+      inquiryIdempotencyKey = window.crypto && window.crypto.randomUUID
+        ? window.crypto.randomUUID()
+        : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    }
+    const payload = {
+      name: String(data.get('name') || ''),
+      company: String(data.get('company') || ''),
+      phone: String(data.get('phone') || ''),
+      email: String(data.get('email') || ''),
+      lineId: String(data.get('lineId') || ''),
+      preferredContact: String(data.get('preferredContact') || ''),
+      eventDate: String(data.get('eventDate') || ''),
+      dateFlexible: data.get('dateFlexible') === 'yes',
+      eventCity: String(data.get('eventCity') || ''),
+      eventType: String(data.get('eventType') || ''),
+      services: data.get('service') ? [String(data.get('service'))] : [],
+      budgetRange: String(data.get('budgetRange') || ''),
+      message: String(data.get('message') || ''),
+      sourcePage: String(data.get('sourcePage') || ''),
+      referrer: String(data.get('sourceReferrer') || ''),
+      utm: {
+        source: String(data.get('utmSource') || ''),
+        medium: String(data.get('utmMedium') || ''),
+        campaign: String(data.get('utmCampaign') || '')
+      },
+      consent: data.get('contactConsent') === 'yes',
+      honeypot: String(data.get('_honey') || ''),
+      turnstileToken: String(data.get('cf-turnstile-response') || '')
+    };
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = '正在安全送出…';
+    }
+    setFormStatus('正在送出洽詢，請稍候。', 'pending');
+
+    try {
+      const response = await window.fetch(backendConfig.inquiryApiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Idempotency-Key': inquiryIdempotencyKey
+        },
+        body: JSON.stringify(payload)
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.message || '送出失敗');
+      }
+
+      setFormStatus(`已收到您的洽詢！案件編號：${result.inquiryId}。我們會盡快與您聯繫。`, 'success');
+      trackConversionEvent('form_submit', { transport: 'inquiry_api', inquiryId: result.inquiryId });
+      contactFormForNotice.reset();
+      syncFlexibleDate();
+      formStarted = false;
+      inquiryIdempotencyKey = '';
+    } catch (error) {
+      setFormStatus('這次沒有成功送出。內容仍保留在畫面上，請確認網路後再按一次；若仍失敗，請改用 LINE 或電話聯絡。', 'error');
+      trackConversionEvent('form_error', { reason: 'network_or_server' });
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = submitButton.dataset.submitLabel || '送出洽詢';
+      }
+    }
+  });
 }
 
 if (contactFormForNotice && new URLSearchParams(window.location.search).get('submitted') === '1') {

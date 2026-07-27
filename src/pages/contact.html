@@ -25,7 +25,7 @@
   <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="../favicon-180.png">
   <meta name="theme-color" content="#181311">
-  <link rel="stylesheet" href="../css/style.css?v=20260725-leads1">
+  <link rel="stylesheet" href="../css/style.css?v=20260727-crm1">
 
   <script type="application/ld+json">
   {
@@ -698,18 +698,18 @@
             </div>
             <div class="contact-form-row">
               <label>
-                聯絡電話 *
-                <input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="09xx-xxx-xxx" required>
+                聯絡電話
+                <input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="09xx-xxx-xxx" aria-describedby="contact-method-help">
               </label>
               <label>
                 電子郵件
-                <input type="email" name="email" autocomplete="email" inputmode="email" placeholder="your@email.com">
+                <input type="email" name="email" autocomplete="email" inputmode="email" placeholder="your@email.com" aria-describedby="contact-method-help">
               </label>
             </div>
             <div class="contact-form-row">
               <label>
                 LINE ID
-                <input type="text" name="lineId" autocomplete="off" placeholder="方便用 LINE 回覆時填寫">
+                <input type="text" name="lineId" autocomplete="off" placeholder="方便用 LINE 回覆時填寫" aria-describedby="contact-method-help">
               </label>
               <label>
                 希望的回覆方式
@@ -721,6 +721,7 @@
                 </select>
               </label>
             </div>
+            <p class="contact-field-help" id="contact-method-help">聯絡電話、LINE ID 或電子郵件請至少填寫一項。</p>
             <div class="contact-form-row">
               <label>
                 活動日期 *
@@ -768,14 +769,29 @@
               </select>
             </label>
             <label>
+              預算區間
+              <select name="budgetRange">
+                <option value="">尚未決定／希望先討論</option>
+                <option value="under-30000">3 萬元以下</option>
+                <option value="30000-50000">3–5 萬元</option>
+                <option value="50000-80000">5–8 萬元</option>
+                <option value="80000-120000">8–12 萬元</option>
+                <option value="over-120000">12 萬元以上</option>
+              </select>
+            </label>
+            <label>
               需求說明 *
               <textarea name="message" rows="6" placeholder="請描述活動時間、場地、預計流程、人數規模或希望呈現的氣氛..." required></textarea>
             </label>
+            {% if backend.turnstileSiteKey %}
+            <div class="cf-turnstile" data-sitekey="{{ backend.turnstileSiteKey }}" data-language="zh-tw"></div>
+            {% endif %}
             <label class="contact-check contact-consent">
               <input type="checkbox" name="contactConsent" value="yes" required>
-              <span>我同意南仙使用以上資料聯絡本次演出需求。*</span>
+              <span>我同意南仙依<a href="privacy.html">隱私政策</a>使用以上資料聯絡本次演出需求。*</span>
             </label>
-            <button class="button button-primary btn-primary" type="submit">送出洽詢</button>
+            <div class="contact-form-status" data-contact-form-status role="status" aria-live="polite" tabindex="-1"></div>
+            <button class="button button-primary btn-primary" type="submit" data-submit-label="送出洽詢">送出洽詢</button>
             <p class="contact-note">送出後我們會盡快與您聯繫，填寫者也會收到一封自動回覆。</p>
           </form>
         </div>
@@ -885,6 +901,10 @@
       </div>
     </footer>
   </div>
-  <script src="../script.js?v=20260725-leads1" defer></script>
+  {% if backend.turnstileSiteKey %}
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  {% endif %}
+  <script src="../backend-config.js?v=20260727-crm1"></script>
+  <script src="../script.js?v=20260727-crm1" defer></script>
 </body>
 </html>

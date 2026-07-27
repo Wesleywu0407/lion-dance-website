@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>南仙案件管理 CRM</title>
+  <link rel="stylesheet" href="crm.css?v=20260727-crm1">
+</head>
+<body>
+  <div class="crm-shell">
+    <header class="crm-header">
+      <a href="../" class="crm-brand"><strong>南仙 CRM</strong><span>詢價與跟進管理</span></a>
+      <div class="crm-user" hidden data-crm-user><span data-crm-user-name></span><button type="button" data-crm-logout>登出</button></div>
+    </header>
+
+    <main>
+      <section class="crm-setup" data-crm-setup hidden>
+        <p class="eyebrow">尚未連接後端</p>
+        <h1>CRM 程式已就緒，等待 Supabase 設定</h1>
+        <p>請依 <code>docs/SUPABASE_CRM_SETUP.md</code> 建立專案、部署 Functions，並將公開 URL 與 anon key 填入 <code>src/_data/backend.json</code>。Service role key 絕不可放入網站。</p>
+      </section>
+
+      <section class="crm-login" data-crm-login hidden>
+        <div>
+          <p class="eyebrow">授權人員登入</p>
+          <h1>以 Email magic link 登入</h1>
+          <p>只有已加入管理員清單的 Email 能讀取案件。登入結果不會公開帳號是否存在。</p>
+        </div>
+        <form data-crm-login-form>
+          <label>Email<input type="email" name="email" autocomplete="email" required></label>
+          <button type="submit">寄送登入連結</button>
+          <p data-crm-login-status role="status"></p>
+        </form>
+      </section>
+
+      <section class="crm-app" data-crm-app hidden>
+        <nav class="crm-tabs" aria-label="CRM 功能">
+          <button type="button" class="is-active" data-crm-tab="dashboard">Dashboard</button>
+          <button type="button" data-crm-tab="leads">案件列表</button>
+        </nav>
+
+        <div data-crm-view="dashboard">
+          <div class="crm-page-heading"><div><p class="eyebrow">Sales overview</p><h1>案件總覽</h1></div><button type="button" data-crm-refresh>重新整理</button></div>
+          <div class="crm-metrics" data-crm-metrics></div>
+          <div class="crm-charts">
+            <section><h2>活動類型</h2><div data-crm-event-types></div></section>
+            <section><h2>來源頁</h2><div data-crm-sources></div></section>
+          </div>
+        </div>
+
+        <div data-crm-view="leads" hidden>
+          <div class="crm-page-heading"><div><p class="eyebrow">Lead pipeline</p><h1>案件列表</h1></div><button type="button" data-crm-export>匯出 CSV</button></div>
+          <form class="crm-filters" data-crm-filters>
+            <label>搜尋<input type="search" name="q" placeholder="案件編號、姓名或單位"></label>
+            <label>狀態<select name="status"><option value="">全部狀態</option><option>NEW</option><option>CONTACTED</option><option>QUALIFIED</option><option>QUOTING</option><option>WON</option><option>LOST</option><option>SPAM</option><option>ARCHIVED</option></select></label>
+            <label>活動類型<input type="text" name="eventType" placeholder="opening"></label>
+            <label>地區<input type="text" name="city" placeholder="台北"></label>
+            <button type="submit">套用篩選</button>
+          </form>
+          <div class="crm-table-wrap">
+            <table>
+              <thead><tr><th>案件</th><th>客戶</th><th>活動</th><th>地區／日期</th><th>狀態</th><th>下次跟進</th></tr></thead>
+              <tbody data-crm-leads></tbody>
+            </table>
+          </div>
+          <p class="crm-empty" data-crm-empty hidden>目前沒有符合條件的案件。</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="crm-detail" data-crm-detail>
+    <button class="crm-detail-close" type="button" data-crm-detail-close aria-label="關閉">×</button>
+    <div data-crm-detail-content></div>
+  </dialog>
+
+  <script src="../backend-config.js?v=20260727-crm1"></script>
+  <script src="crm.js?v=20260727-crm1" defer></script>
+</body>
+</html>

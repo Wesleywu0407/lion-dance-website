@@ -1,0 +1,14 @@
+{% set context = galleryContexts[gallery.key] %}
+{% if context %}
+<aside class="album-context reveal" aria-label="{{ gallery.title }}活動規劃重點">
+  <div>
+    <span>適合情境與場地條件</span>
+    <p>{{ context.conditions }}</p>
+  </div>
+  <div>
+    <span>常見演出安排</span>
+    <p>{{ context.arrangement }}</p>
+  </div>
+  <a class="button button-primary btn-primary" href="../pages/contact.html?eventType={{ context.eventType }}&amp;source=gallery-{{ gallery.key }}">洽詢相似活動</a>
+</aside>
+{% endif %}

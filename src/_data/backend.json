@@ -1,0 +1,8 @@
+{
+  "inquiryApiUrl": "",
+  "analyticsApiUrl": "",
+  "turnstileSiteKey": "",
+  "crmSupabaseUrl": "",
+  "crmSupabaseAnonKey": "",
+  "crmAdminApiUrl": ""
+}

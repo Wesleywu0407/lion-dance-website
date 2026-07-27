@@ -1,0 +1,131 @@
+---
+permalink: crm/crm.js
+eleventyExcludeFromCollections: true
+---
+(() => {
+  const config = window.NANSIEN_BACKEND_CONFIG || {};
+  const setup = document.querySelector('[data-crm-setup]');
+  const login = document.querySelector('[data-crm-login]');
+  const app = document.querySelector('[data-crm-app]');
+  const userBox = document.querySelector('[data-crm-user]');
+  const tokenKey = 'nansien_crm_access_token';
+  let accessToken = sessionStorage.getItem(tokenKey) || '';
+  let admin = null;
+  let currentFilters = '';
+
+  const show = (element, visible) => { if (element) element.hidden = !visible; };
+  const api = async (path, options = {}) => {
+    const response = await fetch(`${config.crmAdminApiUrl.replace(/\/$/, '')}/${path}`, {
+      ...options,
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}`, ...(options.headers || {}) }
+    });
+    if (response.status === 401) {
+      sessionStorage.removeItem(tokenKey);
+      accessToken = '';
+      show(app, false); show(userBox, false); show(login, true);
+      throw new Error('登入已失效，請重新登入。');
+    }
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(data.message || '系統暫時無法完成操作。');
+    return data;
+  };
+
+  const parseAuthHash = () => {
+    const values = new URLSearchParams(location.hash.replace(/^#/, ''));
+    const token = values.get('access_token');
+    if (token) {
+      sessionStorage.setItem(tokenKey, token);
+      accessToken = token;
+      history.replaceState(null, '', location.pathname);
+    }
+  };
+
+  const metricLabels = { newThisWeek: '本週新案件', overdue: '逾期跟進', quoting: '報價中', wonThisMonth: '本月成交' };
+  const renderBars = (target, rows = []) => {
+    const max = Math.max(...rows.map((row) => row[1]), 1);
+    target.innerHTML = rows.length ? rows.map(([label, value]) => `<div class="crm-bar"><span>${escapeHtml(label)}</span><i style="width:${Math.max(value / max * 100, 4)}%"></i><strong>${value}</strong></div>`).join('') : '<p>尚無資料</p>';
+  };
+  const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (character) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[character]));
+  const formatDate = (value) => value ? new Intl.DateTimeFormat('zh-TW', { dateStyle: 'medium' }).format(new Date(value)) : '—';
+
+  async function loadDashboard() {
+    const data = await api('dashboard');
+    document.querySelector('[data-crm-metrics]').innerHTML = Object.entries(metricLabels).map(([key, label]) => `<article class="crm-metric${key === 'overdue' && data.metrics[key] ? ' is-alert' : ''}"><span>${label}</span><strong>${data.metrics[key] || 0}</strong></article>`).join('');
+    renderBars(document.querySelector('[data-crm-event-types]'), data.byEventType);
+    renderBars(document.querySelector('[data-crm-sources]'), data.bySource);
+  }
+
+  async function loadLeads(query = '') {
+    currentFilters = query;
+    const data = await api(`leads?${query}`);
+    const body = document.querySelector('[data-crm-leads]');
+    show(document.querySelector('[data-crm-empty]'), !data.leads.length);
+    body.innerHTML = data.leads.map((lead) => {
+      const overdue = lead.next_follow_up_at && new Date(lead.next_follow_up_at) < new Date() && !['WON','LOST','SPAM','ARCHIVED'].includes(lead.status);
+      return `<tr data-lead-id="${lead.id}"><td><strong>${escapeHtml(lead.public_id)}</strong><br><small>${formatDate(lead.created_at)}</small></td><td>${escapeHtml(lead.name)}<br><small>${escapeHtml(lead.company)}</small></td><td>${escapeHtml(lead.event_type)}</td><td>${escapeHtml(lead.event_city)}<br><small>${lead.date_flexible ? '日期未定' : formatDate(lead.event_date)}</small></td><td><span class="status ${lead.status}">${lead.status}</span></td><td class="${overdue ? 'overdue' : ''}">${formatDate(lead.next_follow_up_at)}</td></tr>`;
+    }).join('');
+  }
+
+  async function openLead(id) {
+    const data = await api(`leads/${id}`);
+    const lead = data.lead;
+    const statuses = ['NEW','CONTACTED','QUALIFIED','QUOTING','WON','LOST','SPAM','ARCHIVED'];
+    const admins = data.admins.map((item) => `<option value="${item.id}"${item.id === lead.assigned_to ? ' selected' : ''}>${escapeHtml(item.display_name || item.email)}</option>`).join('');
+    document.querySelector('[data-crm-detail-content]').innerHTML = `<div class="crm-detail-inner"><p class="eyebrow">${escapeHtml(lead.public_id)}</p><h1>${escapeHtml(lead.name)}</h1><div class="crm-detail-grid"><div><dl><dt>公司／單位</dt><dd>${escapeHtml(lead.company || '—')}</dd><dt>聯絡</dt><dd><a href="tel:${escapeHtml(lead.phone)}">${escapeHtml(lead.phone || '—')}</a><br>${escapeHtml(lead.line_id || '')}<br><a href="mailto:${escapeHtml(lead.email)}">${escapeHtml(lead.email || '')}</a></dd><dt>活動</dt><dd>${escapeHtml(lead.event_type)} · ${escapeHtml(lead.event_city)}</dd><dt>日期</dt><dd>${lead.date_flexible ? '日期未定' : formatDate(lead.event_date)}</dd><dt>項目／預算</dt><dd>${escapeHtml((lead.services || []).join('、') || '未指定')}<br>${escapeHtml(lead.budget_range || '未指定')}</dd><dt>需求</dt><dd>${escapeHtml(lead.message)}</dd><dt>來源</dt><dd>${escapeHtml(lead.source_page || '—')}</dd></dl></div><form class="crm-detail-form" data-lead-update data-lead-id="${lead.id}"><label>狀態<select name="status">${statuses.map((status) => `<option${status === lead.status ? ' selected' : ''}>${status}</option>`).join('')}</select></label><label>負責人<select name="assigned_to"><option value="">未指派</option>${admins}</select></label><label>下次跟進<input type="datetime-local" name="next_follow_up_at" value="${lead.next_follow_up_at ? lead.next_follow_up_at.slice(0,16) : ''}"></label><label>未成交原因<input type="text" name="lost_reason" value="${escapeHtml(lead.lost_reason || '')}" placeholder="選擇 LOST 時必填"></label><button type="submit">儲存案件</button><p role="status"></p></form></div><section class="crm-timeline"><h2>活動紀錄</h2>${data.activities.map((activity) => `<div class="crm-activity"><strong>${escapeHtml(activity.type)}</strong> ${escapeHtml(activity.note)}<br><small>${formatDate(activity.created_at)}</small></div>`).join('') || '<p>尚無活動紀錄</p>'}<form class="crm-activity-form" data-activity-form data-lead-id="${lead.id}"><select name="type"><option>NOTE</option><option>PHONE</option><option>LINE</option><option>EMAIL</option><option>FOLLOW_UP</option></select><input name="note" required placeholder="新增跟進紀錄"><button type="submit">新增</button></form></section></div>`;
+    document.querySelector('[data-crm-detail]').showModal();
+  }
+
+  document.addEventListener('submit', async (event) => {
+    if (event.target.matches('[data-crm-login-form]')) {
+      event.preventDefault();
+      const status = document.querySelector('[data-crm-login-status]');
+      status.textContent = '正在寄送登入連結…';
+      const email = new FormData(event.target).get('email');
+      try {
+        await fetch(`${config.crmSupabaseUrl}/auth/v1/otp`, { method:'POST', headers:{ apikey:config.crmSupabaseAnonKey,'Content-Type':'application/json' }, body:JSON.stringify({ email, options:{ emailRedirectTo:location.href.split('#')[0] } }) });
+        status.textContent = '若此 Email 已獲授權，登入連結將寄到信箱。';
+      } catch { status.textContent = '目前無法寄送，請稍後再試。'; }
+    }
+    if (event.target.matches('[data-crm-filters]')) {
+      event.preventDefault(); await loadLeads(new URLSearchParams(new FormData(event.target)).toString());
+    }
+    if (event.target.matches('[data-lead-update]')) {
+      event.preventDefault(); const form = event.target; const values = Object.fromEntries(new FormData(form)); const status = form.querySelector('[role="status"]');
+      if (values.next_follow_up_at) values.next_follow_up_at = new Date(values.next_follow_up_at).toISOString();
+      try { await api(`leads/${form.dataset.leadId}`, { method:'PATCH', body:JSON.stringify(values) }); status.textContent='已儲存'; await openLead(form.dataset.leadId); await loadDashboard(); } catch (error) { status.textContent=error.message; }
+    }
+    if (event.target.matches('[data-activity-form]')) {
+      event.preventDefault(); const form=event.target; await api(`leads/${form.dataset.leadId}/activities`, { method:'POST', body:JSON.stringify(Object.fromEntries(new FormData(form))) }); await openLead(form.dataset.leadId);
+    }
+  });
+
+  document.addEventListener('click', async (event) => {
+    const tab = event.target.closest('[data-crm-tab]');
+    if (tab) {
+      document.querySelectorAll('[data-crm-tab]').forEach((item) => item.classList.toggle('is-active', item === tab));
+      document.querySelectorAll('[data-crm-view]').forEach((view) => show(view, view.dataset.crmView === tab.dataset.crmTab));
+      if (tab.dataset.crmTab === 'leads') await loadLeads();
+    }
+    const row = event.target.closest('[data-lead-id]'); if (row) await openLead(row.dataset.leadId);
+    if (event.target.closest('[data-crm-detail-close]')) document.querySelector('[data-crm-detail]').close();
+    if (event.target.closest('[data-crm-refresh]')) await loadDashboard();
+    if (event.target.closest('[data-crm-export]')) {
+      const response = await fetch(`${config.crmAdminApiUrl.replace(/\/$/, '')}/leads/export.csv?${currentFilters}`, { headers:{ Authorization:`Bearer ${accessToken}` } });
+      if (response.ok) { const url=URL.createObjectURL(await response.blob()); const link=document.createElement('a'); link.href=url; link.download='nansien-leads.csv'; link.click(); URL.revokeObjectURL(url); }
+    }
+    if (event.target.closest('[data-crm-logout]')) { sessionStorage.removeItem(tokenKey); location.reload(); }
+  });
+
+  async function init() {
+    parseAuthHash();
+    const configured = config.crmSupabaseUrl && config.crmSupabaseAnonKey && config.crmAdminApiUrl;
+    if (!configured) { show(setup, true); return; }
+    if (!accessToken) { show(login, true); return; }
+    try {
+      const result = await api('me'); admin = result.admin;
+      document.querySelector('[data-crm-user-name]').textContent = admin.display_name || admin.email;
+      show(userBox, true); show(app, true); await loadDashboard();
+    } catch (error) { show(login, true); }
+  }
+  init();
+})();
