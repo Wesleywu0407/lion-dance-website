@@ -167,31 +167,11 @@
     min-width: 0;
   }
 
-  .mobile-submenu {
-    display: grid;
-    gap: 10px;
-    padding: 8px 0 0;
-    margin: 0;
-    min-width: 0;
-  }
-
-  .nav-services > a,
-.nav-gallery > a {
-    justify-content: space-between;
-  }
-
+  /* 單層導覽：這兩個是一般連結，不再是展開器，所以不需要 chevron 也不靠右對齊。 */
   .nav-services > a::before,
-.nav-gallery > a::before {
-    display: none;
-  }
-
-  .nav-services > a::after,
+.nav-gallery > a::before,
+.nav-services > a::after,
 .nav-gallery > a::after {
-    display: none;
-  }
-
-  .nav-services:not(.is-collapsed) > a::after,
-.nav-gallery:not(.is-collapsed) > a::after {
     display: none;
   }
 
@@ -225,103 +205,15 @@
     line-height: 1.45;
   }
 
-  .home-page .site-header:not(.scrolled) .site-nav.is-open a,
-.home-page .site-header:not(.scrolled) .site-nav.is-open .nav-subgroup-toggle,
-.home-page .site-header:not(.scrolled) .site-nav.is-open .mobile-submenu-detail {
+  .home-page .site-header:not(.scrolled) .site-nav.is-open a {
     color: var(--ink);
   }
 
-  .nav-services .mobile-submenu,
-.nav-gallery .mobile-submenu {
-    gap: 7px;
-    margin-top: -4px;
-    padding: 2px 0 0 14px;
-    border-left: 1px solid rgba(111, 85, 71, 0.16);
-  }
-
-  .nav-services .mobile-submenu {
-    display: none;
-  }
-
-  .nav-services.is-open .mobile-submenu {
-    display: grid;
-  }
-
-  .nav-services .mobile-submenu-item,
-.nav-gallery .mobile-submenu-item {
-    padding: 4px 0;
-    color: var(--ink-soft);
-    font-size: 0.84rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    line-height: 1.42;
-  }
-
+  /* 手機導覽是單層的：表演項目 / 活動案例 直接連到該頁，不展開子項目。
+     桌機的 mega menu 走 :hover / :focus-within，在手機隱藏。 */
   .service-mega,
 .case-mega {
     display: none;
-  }
-
-  .nav-gallery.is-collapsed .mobile-submenu {
-    display: none;
-  }
-
-  .mobile-submenu .nav-subgroup {
-    display: grid;
-    gap: 10px;
-    margin-top: 2px;
-  }
-
-  .mobile-submenu .nav-subgroup-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    width: 100%;
-    border: 0;
-    background: transparent;
-    text-align: left;
-    cursor: pointer;
-  }
-
-  .mobile-submenu .nav-subgroup-links {
-    display: grid;
-    gap: 6px;
-    padding-left: 18px;
-  }
-
-  .mobile-submenu .nav-subgroup.is-collapsed .nav-subgroup-links {
-    display: none;
-  }
-
-  .mobile-submenu-item {
-    display: block;
-    padding: 6px 4px;
-    font-family: inherit;
-    color: var(--accent-deep);
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    line-height: 1.45;
-    cursor: pointer;
-    pointer-events: auto;
-    user-select: auto;
-    background: transparent;
-    border-radius: 0;
-    text-decoration: none;
-  }
-
-  .mobile-submenu-detail {
-    display: block;
-    padding: 6px 4px;
-    color: var(--ink-soft);
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    line-height: 1.45;
-    cursor: default;
-    pointer-events: none;
-    user-select: none;
   }
 
   .site-nav.is-open {

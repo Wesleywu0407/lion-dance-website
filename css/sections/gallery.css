@@ -119,7 +119,7 @@
 .case-category-card:nth-child(6) {
   background:
     linear-gradient(180deg, rgba(24, 12, 7, 0.24), rgba(24, 12, 7, 0.72)),
-    image-set(url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/101%E9%96%8B%E6%98%A5%E6%BC%94%E5%87%BA%E7%A5%A5%E7%8D%85%E8%B7%B3%E9%AB%98%E6%A8%81-720.webp") 1x, url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/101%E9%96%8B%E6%98%A5%E6%BC%94%E5%87%BA%E7%A5%A5%E7%8D%85%E8%B7%B3%E9%AB%98%E6%A8%81-1440.webp") 2x) center/cover;
+    image-set(url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/%E7%99%BE%E8%B2%A8%E5%B0%88%E6%AB%83%E5%91%A8%E5%B9%B4%E6%85%B62-720.webp") 1x, url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/%E7%99%BE%E8%B2%A8%E5%B0%88%E6%AB%83%E5%91%A8%E5%B9%B4%E6%85%B62-1440.webp") 2x) center/cover;
 }
 
 .case-category-card:nth-child(7) {
@@ -567,7 +567,7 @@ body.is-lightbox-open {
   .case-category-card:nth-child(6) {
     background:
       linear-gradient(180deg, rgba(24, 12, 7, 0.28), rgba(24, 12, 7, 0.74)),
-      image-set(url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/101%E9%96%8B%E6%98%A5%E6%BC%94%E5%87%BA%E7%A5%A5%E7%8D%85%E8%B7%B3%E9%AB%98%E6%A8%81-720.webp") 1x, url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/101%E9%96%8B%E6%98%A5%E6%BC%94%E5%87%BA%E7%A5%A5%E7%8D%85%E8%B7%B3%E9%AB%98%E6%A8%81-1440.webp") 2x) center/cover;
+      image-set(url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/%E7%99%BE%E8%B2%A8%E5%B0%88%E6%AB%83%E5%91%A8%E5%B9%B4%E6%85%B62-720.webp") 1x, url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/%E7%99%BE%E8%B2%A8%E5%B0%88%E6%AB%83%E5%91%A8%E5%B9%B4%E6%85%B62-1440.webp") 2x) center/cover;
   }
 
   .case-category-card:nth-child(7) {
@@ -1086,7 +1086,7 @@ body.is-lightbox-open {
   }
 
   .gallery-page .case-category-card:nth-child(6) {
-    background-image: image-set(url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/101%E9%96%8B%E6%98%A5%E6%BC%94%E5%87%BA%E7%A5%A5%E7%8D%85%E8%B7%B3%E9%AB%98%E6%A8%81-720.webp") 1x, url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/101%E9%96%8B%E6%98%A5%E6%BC%94%E5%87%BA%E7%A5%A5%E7%8D%85%E8%B7%B3%E9%AB%98%E6%A8%81-1440.webp") 2x) !important;
+    background-image: image-set(url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/%E7%99%BE%E8%B2%A8%E5%B0%88%E6%AB%83%E5%91%A8%E5%B9%B4%E6%85%B62-720.webp") 1x, url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/%E7%99%BE%E8%B2%A8%E5%B0%88%E6%AB%83%E5%91%A8%E5%B9%B4%E6%85%B62-1440.webp") 2x) !important;
   }
 
   .gallery-page .case-category-card:nth-child(7) {
@@ -1176,7 +1176,7 @@ body.is-lightbox-open {
 }
 
 .gallery-page .case-category-card:nth-child(6) {
-  background-image: image-set(url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/101%E9%96%8B%E6%98%A5%E6%BC%94%E5%87%BA%E7%A5%A5%E7%8D%85%E8%B7%B3%E9%AB%98%E6%A8%81-720.webp") 1x, url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/101%E9%96%8B%E6%98%A5%E6%BC%94%E5%87%BA%E7%A5%A5%E7%8D%85%E8%B7%B3%E9%AB%98%E6%A8%81-1440.webp") 2x) !important;
+  background-image: image-set(url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/%E7%99%BE%E8%B2%A8%E5%B0%88%E6%AB%83%E5%91%A8%E5%B9%B4%E6%85%B62-720.webp") 1x, url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/%E7%99%BE%E8%B2%A8%E5%B0%88%E6%AB%83%E5%91%A8%E5%B9%B4%E6%85%B62-1440.webp") 2x) !important;
   padding-bottom: 0 !important;
 }
 
@@ -1511,7 +1511,7 @@ body.is-lightbox-open {
 
 .gallery-page .gallery-col:last-child .gallery-card:nth-child(4) {
   height: 160px;
-  background-image: image-set(url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/101%E9%96%8B%E6%98%A5%E6%BC%94%E5%87%BA%E7%A5%A5%E7%8D%85%E8%B7%B3%E9%AB%98%E6%A8%81-720.webp") 1x, url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/101%E9%96%8B%E6%98%A5%E6%BC%94%E5%87%BA%E7%A5%A5%E7%8D%85%E8%B7%B3%E9%AB%98%E6%A8%81-1440.webp") 2x) !important;
+  background-image: image-set(url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/%E7%99%BE%E8%B2%A8%E5%B0%88%E6%AB%83%E5%91%A8%E5%B9%B4%E6%85%B62-720.webp") 1x, url("../../images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/%E7%99%BE%E8%B2%A8%E5%B0%88%E6%AB%83%E5%91%A8%E5%B9%B4%E6%85%B62-1440.webp") 2x) !important;
   background-position: 35% bottom !important;
 }
 

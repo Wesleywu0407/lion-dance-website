@@ -8,8 +8,7 @@
 .home-page .site-header:not(.scrolled) .brand-text strong,
 .home-page .site-header:not(.scrolled) .site-nav > a,
 .home-page .site-header:not(.scrolled) .site-nav > .nav-services > a,
-.home-page .site-header:not(.scrolled) .site-nav > .nav-gallery > a,
-.home-page .site-header:not(.scrolled) .nav-subgroup-toggle {
+.home-page .site-header:not(.scrolled) .site-nav > .nav-gallery > a {
   color: #FAECE7;
 }
 

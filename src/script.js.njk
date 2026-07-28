@@ -403,28 +403,9 @@ const unlockBodyScroll = () => {
 };
 
 if (navToggle && siteNav) {
-  const serviceNavGroups = Array.from(siteNav.querySelectorAll('.nav-services'));
-  const galleryNavGroups = Array.from(siteNav.querySelectorAll('.nav-gallery'));
-  const navSubgroups = Array.from(siteNav.querySelectorAll('.nav-subgroup'));
-
+  // 手機版導覽是一層的：點標題就直接前往那一頁，不展開子項目。
+  // 子選單（.mobile-submenu）已移除，桌機的 mega menu 走 CSS :hover / :focus-within。
   const resetMobileNavState = () => {
-    galleryNavGroups.forEach((group) => {
-      group.classList.add('is-collapsed');
-    });
-
-    serviceNavGroups.forEach((group) => {
-      group.classList.remove('is-open');
-    });
-
-    navSubgroups.forEach((subgroup) => {
-      subgroup.classList.add('is-collapsed');
-      const toggle = subgroup.querySelector('.nav-subgroup-toggle');
-
-      if (toggle) {
-        toggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-
     siteNav.scrollTop = 0;
   };
 
@@ -448,38 +429,14 @@ if (navToggle && siteNav) {
     setNavOpen(!siteNav.classList.contains('is-open'));
   });
 
+  // 每個導覽連結都直接關閉選單並前往目標頁——包含 表演項目 / 活動案例。
   siteNav.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
-      if (
-        window.innerWidth <= 760 &&
-        (
-          link.parentElement?.classList.contains('nav-services') ||
-          link.parentElement?.classList.contains('nav-gallery') ||
-          link.classList.contains('nav-subgroup-toggle')
-        )
-      ) {
-        return;
-      }
-
       setNavOpen(false);
     });
   });
 
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 760) {
-      galleryNavGroups.forEach((group) => {
-        group.classList.remove('is-collapsed');
-      });
-      serviceNavGroups.forEach((group) => {
-        group.classList.remove('is-open');
-      });
-      navSubgroups.forEach((subgroup) => {
-        subgroup.classList.remove('is-collapsed');
-      });
-    } else {
-      resetMobileNavState();
-    }
-
     if (window.innerWidth > 760 && siteNav.classList.contains('is-open')) {
       setNavOpen(false);
     }
@@ -490,70 +447,6 @@ if (navToggle && siteNav) {
       setNavOpen(false);
     }
   });
-  serviceNavGroups.forEach((group) => {
-    const trigger = group.querySelector(':scope > a');
-
-    if (!trigger) {
-      return;
-    }
-
-    trigger.addEventListener('click', (event) => {
-      if (window.innerWidth > 760) {
-        return;
-      }
-
-      event.preventDefault();
-      group.classList.toggle('is-open');
-    });
-  });
-
-  galleryNavGroups.forEach((group) => {
-    const trigger = group.querySelector(':scope > a');
-
-    if (!trigger) {
-      return;
-    }
-
-    trigger.addEventListener('click', (event) => {
-      if (window.innerWidth > 760) {
-        return;
-      }
-
-      event.preventDefault();
-      group.classList.toggle('is-collapsed');
-    });
-  });
-
-  navSubgroups.forEach((subgroup) => {
-    const toggle = subgroup.querySelector('.nav-subgroup-toggle');
-
-    if (!toggle) {
-      return;
-    }
-
-    toggle.addEventListener('click', (event) => {
-      if (window.innerWidth > 760) {
-        return;
-      }
-
-      const href = toggle.getAttribute('href');
-
-      if (subgroup.classList.contains('is-collapsed')) {
-        event.preventDefault();
-        subgroup.classList.remove('is-collapsed');
-        toggle.setAttribute('aria-expanded', 'true');
-        return;
-      }
-
-      if (href) {
-        window.location.href = href;
-      }
-    });
-  });
-
-  if (window.innerWidth <= 760) {
-    resetMobileNavState();
-  }
 }
 
 const revealObserver = new IntersectionObserver((entries) => {

@@ -244,47 +244,6 @@
   color: var(--accent-deep);
 }
 
-.nav-subgroup {
-  display: grid;
-  gap: 8px;
-  margin-top: 6px;
-}
-
-.nav-subgroup-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  width: 100%;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-align: left;
-  cursor: pointer;
-}
-
-.nav-subgroup-toggle::after {
-  display: none;
-}
-
-.nav-subgroup:not(.is-collapsed) .nav-subgroup-toggle::after {
-  display: none;
-}
-
-.nav-subgroup-links {
-  display: grid;
-  gap: 8px;
-}
-
-.mobile-submenu {
-  display: none;
-}
-
 @media (max-width: 760px) {
   body.is-nav-open::after {
     content: "";
