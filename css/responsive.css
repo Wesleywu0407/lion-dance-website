@@ -833,17 +833,26 @@ select {
   }
 
   /* Mobile pages should never render important copy as a blank or blurred block
-     while a visitor scrolls quickly. The bespoke ink-scroll page keeps its
-     intentional motion system. */
-  .js body:not(.intro-page) .reveal,
-  .js body:not(.intro-page) .about-block,
-  .js body:not(.intro-page) .ctb-phrase,
-  .js body:not(.intro-page) .ctb-support {
+     while a visitor scrolls quickly. This now covers every page including
+     .intro-page — the ink-scroll narrative is static on mobile too, so copy is
+     never gated behind an IntersectionObserver that may not fire. */
+  .js .reveal,
+  .js .about-block,
+  .js .ctb-phrase,
+  .js .ctb-support,
+  .js .about-fade-paragraph,
+  .js .ink-story-beat .ink-anim {
     opacity: 1 !important;
+    clip-path: none !important;
     transform: none !important;
     filter: none !important;
     animation: none !important;
     transition: none !important;
+  }
+
+  /* No decorative infinite loops on mobile. */
+  .ink-scroll-hint i {
+    animation: none !important;
   }
 
   .home-page .hero h1,

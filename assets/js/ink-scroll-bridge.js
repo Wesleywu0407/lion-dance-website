@@ -108,11 +108,9 @@
     if (typeof api.setActive === 'function') api.setActive(frameVisible && !document.hidden);
 
     if (isMobile) {
-      if (typeof api.setMode === 'function') api.setMode(hasDebugProgress ? 'scrub' : 'autoplay');
-      if (hasDebugProgress && firstSync && typeof api.snap === 'function') {
-        api.snap(debugProgress);
-        firstSync = false;
-      }
+      // 手機一律靜態：iframe 只畫第 0 格原畫一次就停掉 rAF。
+      // ?inkp= 除錯把手在手機上不再改變畫面（靜態模式沒有其餘影格）。
+      if (typeof api.setMode === 'function') api.setMode('static');
       return;
     }
 

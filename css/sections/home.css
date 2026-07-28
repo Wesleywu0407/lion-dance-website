@@ -86,7 +86,9 @@ article).section-heading::after {
   opacity: 1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/* 呼吸縮放只給桌機。手機上這是一個永遠不停的 compositor 動畫，
+   會一路吃電並和捲動搶合成資源；交叉淡化保留，那是換圖必要而非裝飾。 */
+@media (prefers-reduced-motion: no-preference) and (min-width: 761px) {
   .hero-slide {
     animation: heroSlideBreathe 18s ease-in-out infinite alternate;
   }

@@ -42,6 +42,15 @@
     height: 100dvh;
   }
 
+  /* 靜態模式：把逐幀重算的 SVG 濾鏡鏈整組移出 render tree。
+     #mist / #blooms / #fardragon 掛著 feGaussianBlur、feTurbulence、
+     feDisplacementMap，在行動裝置上走軟體路徑，是掉幀的主因。 */
+  .is-static #mist,
+  .is-static #blooms,
+  .is-static #fardragon {
+    display: none;
+  }
+
   .grain {
     position: fixed; inset: 0; pointer-events: none; opacity: 0.03;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -115,10 +124,15 @@
 (function () {
   'use strict';
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var embedded = new URLSearchParams(window.location.search).has('embedded');
+  var params = new URLSearchParams(window.location.search);
+  var embedded = params.has('embedded');
   var sealY = embedded ? 170 : 96;
   var mobile = Math.min(window.innerWidth, window.innerHeight) < 700;
+  // 靜態模式：手機版只畫第 0 格（原始水墨畫）一次，不跑 rAF、不抓其餘 45 張影格。
+  // 由 host 在 iframe src 上帶 ?static=1，必須在載入當下就知道，否則 fetch 已經發出去了。
+  var staticMode = params.has('static') || (mobile && embedded);
   if (mobile && embedded) document.documentElement.classList.add('mobile-autoplay');
+  if (staticMode) document.documentElement.classList.add('is-static');
   var svg = document.getElementById('scene');
   var $ = function (id) { return document.getElementById(id); };
 
@@ -203,6 +217,7 @@
     var FW = small ? 720 : 1280, FH = small ? 370 : 658;
 
     var canvas = $('inkRun');
+    var onFrameLoaded = null;   // 由主迴圈掛上：靜態模式時補畫一次
     var gl = null, ctx2d = null, lost = false;
     var bitmaps = new Array(COUNT), loadedCount = 0;
     var prog, quad, uni = {}, texA, texB, texAFrame = -1, texBFrame = -1;
@@ -320,14 +335,19 @@
     }
 
     // 漸進載入：先粗後細，第 0 格最優先（進場顯影用）。
+    // 靜態模式只要第 0 格（原始水墨畫），省下其餘 45 張約 1.2 MB。
     function loadFrames() {
       var order = [], seen = {};
-      [9, 3, 1].forEach(function (step) {
-        for (var i = 0; i < COUNT; i += step) {
-          if (!seen[i]) { seen[i] = true; order.push(i); }
-        }
-      });
-      if (!seen[COUNT - 1]) order.push(COUNT - 1);
+      if (staticMode) {
+        order = [0];
+      } else {
+        [9, 3, 1].forEach(function (step) {
+          for (var i = 0; i < COUNT; i += step) {
+            if (!seen[i]) { seen[i] = true; order.push(i); }
+          }
+        });
+        if (!seen[COUNT - 1]) order.push(COUNT - 1);
+      }
       var cursor = 0, inflight = 0, MAXC = mobile ? 2 : 4;
       function next() {
         while (inflight < MAXC && cursor < order.length) {
@@ -336,7 +356,12 @@
             fetch(DIR + 'f' + (idx < 10 ? '0' : '') + idx + '.webp')
               .then(function (r) { return r.blob(); })
               .then(function (b) { return createImageBitmap ? createImageBitmap(b) : blobToImage(b); })
-              .then(function (bm) { bitmaps[idx] = bm; loadedCount++; inflight--; next(); })
+              .then(function (bm) {
+                bitmaps[idx] = bm; loadedCount++; inflight--;
+                // 靜態模式下 rAF 已經停了，影格到位時要主動補畫一次。
+                if (onFrameLoaded) onFrameLoaded();
+                next();
+              })
               .catch(function () { inflight--; next(); });
           })(order[cursor++]);
         }
@@ -439,7 +464,12 @@
     }
     loadFrames();
 
-    var api = { resize: resize, render: render, tune: tune };
+    var api = {
+      resize: resize,
+      render: render,
+      tune: tune,
+      onLoad: function (fn) { onFrameLoaded = fn; }
+    };
     Object.defineProperty(api, 'loaded', { get: function () { return loadedCount; } });
     return api;
   })();
@@ -447,7 +477,7 @@
   rebuild();
 
   // ============ 桌機捲動 / 手機時間驅動主迴圈 ============
-  var mode = mobile && embedded ? 'autoplay' : 'scrub';
+  var mode = staticMode ? 'static' : (mobile && embedded ? 'autoplay' : 'scrub');
   var active = !document.hidden;
   var target = 0, displayed = 0, time = 0, lastTs = 0;
   var autoDistance = 9 * inkRun.tune.upf;
@@ -457,8 +487,9 @@
     target = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
   }
   window.addEventListener('scroll', readScroll, { passive: true });
-  window.addEventListener('resize', function () { rebuild(); readScroll(); });
+  window.addEventListener('resize', function () { rebuild(); readScroll(); requestFrame(); });
   readScroll();
+  inkRun.onLoad(function () { lastTs = 0; requestFrame(); });
 
   function requestFrame() {
     if (!rafId && active && !document.hidden) rafId = requestAnimationFrame(frame);
@@ -471,6 +502,23 @@
     var dt = lastTs ? Math.min(0.05, (ts - lastTs) / 1000) : 0.016;
     lastTs = ts;
     var p, introT, runT, D;
+
+    // 靜態模式：畫一次「顯影完成的第 0 格原畫」就收工，不排下一幀。
+    // 遠山／地面只擺一次，霧氣與墨團已由 CSS 移出 render tree。
+    if (mode === 'static') {
+      $('far').setAttribute('transform', 'translate(' + (-TILE) + ' 0)');
+      $('mid').setAttribute('transform', 'translate(' + (-TILE) + ' 0)');
+      $('far').setAttribute('opacity', 1);
+      $('mid').setAttribute('opacity', 1);
+      groundMarks.forEach(function (mk) {
+        var x = (mk.x % TILE) - (TILE - VW) / 2;
+        mk.el.setAttribute('d', 'M ' + x.toFixed(1) + ' ' + mk.y + ' l ' + mk.w + ' ' + (mk.w * 0.06).toFixed(1));
+      });
+      $('seal').setAttribute('opacity', 0.85);
+      $('seal').setAttribute('transform', 'translate(' + (VW - 90) + ' ' + sealY + ') rotate(-4)');
+      inkRun.render({ D: 0, introT: 1, jump: 0, time: 0, settle: 0 });
+      return;
+    }
 
     if (mode === 'autoplay') {
       if (!reduced) {
@@ -566,7 +614,14 @@
       requestFrame();
     },
     setMode: function (nextMode) {
-      mode = nextMode === 'autoplay' && mobile ? 'autoplay' : 'scrub';
+      // ?static=1 是硬性的：host 之後再要求 autoplay/scrub 也不會復活 rAF 迴圈，
+      // 因為靜態模式下只載入了第 0 格，沒有其餘影格可以播。
+      if (staticMode || nextMode === 'static') {
+        mode = 'static';
+        document.documentElement.classList.add('is-static');
+      } else {
+        mode = nextMode === 'autoplay' && mobile ? 'autoplay' : 'scrub';
+      }
       lastTs = 0;
       requestFrame();
     },

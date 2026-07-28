@@ -23,7 +23,7 @@
 
 .intro-chapter-nav-inner {
   display: grid;
-  grid-template-columns: minmax(220px, 0.68fr) minmax(480px, 1.18fr) auto;
+  grid-template-columns: minmax(220px, 0.68fr) minmax(0, 1.18fr);
   gap: 32px;
   align-items: center;
 }
@@ -62,50 +62,10 @@
   transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-.intro-chapter-nav nav > a span {
-  color: var(--accent);
-  font-family: var(--font-sans);
-  font-size: 0.62rem;
-  letter-spacing: 0.12em;
-}
-
 .intro-chapter-nav nav > a:hover,
 .intro-chapter-nav nav > a:focus-visible {
   color: var(--accent-deep);
   background: rgba(143, 58, 47, 0.055);
-}
-
-.intro-chapter-actions {
-  display: grid;
-  gap: 8px;
-  min-width: 132px;
-}
-
-.intro-chapter-actions a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 38px;
-  padding: 8px 14px;
-  border: 0;
-  border-bottom: 1px solid rgba(143, 58, 47, 0.5);
-  color: var(--accent-deep);
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
-}
-
-.intro-chapter-actions a:hover,
-.intro-chapter-actions a:focus-visible,
-.intro-chapter-actions .is-primary {
-  color: #fffaf4;
-  background: linear-gradient(96deg, #87382f, #9a463a 72%, #7a3028);
-}
-
-.intro-chapter-actions .is-primary:hover,
-.intro-chapter-actions .is-primary:focus-visible {
-  background: #6f2d25;
 }
 
 .intro-section-kicker,
@@ -117,18 +77,54 @@
   letter-spacing: 0;
 }
 
+/* 每個章節的 kicker 刻意長得不一樣。原本五個章節共用同一組
+   「金色短線 + 小標」，重複五次讓整頁像是同一個模板灌出來的。
+   現在每個章節用不同的收頭方式，但都從頁面既有的語彙裡取材。 */
 .intro-section-kicker {
   display: flex;
   align-items: center;
   gap: 14px;
 }
 
-.intro-section-kicker::before {
+/* 01 文化精神：全頁第一個 kicker，保留金線，建立語彙。 */
+.intro-overview .intro-section-kicker::before {
   content: "";
   width: 34px;
   height: 2px;
   flex: 0 0 auto;
   background: var(--gold);
+}
+
+/* 02 龍獅差異：對仗主題 → kicker 下方一條貫穿整欄的細線，取代短線。 */
+.intro-comparison .intro-section-kicker {
+  display: block;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(76, 51, 41, 0.24);
+  letter-spacing: 0.16em;
+}
+
+/* 03 演出流程：深色區塊 → 沿用敘事段落已有的印章語彙，但用該區既有的
+   金色而非硃砂（硃砂在本站保留給 CTA），並用墨色字保住對比。 */
+.intro-process .intro-section-kicker::before {
+  content: "序";
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
+  border-radius: 4px;
+  background: #ddb77b;
+  color: #261f1b;
+  font-family: var(--font-display-serif);
+  font-weight: 700;
+  font-size: 0.84rem;
+  transform: rotate(-4deg);
+}
+
+/* 04 常見問題：純文字，不加裝飾——收尾段落越安靜越好。 */
+.intro-faq-heading .intro-section-kicker {
+  color: var(--ink-soft);
+  letter-spacing: 0.2em;
 }
 
 .intro-practice-link {
@@ -238,10 +234,11 @@
   opacity: 0.82;
 }
 
+/* 原本是 rgba(76,51,41,0.45) @ 10.5px，只有 2.43:1，未達 AA。 */
 .intro-ink-figure figcaption span {
-  color: rgba(76, 51, 41, 0.45);
+  color: var(--ink-soft);
   font-family: var(--font-sans, inherit);
-  font-size: 0.66rem;
+  font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -267,12 +264,16 @@
   background: linear-gradient(90deg, rgba(143, 58, 47, 0.055), transparent 78%);
 }
 
-.intro-value-number {
+/* 醒／聚／納：內文本來就在講這三個字，用書法字直接當標記，
+   比 01/02/03 這種通用編號更貼近內容。編號清單全頁只留「演出流程」
+   一處——那一處是真的有先後順序的。 */
+.intro-value-glyph {
   color: var(--accent);
-  font-family: var(--font-display-serif);
-  font-size: 2.6rem;
+  font-family: var(--font-calligraphy);
+  font-size: 3.2rem;
   font-weight: 500;
-  line-height: 1;
+  line-height: 0.95;
+  text-shadow: 6px 6px 14px rgba(143, 58, 47, 0.14);
 }
 
 .intro-values h3 {
@@ -461,10 +462,6 @@
   color: #f4d8a9;
 }
 
-.intro-process .intro-section-kicker::before {
-  background: #ddb77b;
-}
-
 .intro-process-heading {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
@@ -549,16 +546,34 @@
   background: #fffaf4;
 }
 
+/* 原本是 0.72fr / 1.28fr + sticky 標題，左欄在 FAQ 展開後留下一大片空白。
+   改成標題橫跨整寬、清單在下方，順便讓這一段的版面和前面幾段不一樣。 */
 .intro-faq-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
-  gap: 92px;
-  align-items: start;
+  display: block;
 }
 
 .intro-faq-heading {
-  position: sticky;
-  top: calc(var(--header-height) + 34px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.86fr);
+  gap: 72px;
+  align-items: end;
+  margin-bottom: 56px;
+}
+
+.intro-faq-heading .intro-section-kicker {
+  grid-column: 1 / -1;
+}
+
+.intro-faq-heading h2 {
+  max-width: 12em;
+}
+
+.intro-faq-heading > p:not(.intro-section-kicker) {
+  margin: 0 0 8px;
+}
+
+.intro-faq-list {
+  max-width: 68rem;
 }
 
 .intro-faq-list {
@@ -639,18 +654,8 @@
   background: linear-gradient(115deg, #e9ded1 0%, #dfcfc0 100%);
 }
 
-.intro-contact-band::before {
-  content: "獅";
-  position: absolute;
-  right: 4%;
-  bottom: -0.34em;
-  z-index: -1;
-  color: rgba(143, 58, 47, 0.065);
-  font-family: var(--font-calligraphy);
-  font-size: clamp(17rem, 32vw, 32rem);
-  line-height: 1;
-  pointer-events: none;
-}
+/* 背景巨大淡色書法字全頁只留一處（.intro-process 的「醒 聚 納」，
+   那三個字和該區內容直接相關）。這裡的「福」純裝飾、與文案無關，移除。 */
 
 .intro-contact-layout {
   display: grid;
@@ -667,6 +672,12 @@
   max-width: 13em;
   color: var(--ink);
   font-size: 2.75rem;
+}
+
+/* contact band 的底色（#e9ded1）比其他段落深，--ink-soft 在上面只有 4.46:1，
+   差一點點沒過 AA。這一段的內文改用稍深的墨色。 */
+.intro-contact-copy > p:not(.intro-section-kicker) {
+  color: #594f47;
 }
 
 .intro-contact-actions {
@@ -723,21 +734,21 @@
     gap: 22px;
   }
 
-  .intro-chapter-actions {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .intro-overview-layout,
   .intro-comparison-heading,
   .intro-process-heading,
-  .intro-faq-layout,
+  .intro-faq-heading,
   .intro-contact-layout {
     grid-template-columns: 1fr;
   }
 
-  .intro-overview-layout,
-  .intro-faq-layout {
+  .intro-overview-layout {
     gap: 58px;
+  }
+
+  .intro-faq-heading {
+    gap: 24px;
+    margin-bottom: 44px;
   }
 
   .intro-comparison-heading,
@@ -781,10 +792,6 @@
     margin-top: 30px;
     padding-top: 30px;
     border-top: 1px solid rgba(255, 248, 239, 0.22);
-  }
-
-  .intro-faq-heading {
-    position: static;
   }
 
   .intro-contact-layout {
@@ -866,13 +873,12 @@
     line-height: 1.3;
   }
 
-  .intro-overview-layout,
-  .intro-faq-layout {
+  .intro-overview-layout {
     gap: 42px;
   }
 
   .intro-values li {
-    grid-template-columns: 54px minmax(0, 1fr);
+    grid-template-columns: 58px minmax(0, 1fr);
     gap: 12px;
     padding: 24px 0;
   }
@@ -881,8 +887,8 @@
     padding-left: 0;
   }
 
-  .intro-value-number {
-    font-size: 2rem;
+  .intro-value-glyph {
+    font-size: 2.5rem;
   }
 
   .intro-values h3 {
@@ -1360,26 +1366,27 @@
     height: auto;
   }
 
+  /* 手機第一屏不再是「整片動畫 + 標題」而已：把靜態水墨畫收到 62dvh，
+     第一屏底部就能看見敘事開頭，少捲近半個螢幕才進到內容。 */
   .ink-scroll-stage {
     position: relative;
     top: auto;
     height: auto;
-    min-height: 100vh;
-    min-height: 100dvh;
-    padding-top: 100vh;
-    padding-top: 100dvh;
+    min-height: 0;
+    padding-top: 62vh;
+    padding-top: 62dvh;
     overflow: visible;
   }
 
   .ink-scroll-frame {
     bottom: auto;
-    height: 100vh;
-    height: 100dvh;
+    height: 62vh;
+    height: 62dvh;
   }
 
   .ink-scroll-copy {
-    top: 14vh;
-    top: 14dvh;
+    top: 13vh;
+    top: 13dvh;
     left: 20px;
     width: calc(100% - 40px);
     opacity: 1;
@@ -1403,7 +1410,7 @@
       #f5f0e6;
   }
 
-  /* 手機：取消 pinned scroll-scrub；敘事回到一般文件流並用 IO 淡入。 */
+  /* 手機：取消 pinned scroll-scrub，敘事回到一般文件流且直接可見（不做進場）。 */
   .ink-story-beat,
   .ink-story-beat.is-left,
   .ink-story-beat.is-right {
@@ -1419,16 +1426,15 @@
     pointer-events: auto;
   }
   .ink-story-beat .ink-anim {
-    opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    opacity: 1;
+    transform: none;
     will-change: auto;
   }
-  .ink-story-beat .ink-anim:nth-child(2) { transition-delay: 60ms; }
-  .ink-story-beat .ink-anim:nth-child(n + 3) { transition-delay: 120ms; }
-  .ink-story-beat.is-mobile-visible .ink-anim {
-    opacity: 1;
-    transform: translateY(0);
+
+  /* 章節導覽（目錄）在手機上是純冗餘：四個項目與下方四個章節標題完全重複，
+     而手機使用者直接捲比點目錄快。桌機維持顯示。 */
+  .intro-chapter-nav {
+    display: none;
   }
   .ink-story-beat.is-right .ink-story-kicker { justify-content: flex-start; }
   .ink-story-beat.is-right .ink-story-seal { margin-right: 10px; margin-left: 0; order: 0; }
@@ -1440,45 +1446,19 @@
   .ink-story-duo { justify-content: flex-start; gap: 24px; }
   .ink-story-duo b { font-size: 2rem; }
   .ink-story-actions { flex-wrap: wrap; }
-
-  .js .ink-text-reveal {
-    clip-path: none;
-    transform: translateY(12px);
-    transition: opacity 0.4s ease var(--ink-delay), transform 0.4s ease var(--ink-delay);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .ink-scroll-hint i { animation: none; }
 }
 
-/* Water-ink narrative system */
-.ink-text-reveal {
-  --ink-delay: 0ms;
-  position: relative;
-}
+/* 進場動畫已統一交給站上共用的 .reveal（css/utilities.css）。
+   原本這裡的 .ink-text-reveal 是第二套系統，和 .reveal 掛在同一批元素上，
+   由兩個獨立的 IntersectionObserver 雙重 gate，任一個沒觸發標題就整塊透明。 */
 
-.js .ink-text-reveal {
-  opacity: 0;
-  clip-path: circle(0 at 18% 50%);
-  transform: translateY(10px);
-  transition:
-    clip-path 1.05s cubic-bezier(0.2, 0.65, 0.2, 1) var(--ink-delay),
-    opacity 0.42s ease var(--ink-delay),
-    transform 0.75s ease var(--ink-delay);
-}
-
-.js .ink-text-reveal.is-ink-visible {
-  opacity: 1;
-  clip-path: circle(150% at 18% 50%);
-  transform: translateY(0);
-}
-
-.intro-section-heading h2::after,
-.intro-comparison-heading h2::after,
-.intro-process-heading h2::after,
-.intro-faq-heading h2::after,
-.intro-contact-copy h2::after {
+/* 斜筆刷底線只留給全頁第一個標題。原本五個標題都掛同一條，
+   重複到失去「筆觸」的意義，反而變成模板記號。 */
+.intro-section-heading h2::after {
   content: "";
   display: block;
   width: min(180px, 42%);
@@ -1506,7 +1486,6 @@
   background: linear-gradient(90deg, rgba(76, 51, 41, 0.22), rgba(76, 51, 41, 0.03), transparent) left top / 100% 1px no-repeat;
 }
 
-.intro-value-number,
 .intro-process-number {
   font-family: var(--font-calligraphy);
 }
@@ -1592,11 +1571,6 @@
     #e9ded1;
 }
 
-.intro-contact-band::before {
-  content: "福";
-  color: rgba(66, 51, 43, 0.055);
-}
-
 .intro-contact-button {
   border-radius: 1px;
 }
@@ -1607,12 +1581,3 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .js .ink-text-reveal {
-    opacity: 1;
-    clip-path: none;
-    filter: none;
-    transform: none;
-    transition: none;
-  }
-}

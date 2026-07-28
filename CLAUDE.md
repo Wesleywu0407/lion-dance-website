@@ -6,8 +6,11 @@ This file is the short router for future Claude/Codex-style agents. Keep it unde
 
 - Root: `/Users/wumingjuan/Desktop/liondancewebsite`
 - Type: static public website for Taiwan Nanxian lion/dragon dance services.
-- Main files: `*.html`, `css/`, `script.js`, `images/`, `assets/`, `models/`.
-- Local preview: `python3 -m http.server 8123` from project root.
+- Build: Eleventy. Input `src/` → output `_site/` (Netlify publishes `_site`).
+- Edit these: `src/` (pages, `_includes/`, `_data/`, `script.js.njk`), plus `css/`, `images/`, `assets/`, `models/` — those four are passthrough-copied from the project root and ARE live source.
+- Do NOT edit: `_site/` (build output), and the root-level `*.html` / `script.js` — those are stale pre-Eleventy copies, neither built nor deployed.
+- Local preview: `npx @11ty/eleventy` then `python3 -m http.server 8123 --directory _site` (serving the project root would show the stale legacy copies).
+- After changing any CSS or `assets/js/*`, bump the shared `?v=` token in `css/style.css` (11 `@import`s) and every `src/**/*.html` — otherwise browsers keep the cached version and edits silently do nothing.
 
 ## Read First
 
