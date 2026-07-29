@@ -5,8 +5,15 @@
   if (!scrollSpace) return;
 
   var frame = scrollSpace.querySelector('.ink-scroll-frame');
-  var mobileQuery = window.matchMedia('(max-width: 760px)');
-  var isMobile = mobileQuery.matches || Math.min(window.innerWidth, window.innerHeight) < 700;
+
+  // 這個查詢字串必須和 css/pages/dragon-lion-introduction.css 裡水墨舞台的
+  // @media 完全一致。先前 JS 用的是 min(innerWidth, innerHeight) < 700，
+  // 和 CSS 對不上：1400×650 這種「寬但矮」的桌機視窗，CSS 會套桌機的
+  // 430vh sticky 版面，JS 卻判定為手機而不掛捲動監聽 —— 結果是捲過四個
+  // 螢幕高的釘住舞台，獅子不動、敘事段落也不出現。
+  var MOBILE_QUERY = '(max-width: 760px), (max-height: 700px) and (max-width: 1000px)';
+  var mobileQuery = window.matchMedia(MOBILE_QUERY);
+  function isMobileNow() { return mobileQuery.matches; }
   var inkp = parseFloat(new URLSearchParams(window.location.search).get('inkp'));
   var hasDebugProgress = !isNaN(inkp);
   var debugProgress = hasDebugProgress ? clamp(inkp) : 0;
@@ -107,7 +114,7 @@
 
     if (typeof api.setActive === 'function') api.setActive(frameVisible && !document.hidden);
 
-    if (isMobile) {
+    if (isMobileNow()) {
       // 手機一律靜態：iframe 只畫第 0 格原畫一次就停掉 rAF。
       // ?inkp= 除錯把手在手機上不再改變畫面（靜態模式沒有其餘影格）。
       if (typeof api.setMode === 'function') api.setMode('static');
@@ -126,7 +133,7 @@
   function update() {
     ticking = false;
 
-    if (isMobile) {
+    if (isMobileNow()) {
       syncFrame(0);
       return;
     }
@@ -177,11 +184,22 @@
     }
   }
 
-  if (isMobile) {
-    scrollSpace.classList.add('is-mobile-ink');
-    initMobileBeats();
-  } else {
-    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  function applyLayoutMode() {
+    scrollSpace.classList.toggle('is-mobile-ink', isMobileNow());
+    if (isMobileNow()) initMobileBeats();
+    scheduleUpdate();
+  }
+
+  applyLayoutMode();
+
+  // 捲動監聽一律掛上：update() 在手機時會自己早退，成本可忽略。
+  // 這樣視窗縮放跨過斷點時（例如把桌機視窗拉矮）不需要重新載入頁面。
+  window.addEventListener('scroll', scheduleUpdate, { passive: true });
+
+  if (typeof mobileQuery.addEventListener === 'function') {
+    mobileQuery.addEventListener('change', applyLayoutMode);
+  } else if (typeof mobileQuery.addListener === 'function') {
+    mobileQuery.addListener(applyLayoutMode);
   }
 
   window.addEventListener('resize', scheduleUpdate);
@@ -190,7 +208,7 @@
 
   // 除錯把手：?inkp=0.3 載入即跳至指定敘事進度。手機上會暫停自動播放並顯示該影格。
   if (hasDebugProgress) {
-    if (!isMobile) {
+    if (!isMobileNow()) {
       var rangePx = scrollSpace.offsetHeight - window.innerHeight;
       window.scrollTo({ top: rangePx * debugProgress, behavior: 'instant' });
     }

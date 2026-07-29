@@ -127,7 +127,11 @@
   var params = new URLSearchParams(window.location.search);
   var embedded = params.has('embedded');
   var sealY = embedded ? 170 : 96;
-  var mobile = Math.min(window.innerWidth, window.innerHeight) < 700;
+  // 必須和 host 的 ink-scroll-bridge.js 及水墨舞台的 CSS @media 用同一組斷點，
+  // 否則「寬但矮」的桌機視窗會三方不一致（CSS 桌機版面、JS 手機行為）。
+  var MOBILE_QUERY = '(max-width: 760px), (max-height: 700px) and (max-width: 1000px)';
+  var mobileQuery = window.matchMedia(MOBILE_QUERY);
+  var mobile = mobileQuery.matches;
   // 靜態模式：手機版只畫第 0 格（原始水墨畫）一次，不跑 rAF、不抓其餘 45 張影格。
   // 由 host 在 iframe src 上帶 ?static=1，必須在載入當下就知道，否則 fetch 已經發出去了。
   var staticMode = params.has('static') || (mobile && embedded);
@@ -185,7 +189,7 @@
   var lionScale = 1, lionX = 0;
 
   function rebuild() {
-    mobile = Math.min(window.innerWidth, window.innerHeight) < 700;
+    mobile = mobileQuery.matches;
     VW = Math.max(340, Math.min(2600, VBH * window.innerWidth / Math.max(1, window.innerHeight)));
     svg.setAttribute('viewBox', '0 0 ' + VW.toFixed(0) + ' ' + VBH);
     $('farA').setAttribute('d', ridgePath(590, 85, 0.0011, 0.0042, 3.1));
