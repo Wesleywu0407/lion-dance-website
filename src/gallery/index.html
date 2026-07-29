@@ -25,7 +25,7 @@
   <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="../favicon-180.png">
   <meta name="theme-color" content="#181311">
-  <link rel="stylesheet" href="../css/style.css?v=20260728-bp1">
+  <link rel="stylesheet" href="../css/style.css?v=20260729-consistency1">
   <style>
     .gallery-page .gallery-page-hero {
       min-height: auto;
@@ -35,7 +35,7 @@
       align-items: center;
       justify-content: center;
       gap: 1rem;
-      background: #F5F0E8;
+      background: var(--bg);
       text-align: center;
     }
 
@@ -45,13 +45,13 @@
       width: 64px;
       height: 2px;
       margin: 0.5rem auto 0;
-      background: #8B1A1A;
+      background: var(--accent);
     }
 
     .gallery-page .gallery-page-hero .eyebrow {
       margin: 0;
-      color: #8B1A1A;
-      font-family: "Noto Sans TC", sans-serif;
+      color: var(--accent);
+      font-family: var(--font-body);
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.4em;
@@ -59,8 +59,8 @@
 
     .gallery-page .gallery-page-hero h1 {
       margin: 0;
-      color: #5C1A10;
-      font-family: "Noto Serif TC", serif;
+      color: var(--ink);
+      font-family: var(--font-display-serif);
       font-size: clamp(2.4rem, 7vw, 3.6rem);
       font-weight: 900;
       line-height: 1.1;
@@ -70,8 +70,8 @@
     .gallery-page .gallery-page-hero .hero-sub {
       margin: 0;
       max-width: 22em;
-      color: rgba(92, 26, 16, 0.72);
-      font-family: "Noto Sans TC", sans-serif;
+      color: var(--ink-soft);
+      font-family: var(--font-body);
       font-size: 0.95rem;
       line-height: 1.8;
     }
@@ -94,7 +94,7 @@
       overflow: hidden;
       border: 1px solid rgba(184, 80, 66, 0.4);
       border-radius: 6px;
-      background-color: #F5F0E8;
+      background-color: var(--bg);
       background-size: cover !important;
       background-position: center !important;
       background-repeat: no-repeat !important;
@@ -136,7 +136,7 @@
       left: 0.75rem;
       z-index: 2;
       color: #F5F0E8 !important;
-      font-family: "Noto Serif TC", serif;
+      font-family: var(--font-display-serif);
       font-size: clamp(0.75rem, 3vw, 0.95rem);
       font-weight: 500;
       letter-spacing: 0.1em;
@@ -154,7 +154,7 @@
       margin: 0;
       max-width: none;
       color: #F5F0E8 !important;
-      font-family: "Noto Serif TC", serif;
+      font-family: var(--font-display-serif);
       font-size: clamp(0.85rem, 3.5vw, 1.05rem);
       font-weight: 700;
       line-height: 1.2;
@@ -177,14 +177,14 @@
       max-width: 640px;
       margin: clamp(1.5rem, 3vw, 2.4rem) auto 0;
       padding: 0 1.25rem;
-      color: rgba(92, 26, 16, 0.78);
+      color: var(--ink-soft);
       text-align: center;
     }
 
     .gallery-page .case-summary h2 {
       margin: 0 0 1rem;
-      color: #5C1A10;
-      font-family: "Noto Serif TC", serif;
+      color: var(--ink);
+      font-family: var(--font-display-serif);
       font-size: 1.25rem;
       font-weight: 700;
       line-height: 1.35;
@@ -193,7 +193,7 @@
 
     .gallery-page .case-summary p {
       margin: 0;
-      font-family: "Noto Sans TC", sans-serif;
+      font-family: var(--font-body);
       font-size: 0.92rem;
       line-height: 1.95;
       letter-spacing: 0.03em;
@@ -204,7 +204,7 @@
       margin: 0.95rem auto 0;
       padding: 0.65rem 0 0;
       border-top: 1px solid rgba(185, 146, 94, 0.35);
-      color: #8B1A1A;
+      color: var(--accent);
       font-size: 0.82rem;
       letter-spacing: 0.15em;
     }
@@ -260,7 +260,7 @@
     .gallery-page .page-hero {
       padding: max(clamp(3.5rem, 8vw, 6rem), calc(var(--header-height) + 36px)) 1.5rem clamp(1.6rem, 3vw, 2.4rem) !important;
       text-align: center;
-      background: #F5F0E8 !important;
+      background: var(--bg) !important;
       background-image: none !important;
       overflow: visible !important;
       min-height: auto !important;

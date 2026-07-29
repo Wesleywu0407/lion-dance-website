@@ -25,7 +25,7 @@
   <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="../favicon-180.png">
   <meta name="theme-color" content="#181311">
-  <link rel="stylesheet" href="../css/style.css?v=20260728-bp1">
+  <link rel="stylesheet" href="../css/style.css?v=20260729-consistency1">
 
   <script type="application/ld+json">
   {
@@ -662,27 +662,8 @@
 <body>
   {% set gallery = galleries["performance"] %}
   <div class="page-shell">
-    <header class="site-header">
-      <a class="brand" href="../index.html" aria-label="回到首頁">
-        <img src="../images/lion-icon-white-80.webp" class="brand-logo" width="40" height="40" alt="臺灣南仙龍獅體育會標誌" loading="lazy" decoding="async">
-        <span class="brand-text">
-          <strong>臺灣南仙龍獅體育會</strong>
-          <small>Taiwan Nan Sieng Dragon &amp; Lion Dance Activity Centre</small>
-        </span>
-      </a>
-      <button class="nav-toggle" type="button" aria-label="開啟主要導覽" aria-expanded="false" aria-controls="site-nav">
-        <span></span>
-        <span></span>
-      </button>
-      <nav class="site-nav" id="site-nav" aria-label="主要導覽">
-        <a href="../index.html">首頁</a>
-        <a href="../pages/about.html">關於我們</a>
-        <a href="../pages/dragon-lion-introduction.html">舞龍舞獅介紹</a>
-        <a href="../pages/services.html">表演項目</a>
-        <a href="../gallery/" aria-current="page">活動案例</a>
-        <a href="../pages/contact.html">聯絡我們</a>
-      </nav>
-    </header>
+    {% set activeNav = "gallery" %}
+    {% include "header.njk" %}
 
     <main id="main-content">
       <section class="section album-page">

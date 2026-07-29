@@ -804,25 +804,6 @@
 }
 
 @media (max-width: 760px) {
-  .intro-page .nav-toggle {
-    position: absolute;
-    top: 50%;
-    right: 18px;
-    z-index: 150;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 auto;
-    width: 44px;
-    height: 44px;
-    border: 1px solid rgba(143, 58, 47, 0.16);
-    border-radius: 50%;
-    background: rgba(255, 252, 247, 0.88);
-    color: var(--ink);
-    box-shadow: 0 8px 18px rgba(76, 29, 17, 0.08);
-    transform: translateY(-50%);
-  }
-
   .intro-section-kicker {
     gap: 10px;
     font-size: 0.72rem;
