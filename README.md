@@ -38,6 +38,9 @@ npm run build
 npm run serve
 ```
 
+VS Code Live Server 已設定以 `_site/` 為網站根目錄；使用前先執行
+`npm run build`，即可預覽與正式部署相同的建置成果。
+
 建置與本機連結檢查：
 
 ```bash

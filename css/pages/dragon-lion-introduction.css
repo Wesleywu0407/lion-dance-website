@@ -1366,38 +1366,64 @@
     height: auto;
   }
 
-  /* 手機第一屏不再是「整片動畫 + 標題」而已：把靜態水墨畫收到 62dvh，
-     第一屏底部就能看見敘事開頭，少捲近半個螢幕才進到內容。 */
+  /* 手機首屏把文字與靜態水墨畫分成上下兩個清楚層次。 */
   .ink-scroll-stage {
     position: relative;
     top: auto;
     height: auto;
     min-height: 0;
-    padding-top: 62vh;
-    padding-top: 62dvh;
+    padding-top: 74vh;
+    padding-top: 74dvh;
     overflow: visible;
   }
 
   .ink-scroll-frame {
     bottom: auto;
-    height: 62vh;
-    height: 62dvh;
+    height: 74vh;
+    height: 74dvh;
   }
 
   .ink-scroll-copy {
-    top: 13vh;
-    top: 13dvh;
+    top: calc(var(--header-height) + 28px);
     left: 20px;
     width: calc(100% - 40px);
     opacity: 1;
     transform: none;
   }
-  .ink-scroll-copy h1 { font-size: 3.05rem; }
-  .ink-scroll-copy strong { max-width: 18em; font-size: 0.92rem; }
+
+  .ink-scroll-copy p {
+    margin-bottom: 12px;
+    font-size: 0.66rem;
+  }
+
+  .ink-scroll-copy h1 {
+    max-width: 8em;
+    font-size: clamp(2.5rem, 11.5vw, 2.85rem);
+    line-height: 1.08;
+  }
+
+  .ink-scroll-copy h1 .kai {
+    display: block;
+  }
+
+  .ink-scroll-copy h1 .kai + .kai {
+    margin-top: 0.04em;
+  }
+
+  .ink-scroll-copy strong {
+    max-width: 18em;
+    margin-top: 14px;
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+
+  .ink-scroll-action {
+    margin-top: 14px;
+  }
 
   .ink-scroll-hint {
-    top: calc(100dvh - 76px);
-    bottom: auto;
+    top: auto;
+    bottom: 18px;
     opacity: 1;
   }
 

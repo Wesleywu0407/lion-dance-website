@@ -211,8 +211,9 @@
 
   /* 手機導覽是單層的：表演項目 / 活動案例 直接連到該頁，不展開子項目。
      桌機的 mega menu 走 :hover / :focus-within，在手機隱藏。 */
+  .mobile-submenu,
   .service-mega,
-.case-mega {
+  .case-mega {
     display: none;
   }
 
