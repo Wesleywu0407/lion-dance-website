@@ -1581,3 +1581,14 @@
   }
 }
 
+/* 桌面版移除留白過多的 FAQ；手機版仍保留完整問答。 */
+@media (min-width: 1001px), (min-width: 761px) and (min-height: 701px) {
+  .intro-faq-section,
+  .intro-chapter-nav nav > a[href="#intro-faq"] {
+    display: none;
+  }
+
+  .intro-chapter-nav nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
