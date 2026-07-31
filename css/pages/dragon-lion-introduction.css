@@ -1381,14 +1381,11 @@
     max-width: 8em;
     font-size: clamp(2.5rem, 11.5vw, 2.85rem);
     line-height: 1.08;
+    white-space: nowrap;
   }
 
   .ink-scroll-copy h1 .kai {
-    display: block;
-  }
-
-  .ink-scroll-copy h1 .kai + .kai {
-    margin-top: 0.04em;
+    display: inline-block;
   }
 
   .ink-scroll-copy strong {
