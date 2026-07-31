@@ -794,9 +794,9 @@ select {
 
   .about-cinematic .ctb-phrase {
     margin-bottom: 14px;
-    font-size: clamp(1.85rem, 8vw, 2.2rem);
-    line-height: 1.18;
-    letter-spacing: 0.045em;
+    font-size: clamp(1.55rem, 6.6vw, 1.85rem);
+    line-height: 1.22;
+    letter-spacing: 0.035em;
   }
 
   .about-cinematic .ctb-support {

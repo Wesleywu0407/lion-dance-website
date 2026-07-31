@@ -1015,6 +1015,8 @@ article).section-heading::after {
 
 .scenario-card {
   display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  row-gap: 8px;
   min-height: 180px;
   padding: 26px;
   border-right: 1px solid rgba(72, 54, 43, 0.18);
@@ -1033,21 +1035,25 @@ article).section-heading::after {
 }
 
 .scenario-number {
+  align-self: start;
   color: var(--accent);
   font-size: 0.78rem;
   font-weight: 800;
+  line-height: 1.35;
   letter-spacing: 0.15em;
 }
 
 .scenario-card strong {
-  align-self: end;
+  align-self: start;
   font-family: var(--font-serif);
   font-size: 1.28rem;
+  line-height: 1.45;
   letter-spacing: 0.06em;
 }
 
 .scenario-card > span:last-child {
-  margin-top: 7px;
+  align-self: start;
+  margin-top: 0;
   color: var(--ink-soft);
   font-size: 0.88rem;
   line-height: 1.65;

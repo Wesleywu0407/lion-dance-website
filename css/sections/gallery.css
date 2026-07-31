@@ -125,7 +125,7 @@
 .case-category-card:nth-child(7) {
   background:
     linear-gradient(180deg, rgba(24, 12, 7, 0.24), rgba(24, 12, 7, 0.72)),
-    image-set(url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85%E6%88%B0%E9%BC%93%E7%B9%9E%E5%A2%83-720.webp") 1x, url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85%E6%88%B0%E9%BC%93%E7%B9%9E%E5%A2%83-1440.webp") 2x) center/cover;
+    image-set(url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E6%88%B0%E9%BC%932-720.webp") 1x, url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E6%88%B0%E9%BC%932-1440.webp") 2x) center/cover;
 }
 
 .case-category-card:nth-child(8) {
@@ -573,7 +573,7 @@ body.is-lightbox-open {
   .case-category-card:nth-child(7) {
     background:
       linear-gradient(180deg, rgba(24, 12, 7, 0.28), rgba(24, 12, 7, 0.74)),
-      image-set(url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85%E6%88%B0%E9%BC%93%E7%B9%9E%E5%A2%83-720.webp") 1x, url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85%E6%88%B0%E9%BC%93%E7%B9%9E%E5%A2%83-1440.webp") 2x) center/cover;
+      image-set(url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E6%88%B0%E9%BC%932-720.webp") 1x, url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E6%88%B0%E9%BC%932-1440.webp") 2x) center/cover;
   }
 
   .case-category-card:nth-child(8) {
@@ -1090,7 +1090,7 @@ body.is-lightbox-open {
   }
 
   .gallery-page .case-category-card:nth-child(7) {
-    background-image: image-set(url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85%E6%88%B0%E9%BC%93%E7%B9%9E%E5%A2%83-720.webp") 1x, url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85%E6%88%B0%E9%BC%93%E7%B9%9E%E5%A2%83-1440.webp") 2x) !important;
+    background-image: image-set(url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E6%88%B0%E9%BC%932-720.webp") 1x, url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E6%88%B0%E9%BC%932-1440.webp") 2x) !important;
   }
 
   .gallery-page .case-category-card:nth-child(8) {
@@ -1181,7 +1181,7 @@ body.is-lightbox-open {
 }
 
 .gallery-page .case-category-card:nth-child(7) {
-  background-image: image-set(url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85%E6%88%B0%E9%BC%93%E7%B9%9E%E5%A2%83-720.webp") 1x, url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85%E6%88%B0%E9%BC%93%E7%B9%9E%E5%A2%83-1440.webp") 2x) !important;
+  background-image: image-set(url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E6%88%B0%E9%BC%932-720.webp") 1x, url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E6%88%B0%E9%BC%932-1440.webp") 2x) !important;
   padding-bottom: 0 !important;
 }
 
@@ -1489,7 +1489,7 @@ body.is-lightbox-open {
 
 .gallery-page .gallery-col:first-child .gallery-card:nth-child(3) {
   height: 260px;
-  background-image: image-set(url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85%E6%88%B0%E9%BC%93%E7%B9%9E%E5%A2%83-720.webp") 1x, url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85%E6%88%B0%E9%BC%93%E7%B9%9E%E5%A2%83-1440.webp") 2x) !important;
+  background-image: image-set(url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E6%88%B0%E9%BC%93-720.webp") 1x, url("../../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E6%88%B0%E9%BC%93-1440.webp") 2x) !important;
   background-position: center bottom !important;
 }
 
