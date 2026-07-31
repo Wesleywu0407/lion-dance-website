@@ -554,17 +554,27 @@ select {
     gap: 14px !important;
   }
 
+  .footer-links > div {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 18px;
+    align-content: start;
+  }
+
   .footer-links h4 {
+    grid-column: 1 / -1;
     margin: 0 0 8px;
     font-size: 1.08rem;
     line-height: 1.35;
   }
 
   .footer-links a {
+    min-width: 0;
     margin: 0;
-    padding: 12px 0;
+    padding: 9px 0;
     font-size: 0.9rem;
     line-height: 1.45;
+    overflow-wrap: anywhere;
   }
 
   .footer-bottom {
