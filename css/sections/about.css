@@ -183,7 +183,7 @@
   position: relative;
   padding-left: 18px;
   color: var(--ink);
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
   font-size: clamp(1.12rem, 1.8vw, 1.34rem);
   font-weight: 700;
   line-height: 1.45;

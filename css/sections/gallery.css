@@ -288,8 +288,9 @@ circle) {
   border-radius: 0;
   background: transparent;
   color: var(--accent);
+  font-family: var(--font-body);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 800;
   letter-spacing: 0.06em;
   text-decoration: none;
   transition: color 0.22s ease;
@@ -306,15 +307,16 @@ circle) {
 .album-kicker {
   margin: 0 0 10px;
   color: var(--accent-deep);
+  font-family: var(--font-body);
   font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
+  font-weight: 800;
+  letter-spacing: 0.12em;
 }
 
 .album-title {
   margin: 0;
   color: var(--ink);
-  font-family: var(--font-serif);
+  font-family: var(--font-display-serif);
   font-size: clamp(2rem, 4.3vw, 3rem);
   font-weight: 900;
   letter-spacing: 0.11em;
@@ -615,7 +617,7 @@ body.is-lightbox-open {
   .gallery-page .gallery-hero-title {
     margin-top: 14px;
     color: rgba(92, 26, 16, 0.72);
-    font-family: "Noto Sans TC", sans-serif;
+    font-family: var(--font-body);
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.18em;
@@ -648,7 +650,7 @@ body.is-lightbox-open {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    font-family: "Noto Serif TC", serif;
+    font-family: var(--font-display-serif);
     line-height: 1.25;
     letter-spacing: 0.04em;
   }
@@ -1281,7 +1283,7 @@ body.is-lightbox-open {
   margin: 0;
   max-width: none;
   text-align: left;
-  font-family: "Noto Serif TC", serif;
+  font-family: var(--font-display-serif);
   font-size: clamp(0.85rem, 3.5vw, 1.05rem);
   font-weight: 700;
   line-height: 1.2;
@@ -1307,8 +1309,8 @@ body.is-lightbox-open {
   margin: 0;
   color: var(--accent);
   font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
+  font-weight: 800;
+  letter-spacing: 0.12em;
 }
 
 .gallery-page .gallery-page-hero h1 {
@@ -1572,6 +1574,7 @@ body.is-lightbox-open {
 
 .album-context span {
   color: var(--accent);
+  font-family: var(--font-body);
   font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 0.08em;

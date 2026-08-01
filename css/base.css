@@ -21,6 +21,9 @@
   --font-serif: "Noto Serif TC", "Songti TC", "PMingLiU", "MingLiU", serif;
   --font-display-serif: "Noto Serif TC", "Songti TC", "PMingLiU", "MingLiU", serif;
   --font-calligraphy: "BiauKai", "DFKai-SB", "Kaiti TC", "KaiTi", "STKaiti", "Noto Serif TC", serif;
+  /* Shared aliases keep older page modules on the same typography and colour system. */
+  --font-sans: var(--font-body);
+  --red: var(--accent);
 }
 
 * {
@@ -126,16 +129,38 @@ body::before {
   flex: 1 0 auto;
 }
 
-.brand-text strong,
-.process-step h3 {
+.brand-text strong {
   font-family: var(--font-serif);
 }
 
 h1,
 .hero-title,
 .page-title {
-  font-family: "Noto Serif TC", serif;
+  font-family: var(--font-display-serif);
   font-weight: 900;
+}
+
+/*
+ * Public-site typography contract:
+ * - display headings use the strong Ming/serif face;
+ * - labels, controls and supporting copy use the clean sans face.
+ */
+main :where(h1, h2) {
+  text-rendering: optimizeLegibility;
+}
+
+main :where(h2) {
+  font-family: var(--font-display-serif);
+  font-weight: 800;
+}
+
+main :where(h3, h4) {
+  font-family: var(--font-body);
+  font-weight: 800;
+}
+
+main :where(p, li, dt, dd, label, button, input, select, textarea, summary) {
+  font-family: var(--font-body);
 }
 
 .section {
@@ -190,9 +215,10 @@ h3.section-heading {
   padding-left: 12px;
   border-left: 3px solid var(--gold);
   color: var(--accent);
+  font-family: var(--font-body);
   font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.28em;
+  font-weight: 800;
+  letter-spacing: 0.12em;
   text-transform: none;
   text-align: left;
 }
@@ -250,7 +276,7 @@ h3.section-heading {
   margin: 0;
   max-width: none;
   text-wrap: balance;
-  font-family: "Noto Serif TC", "Songti TC", "PMingLiU", "MingLiU", serif;
+  font-family: var(--font-display-serif);
   font-weight: 900;
   font-size: clamp(3rem, 6vw, 5rem);
   line-height: 1.16;

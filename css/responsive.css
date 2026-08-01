@@ -199,7 +199,7 @@
     background: rgba(245, 239, 230, 0.72);
     font-family: inherit;
     font-size: 0.96rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--ink);
     letter-spacing: 0.06em;
     line-height: 1.45;
@@ -361,8 +361,8 @@ h3.section-heading::after {
 
   .service-page-hero .page-hero-inner > h1 {
     max-width: none;
-    font-family: "Noto Serif TC", "Songti TC", "PMingLiU", "MingLiU", serif;
-    font-weight: 600;
+    font-family: var(--font-display-serif);
+    font-weight: 900;
     font-size: clamp(2.5rem, 12vw, 3.2rem);
     line-height: 1.14;
     letter-spacing: 0.1em;

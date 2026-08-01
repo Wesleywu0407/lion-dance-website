@@ -97,7 +97,7 @@
   position: relative;
   color: var(--ink);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.9rem;
   letter-spacing: 0.1em;
 }
@@ -222,10 +222,10 @@
 
 .service-mega-group .mega-heading {
   margin: 0 0 6px;
-  font-family: var(--font-display-serif);
+  font-family: var(--font-body);
   font-size: 1.08rem;
   letter-spacing: 0.08em;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .service-mega-group a {

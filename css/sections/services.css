@@ -15,7 +15,7 @@
   margin: 0;
   color: var(--ink-soft);
   font-size: 0.96rem;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.08em;
   line-height: 1.78;
 }
@@ -132,9 +132,9 @@
 
 .service-item-tags {
   margin: 14px 0 0;
-  color: #888;
+  color: var(--accent-deep);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -319,7 +319,7 @@
 
 .service-item:first-child .service-item-tags,
 .service-item-tags {
-  color: #888;
+  color: var(--accent-deep);
 }
 
 .service-item:first-child .service-item-description,
@@ -333,7 +333,7 @@
 .service-item-link,
 a.learn-more {
   color: var(--gold) !important;
-  font-weight: 500;
+  font-weight: 800;
   position: relative;
   display: inline-block;
   text-decoration: none;
@@ -436,7 +436,7 @@ a.learn-more:focus-visible {
   position: relative;
   padding-left: 18px;
   color: var(--ink);
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
   font-size: clamp(1.08rem, 1.5vw, 1.24rem);
   font-weight: 700;
   line-height: 1.45;
