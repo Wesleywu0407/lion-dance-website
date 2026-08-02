@@ -663,15 +663,15 @@ select {
 
   .section {
     width: min(calc(100% - 32px), var(--max-width));
-    padding: 48px 0;
+    padding: 40px 0;
   }
 
   .page-section-stack {
-    gap: 36px;
+    gap: 28px;
   }
 
   .section-heading {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
 
   .section-tag {
@@ -681,7 +681,7 @@ select {
 
   .page-hero {
     min-height: 0;
-    padding: max(108px, calc(var(--header-height) + 30px)) 0 32px;
+    padding: max(100px, calc(var(--header-height) + 22px)) 0 24px;
   }
 
   .page-hero-inner {
@@ -690,7 +690,7 @@ select {
 
   .page-hero .page-hero-inner > h1,
   .service-page-hero .page-hero-inner > h1 {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     padding-inline: 0;
     font-size: clamp(1.95rem, 8.3vw, 2.35rem);
     line-height: 1.2;
@@ -705,7 +705,7 @@ select {
   }
 
   .service-page-hero {
-    padding: max(104px, calc(var(--header-height) + 26px)) 0 18px;
+    padding: max(96px, calc(var(--header-height) + 18px)) 0 14px;
   }
 
   .service-page-subtitle {

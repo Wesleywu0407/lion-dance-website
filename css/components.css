@@ -204,10 +204,15 @@
   display: grid;
   grid-template-columns: minmax(240px, 0.7fr) minmax(0, 1fr);
   gap: 48px;
-  margin-top: 64px;
+  margin-top: 40px;
   padding: 40px;
   border: 1px solid rgba(72, 54, 43, 0.16);
   background: rgba(255, 255, 255, 0.5);
+}
+
+/* page-section-stack 已提供區塊間距，避免報價卡的 margin 再疊一層。 */
+.page-section-stack > .quote-prep {
+  margin-top: 0;
 }
 
 .quote-prep h2 {
@@ -266,7 +271,7 @@
   .quote-prep {
     grid-template-columns: 1fr;
     gap: 28px;
-    margin-top: 44px;
+    margin-top: 28px;
     padding: 28px 20px;
   }
 

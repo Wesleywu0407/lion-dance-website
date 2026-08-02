@@ -43,7 +43,7 @@
   align-items: flex-start;
   justify-content: center;
   width: min(100%, 980px);
-  padding: clamp(3.2rem, 7vw, 6.8rem) clamp(1.2rem, 4vw, 4.6rem);
+  padding: clamp(2.8rem, 5.5vw, 5.2rem) clamp(1.2rem, 4vw, 4.6rem);
   margin: 0 auto;
   text-align: left;
   border-top: 1px solid rgba(143, 58, 47, 0.11);
@@ -156,8 +156,8 @@
 }
 
 .about-service-summary-body {
-  margin-top: clamp(1.8rem, 4vw, 3rem);
-  padding-top: clamp(1.4rem, 3vw, 2.2rem);
+  margin-top: clamp(1.2rem, 2.5vw, 2rem);
+  padding-top: clamp(1rem, 2vw, 1.5rem);
   border-top: 1px solid rgba(185, 146, 94, 0.22);
 }
 
@@ -275,7 +275,7 @@
     align-items: flex-start;
     width: calc(100vw - 24px);
     max-width: calc(100vw - 24px);
-    padding: 3.4rem 1.2rem;
+    padding: 2.4rem 1.2rem;
     text-align: left;
     overflow-x: hidden;
   }
@@ -493,7 +493,7 @@
   .story-chapter {
     grid-template-columns: 1fr;
     gap: 1.6rem;
-    padding-top: 4.6rem;
+    padding-top: 3.4rem;
   }
 
   .story-chapter:nth-of-type(even) .ctb-text {

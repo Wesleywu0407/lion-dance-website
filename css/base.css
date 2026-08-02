@@ -166,7 +166,7 @@ main :where(p, li, dt, dd, label, button, input, select, textarea, summary) {
 .section {
   width: min(calc(100% - 40px), var(--max-width));
   margin: 0 auto;
-  padding: 76px 0;
+  padding: 64px 0;
   position: relative;
 }
 
@@ -198,7 +198,7 @@ main > .cta-band,
 
 .section-heading {
   max-width: 860px;
-  margin-bottom: 52px;
+  margin-bottom: 40px;
   position: relative;
 }
 
@@ -234,13 +234,13 @@ h3.section-heading {
 
 .page-section-stack {
   display: grid;
-  gap: 44px;
+  gap: 36px;
 }
 
 .page-hero {
   position: relative;
-  min-height: 320px;
-  padding: max(140px, calc(var(--header-height) + 40px)) 0 52px;
+  min-height: 290px;
+  padding: max(128px, calc(var(--header-height) + 34px)) 0 40px;
   display: grid;
   align-items: end;
   background:

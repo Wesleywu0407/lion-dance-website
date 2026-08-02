@@ -1,6 +1,6 @@
 .service-page-hero {
   min-height: 0;
-  padding: max(158px, calc(var(--header-height) + 48px)) 0 34px;
+  padding: max(136px, calc(var(--header-height) + 34px)) 0 24px;
 }
 
 .service-page-hero .page-hero-inner {

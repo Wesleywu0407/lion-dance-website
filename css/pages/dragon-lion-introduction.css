@@ -188,14 +188,14 @@
 }
 
 .intro-overview {
-  padding: 132px 0 126px;
+  padding: 96px 0 92px;
   background: #fffaf4;
 }
 
 .intro-overview-layout {
   display: grid;
   grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
-  gap: 96px;
+  gap: 68px;
   align-items: start;
 }
 
@@ -294,14 +294,14 @@
 }
 
 .intro-comparison {
-  padding: 120px 0 132px;
+  padding: 94px 0 100px;
   background: #eee8e0;
 }
 
 .intro-comparison-heading {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-  gap: 72px;
+  gap: 52px;
   align-items: end;
 }
 
@@ -317,10 +317,10 @@
 .intro-practice-row {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
-  gap: 76px;
+  gap: 56px;
   align-items: center;
-  margin-top: 88px;
-  padding-top: 68px;
+  margin-top: 64px;
+  padding-top: 50px;
   border-top: 1px solid rgba(76, 51, 41, 0.18);
 }
 
@@ -455,7 +455,7 @@
 }
 
 .intro-process {
-  padding: 104px 0 108px;
+  padding: 84px 0 88px;
   color: #fff8ef;
   background: #813b31;
 }
@@ -467,7 +467,7 @@
 .intro-process-heading {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
-  gap: 72px;
+  gap: 52px;
   align-items: end;
 }
 
@@ -484,7 +484,7 @@
 .intro-process-list {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin: 68px 0 0;
+  margin: 48px 0 0;
   padding: 0;
   border-top: 1px solid rgba(255, 248, 239, 0.28);
   list-style: none;
@@ -545,7 +545,7 @@
 }
 
 .intro-faq-section {
-  padding: 120px 0;
+  padding: 88px 0;
   background: #fffaf4;
 }
 
@@ -558,9 +558,9 @@
 .intro-faq-heading {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 0.86fr);
-  gap: 72px;
+  gap: 52px;
   align-items: end;
-  margin-bottom: 56px;
+  margin-bottom: 40px;
 }
 
 .intro-faq-heading .intro-section-kicker {
@@ -654,7 +654,7 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: 86px 0;
+  padding: 66px 0;
   background: linear-gradient(115deg, #e9ded1 0%, #dfcfc0 100%);
 }
 
@@ -664,7 +664,7 @@
 .intro-contact-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 72px;
+  gap: 48px;
   align-items: end;
 }
 
@@ -842,11 +842,11 @@
   .intro-overview,
   .intro-comparison,
   .intro-faq-section {
-    padding: 84px 0;
+    padding: 60px 0;
   }
 
   .intro-process {
-    padding: 78px 0 82px;
+    padding: 60px 0 64px;
   }
 
   .intro-section-heading h2,
@@ -859,7 +859,7 @@
   }
 
   .intro-overview-layout {
-    gap: 42px;
+    gap: 30px;
   }
 
   .intro-values li {
@@ -882,9 +882,9 @@
 
   .intro-practice-row,
   .intro-practice-row.is-reverse {
-    gap: 28px;
-    margin-top: 58px;
-    padding-top: 46px;
+    gap: 22px;
+    margin-top: 42px;
+    padding-top: 32px;
   }
 
   .intro-practice-title {
@@ -930,7 +930,7 @@
 
   .intro-process-list {
     grid-template-columns: 1fr;
-    margin-top: 46px;
+    margin-top: 32px;
   }
 
   .intro-process-list li,
@@ -991,7 +991,7 @@
   }
 
   .intro-contact-band {
-    padding: 70px 0 82px;
+    padding: 52px 0 60px;
   }
 
   .intro-contact-copy h2 {

@@ -258,13 +258,13 @@ article).section-heading::after {
 
 .home-page .section {
   width: min(calc(100% - 48px), 1120px);
-  padding: 110px 0;
+  padding: 86px 0;
 }
 
 .home-narrative {
   position: relative;
-  padding-top: 160px;
-  padding-bottom: 140px;
+  padding-top: 112px;
+  padding-bottom: 96px;
 }
 
 .home-narrative::after {
@@ -371,7 +371,7 @@ article).section-heading::after {
 
 .home-seo-intro {
   padding-top: 0;
-  padding-bottom: 120px;
+  padding-bottom: 86px;
 }
 
 .seo-intro-layout {
@@ -415,8 +415,8 @@ article).section-heading::after {
 /* ── 如何邀請南仙：流程區塊 ────────────────────────────── */
 
 .process-invite {
-  padding-top: 140px;
-  padding-bottom: 160px;
+  padding-top: 104px;
+  padding-bottom: 112px;
   position: relative;
 }
 
@@ -431,7 +431,7 @@ article).section-heading::after {
 }
 
 .process-invite-header {
-  margin-bottom: 72px;
+  margin-bottom: 48px;
 }
 
 .process-heading {
@@ -459,7 +459,7 @@ article).section-heading::after {
   grid-template-columns: 96px 1fr;
   gap: 0 24px;
   align-items: start;
-  padding: 40px 0;
+  padding: 32px 0;
   border-top: 1px solid rgba(185, 146, 94, 0.22);
   text-align: left;
 }
@@ -500,7 +500,7 @@ article).section-heading::after {
 }
 
 .process-invite-cta {
-  margin-top: 56px;
+  margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
@@ -562,22 +562,22 @@ article).section-heading::after {
   /* 關於區 → 近白，給文字呼吸空間 */
   .home-page .home-narrative {
     background: #fbf9f5;
-    padding-top: 60px;
-    padding-bottom: 68px;
+    padding-top: 48px;
+    padding-bottom: 52px;
   }
 
   /* 服務範疇 → 承接暖米，與流程視覺合併 */
   .home-page .home-seo-intro {
     background: #f4ede3;
-    padding-top: 48px;
-    padding-bottom: 52px;
+    padding-top: 38px;
+    padding-bottom: 42px;
   }
 
   /* 流程區 → 暖米，與服務範疇連成一氣 */
   .home-page .process-invite {
     background: #f4ede3;
-    padding-top: 52px;
-    padding-bottom: 72px;
+    padding-top: 42px;
+    padding-bottom: 56px;
   }
 
   /* ── B. CTA 按鈕重做 ────────────────────────────
@@ -700,7 +700,7 @@ article).section-heading::after {
   .home-page .process-invite-step {
     grid-template-columns: 56px 1fr;
     gap: 0 20px;
-    padding: 22px 0;
+    padding: 18px 0;
     border-top: 1px solid rgba(26, 20, 17, 0.11);
     border-bottom: none;
     align-items: start;
@@ -832,7 +832,7 @@ article).section-heading::after {
   }
 
   .home-page .process-invite-header {
-    margin-bottom: 28px;
+    margin-bottom: 18px;
   }
 
   /* seo-intro 標題：11 字須單行放下 */
@@ -844,7 +844,17 @@ article).section-heading::after {
   }
 
   .home-page .seo-intro-layout {
-    gap: 20px;
+    gap: 14px;
+  }
+
+  /* 這些標題已有外層容器管理距離，避免 heading margin 與 grid gap 疊加。 */
+  .home-page :where(
+    .scenario-heading,
+    .home-cases-heading,
+    .seo-intro-header,
+    .process-invite-header
+  ) .section-heading {
+    margin-bottom: 0;
   }
 
   .home-page .seo-intro-body p {
@@ -987,8 +997,8 @@ article).section-heading::after {
 /* ── 活動情境選擇與代表案例 ─────────────────────────── */
 
 .home-scenarios {
-  padding-top: 88px;
-  padding-bottom: 96px;
+  padding-top: 72px;
+  padding-bottom: 76px;
 }
 
 .scenario-heading,
@@ -1068,15 +1078,15 @@ article).section-heading::after {
 }
 
 .home-page .home-cases {
-  padding-top: 86px;
-  padding-bottom: 56px;
+  padding-top: 70px;
+  padding-bottom: 48px;
   color: var(--ink);
   background: transparent;
   border-top: 1px solid rgba(72, 54, 43, 0.14);
 }
 
 .home-cases + .process-invite {
-  padding-top: 52px;
+  padding-top: 44px;
 }
 
 .home-page .home-cases::before {
@@ -1202,7 +1212,7 @@ article).section-heading::after {
 
 @media (max-width: 760px) {
   .home-trust {
-    padding: 40px 20px 4px;
+    padding: 32px 20px 4px;
   }
 
   .home-trust-list {
@@ -1220,15 +1230,15 @@ article).section-heading::after {
   }
 
   .home-scenarios {
-    padding-top: 68px;
-    padding-bottom: 72px;
+    padding-top: 52px;
+    padding-bottom: 56px;
   }
 
   .scenario-heading,
   .home-cases-heading {
     grid-template-columns: 1fr;
-    gap: 18px;
-    margin-bottom: 28px;
+    gap: 12px;
+    margin-bottom: 22px;
   }
 
   .scenario-grid {
@@ -1249,12 +1259,12 @@ article).section-heading::after {
   }
 
   .home-page .home-cases {
-    padding-top: 62px;
-    padding-bottom: 46px;
+    padding-top: 50px;
+    padding-bottom: 40px;
   }
 
   .home-cases + .process-invite {
-    padding-top: 44px;
+    padding-top: 38px;
   }
 
   .home-cases-all {
@@ -1278,7 +1288,7 @@ article).section-heading::after {
   .home-show-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-    margin-top: 36px;
+    margin-top: 28px;
   }
 
   .show-card {
