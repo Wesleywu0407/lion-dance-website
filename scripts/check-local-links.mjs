@@ -119,6 +119,9 @@ function normalizeReference(fromFile, rawReference) {
 
   if ((decodedPath.endsWith('/') || (fs.existsSync(target) && fs.statSync(target).isDirectory()))) {
     target = path.join(target, 'index.html');
+  } else if (!path.extname(target) && !fs.existsSync(target) && fs.existsSync(`${target}.html`)) {
+    // Netlify serves generated foo.html files at the canonical clean /foo URL.
+    target = `${target}.html`;
   }
 
   return { fragment, target };

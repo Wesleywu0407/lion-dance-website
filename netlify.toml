@@ -5,3 +5,222 @@
 [build.environment]
   NODE_VERSION = "24"
 
+# Legacy public URLs. Keep these explicit: the old root routes no longer match
+# the current directory structure, and force=true prevents generated .html
+# files from shadowing their clean canonical redirects.
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about.html"
+  to = "/pages/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services.html"
+  to = "/pages/services"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/pages/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gallery.html"
+  to = "/gallery/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gallery/index.html"
+  to = "/gallery/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gallery-opening.html"
+  to = "/gallery/opening"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gallery-banquet.html"
+  to = "/gallery/banquet"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gallery-tourism.html"
+  to = "/gallery/tourism"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gallery-funeral.html"
+  to = "/gallery/funeral"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gallery-groundbreaking.html"
+  to = "/gallery/groundbreaking"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gallery-festival-retail.html"
+  to = "/gallery/festival-retail"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gallery-temple.html"
+  to = "/gallery/temple"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gallery-school.html"
+  to = "/gallery/school"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gallery-performance.html"
+  to = "/gallery/performance"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/about.html"
+  to = "/pages/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/services.html"
+  to = "/pages/services"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/contact.html"
+  to = "/pages/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/dragon-lion-introduction.html"
+  to = "/pages/dragon-lion-introduction"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/privacy.html"
+  to = "/pages/privacy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/ink-dragon-scroll.html"
+  to = "/pages/ink-dragon-scroll"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gallery/opening.html"
+  to = "/gallery/opening"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gallery/banquet.html"
+  to = "/gallery/banquet"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gallery/tourism.html"
+  to = "/gallery/tourism"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gallery/funeral.html"
+  to = "/gallery/funeral"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gallery/groundbreaking.html"
+  to = "/gallery/groundbreaking"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gallery/festival-retail.html"
+  to = "/gallery/festival-retail"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gallery/temple.html"
+  to = "/gallery/temple"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gallery/school.html"
+  to = "/gallery/school"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gallery/performance.html"
+  to = "/gallery/performance"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/landing/dragon-lion-dance-performance.html"
+  to = "/landing/dragon-lion-dance-performance"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/landing/lion-dance-performance.html"
+  to = "/landing/lion-dance-performance"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/landing/opening-lion-dance.html"
+  to = "/landing/opening-lion-dance"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/landing/company-event-lion-dance.html"
+  to = "/landing/company-event-lion-dance"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/landing/year-end-party-lion-dance.html"
+  to = "/landing/year-end-party-lion-dance"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/landing/lion-dance-price-guide.html"
+  to = "/landing/lion-dance-price-guide"
+  status = 301
+  force = true
