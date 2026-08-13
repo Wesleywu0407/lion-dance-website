@@ -200,17 +200,20 @@ Netlify App 已連結此 repo，PR 會產生 deploy preview（狀態檢查來自
 
 **這是對外的正式網址**，`sitemap.xml`、`robots.txt` 與所有頁面的 canonical 都指向這個網域。
 
-### 次要副本：GitHub Pages
+### CI：GitHub Actions
 
-`.github/workflows/deploy-pages.yml`：push 到 `main` 時跑 `npm test`，通過後把 `_site/` 部署到 GitHub Pages。PR 只跑建置驗證、不部署。
+`.github/workflows/ci.yml`：push 到 `main` 與每個 PR 都會跑 `npm test`（單元測試 → 建置 → 連結檢查 → 契約檢查）。**這個 workflow 不部署**，只做驗證。
 
-這個 workflow 沒有設定自訂網域，部署網址是 <https://wesleywu0407.github.io/lion-dance-website/> —— 注意是**子路徑**。網站內有約 870 個根目錄絕對路徑連結（`href="/pages/about"`、`href="/"` 等），在子路徑下會指向 `wesleywu0407.github.io/pages/…`，也就是站外，因此**這份副本的導覽是壞的**。
+> **注意**：`netlify.toml` 的 301 轉址只在 Netlify 生效，正式站走 Netlify，所以舊網址正常運作。
 
-所有頁面的 canonical 都指向 `nansiengtaiwan.com`，所以搜尋引擎不會把它當成重複內容；但它仍是一份公開且不完整的副本。
+<details>
+<summary>已移除的 GitHub Pages 部署</summary>
 
-> **注意**：`netlify.toml` 的 301 轉址只在 Netlify 生效。正式站走 Netlify，所以舊網址正常運作；GitHub Pages 副本沒有這些轉址。
+原本 `deploy-pages.yml` 會另外把 `_site/` 部署到 GitHub Pages。但它沒有設定自訂網域，網址是 <https://wesleywu0407.github.io/lion-dance-website/> 這個**子路徑**，而站內約 870 個連結是根目錄絕對路徑（`href="/pages/about"`、`href="/"`），在子路徑下會指向站外，導覽整個是壞的。既然正式站走 Netlify，該 job 已移除，只保留驗證用的 `build`。
 
-如果不需要 GitHub Pages 副本，可以只保留 workflow 的 `build` job 當作 CI（`npm test` 對 PR 仍有價值），移除 `deploy` job。
+移除 workflow **不會**讓已發布的 Pages 站自動下線 —— 需到 **Settings → Pages** 把 Source 改為 None。
+
+</details>
 
 ## 測試與驗證
 
@@ -448,17 +451,20 @@ Netlify is connected to this repo: PRs get a deploy preview (status check from `
 
 **This is the public production URL.** `sitemap.xml`, `robots.txt`, and every page's canonical tag point at this domain.
 
-### Secondary copy: GitHub Pages
+### CI: GitHub Actions
 
-`.github/workflows/deploy-pages.yml`: on push to `main` it runs `npm test` and publishes `_site/` to GitHub Pages. PRs run the build for verification only.
+`.github/workflows/ci.yml`: runs `npm test` (unit tests → build → link check → contract check) on pushes to `main` and on every PR. **It does not deploy** — verification only.
 
-No custom domain is configured for it, so it deploys to <https://wesleywu0407.github.io/lion-dance-website/> — note the **subpath**. The site contains roughly 870 root-absolute links (`href="/pages/about"`, `href="/"`, …), which under that subpath resolve to `wesleywu0407.github.io/pages/…` — off-site. **Navigation on that copy is therefore broken.**
+> **Note:** the 301 redirects in `netlify.toml` only apply on Netlify. Production runs on Netlify, so legacy URLs work.
 
-Every page's canonical points to `nansiengtaiwan.com`, so search engines will not treat it as duplicate content, but it remains a public, incomplete copy.
+<details>
+<summary>Removed: the GitHub Pages deployment</summary>
 
-> **Note:** the 301 redirects in `netlify.toml` only apply on Netlify. Production runs on Netlify, so legacy URLs work; the GitHub Pages copy has no redirects.
+`deploy-pages.yml` used to publish `_site/` to GitHub Pages as well. No custom domain was configured, so it deployed to <https://wesleywu0407.github.io/lion-dance-website/> — a **subpath**. The site contains roughly 870 root-absolute links (`href="/pages/about"`, `href="/"`), which under that subpath resolve off-site, leaving that copy's navigation broken. Since production runs on Netlify, the deploy job was removed and only the verification `build` job kept.
 
-If the GitHub Pages copy is not wanted, keep the workflow's `build` job as CI (`npm test` on PRs is still valuable) and drop the `deploy` job.
+Removing the workflow does **not** take the already-published Pages site offline — set Source to None under **Settings → Pages** to do that.
+
+</details>
 
 ## Testing
 
