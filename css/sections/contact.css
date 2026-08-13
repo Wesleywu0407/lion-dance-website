@@ -865,9 +865,13 @@
     margin-top: 28px;
   }
 
+  /* 這裡原本是 width: calc(100vw - 24px)。.page-section-stack 是 grid，
+     單一欄寬取自最寬的子項，所以這個 100vw 會把整欄撐成比 .section 還寬，
+     連帶把聯絡卡片、表單、Facebook 卡都往右推出容器 8px，再被
+     body 的 overflow-x: hidden 切掉，看起來像卡片右邊被裁掉。 */
   .contact-page .contact-faq {
-    width: calc(100vw - 24px);
-    max-width: calc(100vw - 24px);
+    width: 100%;
+    max-width: 100%;
     margin-top: 34px;
     padding: 2rem 1.2rem;
     border-radius: 18px;
