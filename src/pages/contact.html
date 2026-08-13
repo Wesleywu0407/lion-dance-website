@@ -25,7 +25,7 @@
   <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="../favicon-180.png">
   <meta name="theme-color" content="#181311">
-  <link rel="stylesheet" href="../css/style.css?v=20260802-spacing2">
+  <link rel="stylesheet" href="../css/style.css?v=20260813-contact3">
 
   <script type="application/ld+json">
   {
@@ -632,7 +632,7 @@
                 </div>
               </article>
             <aside class="contact-checklist">
-              <p class="contact-checklist-heading">洽詢前可先準備以下資訊：<br>我們會更快判斷適合的演出方案。</p>
+              <p class="contact-checklist-heading">先準備好以下幾項，我們能更快回覆合適的演出安排。</p>
               <ul>
                 <li>活動日期</li>
                 <li>活動地點</li>
@@ -661,7 +661,7 @@
             <header class="contact-form-intro">
               <p>線上洽詢</p>
               <h2>提供基本活動資訊</h2>
-              <span>填寫必填欄位即可，其餘細節可由我們協助確認。</span>
+              <span>先填必填欄位就好，其餘細節我們再確認。</span>
             </header>
             <div class="contact-form-row">
               <label>
@@ -758,24 +758,24 @@
             </label>
             <label>
               需求說明 *
-              <textarea name="message" rows="6" placeholder="請描述活動時間、場地、預計流程、人數規模或希望呈現的氣氛..." required></textarea>
+              <textarea name="message" rows="6" placeholder="例如：3/15 上午在台北市信義區開幕，現場約 200 人，想安排祥獅獻瑞。" required></textarea>
             </label>
             {% if backend.turnstileSiteKey %}
             <div class="cf-turnstile" data-sitekey="{{ backend.turnstileSiteKey }}" data-language="zh-tw"></div>
             {% endif %}
             <label class="contact-check contact-consent">
               <input type="checkbox" name="contactConsent" value="yes" required>
-              <span>我同意南仙依<a href="/pages/privacy">隱私政策</a>使用以上資料聯絡本次演出需求。*</span>
+              <span>我同意南仙依<a href="/pages/privacy">隱私政策</a>使用以上資料，聯絡本次演出。*</span>
             </label>
             <div class="contact-form-status" data-contact-form-status role="status" aria-live="polite" tabindex="-1"></div>
             <button class="button button-primary btn-primary" type="submit" data-submit-label="送出洽詢">送出洽詢</button>
-            <p class="contact-note">送出後我們會盡快與您聯繫，填寫者也會收到一封自動回覆。</p>
+            <p class="contact-note">送出後我們會盡快與您聯繫，並回覆一封確認信。</p>
           </form>
         </div>
         <div class="social-embed reveal">
           <div class="social-embed-heading">
             <p class="section-tag">Facebook</p>
-            <h2>追蹤最新貼文與演出動態</h2>
+            <h2>追蹤演出動態</h2>
           </div>
           <a
             class="facebook-card"
@@ -788,20 +788,13 @@
               <img src="../images/IMG_1799%202-720.webp" srcset="../images/IMG_1799%202-720.webp 720w, ../images/IMG_1799%202-1440.webp 1440w" sizes="(max-width: 760px) 92vw, 720px" alt="臺灣南仙龍獅體育會紅色醒獅演出照片" width="1477" height="1108" loading="lazy" decoding="async">
             </div>
             <div class="facebook-card-body">
-              <div class="facebook-card-top">
-                <span class="facebook-badge">Facebook</span>
-                <span class="facebook-action">前往粉專</span>
-              </div>
               <h3>臺北德勝館・臺灣南仙龍獅體育會</h3>
-              <p>點擊直接前往 Facebook 正式粉專，查看最新貼文、演出更新與社群互動內容。</p>
-              <div class="facebook-card-meta">
-                <span>可點擊</span>
-                <span>手機版適用</span>
-              </div>
+              <p>近期的演出照片與活動消息，都會發在粉專。</p>
+              <span class="facebook-action">前往粉專</span>
             </div>
           </a>
         </div>
-        <p class="contact-quote reveal">歡迎預約，或洽詢各類演出規劃。我們會從活動屬性、場域條件與文化調性出發，協助安排適合的演出組合。<a href="/pages/services">查看表演項目與演出形式</a></p>
+        <p class="contact-quote reveal">還不確定要安排哪一種演出？先告訴我們活動的日期與場地，我們再一起討論合適的組合。<a href="/pages/services">查看表演項目</a></p>
 
         <section class="contact-faq reveal" aria-labelledby="contact-faq-title">
           <div class="contact-faq-heading">
