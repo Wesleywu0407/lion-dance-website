@@ -33,8 +33,13 @@
   transition: transform 0.3s ease, border-color 0.22s ease, box-shadow 0.3s ease;
 }
 
-.contact-channel:hover article,
-.contact-channel:focus-visible article,
+/* LINE 卡片是 <a> 包 <article>，兩層都吃到上面那組 grid，內層 article 會被
+   塞進 68px 的圖示欄，文字被擠成每行兩三個字、底線也只剩一小截。讓 article
+   退成 contents，圖示與文字直接當 <a> 的格線項目。 */
+.contact-line article {
+  display: contents;
+}
+
 .contact-card:hover,
 .contact-card:focus-visible,
 .contact-card:focus-within {
@@ -736,10 +741,6 @@
     background:
       linear-gradient(180deg, rgba(251, 247, 241, 0.98), rgba(244, 235, 222, 0.92));
     box-shadow: 0 12px 26px rgba(76, 29, 17, 0.07);
-  }
-
-  .contact-page .contact-line article {
-    display: contents;
   }
 
   .contact-page .contact-line article > div:last-child {
