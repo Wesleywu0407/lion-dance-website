@@ -45,7 +45,7 @@ Official website and inquiry system for a Taiwanese dragon &amp; lion dance trou
 | 表單後端 | Supabase Edge Functions；未啟用時退回 FormSubmit |
 | 資料庫 | Supabase（migration 位於 `supabase/migrations/`） |
 | 案件管理 | `/crm/` 靜態介面 + `admin-api` Edge Function |
-| 部署 | GitHub Actions → GitHub Pages（另有 `netlify.toml`，見[部署](#部署)） |
+| 部署 | Netlify（正式站）＋ GitHub Pages（次要副本），見[部署](#部署) |
 
 ## 環境需求
 
@@ -190,11 +190,27 @@ _site/                 ← 建置產物（已 gitignore，不要編輯）
 
 ## 部署
 
-**GitHub Pages**（`.github/workflows/deploy-pages.yml`）：push 到 `main` 時觸發，跑 `npm test`，通過後把 `_site/` 部署到 GitHub Pages。PR 也會跑建置驗證但不部署。
+這個 repo 同時有**兩套**部署，各自產生一個公開網址。
 
-專案同時存在 `netlify.toml`（`publish = "_site"`，並定義了約 35 條舊網址的 301 轉址）。**兩套部署設定並存**：GitHub Actions 的部署紀錄可確認每次 push 到 `main` 都有成功執行；Netlify 是否仍連著這個 repo，需要到 Netlify 後台確認。如果只用其中一套，建議移除另一套以免混淆。
+### 正式站：Netlify
 
-> `netlify.toml` 的轉址規則只在 Netlify 生效。若正式站走 GitHub Pages，這些舊網址的 301 需要另外處理。
+`netlify.toml`：`command = "npm run build"`、`publish = "_site"`，另外定義約 35 條舊網址的 301 轉址（`/about.html` → `/pages/about` 等）。
+
+Netlify App 已連結此 repo，PR 會產生 deploy preview（狀態檢查來自 `netlify/resilient-marigold-1f9b23`），`main` 更新後部署到 <https://nansiengtaiwan.com>。
+
+**這是對外的正式網址**，`sitemap.xml`、`robots.txt` 與所有頁面的 canonical 都指向這個網域。
+
+### 次要副本：GitHub Pages
+
+`.github/workflows/deploy-pages.yml`：push 到 `main` 時跑 `npm test`，通過後把 `_site/` 部署到 GitHub Pages。PR 只跑建置驗證、不部署。
+
+這個 workflow 沒有設定自訂網域，部署網址是 <https://wesleywu0407.github.io/lion-dance-website/> —— 注意是**子路徑**。網站內有約 870 個根目錄絕對路徑連結（`href="/pages/about"`、`href="/"` 等），在子路徑下會指向 `wesleywu0407.github.io/pages/…`，也就是站外，因此**這份副本的導覽是壞的**。
+
+所有頁面的 canonical 都指向 `nansiengtaiwan.com`，所以搜尋引擎不會把它當成重複內容；但它仍是一份公開且不完整的副本。
+
+> **注意**：`netlify.toml` 的 301 轉址只在 Netlify 生效。正式站走 Netlify，所以舊網址正常運作；GitHub Pages 副本沒有這些轉址。
+
+如果不需要 GitHub Pages 副本，可以只保留 workflow 的 `build` job 當作 CI（`npm test` 對 PR 仍有價值），移除 `deploy` job。
 
 ## 測試與驗證
 
@@ -277,7 +293,7 @@ These constrain content decisions. Check any copy or layout change against them:
 | Form backend | Supabase Edge Functions, falling back to FormSubmit |
 | Database | Supabase (migrations in `supabase/migrations/`) |
 | Lead management | `/crm/` static UI + `admin-api` Edge Function |
-| Deployment | GitHub Actions → GitHub Pages (a `netlify.toml` also exists — see [Deployment](#deployment)) |
+| Deployment | Netlify (production) + GitHub Pages (secondary copy) — see [Deployment](#deployment) |
 
 ## Requirements
 
@@ -422,11 +438,27 @@ Before going live, the owner still needs to confirm: admin accounts, data retent
 
 ## Deployment
 
-**GitHub Pages** (`.github/workflows/deploy-pages.yml`): triggered on push to `main`, runs `npm test`, and publishes `_site/` to GitHub Pages on success. PRs run the build for verification but do not deploy.
+This repo has **two** deployments, each producing its own public URL.
 
-A `netlify.toml` also exists (`publish = "_site"`, plus roughly 35 legacy-URL 301 redirects). **Both deployment configs are present.** The GitHub Actions run history confirms the Pages workflow succeeds on every push to `main`; whether Netlify is still connected to this repo has to be checked in the Netlify dashboard. If only one is in use, removing the other avoids confusion.
+### Production: Netlify
 
-> The redirect rules in `netlify.toml` only apply on Netlify. If production serves from GitHub Pages, those legacy 301s need to be handled elsewhere.
+`netlify.toml`: `command = "npm run build"`, `publish = "_site"`, plus roughly 35 legacy-URL 301 redirects (`/about.html` → `/pages/about`, etc.).
+
+Netlify is connected to this repo: PRs get a deploy preview (status check from `netlify/resilient-marigold-1f9b23`) and `main` deploys to <https://nansiengtaiwan.com>.
+
+**This is the public production URL.** `sitemap.xml`, `robots.txt`, and every page's canonical tag point at this domain.
+
+### Secondary copy: GitHub Pages
+
+`.github/workflows/deploy-pages.yml`: on push to `main` it runs `npm test` and publishes `_site/` to GitHub Pages. PRs run the build for verification only.
+
+No custom domain is configured for it, so it deploys to <https://wesleywu0407.github.io/lion-dance-website/> — note the **subpath**. The site contains roughly 870 root-absolute links (`href="/pages/about"`, `href="/"`, …), which under that subpath resolve to `wesleywu0407.github.io/pages/…` — off-site. **Navigation on that copy is therefore broken.**
+
+Every page's canonical points to `nansiengtaiwan.com`, so search engines will not treat it as duplicate content, but it remains a public, incomplete copy.
+
+> **Note:** the 301 redirects in `netlify.toml` only apply on Netlify. Production runs on Netlify, so legacy URLs work; the GitHub Pages copy has no redirects.
+
+If the GitHub Pages copy is not wanted, keep the workflow's `build` job as CI (`npm test` on PRs is still valuable) and drop the `deploy` job.
 
 ## Testing
 
