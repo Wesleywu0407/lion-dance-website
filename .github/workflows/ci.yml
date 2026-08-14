@@ -1,0 +1,41 @@
+name: CI
+
+# 正式站由 Netlify 部署（見 netlify.toml）。這個 workflow 只負責驗證：
+# 單元測試 → Eleventy 建置 → 本機連結檢查 → 前後端契約檢查。
+#
+# 原本這裡還有一個 deploy job，會把 _site/ 部署到 GitHub Pages。但那份副本
+# 沒有自訂網域，網址是 wesleywu0407.github.io/lion-dance-website/ 這個子路徑，
+# 而站內約 870 個連結是根目錄絕對路徑（href="/pages/about"），在子路徑下會
+# 指向站外，導覽整個是壞的。既然正式站走 Netlify，就移除該 job。
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build and verify
+        run: npm test
