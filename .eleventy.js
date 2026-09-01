@@ -94,6 +94,28 @@ module.exports = function (eleventyConfig) {
     return `${thumbnail} 720w, ${photo.full} 1440w`;
   });
 
+  // Google Ads (gtag.js) — injected into every built page's <head>.
+  const GOOGLE_ADS_ID = 'AW-18421882465';
+  const GOOGLE_ADS_SNIPPET = [
+    '<!-- Google tag (gtag.js) -->',
+    `<script async src="https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}"></script>`,
+    '<script>',
+    '  window.dataLayer = window.dataLayer || [];',
+    '  function gtag(){dataLayer.push(arguments);}',
+    "  gtag('js', new Date());",
+    `  gtag('config', '${GOOGLE_ADS_ID}');`,
+    '</script>'
+  ].join('\n  ');
+
+  eleventyConfig.addTransform('googleAds', function (content) {
+    const outputPath = this.page && this.page.outputPath;
+    if (!outputPath || !String(outputPath).endsWith('.html')) return content;
+    if (content.includes(GOOGLE_ADS_ID)) return content;
+    return content.replace(/<head(\s[^>]*)?>/i, function (match) {
+      return `${match}\n  ${GOOGLE_ADS_SNIPPET}`;
+    });
+  });
+
   eleventyConfig.on('eleventy.after', async function ({ dir }) {
     const outputDir = dir && dir.output ? dir.output : '_site';
     const fs = require('node:fs/promises');
