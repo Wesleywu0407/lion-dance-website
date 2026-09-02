@@ -111,8 +111,8 @@ module.exports = function (eleventyConfig) {
     const outputPath = this.page && this.page.outputPath;
     if (!outputPath || !String(outputPath).endsWith('.html')) return content;
     if (content.includes(GOOGLE_ADS_ID)) return content;
-    return content.replace(/<head(\s[^>]*)?>/i, function (match) {
-      return `${match}\n  ${GOOGLE_ADS_SNIPPET}`;
+    return content.replace(/<\/head>/i, function (match) {
+      return `  ${GOOGLE_ADS_SNIPPET}\n${match}`;
     });
   });
 
