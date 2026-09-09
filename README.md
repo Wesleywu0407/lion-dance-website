@@ -130,9 +130,13 @@ _site/                 ← 建置產物（已 gitignore，不要編輯）
 
 ## 內容管理
 
-### CMS
+### Email 文案後台
 
-`/admin/` 是 Sveltia CMS，直接讀寫這個 repo 的 `main` 分支。目前使用 GitHub token 登入；改為 OAuth 的步驟見 [`docs/OAUTH_SETUP.md`](docs/OAUTH_SETUP.md)。
+`/admin/` 已改為不需 GitHub 帳號的 Email 文案管理介面，可編輯 SEO、到達頁、FAQ、服務與價格文案。Supabase 登入與伺服器發布服務尚待設定，見 [`docs/CONTENT_ADMIN_SETUP.md`](docs/CONTENT_ADMIN_SETUP.md)。`/admin/?preview=1` 提供不會儲存的操作預覽。原有 Sveltia CMS 改在 `/admin/technical.html`。
+
+### 進階 CMS
+
+`/admin/technical.html` 是 Sveltia CMS，直接讀寫這個 repo 的 `main` 分支。目前使用 GitHub token 登入；改為 OAuth 的步驟見 [`docs/OAUTH_SETUP.md`](docs/OAUTH_SETUP.md)。
 
 圖片上傳至 `images/uploads/`。上傳規格與命名慣例見 [`docs/ADMIN_IMAGE_GUIDE.md`](docs/ADMIN_IMAGE_GUIDE.md)。
 
@@ -383,7 +387,7 @@ _site/                 ← build output (gitignored, never edit)
 
 ### CMS
 
-`/admin/` runs Sveltia CMS, committing directly to this repo's `main` branch. It currently authenticates with a GitHub token; see [`docs/OAUTH_SETUP.md`](docs/OAUTH_SETUP.md) to switch to OAuth.
+`/admin/technical.html` runs Sveltia CMS, committing directly to this repo's `main` branch. It currently authenticates with a GitHub token; see [`docs/OAUTH_SETUP.md`](docs/OAUTH_SETUP.md) to switch to OAuth.
 
 Uploads go to `images/uploads/`. Sizing and naming conventions are in [`docs/ADMIN_IMAGE_GUIDE.md`](docs/ADMIN_IMAGE_GUIDE.md).
 

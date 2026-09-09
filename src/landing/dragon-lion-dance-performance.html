@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+  {% set pageSeo = seo["landing-dragon-lion-dance-performance"] %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>舞龍舞獅表演｜臺灣南仙龍獅體育會</title>
-  <meta name="description" content="臺灣南仙龍獅體育會提供專業舞龍舞獅表演，適合開幕典禮、企業活動、春酒尾牙、廟會慶典、百貨春節活動與大型文化展演。">
+  {% include "seo-meta.njk" %}
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://nansiengtaiwan.com/landing/dragon-lion-dance-performance">
   <meta property="og:site_name" content="臺灣南仙龍獅體育會">
   <meta property="og:locale" content="zh_TW">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="舞龍舞獅表演｜臺灣南仙龍獅體育會">
-  <meta property="og:description" content="臺灣南仙龍獅體育會提供專業舞龍舞獅表演，適合開幕典禮、企業活動、春酒尾牙、廟會慶典、百貨春節活動與大型文化展演。">
   <meta property="og:url" content="https://nansiengtaiwan.com/landing/dragon-lion-dance-performance">
-  <meta property="og:image" content="https://nansiengtaiwan.com/images/og-cover.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="舞龍舞獅表演｜臺灣南仙龍獅體育會">
-  <meta name="twitter:description" content="臺灣南仙龍獅體育會提供專業舞龍舞獅表演，適合開幕典禮、企業活動、春酒尾牙、廟會慶典、百貨春節活動與大型文化展演。">
-  <meta name="twitter:image" content="https://nansiengtaiwan.com/images/og-cover.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -34,8 +27,8 @@
       "@type": "WebPage",
       "@id": "https://nansiengtaiwan.com/landing/dragon-lion-dance-performance#webpage",
       "url": "https://nansiengtaiwan.com/landing/dragon-lion-dance-performance",
-      "name": "舞龍舞獅表演｜臺灣南仙龍獅體育會",
-      "description": "臺灣南仙龍獅體育會提供專業舞龍舞獅表演，適合開幕典禮、企業活動、春酒尾牙、廟會慶典、百貨春節活動與大型文化展演。",
+      "name": {{ pageSeo.title | jsonScript | safe }},
+      "description": {{ pageSeo.description | jsonScript | safe }},
       "inLanguage": "zh-Hant",
       "isPartOf": {
         "@id": "https://nansiengtaiwan.com/#website"
@@ -121,9 +114,9 @@
     <main id="main-content">
       <section class="page-hero">
         <div class="page-hero-inner reveal reveal-hero">
-          <p class="section-tag">{{ landingPage.heroTag }}</p>
-          <h1 class="section-heading">{{ landingPage.h1 }}</h1>
-          <p>{{ landingPage.intro }}</p>
+          <p class="section-tag">{{ landingPage.heroTag | escape }}</p>
+          <h1 class="section-heading">{{ landingPage.h1 | escape }}</h1>
+          <p>{{ landingPage.intro | escape }}</p>
         </div>
       </section>
 
@@ -131,8 +124,8 @@
         <div class="about-layout about-cinematic">
           {% for block in landingPage.blocks %}
           <div class="ctb about-block">
-            <p class="ctb-phrase">{{ block.title }}</p>
-            <p class="ctb-support">{{ block.text }}</p>
+            <p class="ctb-phrase">{{ block.title | escape }}</p>
+            <p class="ctb-support">{{ block.text | escape }}</p>
           </div>
           {% endfor %}
         </div>
@@ -158,8 +151,8 @@
 
         <div class="cta-band reveal">
           <p class="section-tag">預約洽詢</p>
-          <h2>{{ landingPage.ctaTitle }}</h2>
-          <p>{{ landingPage.ctaText }}</p>
+          <h2>{{ landingPage.ctaTitle | escape }}</h2>
+          <p>{{ landingPage.ctaText | escape }}</p>
           <div class="cta-band-actions">
             <a class="button button-primary" href="/pages/contact?source=landing-dragon-lion" aria-label="聯絡臺灣南仙龍獅體育會預約舞龍舞獅表演">聯絡洽詢</a>
             <a class="button button-secondary" href="/pages/services" aria-label="查看臺灣南仙龍獅體育會表演項目">查看表演項目</a>

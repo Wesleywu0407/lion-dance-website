@@ -10,7 +10,8 @@
     "check:links": "node scripts/check-local-links.mjs _site",
     "test:unit": "node --test tests/*.test.mjs",
     "check:backend": "node scripts/check-backend-contract.mjs",
-    "test": "npm run test:unit && npm run build && npm run check:links && npm run check:backend"
+    "test": "npm run test:unit && npm run build && npm run check:links && npm run check:backend && npm run check:seo",
+    "check:seo": "node scripts/check-seo-content.mjs"
   },
   "engines": {
     "node": ">=20"

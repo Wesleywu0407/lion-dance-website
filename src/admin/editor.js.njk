@@ -1,0 +1,155 @@
+---
+permalink: admin/editor.js
+eleventyExcludeFromCollections: true
+---
+(() => {
+  const $ = selector => document.querySelector(selector);
+  const config = window.NANSIEN_BACKEND_CONFIG || {};
+  const demo = new URLSearchParams(location.search).get('preview') === '1';
+  const catalog = JSON.parse($('#preview-data').textContent);
+  const labels = {seo:'搜尋與分享',landing:'到達頁文案',faq:'常見問題',services:'服務介紹',pricing:'價格說明'};
+  let client, entries = [], current, dirty = false, busy = false, loadVersion = 0;
+  const status = (message, error = false) => { $('#editor-status').textContent=message; $('#editor-status').classList.toggle('error',error); };
+  const markDirty = value => { dirty=value; $('#dirty-state').textContent=value ? '有尚未發布的修改' : '尚未修改'; };
+  const setBusy = value => { busy=value; $('#fields').querySelectorAll('input,textarea,button').forEach(el=>el.disabled=value); $('#review').disabled=value || demo; $('#reload').disabled=value; $('#confirm-publish').disabled=value; };
+  const api = async (id, options={}) => {
+    const {data:{session},error} = await client.auth.getSession();
+    if (error || !session) throw new Error('登入已失效，請保留文案並重新登入。');
+    const url = new URL(config.contentApiUrl);
+    if (id) url.searchParams.set('entry',id);
+    const response = await fetch(url,{...options,headers:{'Content-Type':'application/json',Authorization:`Bearer ${session.access_token}`},signal:AbortSignal.timeout(30000)});
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message || '暫時無法完成操作。');
+    return data;
+  };
+  function renderList() {
+    const query=$('#entry-search').value.trim().toLocaleLowerCase();
+    const root=$('#entry-list'); root.replaceChildren();
+    for (const [kind,label] of Object.entries(labels)) {
+      const matches=entries.filter(entry=>entry.kind===kind && `${entry.label} ${entry.url}`.toLocaleLowerCase().includes(query));
+      if (!matches.length) continue;
+      const heading=document.createElement('h2'); heading.textContent=label; root.append(heading);
+      for (const entry of matches) {
+        const button=document.createElement('button'); button.type='button'; button.className='entry-button'; button.textContent=entry.label;
+        button.setAttribute('aria-current',String(current?.entry.id===entry.id));
+        button.addEventListener('click',()=>loadEntry(entry.id)); root.append(button);
+      }
+    }
+    if (!root.children.length) root.textContent='找不到頁面，請換個關鍵字。';
+  }
+  let fieldCounter=0;
+  function renderFields(fields,values,target) {
+    target.replaceChildren();
+    for (const field of fields) {
+      const box=document.createElement(field.type==='list'?'fieldset':'div'); box.className='field'; box.dataset.field=field.name;
+      if (field.type==='list') {
+        const legend=document.createElement('legend'); legend.textContent=field.label; box.append(legend);
+        const list=document.createElement('div'); list.dataset.list=''; box.append(list);
+        const addItem = value => {
+          const item=document.createElement('section'); item.className='list-item';
+          const inner=document.createElement('div'); inner.dataset.itemFields=''; renderFields(field.fields,value,inner); item.append(inner);
+          if (!field.fixed) {
+            const remove=document.createElement('button'); remove.type='button'; remove.textContent='移除此項';
+            remove.addEventListener('click',()=>{ if (list.children.length<=1) return status('請至少保留一個項目。',true); item.remove(); markDirty(true); preview(); }); item.append(remove);
+          }
+          list.append(item);
+        };
+        values[field.name].forEach(addItem);
+        if (!field.fixed) {
+          const add=document.createElement('button'); add.type='button'; add.textContent='＋ 新增一項';
+          add.addEventListener('click',()=>{ if(list.children.length>=field.maxItems)return; addItem(Object.fromEntries(field.fields.map(f=>[f.name,'']))); markDirty(true); preview(); }); box.append(add);
+        }
+      } else {
+        const id=`content-field-${++fieldCounter}`;
+        const label=document.createElement('label'); label.htmlFor=id; label.textContent=field.label;
+        const input=document.createElement(field.multiline?'textarea':'input'); input.id=id; input.value=values[field.name] || ''; input.required=!field.optional; input.maxLength=field.max;
+        const count=document.createElement('small'); count.textContent=`${input.value.length} / ${field.max}`;
+        input.addEventListener('input',()=>{ count.textContent=`${input.value.length} / ${field.max}`; markDirty(true); preview(); });
+        box.append(label,input,count);
+      }
+      target.append(box);
+    }
+  }
+  function readFields(fields,target) {
+    return Object.fromEntries(fields.map(field=>{
+      const box=Array.from(target.children).find(el=>el.dataset.field===field.name);
+      return [field.name,field.type==='list' ? Array.from(box.querySelector('[data-list]').children).map(item=>readFields(field.fields,item.querySelector('[data-item-fields]'))) : box.querySelector('input,textarea').value];
+    }));
+  }
+  function preview() {
+    if(!current)return;
+    const data=readFields(current.fields,$('#fields'));
+    $('#preview-url').textContent=current.entry.url;
+    $('#preview-title').textContent=data.title || data.h1 || data.pageTitle || current.entry.label;
+    $('#preview-description').textContent=data.description || data.intro || data.pageDescription || '';
+    const root=$('#preview-body'); root.replaceChildren();
+    for (const item of data.blocks || data.items || data.factors || []) {
+      const h=document.createElement('h3'); h.textContent=item.title || item.question;
+      const p=document.createElement('p'); p.textContent=item.text || item.answer || item.description;
+      root.append(h,p);
+    }
+    if (data.ctaTitle) { const h=document.createElement('h3');h.textContent=data.ctaTitle;const p=document.createElement('p');p.textContent=data.ctaText;root.append(h,p); }
+    if (current.entry.kind==='seo') {
+      const h=document.createElement('h3');h.textContent='社群分享';const title=document.createElement('p');title.textContent=data.shareTitle || data.title;const p=document.createElement('p');p.textContent=data.shareDescription || data.description;root.append(h,title,p);
+    }
+  }
+  async function loadEntry(id) {
+    if(busy)return;
+    if(dirty && !window.confirm('有尚未發布的修改。確定要放棄並載入其他內容嗎？'))return;
+    const version=++loadVersion;setBusy(true);status('正在讀取最新文案…');
+    try {
+      const entry=demo?catalog.find(item=>item.id===id):null;
+      const data=demo?{entry,fields:entry.fields,values:entry.values,sha:''}:await api(id);
+      if(version!==loadVersion)return;
+      current=data; renderFields(data.fields,data.values,$('#fields'));markDirty(false);
+      $('#entry-title').textContent=data.entry.label;$('#entry-kind').textContent=labels[data.entry.kind];$('#entry-path').textContent=data.entry.url;
+      $('#view-page').href=data.entry.url;$('#view-page').hidden=false;$('#editor-form').hidden=false;
+      renderList();preview();status(demo?'目前為操作預覽；試填內容不會儲存。':'已載入最新文案。');
+    } catch(error) {status(error.message,true);} finally {setBusy(false);}
+  }
+  $('#editor-form').addEventListener('submit',event=>{
+    event.preventDefault();if(demo||busy||!current)return;
+    if(!dirty)return status('文案尚未修改。');
+    $('#publish-summary').textContent=`${labels[current.entry.kind]} · ${current.entry.label}`;
+    $('#publish-dialog').showModal();
+  });
+  $('#confirm-publish').addEventListener('click',async()=>{
+    if(demo||busy||!current)return;
+    const values=readFields(current.fields,$('#fields'));setBusy(true);status('正在發布，請稍候…');
+    try {
+      const result=await api(current.entry.id,{method:'PUT',body:JSON.stringify({sha:current.sha,values})});
+      current.sha=result.sha;markDirty(false);status(result.message);
+    } catch(error) {status(`${error.message}\n你的修改仍保留在畫面上。`,true);} finally {setBusy(false);$('#publish-dialog').close();$('#editor-status').focus();}
+  });
+  $('#reload').addEventListener('click',()=>current&&loadEntry(current.entry.id));
+  $('#entry-search').addEventListener('input',renderList);
+  window.addEventListener('beforeunload',event=>{if(dirty){event.preventDefault();event.returnValue='';}});
+  $('#logout').addEventListener('click',async()=>{
+    if(busy || (dirty&&!window.confirm('登出會放棄尚未發布的修改，確定登出嗎？')))return;
+    const {error}=await client.auth.signOut();if(error)return status('登出失敗，請稍後再試。',true);markDirty(false);location.assign('/admin/');
+  });
+  async function enter() {
+    try {const data=await api();entries=data.entries;$('#welcome').hidden=true;$('#workspace').hidden=false;$('#logout').hidden=false;renderList();await loadEntry(entries[0].id);}
+    catch(error){$('#login-status').textContent=error.message;$('#login-status').classList.add('error');$('#logout').hidden=false;}
+  }
+  async function init() {
+    if(demo){entries=catalog;$('#welcome').hidden=true;$('#workspace').hidden=false;$('#preview-banner').hidden=false;renderList();await loadEntry(entries[0].id);return;}
+    if(!config.contentSupabaseUrl||!config.contentSupabaseAnonKey||!config.contentApiUrl){$('#setup').hidden=false;$('#login-form').querySelector('button').disabled=true;return;}
+    if(!window.supabase){$('#login-status').textContent='登入服務載入失敗，請檢查網路並重新整理。';$('#login-form').querySelector('button').disabled=true;return;}
+    client=window.supabase.createClient(config.contentSupabaseUrl,config.contentSupabaseAnonKey,{auth:{storageKey:'nansien-content-auth',detectSessionInUrl:false,persistSession:true,autoRefreshToken:true}});
+    $('#login-form').addEventListener('submit',async event=>{
+      event.preventDefault();const button=event.target.querySelector('button');button.disabled=true;$('#login-status').classList.remove('error');$('#login-status').textContent='正在登入…';
+      try {
+        const {error}=await client.auth.signInWithPassword({email:$('#email').value.trim(),password:$('#password').value});
+        if(error)throw error;
+        $('#password').value='';$('#login-status').textContent='正在確認管理權限…';await enter();
+      }
+      catch {$('#login-status').textContent='無法登入，請確認 Email、密碼與網路連線。若仍失敗，請聯絡網站管理者。';$('#login-status').classList.add('error');}
+      finally {button.disabled=false;}
+    });
+    const {data:{session},error}=await client.auth.getSession();
+    if(error){$('#login-status').textContent='登入已失效，請重新輸入 Email 與密碼。';return;}
+    if(session)await enter();
+  }
+  init().catch(()=>{$('#login-status').textContent='無法載入後台，請重新整理後再試。';});
+})();

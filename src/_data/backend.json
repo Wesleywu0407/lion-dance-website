@@ -4,5 +4,8 @@
   "turnstileSiteKey": "",
   "crmSupabaseUrl": "",
   "crmSupabaseAnonKey": "",
-  "crmAdminApiUrl": ""
+  "crmAdminApiUrl": "",
+  "contentSupabaseUrl": "https://cxrcooaysmtlomihdzvh.supabase.co",
+  "contentSupabaseAnonKey": "sb_publishable_LVgGDq-Gwx1m7jOKcLq0vQ_XcGVkOAq",
+  "contentApiUrl": "https://cxrcooaysmtlomihdzvh.supabase.co/functions/v1/clever-responder"
 }

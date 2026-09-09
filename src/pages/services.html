@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+  {% set pageSeo = seo["pages-services"] %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>表演項目｜舞龍舞獅、祥獅獻瑞、戰鼓演出服務</title>
-  <meta name="description" content="臺灣南仙龍獅體育會位於台北，提供舞龍舞獅、祥獅獻瑞、雷鳴戰鼓、祥龍搶珠與民俗藝陣等表演項目，服務大台北及全台，適合開幕典禮、企業活動、春酒尾牙、廟會慶典與節慶活動。">
+  {% include "seo-meta.njk" %}
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://nansiengtaiwan.com/pages/services">
   <meta property="og:site_name" content="臺灣南仙龍獅體育會">
   <meta property="og:locale" content="zh_TW">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="表演項目｜舞龍舞獅、祥獅獻瑞、戰鼓演出服務">
-  <meta property="og:description" content="臺灣南仙龍獅體育會位於台北，提供舞龍舞獅、祥獅獻瑞、雷鳴戰鼓、祥龍搶珠與民俗藝陣等表演項目，服務大台北及全台，適合開幕典禮、企業活動、春酒尾牙、廟會慶典與節慶活動。">
   <meta property="og:url" content="https://nansiengtaiwan.com/pages/services">
-  <meta property="og:image" content="https://nansiengtaiwan.com/images/og-cover.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="表演項目｜舞龍舞獅、祥獅獻瑞、戰鼓演出服務">
-  <meta name="twitter:description" content="臺灣南仙龍獅體育會位於台北，提供舞龍舞獅、祥獅獻瑞、雷鳴戰鼓、祥龍搶珠與民俗藝陣等表演項目，服務大台北及全台，適合開幕典禮、企業活動、春酒尾牙、廟會慶典與節慶活動。">
-  <meta name="twitter:image" content="https://nansiengtaiwan.com/images/og-cover.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -474,8 +467,8 @@
         "@type": "WebPage",
         "@id": "https://nansiengtaiwan.com/pages/services#webpage",
         "url": "https://nansiengtaiwan.com/pages/services",
-        "name": "舞龍舞獅表演項目｜醒獅・舞龍・戰鼓演出",
-        "description": "南仙提供祥獅獻瑞、舞龍、雷鳴戰鼓、梅花樁獅、電音三太子與文武財神等演出，適合開幕典禮、廟會慶典、企業尾牙與節慶活動。",
+        "name": {{ pageSeo.title | jsonScript | safe }},
+        "description": {{ pageSeo.description | jsonScript | safe }},
         "inLanguage": "zh-Hant",
         "isPartOf": {
           "@id": "https://nansiengtaiwan.com/#website"
@@ -565,88 +558,88 @@
     <main id="main-content">
       <section class="page-hero service-page-hero">
         <div class="page-hero-inner reveal reveal-hero">
-          <h1 class="section-heading">{{ services.pageTitle }}</h1>
-          <p class="service-page-subtitle">{{ services.pageDescription }}</p>
+          <h1 class="section-heading">{{ services.pageTitle | escape }}</h1>
+          <p class="service-page-subtitle">{{ services.pageDescription | escape }}</p>
         </div>
       </section>
 
       <section class="section page-section-stack">
         <section class="performance-diary" aria-label="表演項目">
           <div class="performance-diary-list">
-            <article class="service-item" id="{{ services.items[0].id }}" data-image="{{ services.items[0].image1440 | replace('../', '') }}" data-alt="{{ services.items[0].alt }}">
-              <img class="service-item-photo" src="{{ services.items[0].image720 }}" srcset="{{ services.items[0].image720 }} 720w, {{ services.items[0].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[0].alt }}" width="{{ services.items[0].width }}" height="{{ services.items[0].height }}" loading="eager" fetchpriority="high" decoding="async">
+            <article class="service-item" id="{{ services.items[0].id }}" data-image="{{ services.items[0].image1440 | replace('../', '') }}" data-alt="{{ services.items[0].alt | escape }}">
+              <img class="service-item-photo" src="{{ services.items[0].image720 }}" srcset="{{ services.items[0].image720 }} 720w, {{ services.items[0].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[0].alt | escape }}" width="{{ services.items[0].width }}" height="{{ services.items[0].height }}" loading="eager" fetchpriority="high" decoding="async">
               <div class="service-item-body">
               <p class="service-item-step">{{ services.items[0].step }}</p>
-              <h3>{{ services.items[0].title }}</h3>
-              <p class="service-item-tags">{{ services.items[0].tags }}</p>
-              <p class="service-item-description">{{ services.items[0].description }}</p>
-              <a class="service-item-link learn-more" href="/pages/contact?service={{ services.items[0].id }}&amp;source=services-{{ services.items[0].id }}" data-mobile-label="洽詢此項目" aria-label="洽詢{{ services.items[0].title }}演出服務">洽詢此項目 ›</a>
+              <h3>{{ services.items[0].title | escape }}</h3>
+              <p class="service-item-tags">{{ services.items[0].tags | escape }}</p>
+              <p class="service-item-description">{{ services.items[0].description | escape }}</p>
+              <a class="service-item-link learn-more" href="/pages/contact?service={{ services.items[0].id }}&amp;source=services-{{ services.items[0].id }}" data-mobile-label="洽詢此項目" aria-label="洽詢{{ services.items[0].title | escape }}演出服務">洽詢此項目 ›</a>
               </div>
             </article>
 
-            <article class="service-item" id="{{ services.items[1].id }}" data-image="{{ services.items[1].image1440 | replace('../', '') }}" data-alt="{{ services.items[1].alt }}">
-              <img class="service-item-photo" src="{{ services.items[1].image720 }}" srcset="{{ services.items[1].image720 }} 720w, {{ services.items[1].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[1].alt }}" width="{{ services.items[1].width }}" height="{{ services.items[1].height }}" loading="lazy" decoding="async">
+            <article class="service-item" id="{{ services.items[1].id }}" data-image="{{ services.items[1].image1440 | replace('../', '') }}" data-alt="{{ services.items[1].alt | escape }}">
+              <img class="service-item-photo" src="{{ services.items[1].image720 }}" srcset="{{ services.items[1].image720 }} 720w, {{ services.items[1].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[1].alt | escape }}" width="{{ services.items[1].width }}" height="{{ services.items[1].height }}" loading="lazy" decoding="async">
               <div class="service-item-body">
               <p class="service-item-step">{{ services.items[1].step }}</p>
-              <h3>{{ services.items[1].title }}</h3>
-              <p class="service-item-tags">{{ services.items[1].tags }}</p>
-              <p class="service-item-description">{{ services.items[1].description }}</p>
-              <a class="service-item-link learn-more" href="/pages/contact?service={{ services.items[1].id }}&amp;source=services-{{ services.items[1].id }}" data-mobile-label="洽詢此項目" aria-label="洽詢{{ services.items[1].title }}演出服務">洽詢此項目 ›</a>
+              <h3>{{ services.items[1].title | escape }}</h3>
+              <p class="service-item-tags">{{ services.items[1].tags | escape }}</p>
+              <p class="service-item-description">{{ services.items[1].description | escape }}</p>
+              <a class="service-item-link learn-more" href="/pages/contact?service={{ services.items[1].id }}&amp;source=services-{{ services.items[1].id }}" data-mobile-label="洽詢此項目" aria-label="洽詢{{ services.items[1].title | escape }}演出服務">洽詢此項目 ›</a>
               </div>
             </article>
 
-            <article class="service-item" id="{{ services.items[2].id }}" data-image="{{ services.items[2].image1440 | replace('../', '') }}" data-alt="{{ services.items[2].alt }}">
-              <img class="service-item-photo" src="{{ services.items[2].image720 }}" srcset="{{ services.items[2].image720 }} 720w, {{ services.items[2].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[2].alt }}" width="{{ services.items[2].width }}" height="{{ services.items[2].height }}" loading="lazy" decoding="async">
+            <article class="service-item" id="{{ services.items[2].id }}" data-image="{{ services.items[2].image1440 | replace('../', '') }}" data-alt="{{ services.items[2].alt | escape }}">
+              <img class="service-item-photo" src="{{ services.items[2].image720 }}" srcset="{{ services.items[2].image720 }} 720w, {{ services.items[2].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[2].alt | escape }}" width="{{ services.items[2].width }}" height="{{ services.items[2].height }}" loading="lazy" decoding="async">
               <div class="service-item-body">
               <p class="service-item-step">{{ services.items[2].step }}</p>
-              <h3>{{ services.items[2].title }}</h3>
-              <p class="service-item-tags">{{ services.items[2].tags }}</p>
-              <p class="service-item-description">{{ services.items[2].description }}</p>
-              <a class="service-item-link learn-more" href="/pages/contact?service={{ services.items[2].id }}&amp;source=services-{{ services.items[2].id }}" data-mobile-label="洽詢此項目" aria-label="洽詢{{ services.items[2].title }}演出服務">洽詢此項目 ›</a>
+              <h3>{{ services.items[2].title | escape }}</h3>
+              <p class="service-item-tags">{{ services.items[2].tags | escape }}</p>
+              <p class="service-item-description">{{ services.items[2].description | escape }}</p>
+              <a class="service-item-link learn-more" href="/pages/contact?service={{ services.items[2].id }}&amp;source=services-{{ services.items[2].id }}" data-mobile-label="洽詢此項目" aria-label="洽詢{{ services.items[2].title | escape }}演出服務">洽詢此項目 ›</a>
               </div>
             </article>
 
-            <article class="service-item" id="{{ services.items[3].id }}" data-image="{{ services.items[3].image1440 | replace('../', '') }}" data-alt="{{ services.items[3].alt }}">
-              <img class="service-item-photo" src="{{ services.items[3].image720 }}" srcset="{{ services.items[3].image720 }} 720w, {{ services.items[3].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[3].alt }}" width="{{ services.items[3].width }}" height="{{ services.items[3].height }}" loading="lazy" decoding="async">
+            <article class="service-item" id="{{ services.items[3].id }}" data-image="{{ services.items[3].image1440 | replace('../', '') }}" data-alt="{{ services.items[3].alt | escape }}">
+              <img class="service-item-photo" src="{{ services.items[3].image720 }}" srcset="{{ services.items[3].image720 }} 720w, {{ services.items[3].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[3].alt | escape }}" width="{{ services.items[3].width }}" height="{{ services.items[3].height }}" loading="lazy" decoding="async">
               <div class="service-item-body">
               <p class="service-item-step">{{ services.items[3].step }}</p>
-              <h3>{{ services.items[3].title }}</h3>
-              <p class="service-item-tags">{{ services.items[3].tags }}</p>
-              <p class="service-item-description">{{ services.items[3].description }}</p>
-              <a class="service-item-link learn-more" href="/pages/contact?service={{ services.items[3].id }}&amp;source=services-{{ services.items[3].id }}" data-mobile-label="洽詢此項目" aria-label="洽詢{{ services.items[3].title }}演出服務">洽詢此項目 ›</a>
+              <h3>{{ services.items[3].title | escape }}</h3>
+              <p class="service-item-tags">{{ services.items[3].tags | escape }}</p>
+              <p class="service-item-description">{{ services.items[3].description | escape }}</p>
+              <a class="service-item-link learn-more" href="/pages/contact?service={{ services.items[3].id }}&amp;source=services-{{ services.items[3].id }}" data-mobile-label="洽詢此項目" aria-label="洽詢{{ services.items[3].title | escape }}演出服務">洽詢此項目 ›</a>
               </div>
             </article>
 
-            <article class="service-item" id="{{ services.items[4].id }}" data-image="{{ services.items[4].image1440 | replace('../', '') }}" data-alt="{{ services.items[4].alt }}">
-              <img class="service-item-photo" src="{{ services.items[4].image720 }}" srcset="{{ services.items[4].image720 }} 720w, {{ services.items[4].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[4].alt }}" width="{{ services.items[4].width }}" height="{{ services.items[4].height }}" loading="lazy" decoding="async">
+            <article class="service-item" id="{{ services.items[4].id }}" data-image="{{ services.items[4].image1440 | replace('../', '') }}" data-alt="{{ services.items[4].alt | escape }}">
+              <img class="service-item-photo" src="{{ services.items[4].image720 }}" srcset="{{ services.items[4].image720 }} 720w, {{ services.items[4].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[4].alt | escape }}" width="{{ services.items[4].width }}" height="{{ services.items[4].height }}" loading="lazy" decoding="async">
               <div class="service-item-body">
               <p class="service-item-step">{{ services.items[4].step }}</p>
-              <h3>{{ services.items[4].title }}</h3>
-              <p class="service-item-tags">{{ services.items[4].tags }}</p>
-              <p class="service-item-description">{{ services.items[4].description }}</p>
-              <a class="service-item-link learn-more" href="/pages/contact?service={{ services.items[4].id }}&amp;source=services-{{ services.items[4].id }}" data-mobile-label="洽詢此項目" aria-label="洽詢{{ services.items[4].title }}演出服務">洽詢此項目 ›</a>
+              <h3>{{ services.items[4].title | escape }}</h3>
+              <p class="service-item-tags">{{ services.items[4].tags | escape }}</p>
+              <p class="service-item-description">{{ services.items[4].description | escape }}</p>
+              <a class="service-item-link learn-more" href="/pages/contact?service={{ services.items[4].id }}&amp;source=services-{{ services.items[4].id }}" data-mobile-label="洽詢此項目" aria-label="洽詢{{ services.items[4].title | escape }}演出服務">洽詢此項目 ›</a>
               </div>
             </article>
 
-            <article class="service-item" id="{{ services.items[5].id }}" data-image="{{ services.items[5].image1440 | replace('../', '') }}" data-alt="{{ services.items[5].alt }}">
-              <img class="service-item-photo" src="{{ services.items[5].image720 }}" srcset="{{ services.items[5].image720 }} 720w, {{ services.items[5].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[5].alt }}" width="{{ services.items[5].width }}" height="{{ services.items[5].height }}" loading="lazy" decoding="async">
+            <article class="service-item" id="{{ services.items[5].id }}" data-image="{{ services.items[5].image1440 | replace('../', '') }}" data-alt="{{ services.items[5].alt | escape }}">
+              <img class="service-item-photo" src="{{ services.items[5].image720 }}" srcset="{{ services.items[5].image720 }} 720w, {{ services.items[5].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[5].alt | escape }}" width="{{ services.items[5].width }}" height="{{ services.items[5].height }}" loading="lazy" decoding="async">
               <div class="service-item-body">
               <p class="service-item-step">{{ services.items[5].step }}</p>
-              <h3>{{ services.items[5].title }}</h3>
-              <p class="service-item-tags">{{ services.items[5].tags }}</p>
-              <p class="service-item-description">{{ services.items[5].description }}</p>
-              <a class="service-item-link learn-more" href="/pages/contact?service={{ services.items[5].id }}&amp;source=services-{{ services.items[5].id }}" data-mobile-label="洽詢此項目" aria-label="洽詢{{ services.items[5].title }}演出服務">洽詢此項目 ›</a>
+              <h3>{{ services.items[5].title | escape }}</h3>
+              <p class="service-item-tags">{{ services.items[5].tags | escape }}</p>
+              <p class="service-item-description">{{ services.items[5].description | escape }}</p>
+              <a class="service-item-link learn-more" href="/pages/contact?service={{ services.items[5].id }}&amp;source=services-{{ services.items[5].id }}" data-mobile-label="洽詢此項目" aria-label="洽詢{{ services.items[5].title | escape }}演出服務">洽詢此項目 ›</a>
               </div>
             </article>
 
-            <article class="service-item" id="{{ services.items[6].id }}" data-image="{{ services.items[6].image1440 | replace('../', '') }}" data-alt="{{ services.items[6].alt }}">
-              <img class="service-item-photo" src="{{ services.items[6].image720 }}" srcset="{{ services.items[6].image720 }} 720w, {{ services.items[6].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[6].alt }}" width="{{ services.items[6].width }}" height="{{ services.items[6].height }}" loading="lazy" decoding="async">
+            <article class="service-item" id="{{ services.items[6].id }}" data-image="{{ services.items[6].image1440 | replace('../', '') }}" data-alt="{{ services.items[6].alt | escape }}">
+              <img class="service-item-photo" src="{{ services.items[6].image720 }}" srcset="{{ services.items[6].image720 }} 720w, {{ services.items[6].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[6].alt | escape }}" width="{{ services.items[6].width }}" height="{{ services.items[6].height }}" loading="lazy" decoding="async">
               <div class="service-item-body">
               <p class="service-item-step">{{ services.items[6].step }}</p>
-              <h3>{{ services.items[6].title }}</h3>
-              <p class="service-item-tags">{{ services.items[6].tags }}</p>
-              <p class="service-item-description">{{ services.items[6].description }}</p>
-              <a class="service-item-link learn-more" href="/pages/contact?service={{ services.items[6].id }}&amp;source=services-{{ services.items[6].id }}" data-mobile-label="洽詢此項目" aria-label="洽詢{{ services.items[6].title }}演出服務">洽詢此項目 ›</a>
+              <h3>{{ services.items[6].title | escape }}</h3>
+              <p class="service-item-tags">{{ services.items[6].tags | escape }}</p>
+              <p class="service-item-description">{{ services.items[6].description | escape }}</p>
+              <a class="service-item-link learn-more" href="/pages/contact?service={{ services.items[6].id }}&amp;source=services-{{ services.items[6].id }}" data-mobile-label="洽詢此項目" aria-label="洽詢{{ services.items[6].title | escape }}演出服務">洽詢此項目 ›</a>
               </div>
             </article>
           </div>

@@ -19,6 +19,27 @@ media_folder: images/uploads
 public_folder: /images/uploads
 
 collections:
+  - name: seo
+    label: SEO 搜尋與分享設定
+    label_singular: 頁面 SEO
+    description: '管理既有頁面的搜尋標題、摘要與社群分享。正文請到「到達頁文案」、「服務項目」、「常見問題」或「演出相簿」修改。'
+    folder: src/_data/seo
+    extension: json
+    format: json
+    create: false
+    delete: false
+    identifier_field: label
+    summary: '{{label}} — {{path}}'
+    preview_path: '{{path}}'
+    fields:
+      - { label: 頁面名稱, name: label, widget: hidden }
+      - { label: 頁面網址, name: path, widget: hidden }
+      - { label: 搜尋標題 Title, name: title, widget: string, required: true, pattern: ['.*\S.*', '標題不可只有空白'], hint: '清楚描述本頁主題。此欄也會同步更新頁面結構化資料的名稱。' }
+      - { label: 搜尋摘要 Description, name: description, widget: text, required: true, pattern: ['[\s\S]*\S[\s\S]*', '摘要不可只有空白'], hint: '用自然完整的句子介紹本頁內容與服務，避免堆疊關鍵字。' }
+      - { label: 社群分享標題, name: shareTitle, widget: string, required: false, hint: '留白時使用搜尋標題；套用到 Open Graph 與 Twitter 分享卡片。' }
+      - { label: 社群分享說明, name: shareDescription, widget: text, required: false, hint: '留白時使用搜尋摘要。' }
+      - { label: 社群分享圖片, name: image, widget: image, required: true, hint: '選擇站內圖片或上傳新圖片；也可使用 HTTPS 圖片網址。' }
+
   - name: settings
     label: 基本資料
     files:

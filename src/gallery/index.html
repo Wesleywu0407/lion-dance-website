@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+  {% set pageSeo = seo["gallery-index"] %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>活動案例｜舞龍舞獅表演、開幕活動與廟會慶典紀錄</title>
-  <meta name="description" content="查看臺灣南仙龍獅體育會（台北）活動案例，涵蓋大台北及全台，包含企業開幕、廟會慶典、春酒尾牙、百貨春節、校園文化活動與大型舞龍舞獅表演紀錄。">
+  {% include "seo-meta.njk" %}
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://nansiengtaiwan.com/gallery/">
   <meta property="og:site_name" content="臺灣南仙龍獅體育會">
   <meta property="og:locale" content="zh_TW">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="活動案例｜舞龍舞獅表演、開幕活動與廟會慶典紀錄">
-  <meta property="og:description" content="查看臺灣南仙龍獅體育會（台北）活動案例，涵蓋大台北及全台，包含企業開幕、廟會慶典、春酒尾牙、百貨春節、校園文化活動與大型舞龍舞獅表演紀錄。">
   <meta property="og:url" content="https://nansiengtaiwan.com/gallery/">
-  <meta property="og:image" content="https://nansiengtaiwan.com/images/og-cover.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="活動案例｜舞龍舞獅表演、開幕活動與廟會慶典紀錄">
-  <meta name="twitter:description" content="查看臺灣南仙龍獅體育會（台北）活動案例，涵蓋大台北及全台，包含企業開幕、廟會慶典、春酒尾牙、百貨春節、校園文化活動與大型舞龍舞獅表演紀錄。">
-  <meta name="twitter:image" content="https://nansiengtaiwan.com/images/og-cover.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -284,8 +277,8 @@
       "@type": "CollectionPage",
       "@id": "https://nansiengtaiwan.com/gallery/#webpage",
       "url": "https://nansiengtaiwan.com/gallery/",
-      "name": "活動案例｜舞龍舞獅表演、開幕活動與廟會慶典紀錄",
-      "description": "查看臺灣南仙龍獅體育會（台北）活動案例，涵蓋大台北及全台，包含企業開幕、廟會慶典、春酒尾牙、百貨春節、校園文化活動與大型舞龍舞獅表演紀錄。",
+      "name": {{ pageSeo.title | jsonScript | safe }},
+      "description": {{ pageSeo.description | jsonScript | safe }},
       "inLanguage": "zh-Hant",
       "isPartOf": {
         "@id": "https://nansiengtaiwan.com/#website"

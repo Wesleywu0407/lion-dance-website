@@ -1,0 +1,28 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import { entries } from '../supabase/functions/_shared/content-schema.mjs';
+const escape=value=>String(value).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+let count=0;
+for(const entry of entries.filter(e=>e.kind==='seo')){
+  const data=JSON.parse(fs.readFileSync(entry.path,'utf8'));
+  const file=`_site${entry.url.endsWith('/')?entry.url+'index':entry.url}.html`;
+  const html=fs.readFileSync(file,'utf8');
+  assert.equal((html.match(/<title>/g)||[]).length,1,entry.id);
+  assert.ok(html.includes(`<title>${escape(data.title)}</title>`),`${entry.id}: title`);
+  for(const [attribute,key,value] of [['name','description',data.description],['property','og:title',data.shareTitle||data.title],['property','og:description',data.shareDescription||data.description],['name','twitter:title',data.shareTitle||data.title],['name','twitter:description',data.shareDescription||data.description]]){
+    assert.ok(html.includes(`<meta ${attribute}="${key}" content="${escape(value)}">`),`${entry.id}: ${key}`);
+  }
+  for(const [,json] of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)){
+    const graph=JSON.parse(json);const nodes=graph['@graph']||[graph];
+    for(const node of nodes.filter(n=>['WebPage','ContactPage','AboutPage','CollectionPage'].includes(n['@type']))){
+      assert.equal(node.name,data.title,`${entry.id}: schema title`);assert.equal(node.description,data.description,`${entry.id}: schema description`);
+    }
+  }
+  count++;
+}
+for(const file of ['_site/admin/index.html','_site/admin/seo.html','_site/admin/technical.html']){
+  const html=fs.readFileSync(file,'utf8');
+  assert.match(html,/name="robots" content="noindex/);
+  assert.equal(html.includes('googletagmanager.com'),false,'No advertising tags on auth/admin pages');
+}
+console.log(`SEO content check passed: ${count} pages, sharing tags, page schemas and noindex admin pages.`);

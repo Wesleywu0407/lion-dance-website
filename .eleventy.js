@@ -37,6 +37,19 @@ module.exports = function (eleventyConfig) {
     return JSON.stringify(value, null, spaces);
   });
 
+  // JSON inside script elements must not allow CMS copy to close the element.
+  eleventyConfig.addFilter('jsonScript', function (value) {
+    return JSON.stringify(value).replace(/</g, '\\u003c').replace(/>/g, '\\u003e').replace(/&/g, '\\u0026');
+  });
+
+  eleventyConfig.addFilter('seoImageUrl', function (value) {
+    const siteUrl = require('./src/_data/site.json').siteUrl;
+    if (typeof value !== 'string' || !/^(\/images\/|https:\/\/)/.test(value)) {
+      throw new Error('SEO sharing image must be an /images/ path or an HTTPS URL.');
+    }
+    return new URL(value, siteUrl).href;
+  });
+
   eleventyConfig.addFilter('urlencodePath', function (value) {
     return String(value)
       .split('/')
@@ -59,7 +72,7 @@ module.exports = function (eleventyConfig) {
           }
         };
       })
-    }, null, 2);
+    }, null, 2).replace(/</g, '\\u003c').replace(/>/g, '\\u003e').replace(/&/g, '\\u0026');
   });
 
   function isUploadedImage(value) {
@@ -110,6 +123,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addTransform('googleAds', function (content) {
     const outputPath = this.page && this.page.outputPath;
     if (!outputPath || !String(outputPath).endsWith('.html')) return content;
+    // Auth callback pages can contain session tokens; keep advertising off admin surfaces.
+    if (/(?:^|\/)(?:admin|crm)\//.test(String(outputPath))) return content;
     if (content.includes(GOOGLE_ADS_ID)) return content;
     return content.replace(/<\/head>/i, function (match) {
       return `  ${GOOGLE_ADS_SNIPPET}\n${match}`;

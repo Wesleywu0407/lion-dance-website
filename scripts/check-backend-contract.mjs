@@ -8,6 +8,10 @@ const requiredFiles = [
   'supabase/functions/events/index.ts',
   'supabase/functions/admin-api/index.ts',
   'supabase/functions/notification-worker/index.ts',
+  'supabase/functions/content-api/index.ts',
+  'supabase/migrations/202609090001_content_editors.sql',
+  '_site/admin/editor.js',
+  '_site/admin/editor.css',
   '_site/backend-config.js',
   '_site/crm/index.html',
   '_site/crm/crm.css',
@@ -27,7 +31,7 @@ if (publicConfig.includes('&quot;')) {
   process.exit(1);
 }
 new Function(publicConfig);
-for (const forbidden of ['SERVICE_ROLE', 'service_role', 'TURNSTILE_SECRET', 'DATABASE_URL']) {
+for (const forbidden of ['SERVICE_ROLE', 'service_role', 'TURNSTILE_SECRET', 'DATABASE_URL', 'CONTENT_GITHUB_TOKEN']) {
   if (publicConfig.includes(forbidden)) {
     console.error(`Public backend config contains forbidden server secret marker: ${forbidden}`);
     process.exit(1);

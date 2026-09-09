@@ -4,35 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <title>南仙網站內容管理</title>
-  <style>
-    .admin-image-guide-link {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 2147483647;
-      display: inline-flex;
-      align-items: center;
-      min-height: 44px;
-      padding: 0 18px;
-      border-radius: 999px;
-      background: #8f3a2f;
-      color: #fff;
-      font: 700 15px/1 system-ui, sans-serif;
-      text-decoration: none;
-      box-shadow: 0 8px 24px rgba(48, 25, 20, 0.28);
-    }
-
-    .admin-image-guide-link:hover,
-    .admin-image-guide-link:focus-visible {
-      background: #6f2c24;
-      outline: 3px solid rgba(143, 58, 47, 0.25);
-      outline-offset: 3px;
-    }
-  </style>
+  <meta name="referrer" content="no-referrer">
+  <title>南仙文案工作室</title>
+  <link rel="stylesheet" href="/admin/editor.css?v=20260909-content2">
 </head>
 <body>
-  <a class="admin-image-guide-link" href="image-guide.html" target="_blank" rel="noreferrer">圖片操作指南</a>
-  <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+  <header class="studio-header"><a href="/admin/" class="brand"><span class="brand-mark">南</span> 南仙 <span class="brand-sub">文案工作室</span></a><nav aria-label="後台導覽"><a href="/admin/seo.html">SEO 一覽</a><a href="/" target="_blank" rel="noopener">查看網站 ↗</a><button id="logout" type="button" hidden>登出</button></nav></header>
+  <main>
+    <section id="welcome" class="welcome">
+      <div class="welcome-copy"><p class="eyebrow">NAN SIENG / CONTENT STUDIO</p><h1>好文案，<br>從這裡開始。</h1><p>更新網站介紹、調整搜尋摘要，<br>讓每場精彩的演出，被更多人看見。</p><div class="welcome-tags"><span>搜尋與分享</span><span>頁面文案</span><span>常見問題</span></div></div>
+      <div class="login-card"><span class="small-label">歡迎回來</span><h2>Email 登入</h2><p>使用已授權的 Email 與後台密碼登入。<br>不需要 GitHub 帳號。</p><form id="login-form"><label for="email">你的 Email</label><input type="email" id="email" autocomplete="email" placeholder="name@gmail.com" required><label for="password" class="password-label">後台密碼</label><input type="password" id="password" autocomplete="current-password" required><p class="password-help">使用建立後台帳號時設定的密碼，不是 Gmail 密碼。忘記密碼請聯絡網站管理者。</p><button type="submit" class="primary">登入文案後台 →</button></form><p id="login-status" role="status" aria-live="polite"></p><div id="setup" class="setup" hidden>登入服務尚未啟用。管理者完成設定後，就能使用 Email 登入。</div><a class="preview-link" href="/admin/?preview=1">先看看文案編輯介面 ↗</a></div>
+    </section>
+    <section id="workspace" class="workspace" hidden>
+      <aside class="sidebar"><p class="eyebrow">內容資料庫</p><label class="sr-only" for="entry-search">搜尋頁面</label><input id="entry-search" type="search" placeholder="搜尋頁面…"><div id="entry-list"></div></aside>
+      <div class="editor-area"><div id="preview-banner" class="preview-banner" hidden>操作預覽 · 可試填文案，修改不會儲存或發布。<a href="/admin/">返回登入</a></div><div class="editor-heading"><div><p class="eyebrow" id="entry-kind">開始編輯</p><h1 id="entry-title">選擇一個頁面</h1><p id="entry-path" class="muted"></p></div><a id="view-page" target="_blank" rel="noopener" hidden>查看網站 ↗</a></div><p id="editor-status" role="status" aria-live="polite" tabindex="-1"></p><form id="editor-form" hidden><div class="edit-grid"><div id="fields"></div><aside class="live-preview"><p class="eyebrow">文案預覽</p><p id="preview-url" class="preview-url"></p><h2 id="preview-title"></h2><p id="preview-description"></p><div id="preview-body"></div><p class="preview-note">搜尋樣式與內容示意；實際版面請在發布完成後查看網站。</p></aside></div><div class="actions"><span id="dirty-state">尚未修改</span><button id="reload" type="button">重新載入</button><button id="review" class="primary" type="submit">檢查並發布 →</button></div></form></div>
+    </section>
+  </main>
+  <dialog id="publish-dialog"><form method="dialog"><p class="eyebrow">發布前確認</p><h2>準備更新這份文案？</h2><p id="publish-summary"></p><p>文案會提交至網站，完成部署後公開。請確認名稱、日期與服務說明正確。</p><div class="dialog-actions"><button value="cancel">繼續編輯</button><button id="confirm-publish" type="button" class="primary">確認發布</button></div></form></dialog>
+  <script id="preview-data" type="application/json">{{ contentCatalog | jsonScript | safe }}</script>
+  <script src="/backend-config.js?v=20260909-content2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.js" defer></script>
+  <script src="/admin/editor.js?v=20260909-content2" defer></script>
 </body>
 </html>

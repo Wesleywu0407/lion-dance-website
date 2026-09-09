@@ -11,3 +11,12 @@ verify_jwt = true
 
 [functions.notification-worker]
 verify_jwt = true
+
+# The handler verifies the Auth user and active content_editors membership itself.
+[functions.content-api]
+verify_jwt = false
+
+# Existing production slug selected in the Supabase dashboard.
+[functions.clever-responder]
+entrypoint = "./functions/content-api/index.ts"
+verify_jwt = false

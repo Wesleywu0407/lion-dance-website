@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+  {% set pageSeo = seo["home"] %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>臺灣南仙龍獅體育會｜專業舞龍舞獅表演團隊</title>
-  <meta name="description" content="臺灣南仙龍獅體育會以台北為據點，服務大台北及全台，提供專業舞龍舞獅表演、祥獅獻瑞、戰鼓演出、開幕活動、企業活動、春酒尾牙與廟會慶典等文化演出服務。">
+  {% include "seo-meta.njk" %}
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://nansiengtaiwan.com/">
   <meta property="og:site_name" content="臺灣南仙龍獅體育會">
   <meta property="og:locale" content="zh_TW">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="臺灣南仙龍獅體育會｜專業舞龍舞獅表演團隊">
-  <meta property="og:description" content="臺灣南仙龍獅體育會以台北為據點，服務大台北及全台，提供專業舞龍舞獅表演、祥獅獻瑞、戰鼓演出、開幕活動、企業活動、春酒尾牙與廟會慶典等文化演出服務。">
   <meta property="og:url" content="https://nansiengtaiwan.com/">
-  <meta property="og:image" content="https://nansiengtaiwan.com/images/og-cover.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="臺灣南仙龍獅體育會｜專業舞龍舞獅表演團隊">
-  <meta name="twitter:description" content="臺灣南仙龍獅體育會以台北為據點，服務大台北及全台，提供專業舞龍舞獅表演、祥獅獻瑞、戰鼓演出、開幕活動、企業活動、春酒尾牙與廟會慶典等文化演出服務。">
-  <meta name="twitter:image" content="https://nansiengtaiwan.com/images/og-cover.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -456,8 +449,8 @@
         "@type": "WebPage",
         "@id": "https://nansiengtaiwan.com/#webpage",
         "url": "https://nansiengtaiwan.com/",
-        "name": "臺灣南仙龍獅體育會",
-        "description": "臺灣南仙龍獅體育會是台灣專業龍獅表演團隊，提供舞龍舞獅、醒獅表演、祥獅獻瑞、戰鼓演出與傳統民俗演出，適合開幕活動、尾牙春酒、廟會慶典與百貨春節活動。",
+        "name": {{ pageSeo.title | jsonScript | safe }},
+        "description": {{ pageSeo.description | jsonScript | safe }},
         "inLanguage": "zh-Hant",
         "isPartOf": {
           "@id": "https://nansiengtaiwan.com/#website"
