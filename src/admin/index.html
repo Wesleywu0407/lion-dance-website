@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex, nofollow">
   <meta name="referrer" content="no-referrer">
   <title>南仙文案工作室</title>
-  <link rel="stylesheet" href="/admin/editor.css?v=20260909-content2">
+  <link rel="stylesheet" href="/admin/editor.css?v=20260911-navigation">
 </head>
 <body>
   <header class="studio-header"><a href="/admin/" class="brand"><span class="brand-mark">南</span> 南仙 <span class="brand-sub">文案工作室</span></a><nav aria-label="後台導覽"><a href="/admin/seo.html">SEO 一覽</a><a href="/" target="_blank" rel="noopener">查看網站 ↗</a><button id="logout" type="button" hidden>登出</button></nav></header>
@@ -16,14 +16,28 @@
       <div class="login-card"><span class="small-label">歡迎回來</span><h2>Email 登入</h2><p>使用已授權的 Email 與後台密碼登入。<br>不需要 GitHub 帳號。</p><form id="login-form"><label for="email">你的 Email</label><input type="email" id="email" autocomplete="email" placeholder="name@gmail.com" required><label for="password" class="password-label">後台密碼</label><input type="password" id="password" autocomplete="current-password" required><p class="password-help">使用建立後台帳號時設定的密碼，不是 Gmail 密碼。忘記密碼請聯絡網站管理者。</p><button type="submit" class="primary">登入文案後台 →</button></form><p id="login-status" role="status" aria-live="polite"></p><div id="setup" class="setup" hidden>登入服務尚未啟用。管理者完成設定後，就能使用 Email 登入。</div><a class="preview-link" href="/admin/?preview=1">先看看文案編輯介面 ↗</a></div>
     </section>
     <section id="workspace" class="workspace" hidden>
-      <aside class="sidebar"><p class="eyebrow">內容資料庫</p><label class="sr-only" for="entry-search">搜尋頁面</label><input id="entry-search" type="search" placeholder="搜尋頁面…"><div id="entry-list"></div></aside>
-      <div class="editor-area"><div id="preview-banner" class="preview-banner" hidden>操作預覽 · 可試填文案，修改不會儲存或發布。<a href="/admin/">返回登入</a></div><div class="editor-heading"><div><p class="eyebrow" id="entry-kind">開始編輯</p><h1 id="entry-title">選擇一個頁面</h1><p id="entry-path" class="muted"></p></div><a id="view-page" target="_blank" rel="noopener" hidden>查看網站 ↗</a></div><p id="editor-status" role="status" aria-live="polite" tabindex="-1"></p><form id="editor-form" hidden><div class="edit-grid"><div id="fields"></div><aside class="live-preview"><p class="eyebrow">文案預覽</p><p id="preview-url" class="preview-url"></p><h2 id="preview-title"></h2><p id="preview-description"></p><div id="preview-body"></div><p class="preview-note">搜尋樣式與內容示意；實際版面請在發布完成後查看網站。</p></aside></div><div class="actions"><span id="dirty-state">尚未修改</span><button id="reload" type="button">重新載入</button><button id="review" class="primary" type="submit">檢查並發布 →</button></div></form></div>
+      <aside class="sidebar">
+        <div class="sidebar-search"><label for="entry-search">找頁面或文字</label><div class="search-control"><input id="entry-search" type="search" placeholder="首頁、舞獅、報價…" autocomplete="off" aria-controls="entry-list"><button id="clear-search" type="button" aria-label="清除搜尋" title="清除搜尋" hidden>×</button></div><p id="search-count" role="status" aria-live="polite"></p></div>
+        <nav id="entry-list" aria-label="網站頁面與搜尋結果"></nav>
+      </aside>
+      <div class="editor-area">
+        <div id="preview-banner" class="preview-banner" hidden>操作預覽 · 可試填文案，修改不會儲存或發布。<a href="/admin/">返回登入</a></div>
+        <div class="editor-heading"><div><p class="eyebrow" id="entry-kind">開始編輯</p><h1 id="entry-title">選擇一個頁面</h1><p id="entry-path" class="muted"></p></div><a id="view-page" target="_blank" rel="noopener" hidden>查看網站 ↗</a></div>
+        <div id="entry-sections" class="entry-sections" role="group" aria-label="此頁內容區塊"></div>
+        <p id="scope-note" class="scope-note" hidden>此頁目前開放修改 Google 搜尋與社群分享資訊；網站內文尚未開放編輯。</p>
+        <p id="editor-status" role="status" aria-live="polite" tabindex="-1"></p>
+        <form id="editor-form" hidden>
+          <div class="field-toolbar"><label for="field-jump">跳至段落</label><select id="field-jump"></select></div>
+          <div class="edit-grid"><div id="fields"></div><aside class="live-preview"><p class="eyebrow">文案預覽</p><p id="preview-url" class="preview-url"></p><h2 id="preview-title"></h2><p id="preview-description"></p><div id="preview-body"></div><p class="preview-note">搜尋樣式與內容示意；實際版面請在發布完成後查看網站。</p></aside></div>
+          <div class="actions"><span id="dirty-state">尚未修改</span><button id="back-to-search" type="button">返回搜尋</button><button id="reload" type="button">重新載入</button><button id="review" class="primary" type="submit">檢查並發布 →</button></div>
+        </form>
+      </div>
     </section>
   </main>
   <dialog id="publish-dialog"><form method="dialog"><p class="eyebrow">發布前確認</p><h2>準備更新這份文案？</h2><p id="publish-summary"></p><p>文案會提交至網站，完成部署後公開。請確認名稱、日期與服務說明正確。</p><div class="dialog-actions"><button value="cancel">繼續編輯</button><button id="confirm-publish" type="button" class="primary">確認發布</button></div></form></dialog>
   <script id="preview-data" type="application/json">{{ contentCatalog | jsonScript | safe }}</script>
   <script src="/backend-config.js?v=20260909-content2"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.js" defer></script>
-  <script src="/admin/editor.js?v=20260909-content2" defer></script>
+  <script src="/admin/editor.js?v=20260911-navigation" type="module"></script>
 </body>
 </html>

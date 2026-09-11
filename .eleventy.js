@@ -29,6 +29,7 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy({ [source]: source });
   });
   eleventyConfig.addPassthroughCopy({ 'src/admin/config.yml': 'admin/config.yml' });
+  eleventyConfig.addPassthroughCopy({ 'src/admin/content-navigation.mjs': 'admin/content-navigation.js' });
   if (fsSync.existsSync('.cache/image-pipeline')) {
     eleventyConfig.addPassthroughCopy({ '.cache/image-pipeline': 'images/generated' });
   }

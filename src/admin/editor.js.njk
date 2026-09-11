@@ -2,12 +2,15 @@
 permalink: admin/editor.js
 eleventyExcludeFromCollections: true
 ---
+import { sectionLabels, pagesFor, searchableFields, searchEntries, excerpt } from './content-navigation.js?v=20260911';
+
 (() => {
   const $ = selector => document.querySelector(selector);
   const config = window.NANSIEN_BACKEND_CONFIG || {};
   const demo = new URLSearchParams(location.search).get('preview') === '1';
   const catalog = JSON.parse($('#preview-data').textContent);
-  const labels = {seo:'搜尋與分享',landing:'到達頁文案',faq:'常見問題',services:'服務介紹',pricing:'價格說明'};
+  const labels = sectionLabels;
+  const records = new Map(catalog.map(entry => [entry.id, entry]));
   let client, entries = [], current, dirty = false, busy = false, loadVersion = 0;
   const status = (message, error = false) => { $('#editor-status').textContent=message; $('#editor-status').classList.toggle('error',error); };
   const markDirty = value => { dirty=value; $('#dirty-state').textContent=value ? '有尚未發布的修改' : '尚未修改'; };
@@ -23,22 +26,74 @@ eleventyExcludeFromCollections: true
     return data;
   };
   function renderList() {
-    const query=$('#entry-search').value.trim().toLocaleLowerCase();
+    const query=$('#entry-search').value.trim();
     const root=$('#entry-list'); root.replaceChildren();
-    for (const [kind,label] of Object.entries(labels)) {
-      const matches=entries.filter(entry=>entry.kind===kind && `${entry.label} ${entry.url}`.toLocaleLowerCase().includes(query));
-      if (!matches.length) continue;
-      const heading=document.createElement('h2'); heading.textContent=label; root.append(heading);
-      for (const entry of matches) {
-        const button=document.createElement('button'); button.type='button'; button.className='entry-button'; button.textContent=entry.label;
-        button.setAttribute('aria-current',String(current?.entry.id===entry.id));
-        button.addEventListener('click',()=>loadEntry(entry.id)); root.append(button);
+    $('#clear-search').hidden=!query;
+    if (query) {
+      const results=searchEntries(entries,records,query);
+      $('#search-count').textContent=`找到 ${results.length} 份文案`;
+      for (const {entry,matches} of results) {
+        const group=document.createElement('section'); group.className='search-result';
+        const title=document.createElement('button'); title.type='button'; title.className='entry-button';
+        title.textContent=`${pageFor(entry).label} · ${labels[entry.kind]}`;
+        title.setAttribute('aria-current',String(current?.entry.id===entry.id));
+        title.addEventListener('click',()=>openResult(entry.id,matches[0]?.path)); group.append(title);
+        for (const match of matches) {
+          const button=document.createElement('button'); button.type='button'; button.className='match-button';
+          const label=document.createElement('strong'); label.textContent=match.label;
+          const text=document.createElement('span'); text.textContent=excerpt(match.value,query);
+          button.append(label,text);button.addEventListener('click',()=>openResult(entry.id,match.path));group.append(button);
+        }
+        root.append(group);
+      }
+      if (!results.length) {const empty=document.createElement('p');empty.className='empty-results';empty.textContent='沒有符合的可編輯文案';root.append(empty);}
+      return;
+    }
+    const pages=pagesFor(entries);
+    $('#search-count').textContent=`${pages.length} 個頁面`;
+    for (const group of ['主要頁面','活動與價格專頁','活動案例']) {
+      const heading=document.createElement('h2'); heading.textContent=group; root.append(heading);
+      for (const page of pages.filter(page=>page.group===group)) {
+        const button=document.createElement('button'); button.type='button'; button.className='entry-button page-button';
+        const name=document.createElement('span');name.textContent=page.label;
+        const meta=document.createElement('small');meta.textContent=page.entries.length===1&&page.entries[0].kind==='seo'?'搜尋與分享':`${page.entries.length} 個內容區塊`;
+        button.append(name,meta);button.setAttribute('aria-current',String(current?.entry.url===page.url));
+        button.addEventListener('click',()=>{if(current?.entry.url!==page.url)openResult(page.entries[0].id);});root.append(button);
       }
     }
-    if (!root.children.length) root.textContent='找不到頁面，請換個關鍵字。';
+  }
+  function pageFor(entry) { return pagesFor(entries).find(page=>page.url===entry.url); }
+  function renderSections() {
+    const page=pageFor(current.entry),root=$('#entry-sections');root.replaceChildren();
+    for(const entry of page.entries) {
+      const button=document.createElement('button');button.type='button';button.textContent=labels[entry.kind];
+      button.setAttribute('aria-pressed',String(entry.id===current.entry.id));
+      button.addEventListener('click',()=>{if(entry.id!==current.entry.id)loadEntry(entry.id);});root.append(button);
+    }
+    $('#entry-title').textContent=page.label;
+    $('#entry-kind').textContent=page.group;
+    $('#scope-note').hidden=page.entries.some(entry=>entry.kind!=='seo');
+  }
+  function jumpToField(path) {
+    const input=Array.from($('#fields').querySelectorAll('[data-field-path]')).find(el=>el.dataset.fieldPath===JSON.stringify(path));
+    if (!input) return status('這個段落已變更，請搜尋新的文字。',true);
+    input.scrollIntoView({block:'center',behavior:'auto'});input.focus({preventScroll:true});
+    input.closest('.field').classList.remove('located');void input.offsetWidth;input.closest('.field').classList.add('located');
+  }
+  async function openResult(id,path) {
+    if(busy)return;
+    if(current?.entry.id!==id && !await loadEntry(id))return;
+    if(path)jumpToField(path);
+    else $('#entry-title').scrollIntoView({block:'start',behavior:'auto'});
+  }
+  function renderFieldJump() {
+    const root=$('#field-jump');root.replaceChildren(new Option('選擇段落或欄位…',''));
+    for(const field of searchableFields(current.fields,readFields(current.fields,$('#fields')))) {
+      root.append(new Option(`${field.label} · ${field.value.slice(0,24)}`,JSON.stringify(field.path)));
+    }
   }
   let fieldCounter=0;
-  function renderFields(fields,values,target) {
+  function renderFields(fields,values,target,prefix=[]) {
     target.replaceChildren();
     for (const field of fields) {
       const box=document.createElement(field.type==='list'?'fieldset':'div'); box.className='field'; box.dataset.field=field.name;
@@ -47,28 +102,36 @@ eleventyExcludeFromCollections: true
         const list=document.createElement('div'); list.dataset.list=''; box.append(list);
         const addItem = value => {
           const item=document.createElement('section'); item.className='list-item';
-          const inner=document.createElement('div'); inner.dataset.itemFields=''; renderFields(field.fields,value,inner); item.append(inner);
+          const heading=document.createElement('h3');heading.textContent=`${list.children.length+1}. ${value.title || value.question || '新項目'}`;item.append(heading);
+          const inner=document.createElement('div'); inner.dataset.itemFields=''; renderFields(field.fields,value,inner,[...prefix,field.name,list.children.length]); item.append(inner);
           if (!field.fixed) {
             const remove=document.createElement('button'); remove.type='button'; remove.textContent='移除此項';
-            remove.addEventListener('click',()=>{ if (list.children.length<=1) return status('請至少保留一個項目。',true); item.remove(); markDirty(true); preview(); }); item.append(remove);
+            remove.addEventListener('click',()=>{ if (list.children.length<=1) return status('請至少保留一個項目。',true); item.remove(); reindexFields();markDirty(true); preview(); }); item.append(remove);
           }
           list.append(item);
         };
         values[field.name].forEach(addItem);
         if (!field.fixed) {
           const add=document.createElement('button'); add.type='button'; add.textContent='＋ 新增一項';
-          add.addEventListener('click',()=>{ if(list.children.length>=field.maxItems)return; addItem(Object.fromEntries(field.fields.map(f=>[f.name,'']))); markDirty(true); preview(); }); box.append(add);
+          add.addEventListener('click',()=>{ if(list.children.length>=field.maxItems)return; addItem(Object.fromEntries(field.fields.map(f=>[f.name,'']))); reindexFields();markDirty(true); preview(); }); box.append(add);
         }
       } else {
         const id=`content-field-${++fieldCounter}`;
         const label=document.createElement('label'); label.htmlFor=id; label.textContent=field.label;
         const input=document.createElement(field.multiline?'textarea':'input'); input.id=id; input.value=values[field.name] || ''; input.required=!field.optional; input.maxLength=field.max;
+        input.dataset.fieldPath=JSON.stringify([...prefix,field.name]);
+        input.addEventListener('change',renderFieldJump);
         const count=document.createElement('small'); count.textContent=`${input.value.length} / ${field.max}`;
         input.addEventListener('input',()=>{ count.textContent=`${input.value.length} / ${field.max}`; markDirty(true); preview(); });
         box.append(label,input,count);
       }
       target.append(box);
     }
+  }
+  function reindexFields() {
+    const fields=searchableFields(current.fields,readFields(current.fields,$('#fields')));
+    $('#fields').querySelectorAll('[data-field-path]').forEach((input,index)=>input.dataset.fieldPath=JSON.stringify(fields[index].path));
+    renderFieldJump();
   }
   function readFields(fields,target) {
     return Object.fromEntries(fields.map(field=>{
@@ -78,7 +141,11 @@ eleventyExcludeFromCollections: true
   }
   function preview() {
     if(!current)return;
+    $('#fields').querySelectorAll('[data-list]').forEach(list=>Array.from(list.children).forEach((item,index)=>{
+      item.querySelector('h3').textContent=`${index+1}. ${item.querySelector('[data-field="title"] input, [data-field="question"] input')?.value || '新項目'}`;
+    }));
     const data=readFields(current.fields,$('#fields'));
+    records.set(current.entry.id,{fields:current.fields,values:data});
     $('#preview-url').textContent=current.entry.url;
     $('#preview-title').textContent=data.title || data.h1 || data.pageTitle || current.entry.label;
     $('#preview-description').textContent=data.description || data.intro || data.pageDescription || '';
@@ -101,10 +168,11 @@ eleventyExcludeFromCollections: true
       const entry=demo?catalog.find(item=>item.id===id):null;
       const data=demo?{entry,fields:entry.fields,values:entry.values,sha:''}:await api(id);
       if(version!==loadVersion)return;
-      current=data; renderFields(data.fields,data.values,$('#fields'));markDirty(false);
-      $('#entry-title').textContent=data.entry.label;$('#entry-kind').textContent=labels[data.entry.kind];$('#entry-path').textContent=data.entry.url;
+      if(current)records.set(current.entry.id,{fields:current.fields,values:current.values});
+      current=data; records.set(id,data);renderFields(data.fields,data.values,$('#fields'));markDirty(false);
+      renderSections();renderFieldJump();$('#entry-path').textContent=data.entry.url;
       $('#view-page').href=data.entry.url;$('#view-page').hidden=false;$('#editor-form').hidden=false;
-      renderList();preview();status(demo?'目前為操作預覽；試填內容不會儲存。':'已載入最新文案。');
+      renderList();preview();status(demo?'目前為操作預覽；試填內容不會儲存。':'已載入最新文案。');return true;
     } catch(error) {status(error.message,true);} finally {setBusy(false);}
   }
   $('#editor-form').addEventListener('submit',event=>{
@@ -118,11 +186,14 @@ eleventyExcludeFromCollections: true
     const values=readFields(current.fields,$('#fields'));setBusy(true);status('正在發布，請稍候…');
     try {
       const result=await api(current.entry.id,{method:'PUT',body:JSON.stringify({sha:current.sha,values})});
-      current.sha=result.sha;markDirty(false);status(result.message);
+      current.sha=result.sha;current.values=values;records.set(current.entry.id,{fields:current.fields,values});markDirty(false);renderList();status(result.message);
     } catch(error) {status(`${error.message}\n你的修改仍保留在畫面上。`,true);} finally {setBusy(false);$('#publish-dialog').close();$('#editor-status').focus();}
   });
   $('#reload').addEventListener('click',()=>current&&loadEntry(current.entry.id));
   $('#entry-search').addEventListener('input',renderList);
+  $('#clear-search').addEventListener('click',()=>{$('#entry-search').value='';renderList();$('#entry-search').focus();});
+  $('#back-to-search').addEventListener('click',()=>{$('#entry-search').scrollIntoView({block:'center',behavior:'auto'});$('#entry-search').focus({preventScroll:true});});
+  $('#field-jump').addEventListener('change',event=>{if(event.target.value)jumpToField(JSON.parse(event.target.value));});
   window.addEventListener('beforeunload',event=>{if(dirty){event.preventDefault();event.returnValue='';}});
   $('#logout').addEventListener('click',async()=>{
     if(busy || (dirty&&!window.confirm('登出會放棄尚未發布的修改，確定登出嗎？')))return;
