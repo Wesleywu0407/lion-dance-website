@@ -25,10 +25,12 @@ const expectedRedirects = new Map([
 function publicSourceFiles() {
   const files = [
     'src/index.html',
-    'src/script.js.njk',
-    'src/_includes/header.njk',
-    'src/_includes/footer.njk'
+    'src/script.js.njk'
   ];
+
+  for (const entry of fs.readdirSync(path.join(projectRoot, 'src/_includes'))) {
+    if (entry.endsWith('.njk')) files.push(path.join('src/_includes', entry));
+  }
 
   for (const directory of ['src/pages', 'src/gallery', 'src/landing']) {
     for (const entry of fs.readdirSync(path.join(projectRoot, directory))) {
@@ -57,9 +59,18 @@ test('declares every legacy route once as a forced permanent redirect', () => {
   assert.deepEqual(actual, expectedRedirects);
 });
 
-test('sitemap contains canonical clean URLs only', () => {
-  const sitemap = fs.readFileSync(path.join(projectRoot, 'sitemap.xml'), 'utf8');
-  const locations = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+function sitemapLocations() {
+  const site = JSON.parse(fs.readFileSync(path.join(projectRoot, 'src/_data/site.json'), 'utf8'));
+  return fs.readdirSync(path.join(projectRoot, 'src/_data/seo'))
+    .filter(file => file.endsWith('.json'))
+    .map(file => {
+      const metadata = JSON.parse(fs.readFileSync(path.join(projectRoot, 'src/_data/seo', file), 'utf8'));
+      return `${site.siteUrl}${metadata.path}`;
+    });
+}
+
+test('sitemap source contains canonical clean URLs only', () => {
+  const locations = sitemapLocations();
 
   assert.ok(locations.length > 1, 'sitemap should contain public pages');
   assert.equal(new Set(locations).size, locations.length, 'sitemap URLs must be unique');
@@ -67,10 +78,7 @@ test('sitemap contains canonical clean URLs only', () => {
 });
 
 test('every indexable public page has one clean canonical listed in the sitemap', () => {
-  const sitemap = fs.readFileSync(path.join(projectRoot, 'sitemap.xml'), 'utf8');
-  const locations = new Set(
-    [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1])
-  );
+  const locations = new Set(sitemapLocations());
 
   for (const relativePath of publicSourceFiles().filter((file) => file.endsWith('.html'))) {
     const source = fs.readFileSync(path.join(projectRoot, relativePath), 'utf8');

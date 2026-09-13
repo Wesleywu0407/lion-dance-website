@@ -1,0 +1,8 @@
+<nav class="landing-photo-strip" aria-label="相關案例與演出資訊">
+  <h2 class="section-tag">相關案例與演出資訊</h2>
+  <div class="cta-band-actions">
+    {% for link in landingLinks[landingPage.key] %}
+    <a class="button button-secondary" href="{{ link.href | escape }}">{{ link.label | escape }}</a>
+    {% endfor %}
+  </div>
+</nav>

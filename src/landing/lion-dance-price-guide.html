@@ -54,40 +54,11 @@
           "item": "https://nansiengtaiwan.com/landing/lion-dance-price-guide"
         }
       ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://nansiengtaiwan.com/landing/lion-dance-price-guide#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "報價需要提供哪些資訊？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "請提供活動日期與時段、活動地點、活動類型（開幕、尾牙、廟會等）與預計流程，我們就能快速評估並回覆報價。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "哪些因素會影響舞獅表演價格？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "主要包含演出項目與長度、獅數與人員編制、是否加購戰鼓或電音三太子等節目、場地樓層與動線，以及日期時段（如農曆春節、尾牙季等旺季檔期）。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "如何最快取得報價？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "直接加 LINE（ID：{{ site.lineId }}）並附上活動日期、地點與活動類型，是最快的詢價方式。"
-          }
-        }
-      ]
     }
   ]
 }
   </script>
+  <script type="application/ld+json">{{ priceFaq | faqJsonLd | safe }}</script>
 </head>
 <body>
   {% set landingPage = landing["lion-dance-price-guide"] %}
@@ -107,7 +78,7 @@
         <div class="about-layout about-cinematic">
           {% for block in pricing.factors %}
           <div class="ctb about-block">
-            <p class="ctb-phrase">{{ block.title | escape }}</p>
+            <h2 class="ctb-phrase">{{ block.title | escape }}</h2>
             <p class="ctb-support">{{ block.text | escape }}</p>
           </div>
           {% endfor %}
@@ -130,6 +101,8 @@
         </section>
 
 
+        {% include "landing-related.njk" %}
+
         <div class="landing-photo-strip reveal">
           <p class="section-tag">演出實況</p>
           <div class="landing-photo-grid">
@@ -147,6 +120,22 @@
             </figure>
           </div>
         </div>
+
+        <section class="contact-faq" aria-labelledby="price-faq-title">
+          <div class="contact-faq-heading">
+            <h2 id="price-faq-title">舞獅表演報價常見問題</h2>
+          </div>
+          <div class="contact-faq-list">
+            {% for item in priceFaq.items %}
+            <details class="contact-faq-item">
+              <summary>{{ item.question | escape }}</summary>
+              <div class="contact-faq-answer">
+                <p>{{ item.answer | escape }}</p>
+              </div>
+            </details>
+            {% endfor %}
+          </div>
+        </section>
 
         <div class="cta-band reveal">
           <p class="section-tag">預約洽詢</p>

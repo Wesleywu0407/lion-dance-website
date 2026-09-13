@@ -1,0 +1,36 @@
+{
+  "dragon-lion-dance-performance": [
+    { "href": "/gallery/opening", "label": "開幕開工案例" },
+    { "href": "/gallery/temple", "label": "廟會慶典案例" },
+    { "href": "/gallery/tourism", "label": "觀光演出案例" },
+    { "href": "/landing/lion-dance-price-guide", "label": "舞獅表演報價指南" }
+  ],
+  "lion-dance-performance": [
+    { "href": "/gallery/opening", "label": "開幕開工案例" },
+    { "href": "/gallery/banquet", "label": "春酒尾牙案例" },
+    { "href": "/gallery/festival-retail", "label": "百貨春節案例" },
+    { "href": "/landing/lion-dance-price-guide", "label": "舞獅表演報價指南" }
+  ],
+  "opening-lion-dance": [
+    { "href": "/gallery/opening", "label": "開幕開工案例" },
+    { "href": "/gallery/groundbreaking", "label": "動土上樑案例" },
+    { "href": "/landing/lion-dance-price-guide", "label": "舞獅表演報價指南" }
+  ],
+  "company-event-lion-dance": [
+    { "href": "/gallery/banquet", "label": "春酒尾牙案例" },
+    { "href": "/gallery/festival-retail", "label": "百貨春節案例" },
+    { "href": "/gallery/performance", "label": "展演服務案例" },
+    { "href": "/landing/lion-dance-price-guide", "label": "舞獅表演報價指南" }
+  ],
+  "year-end-party-lion-dance": [
+    { "href": "/gallery/banquet", "label": "春酒尾牙案例" },
+    { "href": "/landing/company-event-lion-dance", "label": "企業活動舞獅表演" },
+    { "href": "/landing/lion-dance-price-guide", "label": "舞獅表演報價指南" }
+  ],
+  "lion-dance-price-guide": [
+    { "href": "/landing/opening-lion-dance", "label": "開幕舞獅表演" },
+    { "href": "/landing/year-end-party-lion-dance", "label": "尾牙春酒舞獅表演" },
+    { "href": "/gallery/opening", "label": "開幕開工案例" },
+    { "href": "/gallery/banquet", "label": "春酒尾牙案例" }
+  ]
+}

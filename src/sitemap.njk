@@ -1,0 +1,11 @@
+---
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+{# SEO data contains the indexable public routes. Omit lastmod until reliable
+   content modification dates are available; a build date is not a content date. #}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for key, metadata in seo %}
+  <url><loc>{{ (site.siteUrl ~ metadata.path) | escape }}</loc></url>
+{% endfor %}
+</urlset>

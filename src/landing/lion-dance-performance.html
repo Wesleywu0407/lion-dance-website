@@ -120,12 +120,14 @@
         <div class="about-layout about-cinematic">
           {% for block in landingPage.blocks %}
           <div class="ctb about-block">
-            <p class="ctb-phrase">{{ block.title | escape }}</p>
+            <h2 class="ctb-phrase">{{ block.title | escape }}</h2>
             <p class="ctb-support">{{ block.text | escape }}</p>
           </div>
           {% endfor %}
         </div>
 
+
+        {% include "landing-related.njk" %}
 
         <div class="landing-photo-strip reveal">
           <p class="section-tag">演出實況</p>

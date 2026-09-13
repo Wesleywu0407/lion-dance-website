@@ -150,12 +150,17 @@ _site/                 ← 建置產物（已 gitignore，不要編輯）
 | `services.json` | 表演項目 |
 | `faq.json` | 常見問題（同時產生 FAQ 結構化資料） |
 | `pricing.json` | 報價資訊 |
+| `priceFaq.js` | 報價頁原有問答，同步產生頁面內容與 FAQ 結構化資料（程式碼維護） |
+| `landingLinks.json` | 到達頁通往南仙既有案例與服務的連結（程式碼維護） |
+| `seo/` | 各公開頁面的 SEO 資料與固定網址 |
 | `galleries/` | 各分類相簿內容 |
 | `galleryContexts.json` | 相簿分類的說明文字 |
 | `landing/` | 各到達頁文案 |
 | `backend.json` | 後端 API 端點與金鑰（見下方） |
 
 一般編輯者的操作說明見 [`docs/EDITOR_GUIDE.md`](docs/EDITOR_GUIDE.md)。
+
+`src/sitemap.njk` 會在建置時從 `seo/` 產生 `_site/sitemap.xml`，取代原本根目錄的手動清單。尚無可靠的內容更新日期，因此不輸出 `lastmod`，也不使用建置日期代替。新增可索引頁面時，需一併新增 SEO 資料；`npm test` 會檢查 sitemap、canonical、站內連結與公開頁面是否一致。
 
 ## 詢價後端與 CRM
 
@@ -401,12 +406,17 @@ JSON files in `src/_data/` are read by the templates — editing one updates eve
 | `services.json` | Performance offerings |
 | `faq.json` | FAQs (also generates FAQ structured data) |
 | `pricing.json` | Pricing information |
+| `priceFaq.js` | Existing price-page answers shared by visible FAQs and structured data (maintained in code) |
+| `landingLinks.json` | Landing-page links to Nan Sieng's existing cases and services (maintained in code) |
+| `seo/` | Public-page SEO metadata and fixed canonical paths |
 | `galleries/` | Album contents per category |
 | `galleryContexts.json` | Descriptions for each album category |
 | `landing/` | Copy for each landing page |
 | `backend.json` | Backend endpoints and keys (see below) |
 
 Day-to-day editing instructions live in [`docs/EDITOR_GUIDE.md`](docs/EDITOR_GUIDE.md).
+
+`src/sitemap.njk` generates `_site/sitemap.xml` from `seo/` during the build, replacing the manually maintained root file. It omits `lastmod` until reliable content modification dates are available, rather than substituting build dates. Add SEO metadata when adding an indexable page; `npm test` checks agreement between the sitemap, canonical URLs, internal links, and public pages.
 
 ## Inquiry backend and CRM
 
