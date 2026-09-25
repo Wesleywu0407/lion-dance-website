@@ -851,8 +851,9 @@ select {
   }
 
   /* 裝飾性大數字／大字 */
+  /* 關於我們章節浮水印數字（壹～伍）：手機 24px，不搶標題 */
   main .ctb-num {
-    font-size: 2.5rem !important;
+    font-size: 1.5rem !important;
   }
 
   main .step-num {
