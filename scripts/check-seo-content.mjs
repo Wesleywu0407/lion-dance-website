@@ -5,6 +5,8 @@ import { entries } from '../supabase/functions/_shared/content-schema.mjs';
 const escape=value=>String(value).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 let count=0;
 const site = JSON.parse(fs.readFileSync('src/_data/site.json', 'utf8'));
+const stylesheet = fs.readFileSync('_site/css/style.css', 'utf8');
+assert.doesNotMatch(stylesheet, /@import\s/, 'Public CSS must not create an import waterfall');
 const canonicals = new Set();
 for(const entry of entries.filter(e=>e.kind==='seo')){
   const data=JSON.parse(fs.readFileSync(entry.path,'utf8'));
@@ -15,6 +17,8 @@ for(const entry of entries.filter(e=>e.kind==='seo')){
   assert.equal(canonicals.has(canonical), false, `${entry.id}: duplicate canonical`);
   canonicals.add(canonical);
   assert.equal((html.match(/<h1\b/g) || []).length, 1, `${entry.id}: one primary heading`);
+  assert.ok(html.includes('media="print" onload="this.media=\'all\';this.onload=null"'), `${entry.id}: font CSS must not block first paint`);
+  assert.match(html, /<noscript><link rel="stylesheet" href="https:\/\/fonts.googleapis.com/, `${entry.id}: fonts must work without JavaScript`);
   assert.equal(/href=["'][^"']*\.html(?:[?#][^"']*)?["']/.test(html), false, `${entry.id}: legacy internal link in rendered page`);
   assert.equal((html.match(/<title>/g)||[]).length,1,entry.id);
   assert.ok(html.includes(`<title>${escape(data.title)}</title>`),`${entry.id}: title`);
@@ -29,6 +33,8 @@ for(const entry of entries.filter(e=>e.kind==='seo')){
   }
   count++;
 }
+const about = fs.readFileSync('_site/pages/about.html', 'utf8');
+assert.equal((about.match(/<h2 class="about-chapter-title"/g) || []).length, 5, 'About page chapters must be headings');
 const sitemap = fs.readFileSync('_site/sitemap.xml', 'utf8');
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
 assert.equal(new Set(sitemapUrls).size, sitemapUrls.length, 'Sitemap must not repeat URLs');

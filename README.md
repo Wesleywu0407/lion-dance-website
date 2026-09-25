@@ -162,6 +162,8 @@ _site/                 ← 建置產物（已 gitignore，不要編輯）
 
 `src/sitemap.njk` 會在建置時從 `seo/` 產生 `_site/sitemap.xml`，取代原本根目錄的手動清單。尚無可靠的內容更新日期，因此不輸出 `lastmod`，也不使用建置日期代替。新增可索引頁面時，需一併新增 SEO 資料；`npm test` 會檢查 sitemap、canonical、站內連結與公開頁面是否一致。
 
+CSS 仍在 `css/` 分檔編輯；建置完成時，`scripts/build-styles.mjs` 會使用 esbuild 依原本順序合併並壓縮成 `_site/css/style.css`，同時保留圖片的正確網址。請勿手動修改產出檔。共用字型設定在 `src/_includes/fonts.njk`：保留原本兩套字型及字重範圍，採非阻塞載入，並提供停用 JavaScript 時的備援。更新樣式時仍需更新來源模板及 `css/style.css` 的快取版本。
+
 ## 詢價後端與 CRM
 
 ### 目前狀態
@@ -417,6 +419,8 @@ JSON files in `src/_data/` are read by the templates — editing one updates eve
 Day-to-day editing instructions live in [`docs/EDITOR_GUIDE.md`](docs/EDITOR_GUIDE.md).
 
 `src/sitemap.njk` generates `_site/sitemap.xml` from `seo/` during the build, replacing the manually maintained root file. It omits `lastmod` until reliable content modification dates are available, rather than substituting build dates. Add SEO metadata when adding an indexable page; `npm test` checks agreement between the sitemap, canonical URLs, internal links, and public pages.
+
+Edit CSS modules in `css/`. After each build, `scripts/build-styles.mjs` uses esbuild to bundle and minify them into `_site/css/style.css`, preserving cascade order and asset URLs. Do not edit that generated file. Shared font loading lives in `src/_includes/fonts.njk`: both original families and weight ranges load without blocking first paint, with a no-JavaScript fallback. Continue updating cache versions in source templates and `css/style.css` when styles change.
 
 ## Inquiry backend and CRM
 

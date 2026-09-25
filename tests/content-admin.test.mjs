@@ -7,7 +7,7 @@ import { createContentHandler } from '../supabase/functions/_shared/content-hand
 
 const require=createRequire(import.meta.url);
 const filters={};
-require('../.eleventy.js')({on(){},addPassthroughCopy(){},addFilter(name,fn){filters[name]=fn;},addTransform(){}});
+require('../.eleventy.js')({on(){},addWatchTarget(){},addPassthroughCopy(){},addFilter(name,fn){filters[name]=fn;},addTransform(){}});
 const source=JSON.parse(fs.readFileSync('src/_data/seo/home.json','utf8'));
 const values=Object.fromEntries(schemas.seo.map(f=>[f.name,source[f.name]]));
 const origin='https://nansiengtaiwan.com';

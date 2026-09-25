@@ -2,6 +2,7 @@ const path = require('node:path');
 const fsSync = require('node:fs');
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addWatchTarget('css/');
   eleventyConfig.on('eleventy.before', async function () {
     const fs = require('node:fs/promises');
     const outputDir = path.resolve(process.cwd(), '_site');
@@ -134,6 +135,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.on('eleventy.after', async function ({ dir }) {
     const outputDir = dir && dir.output ? dir.output : '_site';
     const fs = require('node:fs/promises');
+    const { buildStyles } = await import('./scripts/build-styles.mjs');
+    await buildStyles(outputDir);
     await fs.writeFile(path.join(outputDir, '.nojekyll'), '');
   });
 

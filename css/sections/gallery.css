@@ -211,11 +211,6 @@
   line-height: 1;
 }
 
-rect,
-circle) {
-  stroke: rgba(255, 244, 226, 0.9);
-}
-
 .card-title {
   color: #fff8ef;
   min-height: 2.9em;
