@@ -344,177 +344,400 @@
   }
 }
 
-/* ── Story chapters (關於我們 敘事版) ─────────────────────
-   Each .ctb becomes a numbered chapter: oversized numeral,
-   text column and a photo that alternate sides. All entrance
-   choreography hangs off the .visible / .is-visible classes
-   the existing IntersectionObservers already toggle.
+/* ── 關於我們：演出節目冊版面 ─────────────────────────────
+   版面依照片原始比例配置：101 寬幅照跨全寬、8 獅照 7 欄、
+   開幕照 5 欄；只有「文化溫度」一次深墨底作為收尾高點。
+   設計紀錄見 .design/04-decision.md。
    ─────────────────────────────────────────────────────────── */
 
-.story-chapter {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  align-items: center;
-  gap: clamp(2rem, 5vw, 4.2rem);
-  width: min(100%, 1080px);
+.about-page {
+  --about-gap-section: clamp(4.5rem, 9vw, 7.5rem);
+  --about-measure: 34em;
 }
 
-.story-chapter::after {
-  grid-column: 1 / -1;
+.about-intro,
+.about-wide,
+.about-pair,
+.about-services,
+.about-contact,
+.about-warmth-inner {
+  width: min(calc(100% - 40px), var(--max-width));
+  margin-inline: auto;
 }
 
-.story-chapter:nth-of-type(even) .ctb-text {
-  order: 2;
+/* 站內 .reveal 預設帶模糊與縮放；這頁只留輕微位移，文字不再有鬼影 */
+.js .about-page .reveal {
+  filter: none;
+  transform: translateY(16px);
 }
 
-.story-chapter:nth-of-type(even) .ctb-media {
-  order: 1;
-}
-
-/* Chapter numeral — oversized ink watermark */
-.ctb-num {
-  position: absolute;
-  top: clamp(0.6rem, 2vw, 1.6rem);
-  left: clamp(0.4rem, 1.5vw, 1.4rem);
-  z-index: 0;
+.about-page .about-chapter-title {
+  margin: 0 0 0.9rem;
   font-family: var(--font-display-serif);
-  font-size: clamp(5.4rem, 11vw, 9rem);
+  font-size: clamp(2rem, 3.4vw, 2.9rem);
   font-weight: 900;
-  line-height: 1;
-  color: rgba(143, 58, 47, 0.1);
-  letter-spacing: 0;
-  pointer-events: none;
-  user-select: none;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: var(--ink);
 }
 
-.ctb-num::after {
-  content: "";
-  display: block;
-  width: 1px;
-  height: clamp(2.2rem, 5vw, 4rem);
-  margin: 10px auto 0;
-  background: linear-gradient(180deg, rgba(143, 58, 47, 0.4), transparent);
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.45s;
-}
-
-.ctb-text {
-  position: relative;
-  z-index: 1;
-}
-
-/* Chapter photo */
-.ctb-media {
-  position: relative;
-  z-index: 1;
+.about-intro p,
+.about-wide-copy p,
+.about-pair-item p,
+.about-services-head p {
   margin: 0;
-  overflow: hidden;
-  border-radius: var(--radius);
-  background: var(--paper);
-  box-shadow: var(--shadow);
+  max-width: var(--about-measure);
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 2;
 }
 
-.ctb-media img {
+/* 照片：不加框、不加陰影，單一圓角與首頁作品卡一致 */
+.about-photo {
+  margin: 0;
+}
+
+.about-photo img {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  border-radius: 12px;
+  background: var(--surface-soft);
 }
 
-.ctb-media figcaption {
-  padding: 12px 16px 14px;
+.about-photo figcaption {
+  margin-top: 0.7rem;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--gold);
+  color: var(--ink-soft);
   font-size: 0.875rem;
   line-height: 1.6;
   letter-spacing: 0.04em;
+}
+
+/* A — 關於南仙 */
+.about-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: center;
+  padding-top: clamp(1.5rem, 4vw, 3rem);
+}
+
+.about-facts {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(1.25rem, 3vw, 2.5rem);
+  margin: 2.4rem 0 0;
+  padding: 0;
+  max-width: var(--about-measure);
+}
+
+.about-facts li {
+  display: grid;
+  gap: 0.2rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.about-facts strong {
+  font-family: var(--font-display-serif);
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+
+.about-facts span {
   color: var(--ink-soft);
-  border-top: 1px solid rgba(185, 146, 94, 0.22);
+  font-size: 0.9375rem;
+  line-height: 1.6;
 }
 
-/* ── Entrance choreography ──────────────────────────────── */
-
-.js .ctb-num {
-  opacity: 0;
-  transform: translateY(14px);
-  transition:
-    opacity   1s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+/* B — 當代演繹：寬幅照＋左標右文 */
+.about-wide {
+  margin-top: var(--about-gap-section);
 }
 
-.js .about-block.visible .ctb-num {
-  opacity: 1;
-  transform: translateY(0);
+.about-wide-photo img {
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  object-position: 50% 40%;
 }
 
-.js .about-block.visible .ctb-num::after {
-  transform: scaleY(1);
+.about-wide-copy {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(1rem, 6vw, 5.5rem);
+  align-items: start;
+  margin-top: clamp(2rem, 4vw, 3.2rem);
 }
 
-.js .ctb-media {
-  opacity: 0;
-  transform: translateY(26px);
-  transition:
-    opacity   0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s,
-    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+.about-wide-copy .about-chapter-title {
+  margin: 0;
 }
 
-.js .about-block.visible .ctb-media {
-  opacity: 1;
-  transform: translateY(0);
+/* C — 演出經驗／客製規劃：欄寬跟著照片比例，右欄下沉製造錯落 */
+.about-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: start;
+  margin-top: var(--about-gap-section);
 }
 
-/* Photo settles from a gentle zoom for a cinematic feel */
-.js .ctb-media img {
-  transform: scale(1.07);
-  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+.about-pair-minor {
+  margin-top: clamp(4rem, 12vw, 9rem);
 }
 
-.js .about-block.visible .ctb-media img {
-  transform: scale(1);
+.about-pair-item .about-photo {
+  margin-bottom: 2rem;
+}
+
+/* D — 文化溫度：整頁唯一一次深墨底 */
+.about-warmth {
+  margin-top: var(--about-gap-section);
+  padding-block: clamp(4.5rem, 10vw, 8rem);
+  background: var(--ink);
+  color: #fbf7f1;
+}
+
+.about-warmth-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: center;
+}
+
+.about-warmth .about-photo figcaption {
+  color: rgba(251, 247, 241, 0.72);
+}
+
+.about-warmth .about-chapter-title {
+  margin-bottom: 1.4rem;
+  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--gold);
+}
+
+.about-warmth-copy p {
+  margin: 0;
+  font-family: var(--font-display-serif);
+  font-size: clamp(1.35rem, 2.3vw, 1.95rem);
+  font-weight: 700;
+  line-height: 1.75;
+  letter-spacing: 0.04em;
+  color: #fbf7f1;
+}
+
+/* E — 服務方向：可點的清單，導向對應案例 */
+.about-services {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2rem, 6vw, 5.5rem);
+  align-items: start;
+  margin-top: var(--about-gap-section);
+}
+
+.about-services-head h2 {
+  margin: 0 0 0.9rem;
+  font-family: var(--font-display-serif);
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+
+.about-services-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(1.25rem, 3vw, 2.5rem);
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.about-services-list li {
+  border-bottom: 1px solid var(--line);
+}
+
+.about-services-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.5rem;
+  color: var(--ink);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.about-services-list a::after {
+  content: "→";
+  color: var(--gold);
+  font-weight: 400;
+  transition: transform 0.2s ease;
+}
+
+.about-services-list a:hover,
+.about-services-list a:focus-visible {
+  color: var(--accent);
+}
+
+.about-services-list a:hover::after,
+.about-services-list a:focus-visible::after {
+  transform: translateX(4px);
+}
+
+.about-services-note {
+  margin: 1.2rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+  line-height: 1.8;
+}
+
+/* F — 洽詢：不再是卡片，以金線與留白收束 */
+.about-contact {
+  margin-top: var(--about-gap-section);
+  margin-bottom: var(--about-gap-section);
+  padding-top: clamp(2.5rem, 5vw, 3.5rem);
+  border-top: 1px solid var(--line);
+}
+
+.about-contact h2 {
+  margin: 0 0 0.9rem;
+  max-width: 18em;
+  font-family: var(--font-display-serif);
+  font-size: clamp(1.9rem, 3.4vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+
+.about-contact > p:not(.section-tag) {
+  margin: 0;
+  max-width: 36em;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 2;
+}
+
+.about-contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 18px;
+  margin-top: 2rem;
+}
+
+.about-contact-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 0.5rem;
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-underline-offset: 6px;
+}
+
+.about-contact-link:hover,
+.about-contact-link:focus-visible {
+  color: var(--accent);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .js .ctb-num,
-  .js .ctb-media,
-  .js .ctb-media img {
-    opacity: 1;
-    transform: none;
+  .about-services-list a,
+  .about-services-list a::after {
     transition: none;
   }
 
-  .ctb-num::after {
+  .about-services-list a:hover::after,
+  .about-services-list a:focus-visible::after {
     transform: none;
-    transition: none;
   }
 }
 
 @media (max-width: 900px) {
-  .story-chapter {
+  .about-intro,
+  .about-wide-copy,
+  .about-pair,
+  .about-warmth-inner,
+  .about-services {
     grid-template-columns: 1fr;
-    gap: 1.6rem;
-    padding-top: 3.4rem;
   }
 
-  .story-chapter:nth-of-type(even) .ctb-text {
-    order: 1;
+  .about-intro-photo {
+    order: -1;
   }
 
-  .story-chapter:nth-of-type(even) .ctb-media {
-    order: 2;
+  .about-pair-minor {
+    margin-top: 0;
   }
 
-  .ctb-num {
-    top: 1rem;
-    left: 1.1rem;
-    font-size: 4.2rem;
+  .about-wide-copy {
+    gap: 0;
   }
 
-  .ctb-num::after {
-    height: 1.6rem;
+  .about-wide-copy .about-chapter-title {
+    margin-bottom: 0.9rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .about-page {
+    --about-gap-section: 4rem;
   }
 
-  .ctb-media {
+  .about-intro,
+  .about-wide,
+  .about-pair,
+  .about-services,
+  .about-contact,
+  .about-warmth-inner {
+    width: min(calc(100% - 32px), var(--max-width));
+  }
+
+  .about-page .about-chapter-title {
+    font-size: clamp(1.7rem, 7.4vw, 2.1rem);
+  }
+
+  .about-intro p,
+  .about-wide-copy p,
+  .about-pair-item p,
+  .about-services-head p,
+  .about-contact > p:not(.section-tag) {
+    font-size: 1rem;
+    line-height: 1.85;
+  }
+
+  .about-wide-photo img {
+    aspect-ratio: 3 / 2;
+  }
+
+  .about-warmth .about-chapter-title {
+    font-size: 1rem;
+  }
+
+  .about-warmth-copy p {
+    font-size: 1.3rem;
+  }
+
+  .about-services-list {
+    grid-template-columns: 1fr;
+  }
+
+  .about-contact-actions .button {
     width: 100%;
   }
 }
