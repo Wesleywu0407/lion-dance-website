@@ -73,24 +73,6 @@
   border-color: #fff;
 }
 
-.button::before,
-.button::after {
-  content: "";
-  width: 7px;
-  height: 7px;
-  flex: 0 0 auto;
-  border-top: 1px solid currentColor;
-  opacity: 0.44;
-}
-
-.button::before {
-  border-left: 1px solid currentColor;
-}
-
-.button::after {
-  border-right: 1px solid currentColor;
-}
-
 /* LINE 品牌按鈕：台灣使用者最熟悉的洽詢入口（品牌綠調和為與站內暖色調協調的深松綠） */
 .button-line {
   background: #2f7d54;

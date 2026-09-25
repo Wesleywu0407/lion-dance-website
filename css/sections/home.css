@@ -592,14 +592,6 @@ article).section-heading::after {
     box-shadow: 0 2px 10px rgba(168, 50, 31, 0.28);
   }
 
-  /* 主按鈕角括號裝飾移除 */
-  .home-page .hero-actions .button-primary::before,
-  .home-page .hero-actions .button-primary::after,
-  .home-page .process-invite-cta .button-primary::before,
-  .home-page .process-invite-cta .button-primary::after {
-    display: none;
-  }
-
   /* LINE 主按鈕：品牌綠、圓弧、滿版 */
   .home-page .hero-actions .button-line {
     border-radius: 999px;
@@ -609,11 +601,6 @@ article).section-heading::after {
     justify-content: center;
     letter-spacing: 0.12em;
     box-shadow: 0 4px 16px rgba(47, 125, 84, 0.3);
-  }
-
-  .home-page .hero-actions .button-line::before,
-  .home-page .hero-actions .button-line::after {
-    display: none;
   }
 
   /* 次按鈕（hero 深色背景上）：白字、底線、靠左 */
@@ -642,11 +629,7 @@ article).section-heading::after {
     transform: none;
   }
 
-  /* 移除角括號，換成文字箭頭 */
-  .home-page .hero-actions .button-secondary::before {
-    display: none;
-  }
-
+  /* 次按鈕後面加文字箭頭 */
   .home-page .hero-actions .button-secondary::after {
     content: " →";
     width: auto;
