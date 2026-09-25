@@ -61,7 +61,7 @@
 .contact-hero-photo figcaption {
   margin-top: 10px;
   color: var(--ink-soft);
-  font-size: 0.84rem;
+  font-size: 0.875rem;
   letter-spacing: 0.06em;
 }
 
@@ -82,7 +82,7 @@
   max-width: 34em;
   margin: 20px 0 0;
   color: var(--ink-soft);
-  font-size: 1.04rem;
+  font-size: 1rem;
   line-height: 1.9;
 }
 
@@ -109,7 +109,7 @@
 .contact-channel-label {
   margin: 0 0 12px;
   color: var(--ink-soft);
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.12em;
 }
@@ -145,7 +145,7 @@
 .contact-channel-meta {
   margin: 4px 0 0;
   color: var(--ink-soft);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   line-height: 1.6;
 }
 
@@ -158,7 +158,7 @@
   border-radius: 999px;
   background: #2f7d54;
   color: #fff;
-  font-size: 1.02rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-decoration: none;
@@ -203,14 +203,14 @@
   display: block;
   color: var(--gold);
   font-family: var(--font-display-serif);
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 
 .contact-step-list h3 {
   margin: 10px 0 0;
   color: var(--ink);
-  font-size: 1.12rem;
+  font-size: 1.125rem;
   font-weight: 800;
   line-height: 1.4;
 }
@@ -218,7 +218,7 @@
 .contact-step-list p {
   margin: 8px 0 0;
   color: var(--ink-soft);
-  font-size: 0.94rem;
+  font-size: 0.9375rem;
   line-height: 1.8;
 }
 
@@ -249,7 +249,7 @@
 .contact-form-aside > .contact-aside-label {
   margin-top: 32px;
   color: var(--ink);
-  font-size: 0.92rem;
+  font-size: 0.9375rem;
   font-weight: 700;
 }
 
@@ -263,12 +263,12 @@
   padding: 10px 0;
   border-bottom: 1px solid var(--contact-rule);
   color: var(--ink-soft);
-  font-size: 0.95rem;
+  font-size: 0.9375rem;
 }
 
 .contact-form-aside > .contact-aside-links {
   margin-top: 28px;
-  font-size: 0.95rem;
+  font-size: 0.9375rem;
 }
 
 .contact-aside-links a,
@@ -323,7 +323,7 @@
 
 .contact-fieldset-num {
   color: var(--gold);
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 
@@ -336,7 +336,7 @@
   gap: 8px;
   min-width: 0;
   color: var(--ink);
-  font-size: 0.94rem;
+  font-size: 0.9375rem;
   font-weight: 700;
 }
 
@@ -398,7 +398,7 @@
   gap: 10px;
   min-height: 44px;
   color: var(--ink-soft);
-  font-size: 0.94rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   line-height: 1.6;
   cursor: pointer;
@@ -444,7 +444,7 @@
 .contact-field-help {
   margin: -6px 0 0;
   color: var(--ink-soft);
-  font-size: 0.88rem;
+  font-size: 0.875rem;
   line-height: 1.6;
 }
 
@@ -460,7 +460,7 @@
   background: var(--cta);
   color: #fff;
   font-family: inherit;
-  font-size: 1.08rem;
+  font-size: 1.125rem;
   font-weight: 800;
   letter-spacing: 0.2em;
   cursor: pointer;
@@ -484,7 +484,7 @@
 .contact-note {
   margin: -12px 0 0;
   color: var(--ink-soft);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   line-height: 1.7;
   text-align: center;
 }
@@ -502,7 +502,7 @@
   display: none;
   padding: 12px 0 12px 16px;
   border-left: 3px solid var(--accent);
-  font-size: 0.94rem;
+  font-size: 0.9375rem;
   line-height: 1.65;
 }
 
@@ -580,7 +580,7 @@
   min-height: 64px;
   padding: 16px 44px 16px 0;
   color: var(--ink);
-  font-size: 1.06rem;
+  font-size: 1rem;
   font-weight: 700;
   line-height: 1.55;
   list-style: none;
@@ -696,7 +696,7 @@
   .contact-line-qr figcaption {
     max-width: 9em;
     color: var(--ink-soft);
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     line-height: 1.5;
     text-align: center;
   }
@@ -746,7 +746,7 @@
   }
 
   .contact-lede {
-    font-size: 0.98rem;
+    font-size: 1rem;
   }
 
   .contact-channels {
@@ -798,12 +798,12 @@
 
   .contact-step-list h3 {
     margin-top: 0;
-    font-size: 1.04rem;
+    font-size: 1rem;
   }
 
   .contact-step-list p {
     margin-top: 4px;
-    font-size: 0.92rem;
+    font-size: 0.9375rem;
   }
 
   .contact-form-row {
@@ -898,7 +898,7 @@
   content: "追蹤南仙";
   flex: 0 0 100%;
   color: rgba(240, 217, 168, 0.78);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -932,14 +932,14 @@
   background: rgba(240, 217, 168, 0.16);
   color: rgba(255, 247, 238, 0.96);
   font-family: Arial, sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.9375rem;
   font-weight: 700;
   line-height: 1;
 }
 
 .footer-socials a::after {
   content: "Facebook";
-  font-size: 0.88rem;
+  font-size: 0.875rem;
   letter-spacing: 0.04em;
 }
 

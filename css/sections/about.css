@@ -282,7 +282,7 @@
 
   .ctb-support {
     max-width: min(100%, 20em);
-    font-size: 0.98rem;
+    font-size: 1rem;
     line-height: 1.82;
     word-break: break-all;
   }
@@ -311,7 +311,7 @@
   }
 
   .about-service-list li {
-    font-size: 1.12rem;
+    font-size: 1.125rem;
   }
 
   .about-service-summary-body p {
@@ -340,7 +340,7 @@
 
   .ctb-support {
     max-width: min(100%, 20em);
-    font-size: 0.98rem;
+    font-size: 1rem;
   }
 }
 
@@ -425,7 +425,7 @@
 
 .ctb-media figcaption {
   padding: 12px 16px 14px;
-  font-size: 0.86rem;
+  font-size: 0.875rem;
   line-height: 1.6;
   letter-spacing: 0.04em;
   color: var(--ink-soft);

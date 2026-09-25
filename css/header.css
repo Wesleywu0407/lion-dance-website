@@ -98,7 +98,7 @@
 
 .brand-text strong {
   color: var(--bar-ink);
-  font-size: 1.06rem;
+  font-size: 1rem;
   font-weight: 800;
   letter-spacing: 0.14em;
   line-height: 1.1;
@@ -107,7 +107,7 @@
 
 .brand-text small {
   color: var(--bar-muted);
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
   line-height: 1.2;
   text-transform: uppercase;
@@ -138,7 +138,7 @@
   align-items: center;
   min-height: 44px;
   color: var(--bar-ink);
-  font-size: 0.92rem;
+  font-size: 0.9375rem;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.06em;
@@ -159,7 +159,7 @@
   border-radius: 999px;
   background: #2f7d54;
   color: #fff;
-  font-size: 0.88rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-decoration: none;
@@ -224,7 +224,7 @@
 }
 
 .nav-toggle-label {
-  font-size: 0.88rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.22em;
 }
@@ -296,7 +296,7 @@
   flex: 0 0 var(--num-col);
   color: var(--gold);
   font-family: var(--font-display-serif);
-  font-size: 0.95rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   letter-spacing: 0.1em;
 }
@@ -335,7 +335,7 @@
   align-items: center;
   min-height: 44px;
   color: var(--paper-on-ink);
-  font-size: 0.92rem;
+  font-size: 0.9375rem;
   letter-spacing: 0.08em;
   text-decoration: none;
   text-underline-offset: 6px;
@@ -393,7 +393,7 @@
   padding: 8px 14px 8px 0;
   background: var(--ink);
   color: var(--paper-on-ink);
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   letter-spacing: 0.22em;
 }
 
@@ -410,7 +410,7 @@
 .nav-foot-tag {
   margin: 0;
   color: var(--gold);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.24em;
 }
@@ -445,7 +445,7 @@
 .nav-foot-name {
   margin: 0 0 0 auto;
   color: rgba(245, 239, 230, 0.56);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -531,7 +531,7 @@
 
   .brand-text strong {
     overflow: hidden;
-    font-size: 0.96rem;
+    font-size: 0.9375rem;
     letter-spacing: 0.1em;
     text-overflow: ellipsis;
   }
@@ -560,7 +560,7 @@
   }
 
   .nav-num {
-    font-size: 0.85rem;
+    font-size: 0.875rem;
   }
 
   .nav-label {

@@ -31,14 +31,14 @@
 .intro-chapter-intro span {
   color: var(--accent-deep);
   font-family: var(--font-body);
-  font-size: 1.1rem;
+  font-size: 1.125rem;
   font-weight: 800;
 }
 
 .intro-chapter-intro p {
   margin: 6px 0 0;
   color: var(--ink-soft);
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   line-height: 1.65;
 }
 
@@ -56,7 +56,7 @@
   border-right: 1px solid rgba(76, 51, 41, 0.14);
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: 0.94rem;
+  font-size: 0.9375rem;
   font-weight: 800;
   text-decoration: none;
   transition: color 0.2s ease, background-color 0.2s ease;
@@ -73,7 +73,7 @@
   margin: 0;
   color: var(--accent-deep);
   font-family: var(--font-body);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0;
 }
@@ -117,7 +117,7 @@
   padding: 8px 0;
   border-bottom: 1px solid rgba(143, 58, 47, 0.42);
   color: var(--accent-deep);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0;
   text-decoration: none;
@@ -125,7 +125,7 @@
 }
 
 .intro-practice-link span {
-  font-size: 1.08rem;
+  font-size: 1.125rem;
   transition: transform 0.2s ease;
 }
 
@@ -204,7 +204,7 @@
   margin-top: 14px;
   color: var(--ink-soft);
   font-family: var(--font-display-serif);
-  font-size: 0.86rem;
+  font-size: 0.875rem;
   letter-spacing: 0.08em;
 }
 
@@ -238,7 +238,7 @@
   margin: 0;
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: 1.15rem;
+  font-size: 1.125rem;
   font-weight: 800;
   letter-spacing: 0;
   line-height: 1.35;
@@ -330,7 +330,7 @@
   gap: 12px;
   margin-top: 13px;
   color: var(--ink-soft);
-  font-size: 0.76rem;
+  font-size: 0.75rem;
   letter-spacing: 0;
 }
 
@@ -387,7 +387,7 @@
 
 .intro-practice-facts dt {
   color: var(--accent-deep);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0;
 }
@@ -395,7 +395,7 @@
 .intro-practice-facts dd {
   margin: 8px 0 0;
   color: var(--ink);
-  font-size: 0.88rem;
+  font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.55;
 }
@@ -486,7 +486,7 @@
 .intro-process-list p {
   margin: 12px 0 0;
   color: rgba(255, 248, 239, 0.72);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   line-height: 1.75;
 }
 
@@ -552,7 +552,7 @@
   margin: 0;
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: 1.12rem;
+  font-size: 1.125rem;
   font-weight: 800;
   letter-spacing: 0;
   line-height: 1.55;
@@ -644,7 +644,7 @@
   border: 1px solid var(--accent);
   border-radius: 4px;
   color: var(--accent-deep);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0;
   text-decoration: none;
@@ -753,7 +753,7 @@
 @media (max-width: 760px) {
   .intro-section-kicker {
     gap: 10px;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
   }
 
   .intro-section-kicker::before {
@@ -816,7 +816,7 @@
   }
 
   .intro-values h3 {
-    font-size: 1.05rem;
+    font-size: 1rem;
   }
 
   .intro-practice-row,
@@ -906,7 +906,7 @@
   }
 
   .intro-faq-row h3 {
-    font-size: 1.02rem;
+    font-size: 1rem;
   }
 
   .intro-faq-icon {
@@ -917,7 +917,7 @@
 
   .intro-faq-row > p {
     margin-right: 44px;
-    font-size: 0.94rem;
+    font-size: 0.9375rem;
   }
 
   .intro-contact-band {
@@ -1007,7 +1007,7 @@
 .ink-scroll-copy p {
   margin: 0 0 16px;
   color: var(--accent-deep);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 800;
 }
 
@@ -1031,7 +1031,7 @@
   margin-top: 24px;
   color: var(--ink-soft);
   font-family: var(--font-display-serif);
-  font-size: 1.04rem;
+  font-size: 1rem;
   line-height: 1.8;
 }
 
@@ -1043,7 +1043,7 @@
   padding: 9px 0;
   border-bottom: 1px solid rgba(143, 58, 47, 0.55);
   color: var(--accent-deep);
-  font-size: 0.84rem;
+  font-size: 0.875rem;
   font-weight: 700;
   text-decoration: none;
   pointer-events: auto;
@@ -1084,7 +1084,7 @@
   margin: 0 0 16px;
   color: var(--accent-deep);
   font-family: var(--font-body);
-  font-size: 0.66rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.24em;
   text-shadow: var(--paper-halo);
@@ -1110,7 +1110,7 @@
   margin: 16px 0 0;
   max-width: 21em;
   color: var(--ink-soft);
-  font-size: 0.96rem;
+  font-size: 0.9375rem;
   line-height: 1.9;
   text-shadow: var(--paper-halo);
 }
@@ -1150,7 +1150,7 @@
   display: block;
   margin-top: 7px;
   color: var(--ink-soft);
-  font-size: 0.74rem;
+  font-size: 0.75rem;
   letter-spacing: 0.14em;
   text-shadow: var(--paper-halo);
 }
@@ -1182,7 +1182,7 @@
 .ink-story-duo span {
   padding-top: 7px;
   color: var(--ink-soft);
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   letter-spacing: 0.1em;
   line-height: 1.75;
   text-shadow: var(--paper-halo);
@@ -1201,7 +1201,7 @@
   border: 1px solid rgba(76, 51, 41, 0.4);
   border-radius: 999px;
   color: var(--ink);
-  font-size: 0.88rem;
+  font-size: 0.875rem;
   font-weight: 700;
   text-decoration: none;
   background: rgba(246, 241, 231, 0.72);
@@ -1232,7 +1232,7 @@
 }
 
 .ink-scroll-hint span {
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   font-weight: 700;
 }
 
@@ -1286,7 +1286,7 @@
 
   .ink-scroll-copy p {
     margin-bottom: 12px;
-    font-size: 0.66rem;
+    font-size: 0.75rem;
   }
 
   .ink-scroll-copy h1 {
@@ -1303,7 +1303,7 @@
   .ink-scroll-copy strong {
     max-width: 18em;
     margin-top: 14px;
-    font-size: 0.88rem;
+    font-size: 0.875rem;
     line-height: 1.7;
   }
 
@@ -1355,7 +1355,7 @@
   .ink-story-beat.is-right .ink-story-kicker { justify-content: flex-start; }
   .ink-story-beat.is-right .ink-story-text { margin-left: 0; }
   .ink-story-beat h2 { font-size: 1.72rem; }
-  .ink-story-text { font-size: 0.9rem; }
+  .ink-story-text { font-size: 0.875rem; }
   .ink-story-triad > div { padding: 2px 12px 4px; }
   .ink-story-triad b { font-size: 1.8rem; }
   .ink-story-duo { justify-content: flex-start; gap: 24px; }

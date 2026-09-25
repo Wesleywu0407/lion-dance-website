@@ -14,7 +14,7 @@
   max-width: 34rem;
   margin: 0;
   color: var(--ink-soft);
-  font-size: 0.96rem;
+  font-size: 0.9375rem;
   font-weight: 400;
   letter-spacing: 0.08em;
   line-height: 1.78;
@@ -101,7 +101,7 @@
 .service-item-step {
   margin: 0 0 14px;
   color: rgba(61, 26, 10, 0.45);
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   writing-mode: vertical-rl;
@@ -133,7 +133,7 @@
 .service-item-tags {
   margin: 14px 0 0;
   color: var(--accent-deep);
-  font-size: 11px;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -146,7 +146,7 @@
 .service-item-description {
   margin: 18px 0 0;
   color: var(--ink-soft);
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1.8;
   max-width: 42ch;
 }
@@ -161,7 +161,7 @@
   display: inline-flex;
   margin-top: 18px;
   color: var(--accent);
-  font-size: 13px;
+  font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-decoration: none;
@@ -639,7 +639,7 @@ a.learn-more:focus-visible {
 
   .service-item-link[data-mobile-label]::before {
     content: attr(data-mobile-label);
-    font-size: 0.92rem;
+    font-size: 0.9375rem;
     line-height: 1.4;
   }
 }
@@ -688,7 +688,7 @@ a.learn-more:focus-visible {
   .service-item-step,
   .service-item:first-child .service-item-step {
     margin-bottom: 6px;
-    font-size: 11px;
+    font-size: 0.75rem;
   }
 
   .service-item-tags {
@@ -699,7 +699,7 @@ a.learn-more:focus-visible {
   .service-item:first-child .service-item-description {
     margin-top: 10px;
     max-width: 44ch;
-    font-size: 0.94rem;
+    font-size: 0.9375rem;
     line-height: 1.62;
   }
 

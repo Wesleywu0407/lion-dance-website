@@ -101,6 +101,14 @@ img {
   height: auto;
 }
 
+/* 按鈕與表單預設會用系統字型（Arial），統一繼承站上字體 */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
 body.is-nav-open {
   overflow: hidden;
 }
@@ -216,7 +224,7 @@ h3.section-heading {
   border-left: 3px solid var(--gold);
   color: var(--accent);
   font-family: var(--font-body);
-  font-size: 0.74rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: none;
@@ -289,7 +297,7 @@ h3.section-heading {
   max-width: 54rem;
   margin: 18px 0 0;
   color: var(--ink-soft);
-  font-size: 1.05rem;
+  font-size: 1rem;
   letter-spacing: 0.04em;
   line-height: 1.8;
 }

@@ -205,7 +205,7 @@
 .card-num {
   margin-top: 0;
   color: rgba(240, 217, 168, 0.84);
-  font-size: 11px;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   line-height: 1;
@@ -236,7 +236,7 @@ circle) {
   padding: 14px 20px 0;
   border-top: 1px solid rgba(185, 146, 94, 0.3);
   color: var(--ink-soft);
-  font-size: 0.84rem;
+  font-size: 0.875rem;
   letter-spacing: 0.14em;
   line-height: 1.72;
   text-align: center;
@@ -289,7 +289,7 @@ circle) {
   background: transparent;
   color: var(--accent);
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-decoration: none;
@@ -308,7 +308,7 @@ circle) {
   margin: 0 0 10px;
   color: var(--accent-deep);
   font-family: var(--font-body);
-  font-size: 0.74rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.12em;
 }
@@ -417,7 +417,7 @@ circle) {
   }
 
   .card-num {
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     letter-spacing: 0.08em;
     color: #c49a6c;
     font-weight: 600;
@@ -437,7 +437,7 @@ circle) {
 
   .case-helper {
     margin-top: 20px;
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     letter-spacing: 0.11em;
   }
 
@@ -618,7 +618,7 @@ body.is-lightbox-open {
     margin-top: 14px;
     color: rgba(92, 26, 16, 0.72);
     font-family: var(--font-body);
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.18em;
   }
@@ -678,7 +678,7 @@ body.is-lightbox-open {
     max-width: 20rem;
     margin: 0 auto;
     color: var(--ink-soft);
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     line-height: 1.65;
     letter-spacing: 0.03em;
     text-align: center;
@@ -699,7 +699,7 @@ body.is-lightbox-open {
     border-radius: 999px;
     background: rgba(255, 252, 246, 0.72);
     color: var(--accent);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.08em;
     line-height: 1.4;
@@ -741,7 +741,7 @@ body.is-lightbox-open {
 
   .gallery-page .card-title {
     min-height: auto;
-    font-size: 1.04rem;
+    font-size: 1rem;
     letter-spacing: 0.1em;
   }
 
@@ -759,7 +759,7 @@ body.is-lightbox-open {
     max-width: 22rem;
     margin: 12px auto 0;
     color: var(--ink-soft);
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     letter-spacing: 0.03em;
     line-height: 1.75;
     text-align: center;
@@ -800,7 +800,7 @@ body.is-lightbox-open {
 
   .gallery-page .footer-brand p {
     margin: 7px 0;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     line-height: 1.7;
   }
 
@@ -814,12 +814,12 @@ body.is-lightbox-open {
 
   .gallery-page .footer-links h4 {
     margin: 0 0 10px;
-    font-size: 1.08rem;
+    font-size: 1.125rem;
   }
 
   .gallery-page .footer-links a {
     margin: 8px 0;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
   }
 }
 
@@ -1034,7 +1034,7 @@ body.is-lightbox-open {
     bottom: 0.75rem;
     left: 0.85rem;
     margin: 0;
-    font-size: 0.85rem;
+    font-size: 0.875rem;
     font-weight: 500;
     font-style: normal;
     letter-spacing: 0.15em;
@@ -1308,7 +1308,7 @@ body.is-lightbox-open {
 .gallery-page .gallery-page-hero .eyebrow {
   margin: 0;
   color: var(--accent);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.12em;
 }
@@ -1343,7 +1343,7 @@ body.is-lightbox-open {
 
 .gallery-page .case-summary p {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 0.9375rem;
   line-height: 1.85;
   letter-spacing: 0.02em;
 }
@@ -1452,7 +1452,7 @@ body.is-lightbox-open {
   position: static !important;
   display: block;
   margin: 0 0 2px;
-  font-size: 11px;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 2px;
   line-height: 1.1;
@@ -1468,7 +1468,7 @@ body.is-lightbox-open {
   max-width: 100%;
   color: var(--paper) !important;
   font-family: var(--font-serif);
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 1.25;
   letter-spacing: 0.04em;
@@ -1542,7 +1542,7 @@ body.is-lightbox-open {
   }
 
   .gallery-page .gallery-card .gallery-card-label .card-title {
-    font-size: 12px;
+    font-size: 0.75rem;
     line-height: 1.3;
     letter-spacing: 0.02em;
   }
@@ -1575,7 +1575,7 @@ body.is-lightbox-open {
 .album-context span {
   color: var(--accent);
   font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
 }
@@ -1583,7 +1583,7 @@ body.is-lightbox-open {
 .album-context p {
   margin: 0;
   color: var(--ink-soft);
-  font-size: 0.92rem;
+  font-size: 0.9375rem;
   line-height: 1.75;
 }
 

@@ -63,7 +63,7 @@
   .hero-tagline {
     margin-top: 0.9rem;
     padding: 0;
-    font-size: 0.92rem;
+    font-size: 0.9375rem;
     letter-spacing: 0.06em;
   }
 
@@ -177,7 +177,7 @@ h3.section-heading::after {
 
   .service-page-subtitle {
     max-width: none;
-    font-size: 0.84rem;
+    font-size: 0.875rem;
     letter-spacing: 0.06em;
     line-height: 1.72;
   }
@@ -239,7 +239,7 @@ h3.section-heading::after {
   input,
 textarea,
 select {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   .about-block h2,
@@ -308,7 +308,7 @@ select {
 
   .footer-brand p {
     margin: 6px 0;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     line-height: 1.7;
   }
 
@@ -339,7 +339,7 @@ select {
   .footer-links h4 {
     grid-column: 1 / -1;
     margin: 0 0 8px;
-    font-size: 1.08rem;
+    font-size: 1.125rem;
     line-height: 1.35;
   }
 
@@ -347,7 +347,7 @@ select {
     min-width: 0;
     margin: 0;
     padding: 9px 0;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     line-height: 1.45;
     overflow-wrap: anywhere;
   }
@@ -355,7 +355,7 @@ select {
   .footer-bottom {
     margin-top: 20px;
     padding-top: 16px;
-    font-size: 0.82rem;
+    font-size: 0.875rem;
     line-height: 1.6;
   }
 }
@@ -388,7 +388,7 @@ select {
   }
 
   body {
-    font-size: 16px;
+    font-size: 0.9375rem;
   }
 
   .section {
@@ -430,7 +430,7 @@ select {
   .page-hero .page-hero-inner > p:not(.section-tag) {
     max-width: 19em;
     margin-top: 8px;
-    font-size: 0.96rem;
+    font-size: 0.9375rem;
     line-height: 1.75;
   }
 
@@ -440,7 +440,7 @@ select {
 
   .service-page-subtitle {
     max-width: 22em;
-    font-size: 0.92rem;
+    font-size: 0.9375rem;
     line-height: 1.7;
   }
 
@@ -526,7 +526,7 @@ select {
   .home-page .hero-tagline {
     max-width: 22em;
     color: rgba(255, 247, 242, 0.94);
-    font-size: 0.96rem;
+    font-size: 0.9375rem;
     line-height: 1.7;
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.62);
   }
@@ -559,7 +559,7 @@ select {
 
   .about-cinematic .ctb-support {
     padding-top: 14px;
-    font-size: 0.98rem;
+    font-size: 1rem;
     line-height: 1.78;
   }
 
@@ -574,7 +574,7 @@ select {
 
   .landing-photo-grid figcaption {
     padding: 11px 14px 13px;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
   }
 
   .quote-prep {
@@ -703,7 +703,7 @@ select {
   .album-back {
     min-height: 44px;
     padding-block: 10px;
-    font-size: 0.86rem;
+    font-size: 0.875rem;
   }
 
   .album-title {
@@ -713,7 +713,7 @@ select {
 
   .album-intro {
     margin-top: 10px;
-    font-size: 0.96rem;
+    font-size: 0.9375rem;
     line-height: 1.75;
   }
 
@@ -744,7 +744,7 @@ select {
   }
 
   .gallery-page .gallery-page-hero .hero-sub {
-    font-size: 0.94rem;
+    font-size: 0.9375rem;
     line-height: 1.7;
   }
 
@@ -765,7 +765,7 @@ select {
   }
 
   .gallery-page .gallery-card .gallery-card-label .card-title {
-    font-size: 0.82rem;
+    font-size: 0.875rem;
     line-height: 1.35;
   }
 
@@ -777,12 +777,98 @@ select {
     min-width: 0;
     min-height: 58px;
     padding: 12px 4px;
-    font-size: 0.84rem;
+    font-size: 0.875rem;
     letter-spacing: 0.04em;
     white-space: nowrap;
   }
 
   body.has-quickbar .site-footer {
     padding-bottom: calc(82px + env(safe-area-inset-bottom));
+  }
+}
+
+/* ── 手機字級（2026-09-25）────────────────────────────────
+   使用者回饋「手機字體太大」。實測 390px 下 h1 32–45px、h2 24–38px。
+   統一收斂成一套手機字級；各頁 CSS 的標題規則權重不一，這裡用
+   !important 作為手機版的最終字級，集中管理。
+   內文由 body 16→15px 繼承；表單欄位維持 16px（上方 ≤768px 規則），
+   避免 iOS 聚焦時自動放大。
+   ─────────────────────────────────────────────────────────── */
+@media (max-width: 760px) {
+  /* 頁面主標 h1：28px（首頁 hero 品牌名保留 30px） */
+  main h1,
+  main h1 span {
+    font-size: 1.75rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .home-page .hero-title,
+  .home-page .hero-title span,
+  .home-page .hero-title-layer,
+  .home-page .hero-title-layer span {
+    font-size: 1.875rem !important;
+  }
+
+  /* 區塊標題 h2：22px */
+  main .section-heading,
+  main h2.section-heading,
+  main .section-heading .narrative-heading-line,
+  main .section-heading .narrative-heading-phrase,
+  main .ctb-phrase,
+  main .about-service-summary-head h2,
+  main .process-consultation-content h2,
+  main .cta-band h2,
+  main .quote-prep h2,
+  main .contact-faq-heading h2,
+  main .contact-section-title,
+  main .intro-section-heading h2,
+  main .intro-comparison-heading h2,
+  main .intro-process-heading h2,
+  main .intro-faq-heading h2,
+  main .intro-contact-copy h2,
+  main .ink-story-beat h2,
+  main .about-chapter-title,
+  main .about-services-head h2,
+  main .about-contact h2 {
+    font-size: 1.375rem !important;
+    line-height: 1.4 !important;
+  }
+
+  /* 頁首 h1 也掛 .section-heading，權重要高過上面的 h2 規則 */
+  main h1.section-heading,
+  main h1.section-heading span {
+    font-size: 1.75rem !important;
+    line-height: 1.25 !important;
+  }
+
+  /* 項目標題 h3：表演項目名稱 22px、其餘大型 h3 19px */
+  main .service-item-body h3 {
+    font-size: 1.375rem !important;
+  }
+
+  main .intro-practice-title h3 {
+    font-size: 1.2rem !important;
+  }
+
+  /* 裝飾性大數字／大字 */
+  main .ctb-num {
+    font-size: 2.5rem !important;
+  }
+
+  main .step-num {
+    font-size: 1.75rem !important;
+  }
+
+  main .service-item-step,
+  main .intro-process-number {
+    font-size: 1.25rem !important;
+  }
+
+  main .ink-story-duo b {
+    font-size: 1.6rem !important;
+  }
+
+  main .intro-value-glyph {
+    font-size: 1.4rem !important;
   }
 }
