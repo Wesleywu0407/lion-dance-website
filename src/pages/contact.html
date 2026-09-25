@@ -18,7 +18,7 @@
   <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="../favicon-180.png">
   <meta name="theme-color" content="#181311">
-  <link rel="stylesheet" href="../css/style.css?v=20260925-menu1">
+  <link rel="stylesheet" href="../css/style.css?v=20260925-contact1">
 
   <script type="application/ld+json">
   {
@@ -531,61 +531,90 @@
     {% include "header.njk" %}
 
     <main id="main-content">
-      <section class="page-hero">
-        <div class="page-hero-inner reveal reveal-hero">
-          <p class="section-tag">聯絡我們</p>
-          <h1 class="section-heading">預約活動演出</h1>
-          <p>請提供活動日期、地點與需求，我們會協助規劃合適的演出內容。</p>
+      <section class="contact-hero" aria-labelledby="contact-title">
+        <div class="contact-shell contact-hero-grid">
+          <div class="contact-hero-copy reveal reveal-hero">
+            <p class="section-tag">聯絡我們</p>
+            <h1 id="contact-title" class="contact-title"><span class="phrase">預約舞龍舞獅</span><span class="phrase">演出</span></h1>
+            <p class="contact-lede">告訴我們活動日期、地點和想要的演出，我們協助安排合適的節目、人數與流程。開幕、尾牙、廟會、動土上樑，全台都可以出團。</p>
+          </div>
+          <figure class="contact-hero-photo reveal">
+            <picture>
+              <source media="(max-width: 760px)" srcset="../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E7%A5%A5%E7%8D%85%E9%96%8B%E5%B8%82-720.webp">
+              <img src="../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E7%A5%A5%E7%8D%85%E9%96%8B%E5%B8%82-1440.webp" width="1440" height="1080" alt="臺灣南仙龍獅體育會兩頭黃色醒獅在開市祈福典禮的供桌兩側演出" fetchpriority="high" decoding="async">
+            </picture>
+            <figcaption>開市祈福典禮・祥獅開市</figcaption>
+          </figure>
+          <ul class="contact-channels reveal" aria-label="聯絡方式">
+            <li class="contact-channel-line">
+              <p class="contact-channel-label">LINE（最快）</p>
+              <a class="contact-line-button" href="{{ site.lineUrl }}" target="_blank" rel="noopener noreferrer" aria-label="加 LINE 洽詢演出，ID {{ site.lineId }}">
+                <img src="../assets/icons/line-brand-icon-52.webp" width="22" height="22" alt="" aria-hidden="true" decoding="async">
+                加 LINE 洽詢
+              </a>
+              <p class="contact-channel-meta">ID：{{ site.lineId }}</p>
+              <figure class="contact-line-qr">
+                <img src="../assets/icons/line-qr-lion6869.svg" width="132" height="132" alt="LINE 好友 QR code，ID {{ site.lineId }}" decoding="async">
+                <figcaption>電腦上瀏覽？用手機掃描加好友</figcaption>
+              </figure>
+            </li>
+            <li>
+              <p class="contact-channel-label">電話</p>
+              <a class="contact-channel-value" href="tel:{{ site.phoneHref }}">{{ site.phone }}</a>
+              <p class="contact-channel-meta">蔡團長</p>
+            </li>
+            <li>
+              <p class="contact-channel-label">電子郵件</p>
+              <a class="contact-channel-value is-email" href="mailto:ds20030520@gmail.com">ds20030520@gmail.com</a>
+              <p class="contact-channel-meta">適合寄送活動企劃或場地資料</p>
+            </li>
+          </ul>
         </div>
       </section>
 
-      <section class="section page-section-stack">
-        <div class="contact-layout">
-          <div class="contact-info reveal">
-            <a class="contact-channel contact-card contact-line" href="{{ site.lineUrl }}" target="_blank" rel="noopener noreferrer" aria-label="用 LINE 聯絡臺灣南仙龍獅體育會">
-              <article>
-                <div class="contact-icon icon">
-                  <img src="../assets/icons/line-brand-icon-52.webp" width="26" height="26" alt="" aria-hidden="true" loading="lazy" decoding="async">
-                </div>
-                <div>
-                  <span>LINE 優先洽詢</span>
-                  <p>{{ site.lineId }}</p>
-                </div>
-              </article>
-            </a>
-            <article class="contact-channel contact-card contact-phone">
-                <div class="contact-icon icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                    <path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11 11 0 0 0 3.45.55 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 3.5a1 1 0 0 1 1-1H7.5a1 1 0 0 1 1 1 11 11 0 0 0 .55 3.45 1 1 0 0 1-.24 1z" fill="currentColor"/>
-                  </svg>
-                </div>
-                <div>
-                  <span>電話</span>
-                  <p>蔡團長 <a href="tel:{{ site.phoneHref }}">{{ site.phoneHref }}</a></p>
-                </div>
-              </article>
-            <article class="contact-channel contact-card contact-email">
-                <div class="contact-icon icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                    <path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2m0 2v.2l8 5.33 8-5.33V7H4m16 10V9.6l-7.45 4.96a1 1 0 0 1-1.1 0L4 9.6V17h16z" fill="currentColor"/>
-                  </svg>
-                </div>
-                <div>
-                  <span>電子郵件</span>
-                  <p><a href="mailto:ds20030520@gmail.com">ds20030520@gmail.com</a></p>
-                </div>
-              </article>
-            <aside class="contact-checklist">
-              <p class="contact-checklist-heading">先準備好以下幾項，我們能更快回覆合適的演出安排。</p>
-              <ul>
-                <li>活動日期</li>
-                <li>活動地點</li>
-                <li>活動類型（開幕、節慶、學校、社區等）</li>
-                <li>預計演出項目或現場規模</li>
-                <li>方便回覆的聯絡方式</li>
-              </ul>
-            </aside>
-          </div>
+      <section class="contact-steps" aria-labelledby="contact-steps-title">
+        <div class="contact-shell">
+          <h2 id="contact-steps-title" class="contact-section-title reveal">預約流程</h2>
+          <ol class="contact-step-list reveal">
+            <li>
+              <span class="contact-step-num" aria-hidden="true">壹</span>
+              <h3>告訴我們活動資訊</h3>
+              <p>日期、地點、活動類型。已擇定吉時也請一併告知。</p>
+            </li>
+            <li>
+              <span class="contact-step-num" aria-hidden="true">貳</span>
+              <h3>確認節目與報價</h3>
+              <p>依場地大小與流程，建議合適的演出項目、人數與費用。</p>
+            </li>
+            <li>
+              <span class="contact-step-num" aria-hidden="true">參</span>
+              <h3>場勘與彩排</h3>
+              <p>場地動線特殊或流程較長時，可提前安排場勘、彩排。</p>
+            </li>
+            <li>
+              <span class="contact-step-num" aria-hidden="true">肆</span>
+              <h3>演出當天</h3>
+              <p>團隊到場，依活動流程完成點睛、採青等祝福儀式。</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="contact-form-section" aria-labelledby="contact-form-title">
+        <div class="contact-shell contact-layout">
+          <aside class="contact-form-aside reveal">
+            <h2 id="contact-form-title" class="contact-section-title">線上填寫活動資訊</h2>
+            <p>標 * 的欄位必填，其餘細節我們聯絡您時再確認。</p>
+            <p class="contact-aside-label">先準備好這些，回覆會更快</p>
+            <ul class="contact-prep-list">
+              <li>活動日期（與吉時）</li>
+              <li>活動地點</li>
+              <li>活動類型與現場人數</li>
+              <li>想安排的演出或預算</li>
+            </ul>
+            <p class="contact-aside-links">還不確定要安排哪一種演出？<br><a href="/pages/services">看表演項目</a>・<a href="/landing/lion-dance-price-guide">舞獅表演報價指南</a></p>
+          </aside>
+
           <form
             class="contact-form reveal"
             action="https://formsubmit.co/ds20030520@gmail.com"
@@ -602,65 +631,9 @@
             <input type="hidden" name="utmMedium" value="">
             <input type="hidden" name="utmCampaign" value="">
             <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="contact-honeypot">
-            <header class="contact-form-intro">
-              <p>線上洽詢</p>
-              <h2>提供基本活動資訊</h2>
-              <span>先填必填欄位就好，其餘細節我們再確認。</span>
-            </header>
-            <div class="contact-form-row">
-              <label>
-                姓名 *
-                <input type="text" name="name" autocomplete="name" placeholder="請輸入您的姓名" required>
-              </label>
-              <label>
-                公司／單位（選填）
-                <input type="text" name="company" autocomplete="organization" placeholder="公司、學校、宮廟或主辦單位">
-              </label>
-            </div>
-            <div class="contact-form-row">
-              <label>
-                聯絡電話
-                <input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="09xx-xxx-xxx" aria-describedby="contact-method-help">
-              </label>
-              <label>
-                電子郵件
-                <input type="email" name="email" autocomplete="email" inputmode="email" placeholder="your@email.com" aria-describedby="contact-method-help">
-              </label>
-            </div>
-            <div class="contact-form-row">
-              <label>
-                LINE ID
-                <input type="text" name="lineId" autocomplete="off" placeholder="方便用 LINE 回覆時填寫" aria-describedby="contact-method-help">
-              </label>
-              <label>
-                希望的回覆方式
-                <select name="preferredContact">
-                  <option value="">皆可</option>
-                  <option value="phone">電話</option>
-                  <option value="line">LINE</option>
-                  <option value="email">電子郵件</option>
-                </select>
-              </label>
-            </div>
-            <p class="contact-field-help" id="contact-method-help">聯絡電話、LINE ID 或電子郵件請至少填寫一項。</p>
-            <div class="contact-form-row">
-              <label>
-                活動日期 *
-                <input id="event-date" type="date" name="eventDate" required aria-describedby="event-date-help">
-              </label>
-              <div class="contact-option-panel">
-                <span id="event-date-help">日期尚未確定？</span>
-                <label class="contact-check">
-                  <input id="date-flexible" type="checkbox" name="dateFlexible" value="yes">
-                  <span>先討論方案，日期之後確認</span>
-                </label>
-              </div>
-            </div>
-            <div class="contact-form-row">
-              <label>
-                活動縣市／地區 *
-                <input type="text" name="eventCity" autocomplete="address-level1" placeholder="例如：台北市信義區" required>
-              </label>
+
+            <fieldset class="contact-fieldset">
+              <legend><span class="contact-fieldset-num" aria-hidden="true">壹</span>活動資訊</legend>
               <label>
                 活動類型 *
                 <select name="eventType" required>
@@ -679,19 +652,43 @@
                   <option value="other">其他</option>
                 </select>
               </label>
-            </div>
-            <label>
-              希望的演出項目
-              <select name="service">
-                <option value="">還不確定，希望南仙建議</option>
-                {% for service in services.items %}
+              <div class="contact-form-row">
+                <div class="contact-date-field">
+                  <label>
+                    活動日期 *
+                    <input id="event-date" type="date" name="eventDate" required aria-describedby="event-date-help">
+                  </label>
+                  <label class="contact-check" id="event-date-help">
+                    <input id="date-flexible" type="checkbox" name="dateFlexible" value="yes">
+                    <span>日期還沒確定，先討論方案</span>
+                  </label>
+                </div>
+                <label>
+                  吉時／演出時段（選填）
+                  <input type="text" name="eventTime" placeholder="例如：上午 9:18 吉時" autocomplete="off">
+                </label>
+              </div>
+              <label>
+                活動縣市／地區 *
+                <input type="text" name="eventCity" autocomplete="address-level1" placeholder="例如：台北市信義區" required>
+              </label>
+            </fieldset>
+
+            <fieldset class="contact-fieldset">
+              <legend><span class="contact-fieldset-num" aria-hidden="true">貳</span>想要的演出</legend>
+              <div class="contact-form-row">
+                <label>
+                  希望的演出項目
+                  <select name="service">
+                    <option value="">還不確定，希望南仙建議</option>
+                    {% for service in services.items %}
                 <option value="{{ service.id }}">{{ service.title }}</option>
                 {% endfor %}
-              </select>
-            </label>
-            <label>
-              預算區間
-              <select name="budgetRange">
+                  </select>
+                </label>
+                <label>
+                  預算區間
+                  <select name="budgetRange">
                 <option value="">尚未決定／希望先討論</option>
                 <option value="under-30000">3 萬元以下</option>
                 <option value="30000-50000">3–5 萬元</option>
@@ -699,11 +696,54 @@
                 <option value="80000-120000">8–12 萬元</option>
                 <option value="over-120000">12 萬元以上</option>
               </select>
-            </label>
-            <label>
-              需求說明 *
-              <textarea name="message" rows="6" placeholder="例如：3/15 上午在台北市信義區開幕，現場約 200 人，想安排祥獅獻瑞。" required></textarea>
-            </label>
+                </label>
+              </div>
+              <label>
+                需求說明 *
+                <textarea name="message" rows="5" placeholder="例如：3/15 上午在台北市信義區開幕，現場約 200 人，想安排祥獅獻瑞。" required></textarea>
+              </label>
+            </fieldset>
+
+            <fieldset class="contact-fieldset">
+              <legend><span class="contact-fieldset-num" aria-hidden="true">參</span>怎麼聯絡您</legend>
+              <div class="contact-form-row">
+                <label>
+                  姓名 *
+                  <input type="text" name="name" autocomplete="name" placeholder="請輸入您的姓名" required>
+                </label>
+                <label>
+                  公司／單位（選填）
+                  <input type="text" name="company" autocomplete="organization" placeholder="公司、學校、宮廟或主辦單位">
+                </label>
+              </div>
+              <div class="contact-form-row">
+                <label>
+                  聯絡電話
+                  <input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="09xx-xxx-xxx" aria-describedby="contact-method-help">
+                </label>
+                <label>
+                  LINE ID
+                  <input type="text" name="lineId" autocomplete="off" placeholder="方便用 LINE 回覆時填寫" aria-describedby="contact-method-help">
+                </label>
+              </div>
+              <div class="contact-form-row">
+                <label>
+                  電子郵件
+                  <input type="email" name="email" autocomplete="email" inputmode="email" placeholder="your@email.com" aria-describedby="contact-method-help">
+                </label>
+                <label>
+                  希望的回覆方式
+                  <select name="preferredContact">
+                    <option value="">皆可</option>
+                    <option value="phone">電話</option>
+                    <option value="line">LINE</option>
+                    <option value="email">電子郵件</option>
+                  </select>
+                </label>
+              </div>
+              <p class="contact-field-help" id="contact-method-help">電話、LINE ID、電子郵件至少填一項。</p>
+            </fieldset>
+
             {% if backend.turnstileSiteKey %}
             <div class="cf-turnstile" data-sitekey="{{ backend.turnstileSiteKey }}" data-language="zh-tw"></div>
             {% endif %}
@@ -712,39 +752,16 @@
               <span>我同意南仙依<a href="/pages/privacy">隱私政策</a>使用以上資料，聯絡本次演出。*</span>
             </label>
             <div class="contact-form-status" data-contact-form-status role="status" aria-live="polite" tabindex="-1"></div>
-            <button class="button button-primary btn-primary" type="submit" data-submit-label="送出洽詢">送出洽詢</button>
-            <p class="contact-note">送出後我們會盡快與您聯繫，並回覆一封確認信。</p>
+            <button class="contact-submit" type="submit" data-submit-label="送出洽詢">送出洽詢</button>
+            <p class="contact-note">送出後會收到一封確認信；想更快確認檔期，也可以直接加 LINE。</p>
           </form>
         </div>
-        <div class="social-embed reveal">
-          <div class="social-embed-heading">
-            <p class="section-tag">Facebook</p>
-            <h2>追蹤演出動態</h2>
-          </div>
-          <a
-            class="facebook-card"
-            href="https://www.facebook.com/p/%E8%87%BA%E5%8C%97%E5%BE%B7%E5%8B%9D%E8%88%98%E8%87%BA%E7%81%A3%E5%8D%97%E4%BB%99%E9%BE%8D%E7%8D%85%E9%AB%94%E8%82%B2%E6%9C%83-61556516607768/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="前往 Facebook 查看臺北德勝館・臺灣南仙龍獅體育會"
-          >
-            <div class="facebook-card-media">
-              <img src="../images/IMG_1799%202-720.webp" srcset="../images/IMG_1799%202-720.webp 720w, ../images/IMG_1799%202-1440.webp 1440w" sizes="(max-width: 760px) 92vw, 720px" alt="臺灣南仙龍獅體育會紅色醒獅演出照片" width="1477" height="1108" loading="lazy" decoding="async">
-            </div>
-            <div class="facebook-card-body">
-              <h3>臺北德勝館・臺灣南仙龍獅體育會</h3>
-              <p>近期的演出照片與活動消息，都會發在粉專。</p>
-              <span class="facebook-action">前往粉專</span>
-            </div>
-          </a>
-        </div>
-        <p class="contact-quote reveal">還不確定要安排哪一種演出？先告訴我們活動的日期與場地，我們再一起討論合適的組合。<a href="/pages/services">查看表演項目</a></p>
+      </section>
 
-        <section class="contact-faq reveal" aria-labelledby="contact-faq-title">
-          <div class="contact-faq-heading">
-            <h2 id="contact-faq-title">常見問題</h2>
-          </div>
-          <div class="contact-faq-list">
+      <section class="contact-faq" aria-labelledby="contact-faq-title">
+        <div class="contact-shell contact-faq-grid">
+          <h2 id="contact-faq-title" class="contact-section-title reveal">常見問題</h2>
+          <div class="contact-faq-list reveal">
             <details class="contact-faq-item">
               <summary>北、中、南部演出價格會不同嗎？</summary>
               <div class="contact-faq-answer">
@@ -770,7 +787,20 @@
               </div>
             </details>
           </div>
-        </section>
+        </div>
+      </section>
+
+      <section class="contact-social" aria-labelledby="contact-social-title">
+        <div class="contact-shell contact-social-grid reveal">
+          <a class="contact-social-media" href="https://www.facebook.com/p/%E8%87%BA%E5%8C%97%E5%BE%B7%E5%8B%9D%E8%88%98%E8%87%BA%E7%81%A3%E5%8D%97%E4%BB%99%E9%BE%8D%E7%8D%85%E9%AB%94%E8%82%B2%E6%9C%83-61556516607768/" target="_blank" rel="noreferrer" tabindex="-1" aria-hidden="true">
+            <img src="../images/IMG_1799%202-720.webp" srcset="../images/IMG_1799%202-720.webp 720w, ../images/IMG_1799%202-1440.webp 1440w" sizes="(max-width: 760px) 92vw, 720px" alt="臺灣南仙龍獅體育會紅色醒獅演出照片" width="1477" height="1108" loading="lazy" decoding="async">
+          </a>
+          <div class="contact-social-copy">
+            <h2 id="contact-social-title" class="contact-section-title">追蹤演出動態</h2>
+            <p>近期的演出照片與活動消息，都會發在「臺北德勝館・臺灣南仙龍獅體育會」粉專。</p>
+            <a class="contact-text-link" href="https://www.facebook.com/p/%E8%87%BA%E5%8C%97%E5%BE%B7%E5%8B%9D%E8%88%98%E8%87%BA%E7%81%A3%E5%8D%97%E4%BB%99%E9%BE%8D%E7%8D%85%E9%AB%94%E8%82%B2%E6%9C%83-61556516607768/" target="_blank" rel="noreferrer">前往 Facebook 粉專</a>
+          </div>
+        </div>
       </section>
     </main>
 
@@ -819,6 +849,6 @@
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   {% endif %}
   <script src="../backend-config.js?v=20260728-bp1"></script>
-  <script src="../script.js?v=20260925-menu1" defer></script>
+  <script src="../script.js?v=20260925-contact1" defer></script>
 </body>
 </html>

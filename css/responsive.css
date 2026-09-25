@@ -153,9 +153,6 @@ h3.section-heading::after {
   }
 
   .about-page .page-hero .page-hero-inner > p:not(.section-tag),
-.contact-page .page-hero .page-hero-inner > p:not(.section-tag) {
-    max-width: min(100%, 15em);
-  }
 
   .service-page-hero {
     min-height: 0;
@@ -206,45 +203,14 @@ h3.section-heading::after {
     display: inline;
   }
 
-  .contact-form {
-    padding: 24px 18px;
-  }
 
-  .contact-info article {
-    grid-template-columns: 56px 1fr;
-    gap: 14px;
-  }
 
-  .contact-icon {
-    width: 50px;
-    height: 50px;
-  }
 
-  .contact-icon svg {
-    width: 24px;
-    height: 24px;
-  }
 
-  .social-embed {
-    margin-top: 42px;
-  }
 
-  .facebook-card {
-    grid-template-columns: 1fr;
-    border-radius: 22px;
-  }
 
-  .facebook-card-media {
-    min-height: 220px;
-  }
 
-  .facebook-card-body {
-    padding: 22px 20px 24px;
-  }
 
-  .facebook-card-top {
-    align-items: flex-start;
-  }
 
   .footer-links {
     grid-template-columns: 1fr;
@@ -671,16 +637,7 @@ select {
     min-height: 44px;
   }
 
-  .contact-page .page-section-stack {
-    padding-top: 24px;
-  }
 
-  .contact-page .contact-info p a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    padding-block: 8px;
-  }
 
   .contact-page .contact-form .contact-check {
     align-items: flex-start;
