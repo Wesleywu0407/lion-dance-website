@@ -1,35 +1,3 @@
-.home-page .site-header:not(.scrolled) {
-  background: transparent;
-  border-bottom-color: transparent;
-  box-shadow: none;
-  backdrop-filter: none;
-}
-
-.home-page .site-header:not(.scrolled) .brand-text strong,
-.home-page .site-header:not(.scrolled) .site-nav > a,
-.home-page .site-header:not(.scrolled) .site-nav > .nav-services > a,
-.home-page .site-header:not(.scrolled) .site-nav > .nav-gallery > a {
-  color: #FAECE7;
-}
-
-.home-page .site-header:not(.scrolled) .brand-text small {
-  color: rgba(250, 236, 231, 0.72);
-}
-
-.home-page .site-header:not(.scrolled) .site-nav a::after {
-  background: linear-gradient(90deg, transparent, #FAECE7, transparent);
-}
-
-.home-page .site-header:not(.scrolled) .nav-toggle {
-  border: none;
-  background: transparent;
-  box-shadow: none;
-}
-
-.home-page .site-header:not(.scrolled) .nav-toggle span {
-  background: #FAECE7;
-}
-
 .home-page .section::before,
 .home-page :where(div,
 section,

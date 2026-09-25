@@ -377,14 +377,18 @@ const lockBodyScroll = () => {
     return;
   }
 
+  // 桌機鎖捲動時捲軸會消失；補回同寬的空隙，header 與版面才不會橫移
+  const scrollbarGap = window.innerWidth - document.documentElement.clientWidth;
   lockedScrollY = window.scrollY;
   isBodyScrollLocked = true;
+  document.documentElement.style.setProperty('--scrollbar-gap', `${scrollbarGap}px`);
   document.body.classList.add('is-nav-open');
   document.body.style.position = 'fixed';
   document.body.style.top = `-${lockedScrollY}px`;
   document.body.style.left = '0';
   document.body.style.right = '0';
   document.body.style.width = '100%';
+  document.body.style.paddingRight = `${scrollbarGap}px`;
 };
 
 const unlockBodyScroll = () => {
@@ -398,53 +402,121 @@ const unlockBodyScroll = () => {
   document.body.style.left = '';
   document.body.style.right = '';
   document.body.style.width = '';
+  document.body.style.paddingRight = '';
+  document.documentElement.style.removeProperty('--scrollbar-gap');
   isBodyScrollLocked = false;
-  window.scrollTo(0, lockedScrollY);
+  // html 有 scroll-behavior: smooth；還原位置必須瞬間完成，不然會看到頁面自己捲回去
+  window.scrollTo({ top: lockedScrollY, behavior: 'instant' });
 };
 
-if (navToggle && siteNav) {
-  // 手機版導覽是一層的：點標題就直接前往那一頁，不展開子項目。
-  // 子選單（.mobile-submenu）已移除，桌機的 mega menu 走 CSS :hover / :focus-within。
-  const resetMobileNavState = () => {
-    siteNav.scrollTop = 0;
+if (navToggle && siteNav && header) {
+  // 滿版選單（所有寬度）：按鈕開關、Esc 關閉、Tab 只在 header 內循環。
+  const navToggleLabel = navToggle.querySelector('.nav-toggle-label');
+  const navPhotos = Array.from(siteNav.querySelectorAll('[data-nav-photo]'));
+  const navItems = Array.from(siteNav.querySelectorAll('.nav-item'));
+  const wideNavQuery = window.matchMedia('(min-width: 1024px)');
+  let navPhotosLoaded = false;
+
+  const currentNavIndex = () => {
+    const current = siteNav.querySelector('.nav-main[aria-current="page"]');
+    return current ? Number(current.closest('.nav-item').dataset.navIndex) : 0;
+  };
+
+  const showNavPhoto = (index) => {
+    navPhotos.forEach((photo) => {
+      photo.classList.toggle('is-active', Number(photo.dataset.navPhoto) === index);
+    });
+  };
+
+  // 照片只在桌機第一次打開選單時才下載
+  const loadNavPhotos = () => {
+    if (navPhotosLoaded || !wideNavQuery.matches) {
+      return;
+    }
+
+    navPhotosLoaded = true;
+    navPhotos.forEach((photo) => {
+      const img = photo.querySelector('img[data-src]');
+      if (img) {
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+      }
+    });
   };
 
   const setNavOpen = (isOpen) => {
     siteNav.classList.toggle('is-open', isOpen);
+    header.classList.toggle('is-menu-open', isOpen);
+    siteNav.inert = !isOpen;
     navToggle.setAttribute('aria-expanded', String(isOpen));
     navToggle.setAttribute('aria-label', isOpen ? '關閉主要導覽' : '開啟主要導覽');
+    if (navToggleLabel) {
+      navToggleLabel.textContent = isOpen ? '關閉' : '選單';
+    }
 
-    if (isOpen && window.innerWidth <= 760) {
+    if (isOpen) {
+      loadNavPhotos();
+      siteNav.scrollTop = 0;
       lockBodyScroll();
+      siteNav.querySelector('.nav-main')?.focus({ preventScroll: true });
+      // 聚焦第一項會觸發 focusin；照片最後再指回目前所在頁
+      showNavPhoto(currentNavIndex());
     } else {
       unlockBodyScroll();
-    }
-
-    if (!isOpen && window.innerWidth <= 760) {
-      resetMobileNavState();
+      if (siteNav.contains(document.activeElement)) {
+        navToggle.focus({ preventScroll: true });
+      }
     }
   };
+
+  siteNav.inert = true;
 
   navToggle.addEventListener('click', () => {
     setNavOpen(!siteNav.classList.contains('is-open'));
   });
 
-  // 每個導覽連結都直接關閉選單並前往目標頁——包含 表演項目 / 活動案例。
+  navItems.forEach((item) => {
+    const index = Number(item.dataset.navIndex);
+    item.addEventListener('mouseenter', () => showNavPhoto(index));
+    item.addEventListener('focusin', () => showNavPhoto(index));
+  });
+
+  siteNav.querySelector('.nav-list')?.addEventListener('mouseleave', () => {
+    showNavPhoto(currentNavIndex());
+  });
+
+  // 每個連結都直接關閉選單並前往目標（含同頁錨點）
   siteNav.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
       setNavOpen(false);
     });
   });
 
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 760 && siteNav.classList.contains('is-open')) {
-      setNavOpen(false);
-    }
-  });
-
   window.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && siteNav.classList.contains('is-open')) {
+    if (!siteNav.classList.contains('is-open')) {
+      return;
+    }
+
+    if (event.key === 'Escape') {
       setNavOpen(false);
+      return;
+    }
+
+    if (event.key !== 'Tab') {
+      return;
+    }
+
+    const focusables = Array.from(header.querySelectorAll('a[href], button'))
+      .filter((el) => el.offsetParent !== null || el === navToggle);
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
     }
   });
 }

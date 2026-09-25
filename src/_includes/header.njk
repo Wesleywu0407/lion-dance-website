@@ -1,51 +1,82 @@
+{#- 全站 header：品牌、LINE／電話、選單按鈕，以及滿版「節目冊」選單。
+    每頁在 include 前 `{% set activeNav = "..." %}` 標記目前所在頁。
+    選單照片只在第一次打開時載入（data-src），不影響首屏。 -#}
+{%- set navItems = [
+  { key: "home", href: "/", label: "首頁", num: "壹", photo: "IMG_1799%202-720.webp", caption: "開幕醒獅" },
+  { key: "about", href: "/pages/about", label: "關於我們", num: "貳", photo: "%E7%A5%A5%E7%8D%85%E7%8D%BB%E7%91%9E-720.webp", caption: "祥獅獻瑞" },
+  { key: "intro", href: "/pages/dragon-lion-introduction", label: "舞龍舞獅介紹", num: "參", photo: "%E7%8D%85%E9%A0%AD%E6%AD%A3%E9%9D%A2-720.webp", caption: "傳統獅頭" },
+  { key: "services", href: "/pages/services", label: "表演項目", num: "肆", photo: "%E6%A2%85%E8%8A%B1%E6%A8%81%E7%8D%85-720.webp", caption: "梅花樁獅", sub: [
+    { href: "/pages/services#item-god-of-wealth", label: "文武財神" },
+    { href: "/pages/services#item-folk-performance", label: "民俗藝陣" },
+    { href: "/pages/services#item-plum-blossom-pole-lion", label: "梅花樁獅" },
+    { href: "/pages/services#item-auspicious-lion", label: "祥獅獻瑞" },
+    { href: "/pages/services#item-dragon-pearl", label: "祥龍搶珠" },
+    { href: "/pages/services#item-war-drum", label: "雷鳴戰鼓" },
+    { href: "/pages/services#item-nezha", label: "電音三太子" }
+  ] },
+  { key: "gallery", href: "/gallery/", label: "活動案例", num: "伍", photo: "%E7%A5%A5%E9%BE%8D%E6%90%B6%E7%8F%A0-720.webp", caption: "祥龍搶珠", sub: [
+    { href: "/gallery/opening", label: "開幕開工" },
+    { href: "/gallery/banquet", label: "春酒尾牙" },
+    { href: "/gallery/tourism", label: "觀光表演" },
+    { href: "/gallery/funeral", label: "追思儀式" },
+    { href: "/gallery/groundbreaking", label: "動土上樑" },
+    { href: "/gallery/festival-retail", label: "百貨春節・週年慶" },
+    { href: "/gallery/temple", label: "廟會繞境・祝壽典禮" },
+    { href: "/gallery/school", label: "學校社團・企業教學" },
+    { href: "/gallery/performance", label: "展演服務" }
+  ] },
+  { key: "contact", href: "/pages/contact", label: "聯絡我們", num: "陸", photo: "%E9%9B%B7%E9%B3%B4%E6%88%B0%E9%BC%93-720.webp", caption: "雷鳴戰鼓" }
+] -%}
 <header class="site-header">
       <a class="brand" href="/" aria-label="回到首頁">
-        <img src="../images/lion-icon-white-80.webp" class="brand-logo" width="40" height="40" alt="臺灣南仙龍獅體育會標誌" loading="lazy" decoding="async">
+        <span class="brand-seal"><img src="/images/lion-icon-white-80.webp" class="brand-logo" width="40" height="40" alt="臺灣南仙龍獅體育會標誌" decoding="async"></span>
         <span class="brand-text">
           <strong>臺灣南仙龍獅體育會</strong>
           <small>Taiwan Nan Sieng Dragon &amp; Lion Dance Activity Centre</small>
         </span>
       </a>
-      <button class="nav-toggle" type="button" aria-label="開啟主要導覽" aria-expanded="false" aria-controls="site-nav">
-        <span></span>
-        <span></span>
-      </button>
+      <div class="header-actions">
+        <a class="header-tel" href="tel:{{ site.phoneHref }}" aria-label="撥打電話 {{ site.phone }}">{{ site.phone }}</a>
+        <a class="header-line" href="{{ site.lineUrl }}" target="_blank" rel="noopener noreferrer" aria-label="加 LINE 洽詢演出">LINE 洽詢</a>
+        <button class="nav-toggle" type="button" aria-label="開啟主要導覽" aria-expanded="false" aria-controls="site-nav">
+          <span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span></span>
+          <span class="nav-toggle-label" aria-hidden="true">選單</span>
+        </button>
+      </div>
       <nav class="site-nav" id="site-nav" aria-label="主要導覽">
-        <a href="/"{% if activeNav == "home" %} aria-current="page"{% endif %}>首頁</a>
-        <a href="/pages/about"{% if activeNav == "about" %} aria-current="page"{% endif %}>關於我們</a>
-        <a href="/pages/dragon-lion-introduction"{% if activeNav == "intro" %} aria-current="page"{% endif %}>舞龍舞獅介紹</a>
-        <div class="nav-services">
-          <a href="/pages/services"{% if activeNav == "services" %} aria-current="page"{% endif %}>表演項目</a>
-          <div class="service-mega">
-            <div class="service-mega-group">
-              <p class="mega-heading">表演項目</p>
-              <a href="/pages/services#item-god-of-wealth">文武財神</a>
-              <a href="/pages/services#item-folk-performance">民俗藝陣</a>
-              <a href="/pages/services#item-plum-blossom-pole-lion">梅花樁獅</a>
-              <a href="/pages/services#item-auspicious-lion">祥獅獻瑞</a>
-              <a href="/pages/services#item-dragon-pearl">祥龍搶珠</a>
-              <a href="/pages/services#item-war-drum">雷鳴戰鼓</a>
-              <a href="/pages/services#item-nezha">電音三太子</a>
-            </div>
+        <div class="nav-sheet">
+          <ol class="nav-list">
+            {%- for item in navItems %}
+            <li class="nav-item{% if item.sub %} has-sub{% endif %}" data-nav-index="{{ loop.index0 }}">
+              <a class="nav-main" href="{{ item.href }}"{% if activeNav == item.key %} aria-current="page"{% endif %}>
+                <span class="nav-num" aria-hidden="true">{{ item.num }}</span>
+                <span class="nav-label">{{ item.label }}</span>
+              </a>
+              {%- if item.sub %}
+              <ul class="nav-sub" aria-label="{{ item.label }}">
+                {%- for sub in item.sub %}
+                <li><a href="{{ sub.href }}">{{ sub.label }}</a></li>
+                {%- endfor %}
+              </ul>
+              {%- endif %}
+            </li>
+            {%- endfor %}
+          </ol>
+          <div class="nav-figure" aria-hidden="true">
+            {%- for item in navItems %}
+            <figure class="nav-photo" data-nav-photo="{{ loop.index0 }}">
+              <img data-src="/images/{{ item.photo }}" alt="" width="720" height="540" decoding="async">
+              <figcaption>{{ item.num }}・{{ item.caption }}</figcaption>
+            </figure>
+            {%- endfor %}
+          </div>
+          <div class="nav-foot">
+            <p class="nav-foot-tag">預約洽詢</p>
+            <a class="nav-foot-line" href="{{ site.lineUrl }}" target="_blank" rel="noopener noreferrer" aria-label="加 LINE 洽詢演出">LINE 洽詢・{{ site.lineId }}</a>
+            <a class="nav-foot-tel" href="tel:{{ site.phoneHref }}" aria-label="撥打電話 {{ site.phone }}">{{ site.phone }}</a>
+            <p class="nav-foot-name">Taiwan Nan Sieng Dragon &amp; Lion Dance Activity Centre</p>
           </div>
         </div>
-        <div class="nav-gallery">
-          <a href="../gallery/"{% if activeNav == "gallery" %} aria-current="page"{% endif %}>活動案例</a>
-          <div class="case-mega">
-            <div class="service-mega-group">
-              <p class="mega-heading">活動案例</p>
-              <a href="/gallery/opening">開幕開工</a>
-              <a href="/gallery/banquet">春酒尾牙</a>
-              <a href="/gallery/tourism">觀光表演</a>
-              <a href="/gallery/funeral">追思儀式</a>
-              <a href="/gallery/groundbreaking">動土上樑</a>
-              <a href="/gallery/festival-retail">百貨春節・週年慶</a>
-              <a href="/gallery/temple">廟會繞境・祝壽典禮</a>
-              <a href="/gallery/school">學校社團・企業教學</a>
-              <a href="/gallery/performance">展演服務</a>
-            </div>
-          </div>
-        </div>
-        <a href="/pages/contact"{% if activeNav == "contact" %} aria-current="page"{% endif %}>聯絡我們</a>
       </nav>
+      <noscript><style>.site-nav{position:static;visibility:visible;opacity:1;clip-path:none;height:auto;background:none}.nav-toggle,.nav-figure,.nav-foot{display:none}</style></noscript>
     </header>
