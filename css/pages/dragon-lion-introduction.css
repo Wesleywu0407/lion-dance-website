@@ -104,24 +104,6 @@
   letter-spacing: 0.16em;
 }
 
-/* 03 演出流程：深色區塊 → 沿用敘事段落已有的印章語彙，但用該區既有的
-   金色而非硃砂（硃砂在本站保留給 CTA），並用墨色字保住對比。 */
-.intro-process .intro-section-kicker::before {
-  content: "序";
-  display: inline-grid;
-  place-items: center;
-  width: 26px;
-  height: 26px;
-  flex: 0 0 auto;
-  border-radius: 4px;
-  background: #ddb77b;
-  color: #261f1b;
-  font-family: var(--font-display-serif);
-  font-weight: 700;
-  font-size: 0.84rem;
-  transform: rotate(-4deg);
-}
-
 /* 04 常見問題：純文字，不加裝飾——收尾段落越安靜越好。 */
 .intro-faq-heading .intro-section-kicker {
   color: var(--ink-soft);
@@ -226,24 +208,6 @@
   letter-spacing: 0.08em;
 }
 
-.intro-ink-figure figcaption::before {
-  content: "";
-  width: 9px;
-  height: 9px;
-  border-radius: 2px;
-  background: #b23b2e;
-  opacity: 0.82;
-}
-
-/* 原本是 rgba(76,51,41,0.45) @ 10.5px，只有 2.43:1，未達 AA。 */
-.intro-ink-figure figcaption span {
-  color: var(--ink-soft);
-  font-family: var(--font-sans, inherit);
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
 .intro-values {
   margin: 0;
   padding: 0;
@@ -253,35 +217,28 @@
 
 .intro-values li {
   display: grid;
-  grid-template-columns: 88px minmax(0, 1fr);
+  grid-template-columns: 104px minmax(0, 1fr);
   gap: 20px;
   padding: 30px 0;
   border-top: 1px solid rgba(76, 51, 41, 0.18);
   transition: padding-left 0.25s ease, background-color 0.25s ease;
 }
 
-.intro-values li:hover {
-  padding-left: 18px;
-  background: linear-gradient(90deg, rgba(143, 58, 47, 0.055), transparent 78%);
-}
-
-/* 醒／聚／納：內文本來就在講這三個字，用書法字直接當標記，
-   比 01/02/03 這種通用編號更貼近內容。編號清單全頁只留「演出流程」
-   一處——那一處是真的有先後順序的。 */
+/* 儀式名稱（點睛／採青／鑼鼓）當作每列的標記：明體、墨色，不加陰影 */
 .intro-value-glyph {
-  color: var(--accent);
-  font-family: var(--font-calligraphy);
-  font-size: 3.2rem;
-  font-weight: 500;
-  line-height: 0.95;
-  text-shadow: 6px 6px 14px rgba(143, 58, 47, 0.14);
+  color: var(--ink);
+  font-family: var(--font-display-serif);
+  font-size: 1.9rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
 }
 
 .intro-values h3 {
   margin: 0;
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: 1.55rem;
+  font-size: 1.15rem;
   font-weight: 800;
   letter-spacing: 0;
   line-height: 1.35;
@@ -389,18 +346,7 @@
 }
 
 .intro-practice-title {
-  display: grid;
-  grid-template-columns: 64px minmax(0, 1fr);
-  gap: 18px;
-  align-items: start;
-  margin-top: 20px;
-}
-
-.intro-practice-character {
-  color: var(--accent);
-  font-family: var(--font-calligraphy);
-  font-size: 4.4rem;
-  line-height: 0.95;
+  margin-top: 14px;
 }
 
 .intro-practice-title h3 {
@@ -658,9 +604,6 @@
   background: linear-gradient(115deg, #e9ded1 0%, #dfcfc0 100%);
 }
 
-/* 背景巨大淡色書法字全頁只留一處（.intro-process 的「醒 聚 納」，
-   那三個字和該區內容直接相關）。這裡的「福」純裝飾、與文案無關，移除。 */
-
 .intro-contact-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -863,21 +806,17 @@
   }
 
   .intro-values li {
-    grid-template-columns: 58px minmax(0, 1fr);
+    grid-template-columns: 72px minmax(0, 1fr);
     gap: 12px;
     padding: 24px 0;
   }
 
-  .intro-values li:hover {
-    padding-left: 0;
-  }
-
   .intro-value-glyph {
-    font-size: 2.5rem;
+    font-size: 1.6rem;
   }
 
   .intro-values h3 {
-    font-size: 1.35rem;
+    font-size: 1.05rem;
   }
 
   .intro-practice-row,
@@ -887,15 +826,6 @@
     padding-top: 32px;
   }
 
-  .intro-practice-title {
-    grid-template-columns: 50px minmax(0, 1fr);
-    gap: 12px;
-    margin-top: 16px;
-  }
-
-  .intro-practice-character {
-    font-size: 3.3rem;
-  }
 
   .intro-practice-title h3 {
     font-size: 1.62rem;
@@ -1148,29 +1078,6 @@
   text-align: right;
 }
 
-.ink-story-seal {
-  display: inline-grid;
-  place-items: center;
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
-  border-radius: 4px;
-  background: #b23b2e;
-  color: #fff8ef;
-  font-family: var(--font-display-serif);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0;
-  transform: rotate(-4deg);
-  opacity: 0.88;
-}
-
-.ink-story-beat.is-right .ink-story-seal {
-  margin-right: 0;
-  margin-left: 10px;
-  order: 2;
-}
-
 .ink-story-kicker {
   display: flex;
   align-items: center;
@@ -1212,7 +1119,7 @@
   margin-left: auto;
 }
 
-/* 醒・聚・納 三字典藏 */
+/* 點睛・採青・吐聯 三欄 */
 .ink-story-triad {
   display: flex;
   margin-top: 22px;
@@ -1446,7 +1353,6 @@
     display: none;
   }
   .ink-story-beat.is-right .ink-story-kicker { justify-content: flex-start; }
-  .ink-story-beat.is-right .ink-story-seal { margin-right: 10px; margin-left: 0; order: 0; }
   .ink-story-beat.is-right .ink-story-text { margin-left: 0; }
   .ink-story-beat h2 { font-size: 1.72rem; }
   .ink-story-text { font-size: 0.9rem; }
@@ -1465,129 +1371,77 @@
    原本這裡的 .ink-text-reveal 是第二套系統，和 .reveal 掛在同一批元素上，
    由兩個獨立的 IntersectionObserver 雙重 gate，任一個沒觸發標題就整塊透明。 */
 
-/* 斜筆刷底線只留給全頁第一個標題。原本五個標題都掛同一條，
-   重複到失去「筆觸」的意義，反而變成模板記號。 */
-.intro-section-heading h2::after {
-  content: "";
-  display: block;
-  width: min(180px, 42%);
-  height: 13px;
-  margin-top: 18px;
-  background: linear-gradient(90deg, rgba(55, 45, 38, 0.34), rgba(55, 45, 38, 0.04) 82%, transparent);
-  filter: blur(1.5px);
-  transform: skewX(-14deg);
+/* ── 樸素版（2026-09-25）────────────────────────────────
+   使用者回饋「這頁看起來太假」。原本這裡是一整層「假裝手作」的覆寫：
+   模糊斜切的漸層筆刷線、照片 clip-path 撕紙邊、-3～-5° 旋轉的印章與節點、
+   背景巨字浮水印、放射漸層斑點。全部拿掉：分隔用實線、底色平塗，
+   讓水墨動畫與真實演出照自己說話。
+   ─────────────────────────────────────────────────────────── */
+
+/* 標題依語意片語換行，不在詞中間斷開（避免「兩／種」「剩／下」） */
+.intro-page .phrase {
+  display: inline-block;
 }
 
 .intro-overview,
 .intro-faq-section {
-  background:
-    radial-gradient(ellipse at 8% 16%, rgba(74, 62, 52, 0.055), transparent 24%),
-    radial-gradient(ellipse at 92% 82%, rgba(143, 58, 47, 0.035), transparent 22%),
-    #fffaf4;
+  background: #fffaf4;
 }
 
 .intro-values {
-  border-bottom: 0;
+  border-bottom: 1px solid var(--line);
 }
 
 .intro-values li {
-  border-top: 0;
-  background: linear-gradient(90deg, rgba(76, 51, 41, 0.22), rgba(76, 51, 41, 0.03), transparent) left top / 100% 1px no-repeat;
-}
-
-.intro-process-number {
-  font-family: var(--font-calligraphy);
+  border-top: 1px solid var(--line);
+  background: none;
 }
 
 .intro-comparison {
-  background:
-    linear-gradient(180deg, rgba(238, 232, 224, 0.3), transparent 16%),
-    radial-gradient(ellipse at 80% 24%, rgba(63, 51, 43, 0.06), transparent 26%),
-    #f2ece4;
+  background: #f2ece4;
 }
 
 .intro-practice-row {
-  border-top: 0;
-  background: linear-gradient(90deg, rgba(76, 51, 41, 0.2), rgba(76, 51, 41, 0.03), transparent) left top / 100% 1px no-repeat;
+  border-top: 1px solid var(--line);
+  background: none;
 }
 
 .intro-practice-media picture {
   border-radius: 0;
-  box-shadow: 18px 24px 52px rgba(55, 38, 29, 0.1);
-  clip-path: polygon(1% 2%, 98% 0, 100% 97%, 3% 100%, 0 68%);
-}
-
-.intro-practice-media picture::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(100deg, rgba(245, 240, 230, 0.16), transparent 22%, transparent 82%, rgba(245, 240, 230, 0.14));
-  pointer-events: none;
-}
-
-.intro-practice-character {
-  text-shadow: 8px 8px 18px rgba(143, 58, 47, 0.12);
+  box-shadow: none;
 }
 
 .intro-process {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
   color: #f8f1e7;
-  background:
-    radial-gradient(ellipse at 15% 22%, rgba(143, 58, 47, 0.34), transparent 32%),
-    radial-gradient(ellipse at 82% 78%, rgba(196, 153, 102, 0.08), transparent 28%),
-    linear-gradient(118deg, #261f1b, #3a2d27 58%, #211b18);
-}
-
-.intro-process::after {
-  content: "醒 聚 納";
-  position: absolute;
-  right: -0.08em;
-  bottom: -0.25em;
-  z-index: -1;
-  color: rgba(255, 248, 239, 0.035);
-  font-family: var(--font-calligraphy);
-  font-size: clamp(9rem, 18vw, 18rem);
-  white-space: nowrap;
+  background: #2b231f;
 }
 
 .intro-process-list {
   border-top-color: rgba(255, 248, 239, 0.2);
 }
 
+/* 時間軸節點：不旋轉、不加框，金色小圓點 */
 .intro-process-list li::before {
-  border-radius: 2px;
-  border-color: #332721;
-  background: #b85b4c;
-  transform: rotate(-5deg);
+  top: -4px;
+  left: -4px;
+  width: 7px;
+  height: 7px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: none;
 }
 
-.intro-faq-row {
-  border-top: 0;
-  background: linear-gradient(90deg, rgba(76, 51, 41, 0.24), rgba(76, 51, 41, 0.025), transparent) left top / 100% 1px no-repeat;
-}
-
-.intro-faq-icon {
-  border-radius: 2px;
-  transform: rotate(-3deg);
+.intro-process-list li:first-child::before {
+  left: 0;
 }
 
 .intro-contact-band {
-  background:
-    radial-gradient(ellipse at 14% 90%, rgba(62, 51, 43, 0.09), transparent 34%),
-    radial-gradient(ellipse at 88% 8%, rgba(143, 58, 47, 0.08), transparent 28%),
-    #e9ded1;
+  background: #e9ded1;
 }
 
 .intro-contact-button {
   border-radius: 1px;
-}
-
-@media (max-width: 760px) {
-  .intro-process::after {
-    font-size: 7rem;
-  }
 }
 
 /* 桌面版移除留白過多的 FAQ；手機版仍保留完整問答。 */
