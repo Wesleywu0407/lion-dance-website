@@ -40,6 +40,57 @@ if (!document.querySelector('.quickbar')) {
   document.body.classList.add('has-quickbar');
 }
 
+// 詢價來源：廣告參數只出現在進站那一頁的網址，跨頁到聯絡表單就會遺失。
+// 進站時把 UTM、廣告點擊編號、著陸頁與外部來源存在本機（90 天，同 gclid 效期），
+// 填單時再帶入。帶廣告參數的新進站會覆蓋舊紀錄；其餘只記第一次進站。
+const ATTRIBUTION_KEY = 'nansien_attribution';
+const ATTRIBUTION_MAX_AGE = 90 * 24 * 60 * 60 * 1000;
+
+const readAttribution = () => {
+  try {
+    const stored = JSON.parse(window.localStorage.getItem(ATTRIBUTION_KEY) || 'null');
+    if (stored && Date.now() - stored.capturedAt < ATTRIBUTION_MAX_AGE) return stored;
+  } catch (error) {
+    // 無痕模式或封鎖儲存時，退回只讀目前網址
+  }
+  return null;
+};
+
+const captureAttribution = () => {
+  const params = new URLSearchParams(window.location.search);
+  const clickParam = ['gclid', 'gbraid', 'wbraid'].find((name) => params.get(name));
+  const utm = {
+    source: params.get('utm_source') || '',
+    medium: params.get('utm_medium') || '',
+    campaign: params.get('utm_campaign') || ''
+  };
+  const hasCampaign = Boolean(clickParam || utm.source || utm.medium || utm.campaign);
+  if (!hasCampaign && readAttribution()) return;
+
+  let externalReferrer = '';
+  try {
+    if (document.referrer && new URL(document.referrer).host !== window.location.host) {
+      externalReferrer = document.referrer;
+    }
+  } catch (error) {
+    externalReferrer = '';
+  }
+
+  try {
+    window.localStorage.setItem(ATTRIBUTION_KEY, JSON.stringify({
+      utm,
+      adClickId: clickParam ? `${clickParam}:${params.get(clickParam)}`.slice(0, 300) : '',
+      landingPage: window.location.pathname,
+      referrer: externalReferrer.slice(0, 500),
+      capturedAt: Date.now()
+    }));
+  } catch (error) {
+    // 儲存失敗不影響瀏覽
+  }
+};
+
+captureAttribution();
+
 // 聯絡表單送出後回跳 ?submitted=1：顯示成功訊息，避免使用者以為送出失敗
 const contactFormForNotice = document.querySelector('.contact-form');
 const backendConfig = window.NANSIEN_BACKEND_CONFIG || {};
@@ -101,9 +152,14 @@ if (contactFormForNotice) {
   }
   if (sourceReferrer) sourceReferrer.value = document.referrer;
 
-  setFieldValue('utmSource', query.get('utm_source'));
-  setFieldValue('utmMedium', query.get('utm_medium'));
-  setFieldValue('utmCampaign', query.get('utm_campaign'));
+  const attribution = readAttribution() || {};
+  const storedUtm = attribution.utm || {};
+  setFieldValue('utmSource', query.get('utm_source') || storedUtm.source);
+  setFieldValue('utmMedium', query.get('utm_medium') || storedUtm.medium);
+  setFieldValue('utmCampaign', query.get('utm_campaign') || storedUtm.campaign);
+  setFieldValue('adClickId', attribution.adClickId);
+  setFieldValue('landingPage', attribution.landingPage);
+  setFieldValue('entryReferrer', attribution.referrer);
 
   const setKnownOption = (field, value) => {
     if (!field || !value) return;
