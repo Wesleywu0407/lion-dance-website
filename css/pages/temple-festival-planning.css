@@ -1,0 +1,836 @@
+/* ── 廟會策劃活動（2026-10-29 新增）──────────────────────────
+   一頁講「從發想到執行」的一條龍服務：
+   路線總覽 → 一條龍承諾 → 六階段流程 → 規劃重點 → 陣頭組合 → 案例 → 洽詢。
+   沿用聯絡頁語彙：平塗底色與 1px 細線分段、不用卡片陰影；
+   段號用國字「壹～陸」。流程用一條紅線串起六個節點，像遶境路線。
+   ─────────────────────────────────────────────────────────── */
+
+.temple-plan-page {
+  --tf-rule: var(--line);
+  --tf-route: var(--accent);
+  --tf-dark: #181311;
+  --tf-dark-ink: #f5efe6;
+  --tf-dark-soft: rgba(245, 239, 230, 0.68);
+  --tf-dark-rule: rgba(245, 239, 230, 0.16);
+}
+
+.tf-shell {
+  width: min(calc(100% - 80px), 1180px);
+  margin: 0 auto;
+}
+
+.temple-plan-page .phrase {
+  display: inline-block;
+}
+
+.tf-section-title {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-display-serif);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+}
+
+.tf-kicker {
+  margin: 0 0 16px;
+  color: var(--gold);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.tf-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+/* ── Hero ── */
+.tf-hero {
+  padding: calc(var(--header-height) + clamp(48px, 7vw, 88px)) 0 0;
+  background: var(--bg);
+}
+
+.tf-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.7fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: end;
+}
+
+.tf-hero-copy {
+  padding-bottom: clamp(8px, 2vw, 24px);
+}
+
+.tf-title {
+  margin: 0;
+  font-family: var(--font-display-serif);
+  font-size: clamp(2.4rem, 5.4vw, 4.4rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.16;
+}
+
+.tf-lede {
+  max-width: 34em;
+  margin: 24px 0 0;
+  color: var(--ink-soft);
+  font-size: 1.0625rem;
+  line-height: 1.95;
+}
+
+.tf-hero-photo {
+  margin: 0;
+}
+
+.tf-hero-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.tf-hero-photo figcaption,
+.tf-care-photo figcaption,
+.tf-case figcaption {
+  margin-top: 10px;
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+}
+
+/* 路線總覽：六個節點掛在同一條紅線上 */
+.tf-route {
+  padding: clamp(48px, 6vw, 72px) 0 clamp(56px, 7vw, 88px);
+}
+
+.tf-route-list {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tf-route-list::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  left: calc(100% / 12);
+  right: calc(100% / 12);
+  height: 2px;
+  background: var(--tf-route);
+}
+
+.tf-route-list a {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+}
+
+.tf-route-num {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 2px solid var(--tf-route);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--tf-route);
+  font-family: var(--font-display-serif);
+  font-size: 1.125rem;
+  letter-spacing: 0;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.tf-route-list a:hover .tf-route-num,
+.tf-route-list a:focus-visible .tf-route-num {
+  background: var(--tf-route);
+  color: #fff;
+}
+
+/* ── 一條龍承諾：深色帶 ── */
+.tf-promise {
+  padding: clamp(64px, 8vw, 112px) 0;
+  background: var(--tf-dark);
+  color: var(--tf-dark-ink);
+}
+
+.tf-promise-title {
+  margin: 0;
+  max-width: 16em;
+  font-family: var(--font-display-serif);
+  font-size: clamp(2rem, 4.4vw, 3.6rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+}
+
+.tf-promise-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: clamp(40px, 5vw, 64px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tf-promise-list li {
+  min-width: 0;
+  padding: 28px 32px 0;
+  border-top: 1px solid var(--tf-dark-rule);
+  border-left: 1px solid var(--tf-dark-rule);
+}
+
+.tf-promise-list li:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.tf-promise-list h3 {
+  margin: 0;
+  font-family: var(--font-display-serif);
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.tf-promise-list h3 span {
+  color: var(--gold);
+}
+
+.tf-promise-list p {
+  margin: 12px 0 0;
+  color: var(--tf-dark-soft);
+  font-size: 0.9375rem;
+  line-height: 1.9;
+}
+
+/* ── 六階段流程：左欄標題固定，右欄沿紅線往下 ── */
+.tf-flow {
+  padding: clamp(72px, 9vw, 120px) 0;
+  background: var(--bg);
+}
+
+.tf-flow-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+
+.tf-flow-head {
+  position: sticky;
+  top: calc(var(--header-height) + 32px);
+}
+
+.tf-flow-head > p:not(.section-tag) {
+  margin: 18px 0 0;
+  max-width: 24em;
+  color: var(--ink-soft);
+  line-height: 1.9;
+}
+
+.tf-stages {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* 底線（淡）＋ 隨捲動畫出的紅線 */
+.tf-stages::before,
+.tf-stages::after {
+  content: "";
+  position: absolute;
+  top: 24px;
+  bottom: 24px;
+  left: 23px;
+  width: 2px;
+}
+
+.tf-stages::before {
+  background: rgba(143, 58, 47, 0.16);
+}
+
+.tf-stages::after {
+  background: var(--tf-route);
+  transform-origin: top;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .tf-stages::after {
+      animation: tfRouteDraw linear both;
+      animation-timeline: view();
+      animation-range: entry 40% cover 70%;
+    }
+  }
+}
+
+@keyframes tfRouteDraw {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+.tf-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  column-gap: clamp(20px, 3vw, 36px);
+  padding-bottom: clamp(40px, 5vw, 56px);
+}
+
+.tf-stage:last-child {
+  padding-bottom: 0;
+}
+
+.tf-stage-num {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--tf-route);
+  color: #fff;
+  font-family: var(--font-display-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  box-shadow: 0 0 0 6px var(--bg);
+}
+
+.tf-stage-body {
+  min-width: 0;
+  padding-top: 4px;
+}
+
+.tf-stage-phase {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+}
+
+.tf-stage-body h3 {
+  margin: 6px 0 0;
+  color: var(--ink);
+  font-family: var(--font-display-serif);
+  font-size: clamp(1.35rem, 2vw, 1.6rem);
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  line-height: 1.35;
+}
+
+.tf-stage-body > p:not(.tf-stage-phase) {
+  margin: 12px 0 0;
+  color: var(--ink-soft);
+  line-height: 1.9;
+}
+
+.tf-stage-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  margin-top: 20px;
+  border-top: 1px solid var(--tf-rule);
+}
+
+.tf-stage-split > div {
+  min-width: 0;
+  padding: 16px 20px 0 0;
+}
+
+.tf-stage-split > .tf-stage-you {
+  padding-left: 20px;
+  border-left: 1px solid var(--tf-rule);
+}
+
+.tf-stage-label {
+  margin: 0 0 8px;
+  color: var(--ink-muted);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.tf-stage-split ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tf-stage-split li {
+  position: relative;
+  padding-left: 16px;
+  color: var(--ink);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+}
+
+.tf-stage-split li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.8em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.tf-stage-you > p:last-child {
+  margin: 0;
+  color: var(--ink);
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+/* ── 規劃重點 ── */
+.tf-care {
+  padding: clamp(72px, 9vw, 120px) 0;
+  border-top: 1px solid var(--tf-rule);
+  background: #fffaf4;
+}
+
+.tf-care-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: center;
+}
+
+.tf-care-photo {
+  margin: 0;
+}
+
+.tf-care-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.tf-care-lede {
+  margin: 18px 0 0;
+  color: var(--ink-soft);
+  line-height: 1.9;
+}
+
+.tf-care-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 32px;
+  margin: 32px 0 0;
+}
+
+.tf-care-list > div {
+  padding: 20px 0;
+  border-top: 1px solid var(--ink);
+}
+
+.tf-care-list dt {
+  font-family: var(--font-display-serif);
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.tf-care-list dt span {
+  margin-right: 10px;
+  color: var(--gold);
+  letter-spacing: 0;
+}
+
+.tf-care-list dd {
+  margin: 8px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+}
+
+/* ── 陣頭組合 ── */
+.tf-troupes {
+  padding: clamp(72px, 9vw, 120px) 0;
+  background: var(--bg);
+}
+
+.tf-troupes-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: 24px clamp(40px, 6vw, 96px);
+  align-items: end;
+}
+
+.tf-troupes-head > p {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.9;
+}
+
+.tf-troupe-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(36px, 4vw, 56px) clamp(24px, 3vw, 40px);
+  margin: clamp(40px, 5vw, 56px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tf-troupe-list a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.tf-troupe-list img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: filter 0.3s ease;
+}
+
+.tf-troupe-list a:hover img,
+.tf-troupe-list a:focus-visible img {
+  filter: brightness(1.06) saturate(1.08);
+}
+
+.tf-troupe-list h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 18px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--ink);
+  font-family: var(--font-display-serif);
+  font-size: 1.375rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.tf-troupe-list h3::after {
+  content: "→";
+  color: var(--accent);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: transform 0.25s ease;
+}
+
+.tf-troupe-list a:hover h3::after,
+.tf-troupe-list a:focus-visible h3::after {
+  transform: translateX(4px);
+}
+
+.tf-troupe-tags {
+  margin: 6px 0 0;
+  color: var(--accent);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.tf-troupe-list p:not(.tf-troupe-tags) {
+  margin: 8px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+}
+
+/* ── 案例 ── */
+.tf-cases {
+  padding: clamp(72px, 9vw, 120px) 0;
+  border-top: 1px solid var(--tf-rule);
+  background: var(--bg);
+}
+
+.tf-occasions {
+  margin: 14px 0 0;
+  color: var(--ink-soft);
+  letter-spacing: 0.06em;
+}
+
+.tf-occasions span {
+  margin: 0 0.4em;
+  color: var(--gold);
+}
+
+.tf-case-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px clamp(24px, 3vw, 40px);
+  margin-top: clamp(36px, 5vw, 56px);
+}
+
+.tf-case {
+  margin: 0;
+  min-width: 0;
+}
+
+.tf-case img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.tf-case-more {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  grid-column: 1 / -1;
+  padding: 18px 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  color: var(--ink);
+  font-size: 1.0625rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.tf-case-more span:last-child {
+  color: var(--accent);
+  transition: transform 0.25s ease;
+}
+
+.tf-case-more:hover span:last-child,
+.tf-case-more:focus-visible span:last-child {
+  transform: translateX(6px);
+}
+
+/* ── 洽詢：廟紅色帶 ── */
+.tf-contact {
+  padding: clamp(72px, 9vw, 112px) 0;
+  background: var(--accent-deep);
+  color: var(--tf-dark-ink);
+}
+
+.tf-contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: center;
+}
+
+.tf-contact .tf-kicker {
+  color: #e9c98f;
+}
+
+.tf-contact-title {
+  margin: 0;
+  font-family: var(--font-display-serif);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+}
+
+.tf-contact-lede {
+  max-width: 30em;
+  margin: 18px 0 0;
+  color: rgba(245, 239, 230, 0.8);
+  line-height: 1.9;
+}
+
+.tf-button-ghost {
+  border-color: rgba(245, 239, 230, 0.5);
+  color: var(--tf-dark-ink);
+}
+
+.tf-button-ghost:hover,
+.tf-button-ghost:focus-visible {
+  border-color: var(--tf-dark-ink);
+  background: rgba(245, 239, 230, 0.1);
+  color: #fff;
+}
+
+.tf-contact-tel {
+  margin: 18px 0 0;
+  color: rgba(245, 239, 230, 0.8);
+}
+
+.tf-contact-tel a {
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.tf-prep {
+  padding: 28px 0 0;
+  border-top: 1px solid rgba(245, 239, 230, 0.3);
+}
+
+.tf-prep-label {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.tf-prep ol {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: tf-prep;
+}
+
+.tf-prep li {
+  counter-increment: tf-prep;
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(245, 239, 230, 0.16);
+  color: rgba(245, 239, 230, 0.88);
+  line-height: 1.7;
+}
+
+.tf-prep li::before {
+  content: counter(tf-prep, cjk-ideographic);
+  color: #e9c98f;
+  font-family: var(--font-display-serif);
+  font-weight: 700;
+}
+
+/* ── 斷點 ── */
+@media (max-width: 900px) {
+  .tf-hero-grid,
+  .tf-flow-grid,
+  .tf-care-grid,
+  .tf-troupes-head,
+  .tf-contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tf-flow-head {
+    position: static;
+  }
+
+  .tf-care-photo {
+    max-width: 460px;
+  }
+
+  .tf-troupe-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tf-case-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tf-case:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .tf-case:first-child img {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 760px) {
+  .tf-shell {
+    width: calc(100% - 40px);
+  }
+
+  .tf-hero {
+    padding-top: calc(var(--header-height) + 36px);
+  }
+
+  .tf-lede {
+    font-size: 1rem;
+  }
+
+  .tf-actions .button {
+    flex: 1 1 100%;
+  }
+
+  .tf-hero-photo img {
+    aspect-ratio: 4 / 3;
+  }
+
+  /* 手機：路線改直排兩欄，紅線收掉，只留節點 */
+  .tf-route-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 24px;
+  }
+
+  .tf-route-list::before {
+    display: none;
+  }
+
+  .tf-route-list a {
+    gap: 8px;
+    font-size: 0.9375rem;
+  }
+
+  .tf-promise-list {
+    grid-template-columns: 1fr;
+  }
+
+  .tf-promise-list li,
+  .tf-promise-list li:first-child {
+    padding: 22px 0;
+    border-left: 0;
+  }
+
+  .tf-stage {
+    grid-template-columns: 40px minmax(0, 1fr);
+    column-gap: 16px;
+  }
+
+  .tf-stage-num {
+    width: 40px;
+    height: 40px;
+    font-size: 1.0625rem;
+  }
+
+  .tf-stages::before,
+  .tf-stages::after {
+    left: 19px;
+    top: 20px;
+    bottom: 20px;
+  }
+
+  .tf-stage-split {
+    grid-template-columns: 1fr;
+  }
+
+  .tf-stage-split > .tf-stage-you {
+    margin-top: 14px;
+    padding: 14px 0 0;
+    border-top: 1px solid var(--tf-rule);
+    border-left: 0;
+  }
+
+  .tf-care-list {
+    grid-template-columns: 1fr;
+  }
+
+  .tf-troupe-list {
+    grid-template-columns: 1fr;
+  }
+
+  .tf-case-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .tf-case:first-child img {
+    aspect-ratio: 4 / 3;
+  }
+}

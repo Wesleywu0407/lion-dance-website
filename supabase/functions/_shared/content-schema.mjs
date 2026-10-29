@@ -9,7 +9,7 @@ export const schemas = {
 
 const seoPages = [
   ['home','首頁','/'],
-  ...[['about','關於南仙'],['contact','聯絡我們'],['dragon-lion-introduction','龍獅介紹'],['privacy','隱私政策'],['services','表演項目']].map(([key,label])=>[`pages-${key}`,label,`/pages/${key}`]),
+  ...[['about','關於南仙'],['contact','聯絡我們'],['dragon-lion-introduction','龍獅介紹'],['privacy','隱私政策'],['services','表演項目'],['temple-festival-planning','廟會策劃活動']].map(([key,label])=>[`pages-${key}`,label,`/pages/${key}`]),
   ['gallery-index','活動案例總覽','/gallery/'],
   ...[['banquet','春酒尾牙'],['festival-retail','百貨春節'],['funeral','追思儀式'],['groundbreaking','動土上樑'],['opening','開幕活動'],['performance','展演服務'],['school','校園活動'],['temple','廟會慶典'],['tourism','觀光活動']].map(([key,label])=>[`gallery-${key}`,`${label}案例`,`/gallery/${key}`]),
   ...[['company-event-lion-dance','企業活動'],['dragon-lion-dance-performance','舞龍舞獅表演'],['lion-dance-performance','舞獅表演'],['lion-dance-price-guide','價格指南'],['opening-lion-dance','開幕舞獅'],['year-end-party-lion-dance','尾牙春酒']].map(([key,label])=>[`landing-${key}`,label,`/landing/${key}`])

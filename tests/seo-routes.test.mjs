@@ -14,7 +14,7 @@ const expectedRedirects = new Map([
   ['/gallery/index.html', '/gallery/'],
   ...['opening', 'banquet', 'tourism', 'funeral', 'groundbreaking', 'festival-retail', 'temple', 'school', 'performance']
     .map((slug) => [`/gallery-${slug}.html`, `/gallery/${slug}`]),
-  ...['about', 'services', 'contact', 'dragon-lion-introduction', 'privacy', 'ink-dragon-scroll']
+  ...['about', 'services', 'contact', 'dragon-lion-introduction', 'privacy', 'ink-dragon-scroll', 'temple-festival-planning']
     .map((slug) => [`/pages/${slug}.html`, `/pages/${slug}`]),
   ...['opening', 'banquet', 'tourism', 'funeral', 'groundbreaking', 'festival-retail', 'temple', 'school', 'performance']
     .map((slug) => [`/gallery/${slug}.html`, `/gallery/${slug}`]),

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  {% set pageSeo = seo["pages-temple-festival-planning"] %}
+  {% include "head.njk" %}
+  {% include "seo-meta.njk" %}
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://nansiengtaiwan.com/pages/temple-festival-planning">
+  <meta property="og:site_name" content="臺灣南仙龍獅體育會">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nansiengtaiwan.com/pages/temple-festival-planning">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../favicon-180.png">
+  <meta name="theme-color" content="#181311">
+  <link rel="stylesheet" href="../css/style.css?v=20261029-temple1">
+  <link rel="stylesheet" href="../css/pages/temple-festival-planning.css?v=20261029-temple1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": "https://nansiengtaiwan.com/pages/temple-festival-planning#service",
+        "name": "廟會策劃活動",
+        "serviceType": "廟會活動策劃與執行",
+        "description": "從活動發想、企劃報價、陣頭編排、場勘彩排到當天現場執行，一個窗口統籌神明聖誕、進香遶境與宮廟慶典。",
+        "url": "https://nansiengtaiwan.com/pages/temple-festival-planning",
+        "provider": {
+          "@id": "https://nansiengtaiwan.com/#performinggroup"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "台灣"
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "宮廟、廟會慶典與地方節慶主辦單位"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://nansiengtaiwan.com/pages/temple-festival-planning#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "首頁",
+            "item": "https://nansiengtaiwan.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "廟會策劃活動",
+            "item": "https://nansiengtaiwan.com/pages/temple-festival-planning"
+          }
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://nansiengtaiwan.com/pages/temple-festival-planning#webpage",
+        "url": "https://nansiengtaiwan.com/pages/temple-festival-planning",
+        "name": {{ pageSeo.title | jsonScript | safe }},
+        "description": {{ pageSeo.description | jsonScript | safe }},
+        "inLanguage": "zh-Hant",
+        "isPartOf": {
+          "@id": "https://nansiengtaiwan.com/#website"
+        },
+        "breadcrumb": {
+          "@id": "https://nansiengtaiwan.com/pages/temple-festival-planning#breadcrumb"
+        },
+        "mainEntity": {
+          "@id": "https://nansiengtaiwan.com/pages/temple-festival-planning#service"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="temple-plan-page">
+  <div class="page-shell">
+    {% set activeNav = "temple" %}
+    {% include "header.njk" %}
+
+    <main id="main-content">
+      <section class="tf-hero" aria-labelledby="tf-title">
+        <div class="tf-shell tf-hero-grid">
+          <div class="tf-hero-copy reveal reveal-hero">
+            <p class="section-tag">廟會策劃活動</p>
+            <h1 id="tf-title" class="tf-title"><span class="phrase">從發想到執行，</span><span class="phrase">廟會一條龍策劃</span></h1>
+            <p class="tf-lede">神明聖誕、進香遶境、宮廟慶典——從活動構想、陣頭編排、路線與儀式節點，到當天現場執行，南仙一個窗口統籌到底。廟方只要告訴我們日期與想法，其餘交給我們。</p>
+            <div class="tf-actions">
+              <a class="button button-line" href="{{ site.lineUrl }}" target="_blank" rel="noopener noreferrer" aria-label="加 LINE 洽詢廟會策劃活動">LINE 洽詢廟會規劃</a>
+              <a class="button button-secondary" href="#tf-flow">看規劃流程</a>
+            </div>
+          </div>
+          <figure class="tf-hero-photo reveal reveal-hero">
+            <picture>
+              <source media="(max-width: 760px)" srcset="../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E5%B7%A8%E7%8D%85-720.webp">
+              <img src="../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E5%B7%A8%E7%8D%85-1440.webp" width="1080" height="1440" alt="廟會繞境中的南仙巨獅演出" fetchpriority="high" decoding="async">
+            </picture>
+            <figcaption>廟會繞境・巨獅</figcaption>
+          </figure>
+        </div>
+
+        <nav class="tf-shell tf-route" aria-label="一條龍服務流程總覽">
+          <ol class="tf-route-list reveal">
+            <li><a href="#tf-stage-1"><span class="tf-route-num" aria-hidden="true">壹</span><span>發想</span></a></li>
+            <li><a href="#tf-stage-2"><span class="tf-route-num" aria-hidden="true">貳</span><span>規劃</span></a></li>
+            <li><a href="#tf-stage-3"><span class="tf-route-num" aria-hidden="true">參</span><span>編排</span></a></li>
+            <li><a href="#tf-stage-4"><span class="tf-route-num" aria-hidden="true">肆</span><span>籌備</span></a></li>
+            <li><a href="#tf-stage-5"><span class="tf-route-num" aria-hidden="true">伍</span><span>執行</span></a></li>
+            <li><a href="#tf-stage-6"><span class="tf-route-num" aria-hidden="true">陸</span><span>圓滿</span></a></li>
+          </ol>
+        </nav>
+      </section>
+
+      <section class="tf-promise" aria-labelledby="tf-promise-title">
+        <div class="tf-shell">
+          <div class="tf-promise-head reveal">
+            <p class="tf-kicker">一條龍是什麼？</p>
+            <h2 id="tf-promise-title" class="tf-promise-title"><span class="phrase">一個窗口，</span><span class="phrase">從第一通電話</span><span class="phrase">到最後一聲鼓。</span></h2>
+          </div>
+          <ul class="tf-promise-list reveal">
+            <li>
+              <h3><span aria-hidden="true">一</span>個窗口</h3>
+              <p>廟方只需對接一位南仙統籌，不必分別聯絡各個陣頭、來回協調時間。</p>
+            </li>
+            <li>
+              <h3><span aria-hidden="true">一</span>份企劃</h3>
+              <p>節目、人員、時程與報價整理成一份清楚的企劃，方便主委與委員一起討論、確認。</p>
+            </li>
+            <li>
+              <h3><span aria-hidden="true">一</span>套流程</h3>
+              <p>從場勘、彩排到當天進退場，都照同一份流程表執行，現場不慌亂。</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="tf-flow" id="tf-flow" aria-labelledby="tf-flow-title">
+        <div class="tf-shell tf-flow-grid">
+          <header class="tf-flow-head reveal">
+            <p class="section-tag">服務流程</p>
+            <h2 id="tf-flow-title" class="tf-section-title">發想到執行，<br>六個階段</h2>
+            <p>每一場廟會的規模、禮俗與路線都不同。我們依序陪廟方走完這六步，每一步都有明確的產出。</p>
+          </header>
+
+          <ol class="tf-stages">
+            <li class="tf-stage reveal" id="tf-stage-1">
+              <span class="tf-stage-num" aria-hidden="true">壹</span>
+              <div class="tf-stage-body">
+                <p class="tf-stage-phase">發想</p>
+                <h3>聽懂這場廟會想做什麼</h3>
+                <p>先了解慶典性質、宮廟習俗、預期規模與預算，再一起討論這次想呈現的氣氛與亮點。</p>
+                <div class="tf-stage-split">
+                  <div>
+                    <p class="tf-stage-label">南仙負責</p>
+                    <ul>
+                      <li>訪談廟方需求與活動目的</li>
+                      <li>確認日期、吉時與預算範圍</li>
+                      <li>提出初步節目方向</li>
+                    </ul>
+                  </div>
+                  <div class="tf-stage-you">
+                    <p class="tf-stage-label">您只需要</p>
+                    <p>告訴我們日期、宮廟與想法</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tf-stage reveal" id="tf-stage-2">
+              <span class="tf-stage-num" aria-hidden="true">貳</span>
+              <div class="tf-stage-body">
+                <p class="tf-stage-phase">規劃</p>
+                <h3>把想法寫成一份企劃</h3>
+                <p>依需求擬定節目內容與陣頭組合，整理成企劃與報價，讓廟方內部能一起討論、確認。</p>
+                <div class="tf-stage-split">
+                  <div>
+                    <p class="tf-stage-label">南仙負責</p>
+                    <ul>
+                      <li>活動企劃與流程時間表</li>
+                      <li>陣頭組合與人員配置建議</li>
+                      <li>逐項列出的報價說明</li>
+                    </ul>
+                  </div>
+                  <div class="tf-stage-you">
+                    <p class="tf-stage-label">您只需要</p>
+                    <p>與廟方內部確認方向</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tf-stage reveal" id="tf-stage-3">
+              <span class="tf-stage-num" aria-hidden="true">參</span>
+              <div class="tf-stage-body">
+                <p class="tf-stage-phase">編排</p>
+                <h3>依禮序與路線編排陣頭</h3>
+                <p>參考廟埕大小與遶境路線，安排陣頭出場順序與定點演出段落，並對準參拜、祝壽等儀式節點。</p>
+                <div class="tf-stage-split">
+                  <div>
+                    <p class="tf-stage-label">南仙負責</p>
+                    <ul>
+                      <li>陣頭出場順序與隊形</li>
+                      <li>廟埕與定點演出段落</li>
+                      <li>參拜、祝壽等儀式節點</li>
+                    </ul>
+                  </div>
+                  <div class="tf-stage-you">
+                    <p class="tf-stage-label">您只需要</p>
+                    <p>提供遶境路線與儀式流程</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tf-stage reveal" id="tf-stage-4">
+              <span class="tf-stage-num" aria-hidden="true">肆</span>
+              <div class="tf-stage-body">
+                <p class="tf-stage-phase">籌備</p>
+                <h3>場勘、彩排，細節先走一遍</h3>
+                <p>視活動規模提前到現場勘查，確認集合點、動線與進退場方式，並完成獅頭、道具與服裝整備。</p>
+                <div class="tf-stage-split">
+                  <div>
+                    <p class="tf-stage-label">南仙負責</p>
+                    <ul>
+                      <li>現場勘查與動線確認</li>
+                      <li>需要時安排彩排</li>
+                      <li>獅頭、道具與服裝整備</li>
+                    </ul>
+                  </div>
+                  <div class="tf-stage-you">
+                    <p class="tf-stage-label">您只需要</p>
+                    <p>協助安排場勘時間</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tf-stage reveal" id="tf-stage-5">
+              <span class="tf-stage-num" aria-hidden="true">伍</span>
+              <div class="tf-stage-body">
+                <p class="tf-stage-phase">執行</p>
+                <h3>活動當天，現場統籌到底</h3>
+                <p>團隊提前到場整備，由統籌對接廟方窗口，依流程完成參拜、祝壽與遶境演出；現場有變動也能即時調整。</p>
+                <div class="tf-stage-split">
+                  <div>
+                    <p class="tf-stage-label">南仙負責</p>
+                    <ul>
+                      <li>提前到場整備</li>
+                      <li>統籌即時對接廟方</li>
+                      <li>依流程完成各段演出</li>
+                    </ul>
+                  </div>
+                  <div class="tf-stage-you">
+                    <p class="tf-stage-label">您只需要</p>
+                    <p>安心參與慶典</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tf-stage reveal" id="tf-stage-6">
+              <span class="tf-stage-num" aria-hidden="true">陸</span>
+              <div class="tf-stage-body">
+                <p class="tf-stage-phase">圓滿</p>
+                <h3>收場之後，為下一次準備</h3>
+                <p>演出結束後清點道具、確認場地，並與廟方回顧這次的安排，作為下一年度慶典的參考。</p>
+                <div class="tf-stage-split">
+                  <div>
+                    <p class="tf-stage-label">南仙負責</p>
+                    <ul>
+                      <li>道具清點與場地確認</li>
+                      <li>活動回顧與意見整理</li>
+                      <li>下一年度安排建議</li>
+                    </ul>
+                  </div>
+                  <div class="tf-stage-you">
+                    <p class="tf-stage-label">您只需要</p>
+                    <p>分享您的回饋</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="tf-care" aria-labelledby="tf-care-title">
+        <div class="tf-shell tf-care-grid">
+          <figure class="tf-care-photo reveal">
+            <img src="../images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%97%9C%E5%85%AC%E6%96%87%E5%8C%96%E7%A5%AD-720.webp" srcset="../images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%97%9C%E5%85%AC%E6%96%87%E5%8C%96%E7%A5%AD-720.webp 578w, ../images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E9%97%9C%E5%85%AC%E6%96%87%E5%8C%96%E7%A5%AD-1440.webp 1157w" sizes="(max-width: 900px) 92vw, 460px" width="578" height="720" alt="關公文化祭中的南仙醒獅演出" loading="lazy" decoding="async">
+            <figcaption>關公文化祭</figcaption>
+          </figure>
+          <div class="tf-care-copy">
+            <div class="reveal">
+              <p class="section-tag">規劃重點</p>
+              <h2 id="tf-care-title" class="tf-section-title">廟會不只熱鬧，<br>更要合乎禮序</h2>
+              <p class="tf-care-lede">廟會演出是敬神的儀式，也是地方的大事。規劃時，我們特別留意這四件事：</p>
+            </div>
+            <dl class="tf-care-list reveal">
+              <div>
+                <dt><span aria-hidden="true">一</span>禮序</dt>
+                <dd>依宮廟習俗安排參拜順序與醒獅禮數，該莊重的段落不搶戲。</dd>
+              </div>
+              <div>
+                <dt><span aria-hidden="true">二</span>動線</dt>
+                <dd>確認陣頭進退場、參拜位置與廟埕演出範圍，避免隊伍交錯。</dd>
+              </div>
+              <div>
+                <dt><span aria-hidden="true">三</span>距離</dt>
+                <dd>依遶境路線長度與隊伍移動距離，調整演出段落與節奏。</dd>
+              </div>
+              <div>
+                <dt><span aria-hidden="true">四</span>安全</dt>
+                <dd>留意信眾、鞭炮與車流位置，顧好演出人員與現場民眾的安全。</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="tf-troupes" aria-labelledby="tf-troupes-title">
+        <div class="tf-shell">
+          <header class="tf-troupes-head reveal">
+            <div>
+              <p class="section-tag">陣頭組合</p>
+              <h2 id="tf-troupes-title" class="tf-section-title">依慶典規模，自由搭配陣頭</h2>
+            </div>
+            <p>以下節目可單獨安排，也可組合成完整的廟會陣容。不確定怎麼搭配，我們會依預算與場地提出建議。</p>
+          </header>
+          <ul class="tf-troupe-list">
+            <li class="reveal">
+              <a href="/pages/services#item-auspicious-lion">
+                <img src="../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E7%A5%A5%E7%8D%85-720.webp" width="720" height="406" alt="祥獅廟會慶典祝壽表演" loading="lazy" decoding="async">
+                <h3>祥獅獻瑞</h3>
+                <p class="tf-troupe-tags">傳統舞獅・巨獅演出</p>
+                <p>醒獅參拜、祝壽獻瑞，為慶典開場帶來吉祥氣勢。</p>
+              </a>
+            </li>
+            <li class="reveal">
+              <a href="/pages/services#item-dragon-pearl">
+                <img src="../images/%E7%A5%A5%E9%BE%8D%E6%90%B6%E7%8F%A0-720.webp" width="720" height="503" alt="祥龍搶珠舞龍演出" loading="lazy" decoding="async">
+                <h3>祥龍搶珠</h3>
+                <p class="tf-troupe-tags">多尾龍陣・雙珠追逐</p>
+                <p>龍身起伏翻騰，適合廟埕定點與遶境隊伍中的重點段落。</p>
+              </a>
+            </li>
+            <li class="reveal">
+              <a href="/pages/services#item-war-drum">
+                <img src="../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E6%88%B0%E9%BC%93-720.webp" width="720" height="540" alt="宮廟祝壽雷鳴戰鼓表演" loading="lazy" decoding="async">
+                <h3>雷鳴戰鼓</h3>
+                <p class="tf-troupe-tags">大同鼓・鼓陣節奏</p>
+                <p>以震撼鼓點開場或助陣，凝聚現場信眾的情緒。</p>
+              </a>
+            </li>
+            <li class="reveal">
+              <a href="/pages/services#item-nezha">
+                <img src="../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E9%9B%BB%E9%9F%B3%E4%B8%89%E5%A4%AA%E5%AD%90-720.webp" width="720" height="405" alt="電音三太子夜間節慶表演" loading="lazy" decoding="async">
+                <h3>電音三太子</h3>
+                <p class="tf-troupe-tags">LED 光效・電音節奏</p>
+                <p>節奏活潑、互動強烈，夜間遶境與晚會特別吸睛。</p>
+              </a>
+            </li>
+            <li class="reveal">
+              <a href="/pages/services#item-god-of-wealth">
+                <img src="../images/%E6%96%87%E6%AD%A6%E8%B2%A1%E7%A5%9E%E9%A7%95%E5%88%B0-720.webp" width="710" height="720" alt="文武財神駕到演出" loading="lazy" decoding="async">
+                <h3>文武財神</h3>
+                <p class="tf-troupe-tags">財神駕到・招財納福</p>
+                <p>為慶典增添納福祈願的喜氣。</p>
+              </a>
+            </li>
+            <li class="reveal">
+              <a href="/pages/services#item-folk-performance">
+                <img src="../images/%E6%B0%91%E4%BF%97%E8%97%9D%E9%99%A3-%E8%AE%8A%E8%87%89-720.webp" width="720" height="540" alt="民俗藝陣川劇變臉演出" loading="lazy" decoding="async">
+                <h3>民俗藝陣</h3>
+                <p class="tf-troupe-tags">川劇變臉・民俗特技</p>
+                <p>豐富節目層次，讓廟埕演出更有看頭。</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="tf-cases" aria-labelledby="tf-cases-title">
+        <div class="tf-shell">
+          <header class="tf-cases-head reveal">
+            <p class="section-tag">廟會案例</p>
+            <h2 id="tf-cases-title" class="tf-section-title">南仙的廟會現場</h2>
+            <p class="tf-occasions">神明聖誕祝壽<span aria-hidden="true">・</span>進香遶境<span aria-hidden="true">・</span>宮廟慶典<span aria-hidden="true">・</span>地方節慶與文化祭</p>
+          </header>
+          <div class="tf-case-grid reveal">
+            <figure class="tf-case">
+              <img src="../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E6%88%B0%E9%BC%932-720.webp" srcset="../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E6%88%B0%E9%BC%932-720.webp 720w, ../images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E6%88%B0%E9%BC%932-1440.webp 1440w" sizes="(max-width: 760px) 92vw, 400px" width="720" height="405" alt="廟會慶典雷鳴戰鼓演出" loading="lazy" decoding="async">
+              <figcaption>廟會慶典・雷鳴戰鼓</figcaption>
+            </figure>
+            <figure class="tf-case">
+              <img src="../images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E6%B3%B0%E5%B1%B1%E7%8D%85%E7%8E%8B%E6%96%87%E5%8C%96%E7%A5%AD-720.webp" width="720" height="480" alt="泰山獅王文化祭醒獅與來賓合影" loading="lazy" decoding="async">
+              <figcaption>泰山獅王文化祭</figcaption>
+            </figure>
+            <figure class="tf-case">
+              <img src="../images/%E5%B1%95%E6%BC%94%E6%9C%8D%E5%8B%99/%E5%9C%9F%E5%9C%B0%E5%85%AC%E7%A5%9D%E5%A3%BD%E7%A4%BE%E5%8D%80%E6%B4%BB%E5%8B%95%E6%88%B0%E9%BC%93%E8%A1%A8%E6%BC%94-720.webp" width="720" height="529" alt="土地公祝壽社區活動戰鼓表演" loading="lazy" decoding="async">
+              <figcaption>土地公祝壽・社區戰鼓</figcaption>
+            </figure>
+            <a class="tf-case-more" href="/gallery/temple">
+              <span>看更多廟會繞境・祝壽案例</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="tf-contact" aria-labelledby="tf-contact-title">
+        <div class="tf-shell tf-contact-grid">
+          <div class="reveal">
+            <p class="tf-kicker">預約洽詢</p>
+            <h2 id="tf-contact-title" class="tf-contact-title">廟會日期定了嗎？<br>先聊聊您的想法</h2>
+            <p class="tf-contact-lede">不用先準備完整企劃。告訴我們以下幾件事，我們會回覆初步建議與報價方向。</p>
+            <div class="tf-actions">
+              <a class="button button-line" href="{{ site.lineUrl }}" target="_blank" rel="noopener noreferrer" aria-label="加 LINE 洽詢廟會策劃活動">LINE 洽詢・{{ site.lineId }}</a>
+              <a class="button tf-button-ghost" href="/pages/contact?eventType=temple&amp;source=temple-planning">線上填寫需求</a>
+            </div>
+            <p class="tf-contact-tel">或來電 <a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a></p>
+          </div>
+          <div class="tf-prep reveal">
+            <p class="tf-prep-label">先準備好這些，回覆會更快</p>
+            <ol>
+              <li>慶典日期與吉時</li>
+              <li>宮廟名稱與地點（有遶境請附路線）</li>
+              <li>慶典性質與預期規模</li>
+              <li>想安排的陣頭或預算</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    {% include "footer.njk" %}
+  </div>
+  <script src="../backend-config.js?v=20260728-bp1"></script>
+  <script src="../script.js?v=20261029-temple1" defer></script>
+</body>
+</html>

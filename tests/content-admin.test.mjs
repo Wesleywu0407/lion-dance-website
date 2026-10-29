@@ -28,7 +28,7 @@ test('all editable records exist and validate while preserving immutable metadat
     const pick=(fields,data)=>Object.fromEntries(fields.map(f=>[f.name,f.type==='list'?data[f.name].map(item=>pick(f.fields,item)):data[f.name]]));
     assert.deepEqual(mergeContent(fields,pick(fields,current),current),current,entry.id);
   }
-  assert.equal(entries.filter(e=>e.kind==='seo').length,22);
+  assert.equal(entries.filter(e=>e.kind==='seo').length,23);
 });
 
 test('rejects hidden fields, blank required text and unsafe sharing URLs',()=>{

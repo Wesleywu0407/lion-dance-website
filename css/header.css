@@ -471,6 +471,7 @@
 .site-nav.is-open .nav-item:nth-child(4) { transition-delay: 0.32s; }
 .site-nav.is-open .nav-item:nth-child(5) { transition-delay: 0.36s; }
 .site-nav.is-open .nav-item:nth-child(6) { transition-delay: 0.4s; }
+.site-nav.is-open .nav-item:nth-child(7) { transition-delay: 0.44s; }
 .site-nav.is-open .nav-foot { transition-delay: 0.46s; }
 
 /* 桌機：左目錄、右照片 */

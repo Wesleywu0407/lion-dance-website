@@ -130,6 +130,12 @@
   force = true
 
 [[redirects]]
+  from = "/pages/temple-festival-planning.html"
+  to = "/pages/temple-festival-planning"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/pages/ink-dragon-scroll.html"
   to = "/pages/ink-dragon-scroll"
   status = 301

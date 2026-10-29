@@ -10,7 +10,7 @@ const records = new Map(entries.map(entry => [entry.id, {
 
 test('navigation combines each page and puts visible copy before search metadata', () => {
   const pages = pagesFor(entries);
-  assert.equal(pages.length, 22);
+  assert.equal(pages.length, 23);
   assert.equal(pages[0].label, '首頁');
   assert.deepEqual(pages.find(page => page.url === '/pages/services').entries.map(entry => entry.kind), ['services', 'seo']);
   assert.deepEqual(pages.find(page => page.url === '/landing/lion-dance-price-guide').entries.map(entry => entry.kind), ['landing', 'pricing', 'seo']);
