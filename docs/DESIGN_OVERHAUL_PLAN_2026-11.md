@@ -106,6 +106,30 @@ Status: **IN PROGRESS.**
   - Lightbox open/close/Esc works on all 9 albums.
   - Home, landing, services and the other pages rechecked (no JS errors, no overflow).
 
+**2026-11-08 (round 5): polish + cleanup across remaining pages.**
+- **Contrast:**
+  - Gold text on light paper failed WCAG (2.5:1). Switched to cinnabar for the contact 壹–肆 step numerals and form-section numerals, and the temple care-list 一–四 marks and 「・」 separators.
+  - Gold stays where it sits on dark bands (6.4:1), e.g. the temple 「一個窗口」 marks.
+  - An automated scan of 11 key pages now passes. The only flags left are text over the hero photo and inside the open menu, which were checked visually.
+- **Footer:**
+  - Every page now uses `footer.njk`. About, contact and 舞龍舞獅介紹 had drifted copies: no privacy link, a relative gallery link, different links.
+  - The shared footer gains 舞龍舞獅介紹 and all 7 演出項目 links.
+  - Desktop layout: brand plus 3 link columns side by side, about 500px tall (was about 720px, with the third column wrapping underneath).
+  - Phone link rows are 44px tall.
+- **About:**
+  - The phone hero had 112px of stray top padding on the subtitle (a rule meant for the section hit the paragraph). Removed.
+  - About/privacy heroes are left-aligned on phone. The about phone gutter is now 16 → 20px, like every other page.
+- **舞龍舞獅介紹:** if the embedded ink animation fails to load (no `__inkLion` 1.5s after load, e.g. a 404 page), the iframe is hidden and the static ink-lion poster shows. Tested broken and working cases on desktop and phone. I could not reach the live site from this sandbox to confirm production serves the clean URL.
+- **Deleted (approved):**
+  - Files: `css/sections/process.css`, `src/_includes/gallery-context.njk`. `style.css` now has 10 `@import`s, and CLAUDE.md is updated to match.
+  - Code: the dead `.about-block` / `.ctb` JS observers.
+- **Verified:**
+  - `npm test` green.
+  - Contrast scan green.
+  - Gallery, services, home and landing regression green.
+  - No JS errors on 10 pages.
+  - Gutters 20px on all main pages.
+
 **Next:**
 - Phase 1 token cleanup. This includes removing the now-unused `.quote-prep`, `.landing-photo-grid` and `.cta-band` landing rules in `components.css` / `responsive.css`.
 - Then home → services → gallery.

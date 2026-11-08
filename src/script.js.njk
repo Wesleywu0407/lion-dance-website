@@ -610,21 +610,6 @@ document.querySelectorAll('.contact-faq').forEach((faq) => {
   });
 });
 
-const motionAwareObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting && entry.boundingClientRect.top >= 0) {
-      return;
-    }
-
-    entry.target.classList.add('visible');
-    motionAwareObserver.unobserve(entry.target);
-  });
-}, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
-
-document.querySelectorAll('.about-block').forEach((item) => {
-  motionAwareObserver.observe(item);
-});
-
 const albumLightbox = document.querySelector('[data-album-lightbox]');
 
 if (albumLightbox) {
@@ -681,44 +666,3 @@ if (albumLightbox) {
   });
 }
 
-/* ── Cinematic about-page text reveal ────────────────────────
-   Each .ctb block is observed individually.  When 20 % of a
-   block enters the viewport both its .ctb-phrase and
-   .ctb-support get .is-visible — CSS handles the 150 ms
-   stagger between them via transition-delay on .ctb-support.
-   Fires once per block (unobserved immediately after trigger).
-   ─────────────────────────────────────────────────────────── */
-
-(function initCinematicReveal() {
-  const blocks = document.querySelectorAll('.ctb');
-  if (!blocks.length) return;
-
-  /* Skip animation if user prefers reduced motion */
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    blocks.forEach((b) => {
-      b.querySelector('.ctb-phrase')?.classList.add('is-visible');
-      b.querySelector('.ctb-support')?.classList.add('is-visible');
-    });
-    return;
-  }
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting && entry.boundingClientRect.top >= 0) return;
-
-      const phrase  = entry.target.querySelector('.ctb-phrase');
-      const support = entry.target.querySelector('.ctb-support');
-
-      /* Phrase appears first; support follows via CSS transition-delay */
-      phrase?.classList.add('is-visible');
-      support?.classList.add('is-visible');
-
-      io.unobserve(entry.target);   /* play once only */
-    });
-  }, {
-    threshold: 0.20,                /* trigger when 20 % visible */
-    rootMargin: '0px 0px -60px 0px' /* slight bottom offset for feel */
-  });
-
-  blocks.forEach((block) => io.observe(block));
-}());

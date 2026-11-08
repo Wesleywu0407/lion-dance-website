@@ -664,7 +664,7 @@
   .about-services,
   .about-contact,
   .about-warmth-inner {
-    width: min(calc(100% - 32px), var(--max-width));
+    width: min(calc(100% - 40px), var(--max-width));
   }
 
   .about-page .about-chapter-title {

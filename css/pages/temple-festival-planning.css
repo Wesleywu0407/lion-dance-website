@@ -451,7 +451,7 @@
 
 .tf-care-list dt span {
   margin-right: 10px;
-  color: var(--gold);
+  color: var(--accent);
   letter-spacing: 0;
 }
 
@@ -566,7 +566,7 @@
 
 .tf-occasions span {
   margin: 0 0.4em;
-  color: var(--gold);
+  color: var(--accent);
 }
 
 .tf-case-grid {

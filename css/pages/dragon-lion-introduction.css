@@ -981,6 +981,15 @@
   background: #f5f0e6;
 }
 
+/* 動畫載入失敗時的靜態海報（ink-scroll-bridge.js 加上 .is-ink-fallback） */
+.is-ink-fallback .ink-scroll-frame {
+  visibility: hidden;
+}
+
+.is-ink-fallback .ink-scroll-stage {
+  background: #f5f0e6 url("../../images/ink-lion-run-poster.webp") right 8% center / min(62vw, 1100px) auto no-repeat;
+}
+
 .ink-scroll-frame {
   position: absolute;
   inset: 0;
@@ -1274,6 +1283,11 @@
     bottom: auto;
     height: 74vh;
     height: 74dvh;
+  }
+
+  .is-ink-fallback .ink-scroll-stage {
+    /* 手機版舞台高度包含下方敘事，海報固定在標題下方、水墨畫區域內 */
+    background: #f5f0e6 url("../../images/ink-lion-run-poster.webp") center calc(var(--header-height) + 230px) / 100% auto no-repeat;
   }
 
   .ink-scroll-copy {

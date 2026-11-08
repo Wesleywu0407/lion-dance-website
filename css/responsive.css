@@ -135,11 +135,6 @@ h3.section-heading::after {
     text-wrap: pretty;
   }
 
-  .about-page .page-hero .page-hero-inner > p:not(.section-tag) {
-    min-height: 0;
-    padding: max(112px, calc(var(--header-height) + 32px)) 0 12px;
-  }
-
   .contact-form-row {
     grid-template-columns: 1fr;
   }
@@ -282,7 +277,7 @@ select {
   .footer-links a {
     min-width: 0;
     margin: 0;
-    padding: 9px 0;
+    padding: 12px 0;
     font-size: 0.875rem;
     line-height: 1.45;
     overflow-wrap: anywhere;
@@ -640,5 +635,31 @@ select {
 
   main .intro-value-glyph {
     font-size: 1.4rem !important;
+  }
+}
+
+/* 手機：關於／隱私頁的標題區與其他頁一致——靠左、20px 左右留白（2026-11） */
+@media (max-width: 760px) {
+  .page-hero,
+  .page-hero-inner,
+  .page-hero .page-hero-inner > h1,
+  .page-hero .page-hero-inner > p:not(.section-tag) {
+    text-align: left;
+  }
+
+  .page-hero-inner {
+    width: calc(100% - 40px);
+    justify-items: start;
+  }
+
+  .page-hero .page-hero-inner > h1,
+  .page-hero .page-hero-inner > p:not(.section-tag) {
+    justify-self: start;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+
+  .page-hero .page-hero-inner > p:not(.section-tag) {
+    max-width: 32em;
   }
 }

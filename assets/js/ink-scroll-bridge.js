@@ -171,6 +171,13 @@
       frameReady = true;
       firstSync = true;
       update();
+      // 若 iframe 載入的不是水墨動畫（例如 404 頁），稍後仍拿不到 __inkLion：
+      // 隱藏 iframe，讓 .ink-scroll-stage 的靜態海報圖露出，不留空白或錯誤頁。
+      window.setTimeout(function () {
+        var hasApi = false;
+        try { hasApi = Boolean(frame.contentWindow && frame.contentWindow.__inkLion); } catch (error) { hasApi = false; }
+        if (!hasApi) scrollSpace.classList.add('is-ink-fallback');
+      }, 1500);
     };
 
     frame.addEventListener('load', markFrameReady);
