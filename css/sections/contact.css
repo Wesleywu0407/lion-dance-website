@@ -156,7 +156,7 @@
   min-height: 52px;
   padding: 0 26px 0 20px;
   border-radius: 999px;
-  background: #2f7d54;
+  background: var(--cta);
   color: #fff;
   font-size: 1rem;
   font-weight: 700;
