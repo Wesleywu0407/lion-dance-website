@@ -16,7 +16,8 @@
   <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="../favicon-180.png">
   <meta name="theme-color" content="#181311">
-  <link rel="stylesheet" href="../css/style.css?v=20261030-source1">
+  <link rel="stylesheet" href="../css/style.css?v=20261108-landing1">
+  <link rel="stylesheet" href="../css/pages/landing.css?v=20261108-landing1">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -104,66 +105,31 @@
 }
   </script>
 </head>
-<body>
+<body class="landing-page">
   {% set landingPage = landing["dragon-lion-dance-performance"] %}
   <div class="page-shell">
     {% include "header.njk" %}
 
     <main id="main-content">
-      <section class="page-hero">
-        <div class="page-hero-inner reveal reveal-hero">
-          <p class="section-tag">{{ landingPage.heroTag | escape }}</p>
-          <h1 class="section-heading">{{ landingPage.h1 | escape }}</h1>
-          <p>{{ landingPage.intro | escape }}</p>
-        </div>
-      </section>
-
-      <section class="section page-section-stack">
-        <div class="about-layout about-cinematic">
-          {% for block in landingPage.blocks %}
-          <div class="ctb about-block">
-            <h2 class="ctb-phrase">{{ block.title | escape }}</h2>
-            <p class="ctb-support">{{ block.text | escape }}</p>
-          </div>
-          {% endfor %}
-        </div>
-
-
-        {% include "landing-related.njk" %}
-
-        <div class="landing-photo-strip reveal">
-          <p class="section-tag">演出實況</p>
-          <div class="landing-photo-grid">
-            <figure>
-              <img src="../images/%E7%A5%A5%E9%BE%8D%E6%90%B6%E7%8F%A0-720.webp" srcset="../images/%E7%A5%A5%E9%BE%8D%E6%90%B6%E7%8F%A0-720.webp 720w, ../images/%E7%A5%A5%E9%BE%8D%E6%90%B6%E7%8F%A0-1440.webp 1440w" sizes="(max-width: 760px) 92vw, 380px" alt="祥龍搶珠舞龍廟會演出" width="720" height="503" loading="lazy" decoding="async">
-              <figcaption>祥龍搶珠舞龍演出</figcaption>
-            </figure>
-            <figure>
-              <img src="../images/%E7%A5%A5%E7%8D%85%E7%8D%BB%E7%91%9E-720.webp" srcset="../images/%E7%A5%A5%E7%8D%85%E7%8D%BB%E7%91%9E-720.webp 720w, ../images/%E7%A5%A5%E7%8D%85%E7%8D%BB%E7%91%9E-1440.webp 1440w" sizes="(max-width: 760px) 92vw, 380px" alt="祥獅獻瑞開幕舞獅採青表演" width="720" height="540" loading="lazy" decoding="async">
-              <figcaption>祥獅獻瑞舞獅表演</figcaption>
-            </figure>
-            <figure>
-              <img src="../images/%E9%9B%B7%E9%B3%B4%E6%88%B0%E9%BC%93-720.webp" srcset="../images/%E9%9B%B7%E9%B3%B4%E6%88%B0%E9%BC%93-720.webp 720w, ../images/%E9%9B%B7%E9%B3%B4%E6%88%B0%E9%BC%93-1440.webp 1440w" sizes="(max-width: 760px) 92vw, 380px" alt="雷鳴戰鼓開場鼓陣演出" width="720" height="480" loading="lazy" decoding="async">
-              <figcaption>雷鳴戰鼓開場鼓陣</figcaption>
-            </figure>
-          </div>
-        </div>
-
-        <div class="cta-band reveal">
-          <p class="section-tag">預約洽詢</p>
-          <h2>{{ landingPage.ctaTitle | escape }}</h2>
-          <p>{{ landingPage.ctaText | escape }}</p>
-          <div class="cta-band-actions">
-            <a class="button button-primary" href="/pages/contact?source=landing-dragon-lion" aria-label="聯絡臺灣南仙龍獅體育會預約舞龍舞獅表演">聯絡洽詢</a>
-            <a class="button button-secondary" href="/pages/services" aria-label="查看臺灣南仙龍獅體育會表演項目">查看表演項目</a>
-          </div>
-        </div>
-      </section>
+      {% set lp = {
+        crumb: "舞龍舞獅表演",
+        points: landingPage.blocks,
+        contactHref: "/pages/contact?source=landing-dragon-lion",
+        ctaTitle: landingPage.ctaTitle,
+        ctaText: landingPage.ctaText,
+        priceFaq: false,
+        photos: [
+      { img: "%E7%A5%A5%E9%BE%8D%E6%90%B6%E7%8F%A0", alt: "祥龍搶珠舞龍廟會演出", w: 720, h: 503, caption: "祥龍搶珠舞龍演出" },
+      { img: "%E7%A5%A5%E7%8D%85%E7%8D%BB%E7%91%9E", alt: "祥獅獻瑞開幕舞獅採青表演", w: 720, h: 540, caption: "祥獅獻瑞舞獅表演" },
+      { img: "%E9%9B%B7%E9%B3%B4%E6%88%B0%E9%BC%93", alt: "雷鳴戰鼓開場鼓陣演出", w: 720, h: 480, caption: "雷鳴戰鼓開場鼓陣" }
+        ]
+      } %}
+      {% include "landing-body.njk" %}
     </main>
 
     {% include "footer.njk" %}
   </div>
   <script src="../backend-config.js?v=20260728-bp1"></script>
-  <script src="../script.js?v=20261030-source1" defer></script>
+  <script src="../script.js?v=20261108-landing1" defer></script>
 </body>
 </html>

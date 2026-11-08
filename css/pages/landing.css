@@ -1,0 +1,613 @@
+/* ── 落地頁共用版型（2026-11 重做）──────────────────────────
+   6 個搜尋落地頁（舞獅表演、開幕、企業、尾牙、舞龍舞獅、報價指南）共用。
+   版面語彙沿用廟會策劃頁：平塗底色＋1px 細線分組、照片字幕放在圖下、
+   不用卡片框與陰影。朱紅（--cta）只給 LINE 主行動。
+   順序：hero（行動＋照片）→ 重點條列 → 實況照片 → 詢價準備 → 收尾行動。
+   ─────────────────────────────────────────────────────────── */
+
+.landing-page {
+  --lp-rule: var(--line);
+  --lp-dark: #181311;
+  --lp-dark-ink: #f5efe6;
+  --lp-dark-soft: rgba(245, 239, 230, 0.72);
+  --lp-dark-rule: rgba(245, 239, 230, 0.16);
+  --lp-gap: clamp(64px, 7vw, 104px);
+  --lp-paper-deep: #eee5d6;
+}
+
+/* 收尾深色帶直接接頁尾，不留米色縫 */
+.landing-page .site-footer {
+  margin-top: 0;
+}
+
+.lp-shell {
+  width: min(calc(100% - 80px), 1180px);
+  margin: 0 auto;
+}
+
+/* 中文標題只在標點處換行（不切斷詞）；整串放不下時才任意斷行，避免溢出 */
+.lp-title,
+.lp-section-title,
+.lp-cta-title,
+.landing-point-title {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.lp-nowrap {
+  white-space: nowrap;
+}
+
+.lp-section-title {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-display-serif);
+  font-size: clamp(1.6rem, 2.6vw, 2.25rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+}
+
+/* ── Hero ── */
+.lp-hero {
+  padding: calc(var(--header-height) + clamp(32px, 5vw, 64px)) 0 var(--lp-gap);
+}
+
+.lp-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+  gap: clamp(40px, 6vw, 88px);
+  align-items: center;
+}
+
+.lp-crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 28px;
+  padding: 0;
+  list-style: none;
+  color: var(--ink-soft);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+}
+
+.lp-crumbs li + li::before {
+  content: "/";
+  margin-right: 6px;
+  color: var(--ink-muted);
+}
+
+.lp-crumbs a {
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.lp-crumbs a:hover,
+.lp-crumbs a:focus-visible {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.lp-kicker {
+  margin: 0 0 14px;
+  color: var(--accent);
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.lp-title {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-display-serif);
+  font-size: clamp(2.5rem, 4.4vw, 3.6rem);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.lp-lede {
+  max-width: 32em;
+  margin: 24px 0 0;
+  color: var(--ink-soft);
+  font-size: 1.0625rem;
+  line-height: 1.9;
+}
+
+.lp-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.lp-tel {
+  margin: 16px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+  letter-spacing: 0.04em;
+}
+
+.lp-tel a {
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration-color: var(--gold);
+  text-underline-offset: 4px;
+}
+
+.lp-tel span {
+  margin: 0 6px;
+  color: var(--ink-muted);
+}
+
+.lp-facts {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 36px 0 0;
+  padding: 18px 0 0;
+  border-top: 1px solid var(--lp-rule);
+  list-style: none;
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.lp-facts li + li::before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 0.9em;
+  margin: 0 14px;
+  vertical-align: -0.1em;
+  background: var(--gold);
+}
+
+.lp-hero-photo {
+  margin: 0;
+}
+
+.lp-hero-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.lp-hero-photo figcaption,
+.lp-scene figcaption {
+  margin-top: 12px;
+  color: var(--ink-soft);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+}
+
+/* ── 重點條列：標題左、說明右，細線分隔 ── */
+.lp-points {
+  padding-bottom: clamp(56px, 6vw, 88px);
+}
+
+.lp-point {
+  display: grid;
+  grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+  gap: clamp(20px, 4vw, 64px);
+  padding: 30px 0;
+  border-top: 1px solid var(--lp-rule);
+}
+
+.lp-point:last-child {
+  border-bottom: 1px solid var(--lp-rule);
+}
+
+.landing-point-title {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+}
+
+.lp-point p {
+  max-width: 36em;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+/* ── 實況照片：大圖、字幕在下 ── */
+.lp-scene {
+  padding: var(--lp-gap) 0;
+  background: var(--lp-paper-deep);
+}
+
+.lp-scene-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px 48px;
+  margin-bottom: 36px;
+}
+
+.lp-related {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 20px;
+}
+
+.lp-related-label {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+}
+
+.lp-related ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lp-related a {
+  display: inline-block;
+  padding: 6px 0;
+  color: var(--ink);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: underline;
+  text-decoration-color: rgba(143, 58, 47, 0.35);
+  text-underline-offset: 5px;
+}
+
+.lp-related a:hover,
+.lp-related a:focus-visible {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+.lp-scene-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2.4vw, 32px);
+}
+
+.lp-scene figure {
+  margin: 0;
+}
+
+.lp-scene img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* ── 詢價準備：清單有順序意義，保留編號 ── */
+.lp-prep {
+  padding: var(--lp-gap) 0;
+}
+
+.lp-prep-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
+}
+
+.lp-prep-grid > div p {
+  max-width: 26em;
+  margin: 18px 0 0;
+  color: var(--ink-soft);
+  line-height: 1.9;
+}
+
+.lp-prep-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: lp-prep;
+  border-top: 1px solid var(--lp-rule);
+}
+
+.lp-prep-list li {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  padding: 20px 0 20px 40px;
+  border-bottom: 1px solid var(--lp-rule);
+  counter-increment: lp-prep;
+}
+
+.lp-prep-list li::before {
+  content: counter(lp-prep, decimal-leading-zero);
+  position: absolute;
+  top: 22px;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.lp-prep-list strong {
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.lp-prep-list span {
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+/* ── 報價常見問題（只有報價指南頁）── */
+.lp-faq {
+  padding-bottom: var(--lp-gap);
+}
+
+.lp-faq-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
+}
+
+.lp-faq-list {
+  border-top: 1px solid var(--lp-rule);
+}
+
+.lp-faq-item {
+  border-bottom: 1px solid var(--lp-rule);
+}
+
+.lp-faq-item summary {
+  position: relative;
+  padding: 22px 40px 22px 0;
+  color: var(--ink);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.6;
+  list-style: none;
+  cursor: pointer;
+}
+
+.lp-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.lp-faq-item summary::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  color: var(--accent);
+  font-size: 1.375rem;
+  font-weight: 400;
+  transform: translateY(-50%);
+}
+
+.lp-faq-item[open] summary::after {
+  content: "−";
+}
+
+.lp-faq-item p {
+  max-width: 38em;
+  margin: 0 0 24px;
+  color: var(--ink-soft);
+  line-height: 1.9;
+}
+
+/* ── 收尾行動：深墨色帶，紅色 LINE 是唯一主按鈕 ── */
+.lp-cta {
+  padding: clamp(64px, 8vw, 112px) 0;
+  background: var(--lp-dark);
+  color: var(--lp-dark-ink);
+}
+
+.lp-cta-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: end;
+}
+
+.lp-cta-title {
+  margin: 0;
+  color: var(--lp-dark-ink);
+  font-family: var(--font-display-serif);
+  font-size: clamp(1.8rem, 3.4vw, 2.75rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.lp-cta-grid p {
+  max-width: 34em;
+  margin: 18px 0 0;
+  color: var(--lp-dark-soft);
+  line-height: 1.9;
+}
+
+.lp-cta-actions {
+  display: grid;
+  gap: 12px;
+}
+
+.lp-cta-actions .button {
+  width: 100%;
+}
+
+.lp-button-ghost {
+  background: transparent;
+  color: var(--lp-dark-ink);
+  border-color: rgba(245, 239, 230, 0.4);
+}
+
+.lp-button-ghost:hover,
+.lp-button-ghost:focus-visible {
+  border-color: var(--lp-dark-ink);
+  color: #fff;
+}
+
+.lp-cta .lp-cta-tel {
+  margin: 4px 0 0;
+  color: var(--lp-dark-soft);
+  text-align: center;
+  font-size: 0.9375rem;
+}
+
+.lp-cta-tel a {
+  color: var(--lp-dark-ink);
+  font-weight: 700;
+  text-decoration-color: var(--gold);
+  text-underline-offset: 4px;
+}
+
+/* ── 平板 ── */
+@media (max-width: 1100px) {
+  .lp-hero-grid,
+  .lp-prep-grid,
+  .lp-faq-grid,
+  .lp-cta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-hero-photo {
+    max-width: 720px;
+  }
+
+  .lp-cta-actions {
+    max-width: 420px;
+  }
+}
+
+/* ── 手機：主行動留在第一屏，照片放在行動之後 ── */
+@media (max-width: 760px) {
+  .landing-page {
+    --lp-gap: 64px;
+  }
+
+  .lp-shell {
+    width: calc(100% - 40px);
+  }
+
+  .lp-hero {
+    padding-top: calc(var(--header-height) + 24px);
+  }
+
+  .lp-hero-grid {
+    gap: 36px;
+  }
+
+  .lp-crumbs ol {
+    margin-bottom: 20px;
+  }
+
+  .lp-title {
+    font-size: clamp(2.1rem, 9.5vw, 2.6rem);
+  }
+
+  .lp-lede {
+    margin-top: 18px;
+    font-size: 1rem;
+  }
+
+  /* 手機：LINE ID 自成一行，不留行尾分隔點 */
+  .lp-tel span[aria-hidden="true"] {
+    display: none;
+  }
+
+  .lp-tel .lp-nowrap {
+    display: block;
+    margin-top: 4px;
+  }
+
+  .lp-actions {
+    display: grid;
+    margin-top: 26px;
+  }
+
+  .lp-actions .button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .lp-facts {
+    display: grid;
+    gap: 8px;
+    margin-top: 28px;
+  }
+
+  .lp-facts li + li::before {
+    content: none;
+  }
+
+  .lp-facts li {
+    padding-left: 14px;
+    border-left: 2px solid var(--gold);
+  }
+
+  .lp-hero-photo {
+    margin: 0 -20px;
+  }
+
+  .lp-hero-photo img {
+    border-radius: 0;
+  }
+
+  .lp-hero-photo figcaption {
+    padding: 0 20px;
+  }
+
+  .lp-point {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 24px 0;
+  }
+
+  .lp-scene-head {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .lp-scene-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .lp-prep-list {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-cta-actions {
+    max-width: none;
+  }
+}
+
+/* 文字連結加大點擊範圍（≥ 40px），不改變排版位置 */
+.lp-crumbs a,
+.lp-tel a,
+.lp-cta-tel a {
+  display: inline-block;
+  padding: 10px 0;
+  margin: -10px 0;
+}

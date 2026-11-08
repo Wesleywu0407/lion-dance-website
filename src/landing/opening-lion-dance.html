@@ -16,7 +16,8 @@
   <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="../favicon-180.png">
   <meta name="theme-color" content="#181311">
-  <link rel="stylesheet" href="../css/style.css?v=20261030-source1">
+  <link rel="stylesheet" href="../css/style.css?v=20261108-landing1">
+  <link rel="stylesheet" href="../css/pages/landing.css?v=20261108-landing1">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -96,66 +97,31 @@
 }
   </script>
 </head>
-<body>
+<body class="landing-page">
   {% set landingPage = landing["opening-lion-dance"] %}
   <div class="page-shell">
     {% include "header.njk" %}
 
     <main id="main-content">
-      <section class="page-hero">
-        <div class="page-hero-inner reveal reveal-hero">
-          <p class="section-tag">{{ landingPage.heroTag | escape }}</p>
-          <h1 class="section-heading">{{ landingPage.h1 | escape }}</h1>
-          <p>{{ landingPage.intro | escape }}</p>
-        </div>
-      </section>
-
-      <section class="section page-section-stack">
-        <div class="about-layout about-cinematic">
-          {% for block in landingPage.blocks %}
-          <div class="ctb about-block">
-            <h2 class="ctb-phrase">{{ block.title | escape }}</h2>
-            <p class="ctb-support">{{ block.text | escape }}</p>
-          </div>
-          {% endfor %}
-        </div>
-
-
-        {% include "landing-related.njk" %}
-
-        <div class="landing-photo-strip reveal">
-          <p class="section-tag">演出實況</p>
-          <div class="landing-photo-grid">
-            <figure>
-              <img src="../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E9%96%8B%E5%B9%95%E7%86%B1%E5%A0%B4-720.webp" srcset="../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E9%96%8B%E5%B9%95%E7%86%B1%E5%A0%B4-720.webp 720w, ../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E9%96%8B%E5%B9%95%E7%86%B1%E5%A0%B4-1440.webp 1440w" sizes="(max-width: 760px) 92vw, 380px" alt="紅色醒獅開幕熱場表演" width="720" height="540" loading="lazy" decoding="async">
-              <figcaption>醒獅開幕熱場，帶動現場氣氛</figcaption>
-            </figure>
-            <figure>
-              <img src="../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E7%A5%A5%E7%8D%85%E9%96%8B%E5%B8%82-720.webp" srcset="../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E7%A5%A5%E7%8D%85%E9%96%8B%E5%B8%82-720.webp 720w, ../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E7%A5%A5%E7%8D%85%E9%96%8B%E5%B8%82-1440.webp 1440w" sizes="(max-width: 760px) 92vw, 380px" alt="祥獅開市品牌開幕慶典表演" width="720" height="540" loading="lazy" decoding="async">
-              <figcaption>品牌開市儀式祥獅獻瑞</figcaption>
-            </figure>
-            <figure>
-              <img src="../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E7%BE%8E%E7%A6%8F%E9%A3%9F%E9%9B%86-720.webp" srcset="../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E7%BE%8E%E7%A6%8F%E9%A3%9F%E9%9B%86-720.webp 720w, ../images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E7%BE%8E%E7%A6%8F%E9%A3%9F%E9%9B%86-1440.webp 1440w" sizes="(max-width: 760px) 92vw, 380px" alt="店面開幕醒獅剪綵活動演出" width="720" height="540" loading="lazy" decoding="async">
-              <figcaption>店面開幕剪綵與祥獅獻瑞</figcaption>
-            </figure>
-          </div>
-        </div>
-
-        <div class="cta-band reveal">
-          <p class="section-tag">預約洽詢</p>
-          <h2>{{ landingPage.ctaTitle | escape }}</h2>
-          <p>{{ landingPage.ctaText | escape }}</p>
-          <div class="cta-band-actions">
-            <a class="button button-primary" href="/pages/contact?eventType=opening&amp;service=item-auspicious-lion&amp;source=landing-opening" aria-label="聯絡臺灣南仙龍獅體育會預約舞龍舞獅表演">聯絡洽詢</a>
-            <a class="button button-secondary" href="/pages/services" aria-label="查看臺灣南仙龍獅體育會表演項目">查看表演項目</a>
-          </div>
-        </div>
-      </section>
+      {% set lp = {
+        crumb: "開幕舞獅表演",
+        points: landingPage.blocks,
+        contactHref: "/pages/contact?eventType=opening&amp;service=item-auspicious-lion&amp;source=landing-opening",
+        ctaTitle: landingPage.ctaTitle,
+        ctaText: landingPage.ctaText,
+        priceFaq: false,
+        photos: [
+      { img: "%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E9%96%8B%E5%B9%95%E7%86%B1%E5%A0%B4", alt: "紅色醒獅開幕熱場表演", w: 720, h: 540, caption: "醒獅開幕熱場，帶動現場氣氛" },
+      { img: "%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E7%A5%A5%E7%8D%85%E9%96%8B%E5%B8%82", alt: "祥獅開市品牌開幕慶典表演", w: 720, h: 540, caption: "品牌開市儀式祥獅獻瑞" },
+      { img: "%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E7%BE%8E%E7%A6%8F%E9%A3%9F%E9%9B%86", alt: "店面開幕醒獅剪綵活動演出", w: 720, h: 540, caption: "店面開幕剪綵與祥獅獻瑞" }
+        ]
+      } %}
+      {% include "landing-body.njk" %}
     </main>
 
     {% include "footer.njk" %}
   </div>
   <script src="../backend-config.js?v=20260728-bp1"></script>
-  <script src="../script.js?v=20261030-source1" defer></script>
+  <script src="../script.js?v=20261108-landing1" defer></script>
 </body>
 </html>

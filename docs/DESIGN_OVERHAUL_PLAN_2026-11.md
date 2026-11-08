@@ -1,6 +1,42 @@
 # Design Overhaul Plan (2026-11-08)
 
-Status: **PLAN ONLY. No code has been changed.** Waiting on the 4 decisions in §6 before Phase 1.
+Status: **IN PROGRESS.**
+
+## Progress log
+
+**2026-11-08: decisions received.**
+- Main action colour: red.
+- Text changes: allowed.
+- Start with: landing pages.
+- SEO must be protected.
+
+**Done in this round:**
+1. **Main action is cinnabar red site-wide.** `button-line`, the header LINE button, the menu LINE button, the contact-page LINE button and the phone bottom bar now use `--cta`.
+   - On the bottom bar, only the LINE button is red; 撥打電話 and 預約演出 are dark with hairline dividers.
+   - Home process CTA: phone is now secondary, so one red button per group.
+   - Green remains only for "sent successfully" status messages.
+2. **New shared landing template** (`src/_includes/landing-body.njk` + `css/pages/landing.css`) for all 6 landing pages. The old about-page `.ctb-phrase` headline borrowing is gone. Order, as a buyer decides:
+   - **Hero:** breadcrumb, H1, intro, red LINE button + form button, phone and LINE ID, 3 facts already stated on the home page, and a photo (the LCP image, loaded eagerly). The red button is on the first screen at 360 / 390 / 820 / 1440px.
+   - **Questions:** ruled list of the CMS `blocks` (H2s).
+   - **Photos:** "實況" band with 2 large photos and captions underneath, plus case and price-guide links as plain text links.
+   - **Quote prep:** "詢價前準備這 6 項資料" on every page. It reduces back-and-forth on LINE.
+   - **Price FAQ:** price guide only. Visible text still matches the FAQ structured data.
+   - **Closing band:** dark band with one red LINE button, the form and the phone number.
+3. **SEO copy:** the vague block titles (相關案例 / 常見問題 / 建議流程…) were rewritten as the questions buyers search for, e.g. 「哪些開幕活動適合舞獅？」「場地太小也能安排開幕舞獅嗎？」. Each title answers the paragraph already under it; no new claims. CTA titles were made page-specific.
+4. **SEO unchanged and still protected:** title, meta description, canonical, URLs, JSON-LD and H1 text. Internal links to `/gallery/*` and the price guide are kept. Ad-source tracking (`?source=landing-…`) is kept on every form link. Added a visible breadcrumb that matches `BreadcrumbList`. `check-seo-content.mjs` now looks for `.landing-point-title`.
+
+**Verified:**
+- `npm test` all green.
+- No horizontal overflow at 4 widths.
+- One H1 per page.
+- Tap targets 40px or more.
+- Contrast: white on red 6.7:1, smallest text 4.56:1.
+- Menu and Esc still work; no JS errors.
+
+**Next:**
+- Home hero: the red LINE button sits on a red lion photo and needs more separation.
+- Phase 1 token cleanup. This includes removing the now-unused `.quote-prep`, `.landing-photo-grid` and `.cta-band` landing rules in `components.css` / `responsive.css`.
+- Then home → services → gallery.
 
 How this audit was done:
 - Built the site (`npx @11ty/eleventy`) and served `_site/`.
@@ -140,7 +176,7 @@ Each phase is its own commit, previewed before moving on. Copy text is **not** c
 
 ---
 
-## 6. Decisions needed from you
+## 6. Decisions (answered 2026-11-08: red · text changes yes · landing pages first)
 
 1. **Main action colour.** Should the main button be cinnabar red ("預約演出" / "LINE 洽詢") with LINE green only on the LINE logo? *(Recommended.)* Or should LINE green stay the main button colour?
 2. **Copy edits allowed?** Some fixes need small text changes:
