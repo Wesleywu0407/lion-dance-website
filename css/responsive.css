@@ -9,11 +9,6 @@
     grid-template-columns: 1fr;
   }
 
-  .narrative-layout {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
   /* case-card grid-column reset now handled in gallery.css */
 
   .contact-layout,
@@ -21,14 +16,6 @@
     grid-template-columns: 1fr;
   }
 
-  .narrative-intro {
-    position: static;
-    max-width: 100%;
-  }
-
-  .narrative-intro .narrative-heading {
-    max-width: 100%;
-  }
 }
 
 @media (max-width: 760px) {
@@ -185,22 +172,6 @@ h3.section-heading::after {
   .process-grid,
 .contact-form-row {
     grid-template-columns: 1fr;
-  }
-
-  .narrative-intro .narrative-heading {
-    max-width: 100%;
-    padding: 10px 14px 14px;
-    font-size: clamp(2.15rem, 9vw, 2.8rem);
-    line-height: 1.14;
-    letter-spacing: 0.025em;
-  }
-
-  .narrative-heading-line {
-    white-space: normal;
-  }
-
-  .narrative-heading-phrase {
-    display: inline;
   }
 
 
@@ -491,7 +462,6 @@ select {
   .js .about-block,
   .js .ctb-phrase,
   .js .ctb-support,
-  .js .about-fade-paragraph,
   .js .ink-story-beat .ink-anim {
     opacity: 1 !important;
     clip-path: none !important;
@@ -672,8 +642,7 @@ select {
   }
 
   .contact-page .contact-check a,
-  .contact-page .contact-faq-item summary,
-  .home-cases-all {
+  .contact-page .contact-faq-item summary {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
@@ -812,8 +781,6 @@ select {
   /* 區塊標題 h2：22px */
   main .section-heading,
   main h2.section-heading,
-  main .section-heading .narrative-heading-line,
-  main .section-heading .narrative-heading-phrase,
   main .ctb-phrase,
   main .about-service-summary-head h2,
   main .process-consultation-content h2,
@@ -854,10 +821,6 @@ select {
   /* 關於我們章節浮水印數字（壹～伍）：手機 24px，不搶標題 */
   main .ctb-num {
     font-size: 1.5rem !important;
-  }
-
-  main .step-num {
-    font-size: 1.75rem !important;
   }
 
   main .service-item-step,

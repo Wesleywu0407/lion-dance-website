@@ -33,8 +33,26 @@ Status: **IN PROGRESS.**
 - Contrast: white on red 6.7:1, smallest text 4.56:1.
 - Menu and Esc still work; no JS errors.
 
+**2026-11-08 (round 2): home page rebuilt.**
+- **Hero:** kept. The red LINE button gets a paper-white ring so it reads on red lions. Phone gutter is 20px (was 12px). The separate 4-up trust strip is replaced by one quiet line under the buttons (2012 年創立・全台皆可出團・LINE 快速回覆).
+- **Scenarios:** ruled rows with arrows (no table grid, no 01–06). The sticky heading sits on the left. 廟會／祝壽 now goes to `/pages/temple-festival-planning` (a real sales page) instead of the gallery.
+- **Shows:** 3×2 photo grid (2 columns on phone) with names under the photos; the gradient veils are gone. Both SEO paragraphs are kept.
+- **About:** moved after the shows as a full-bleed dark photo band (尾牙 8 獅跳樁). Phone shows the photo on top and text below. Added a new internal link, 「認識南仙 →」 to `/pages/about`.
+- **Cases:** one large + two small, captions under the photos. The relative `gallery/` link is fixed to `/gallery/`.
+- **Process:** CTA sits beside the numbered steps (LINE red, form secondary with `?source=home-process`, phone as a text link). The numbers are now red, because gold text failed contrast.
+- **Removed:** every eyebrow label except one (關於臺灣南仙 on the dark band), including the phone-only English ones (ABOUT / SERVICES / PROCESS).
+- **Footer:** home now uses `footer.njk` (no more duplicate); its gallery link is now root-absolute.
+- **CSS:** dead home-only rules pruned. `sections/home.css` went from 1270 to 343 lines, and 7 rules were removed from `responsive.css`. New page-scoped file: `css/pages/home.css`.
+- **SEO:** same H1, same 5 H2 texts, same JSON-LD and meta. Anchors `#about` / `#process` kept.
+- **Verified:**
+  - `npm test` green.
+  - No overflow at 360 / 390 / 820 / 1440.
+  - No hidden `.reveal` with reduced motion.
+  - No small tap targets.
+  - No JS errors.
+  - Services / about / contact visually unchanged.
+
 **Next:**
-- Home hero: the red LINE button sits on a red lion photo and needs more separation.
 - Phase 1 token cleanup. This includes removing the now-unused `.quote-prep`, `.landing-photo-grid` and `.cta-band` landing rules in `components.css` / `responsive.css`.
 - Then home → services → gallery.
 

@@ -1,0 +1,582 @@
+/* ── 首頁（2026-11 重做）──────────────────────────────────
+   只在首頁載入，排在 style.css 之後。Hero 沿用 sections/home.css，這裡只微調。
+   其他區塊用 hm-* 重寫，版面語彙與落地頁、廟會策劃頁一致：
+   細線分組、照片字幕放在圖下、不用卡片框與陰影、朱紅只給 LINE 主行動。
+   節奏刻意交替（避免每段長一樣）：
+     hero（深）→ 情境條列（淺、左右分欄）→ 演出照片格（淺）
+     → 關於（滿版深色照片）→ 案例（一大兩小）→ 流程（左右分欄）
+   ─────────────────────────────────────────────────────────── */
+
+.home-page {
+  --hm-rule: var(--line);
+  --hm-dark: #181311;
+  --hm-dark-ink: #f5efe6;
+  --hm-dark-soft: rgba(245, 239, 230, 0.78);
+  --hm-gap: clamp(72px, 8vw, 120px);
+}
+
+/* ── Hero 微調 ── */
+
+/* 紅色按鈕常壓在紅色舞獅上：加一圈米白細框，像印章的邊 */
+.home-page .hero .button-line {
+  box-shadow: 0 0 0 1.5px rgba(250, 236, 231, 0.7), 0 12px 26px rgba(0, 0, 0, 0.35);
+}
+
+.hero-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 0;
+  margin: 1.4rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: rgba(250, 236, 231, 0.9);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+}
+
+.hero-facts li + li::before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 0.9em;
+  margin: 0 12px;
+  vertical-align: -0.1em;
+  background: rgba(250, 236, 231, 0.55);
+}
+
+/* ── 共用 ── */
+.hm-shell {
+  width: min(calc(100% - 80px), 1180px);
+  margin: 0 auto;
+}
+
+.hm-section {
+  padding: var(--hm-gap) 0;
+}
+
+.hm-title {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-display-serif);
+  font-size: clamp(1.75rem, 3vw, 2.6rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.hm-head p {
+  max-width: 34em;
+  margin: 18px 0 0;
+  color: var(--ink-soft);
+  line-height: 1.9;
+}
+
+.hm-head-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 20px clamp(32px, 6vw, 96px);
+  align-items: end;
+  margin-bottom: clamp(32px, 4vw, 48px);
+}
+
+.hm-head-row p {
+  margin: 0;
+}
+
+.hm-head-row .hm-link {
+  justify-self: end;
+}
+
+.hm-split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(36px, 6vw, 96px);
+  align-items: start;
+}
+
+.hm-link {
+  display: inline-block;
+  padding: 8px 0;
+  color: var(--ink);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-decoration: underline;
+  text-decoration-color: rgba(143, 58, 47, 0.4);
+  text-underline-offset: 6px;
+}
+
+.hm-link:hover,
+.hm-link:focus-visible {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+.hm-phrase {
+  display: inline-block;
+}
+
+/* ── 活動情境：細線條列，整列可點 ── */
+.hm-scenarios {
+  padding-bottom: clamp(40px, 4vw, 64px);
+}
+
+.hm-scenarios .hm-head {
+  position: sticky;
+  top: calc(var(--header-height) + 32px);
+}
+
+.hm-scenario-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--hm-rule);
+}
+
+.hm-scenario-list li {
+  border-bottom: 1px solid var(--hm-rule);
+}
+
+.hm-scenario-list a {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+  gap: 6px 24px;
+  align-items: baseline;
+  padding: 24px 40px 24px 0;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.hm-scenario-list a::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  color: var(--accent);
+  transform: translateY(-50%);
+  transition: transform 0.2s ease;
+}
+
+.hm-scenario-list strong {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.hm-scenario-list span {
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.hm-scenario-list a:hover strong,
+.hm-scenario-list a:focus-visible strong {
+  color: var(--accent);
+}
+
+.hm-scenario-list a:hover::after,
+.hm-scenario-list a:focus-visible::after {
+  transform: translate(4px, -50%);
+}
+
+/* ── 演出項目：照片格，名稱放圖下 ── */
+.hm-shows {
+  padding-top: clamp(40px, 4vw, 64px);
+}
+
+.hm-show-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(28px, 3vw, 40px) clamp(16px, 2vw, 28px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hm-show-grid a {
+  display: grid;
+  gap: 4px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.hm-show-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 12px;
+  object-fit: cover;
+  border-radius: 4px;
+  transition: filter 0.3s ease;
+}
+
+.hm-show-grid strong {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.hm-show-grid span {
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+}
+
+.hm-show-grid a:hover img,
+.hm-show-grid a:focus-visible img {
+  filter: brightness(1.06) saturate(1.05);
+}
+
+.hm-show-grid a:hover strong,
+.hm-show-grid a:focus-visible strong {
+  color: var(--accent);
+}
+
+.hm-shows-foot {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px 48px;
+  align-items: end;
+  margin-top: clamp(40px, 5vw, 64px);
+  padding-top: 28px;
+  border-top: 1px solid var(--hm-rule);
+}
+
+.hm-shows-foot p {
+  max-width: 44em;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+  line-height: 1.9;
+}
+
+/* ── 關於：滿版深色照片帶 ── */
+.hm-story {
+  position: relative;
+  display: grid;
+  align-items: center;
+  min-height: clamp(520px, 70vh, 720px);
+  padding: var(--hm-gap) 0;
+  overflow: hidden;
+  background: var(--hm-dark);
+  color: var(--hm-dark-ink);
+  isolation: isolate;
+}
+
+.hm-story-photo {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% center;
+}
+
+.hm-story::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(24, 19, 17, 0.94) 0%, rgba(24, 19, 17, 0.86) 38%, rgba(24, 19, 17, 0.35) 72%, rgba(24, 19, 17, 0.15) 100%);
+}
+
+.hm-story-inner > * {
+  max-width: 34rem;
+}
+
+.hm-kicker {
+  margin: 0 0 18px;
+  color: var(--gold);
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.hm-story-title {
+  margin: 0;
+  color: var(--hm-dark-ink);
+  font-family: var(--font-display-serif);
+  font-size: clamp(2rem, 3.6vw, 3.1rem);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  line-height: 1.3;
+}
+
+.hm-story-copy {
+  margin-top: 28px;
+}
+
+.hm-story-copy p {
+  margin: 0 0 16px;
+  color: var(--hm-dark-soft);
+  line-height: 1.95;
+}
+
+.hm-link-light {
+  color: var(--hm-dark-ink);
+  text-decoration-color: var(--gold);
+}
+
+.hm-link-light:hover,
+.hm-link-light:focus-visible {
+  color: #fff;
+  text-decoration-color: #fff;
+}
+
+/* ── 案例：一大兩小，字幕在圖下 ── */
+.hm-case-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  gap: clamp(28px, 3vw, 40px) clamp(20px, 3vw, 40px);
+}
+
+.hm-case-lead {
+  grid-row: span 2;
+}
+
+.hm-case {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.hm-case img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  margin-bottom: 12px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.hm-case-lead img {
+  aspect-ratio: 4 / 3.4;
+}
+
+.hm-case small {
+  color: var(--accent);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.hm-case strong {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+.hm-case-lead strong {
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+}
+
+.hm-case span {
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+}
+
+.hm-case:hover strong,
+.hm-case:focus-visible strong {
+  color: var(--accent);
+}
+
+/* ── 流程：順序有意義，保留編號（朱紅，不用金色字以顧及對比）── */
+.hm-process {
+  padding-top: clamp(56px, 6vw, 88px);
+  border-top: 1px solid var(--hm-rule);
+}
+
+.hm-process-cta {
+  display: grid;
+  gap: 12px;
+  max-width: 340px;
+  margin-top: 32px;
+}
+
+.hm-process-cta .button {
+  width: 100%;
+  min-width: 0;
+}
+
+.hm-process-cta .hm-tel {
+  margin: 4px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+  text-align: center;
+}
+
+.hm-tel a {
+  display: inline-block;
+  padding: 10px 0;
+  margin: -10px 0;
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration-color: var(--gold);
+  text-underline-offset: 4px;
+}
+
+.hm-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--hm-rule);
+}
+
+.hm-steps li {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 20px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--hm-rule);
+}
+
+.hm-steps li > span {
+  color: var(--accent);
+  font-family: var(--font-display-serif);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.hm-steps h3 {
+  margin: 0 0 6px;
+  color: var(--ink);
+  font-size: 1.125rem;
+  letter-spacing: 0.06em;
+}
+
+.hm-steps p {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.8;
+}
+
+/* ── 平板 ── */
+@media (max-width: 1100px) {
+  .hm-split,
+  .hm-head-row {
+    grid-template-columns: 1fr;
+  }
+
+  .hm-head-row .hm-link {
+    justify-self: start;
+  }
+
+  .hm-scenarios .hm-head {
+    position: static;
+  }
+
+  .hm-show-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ── 手機 ── */
+@media (max-width: 760px) {
+  .home-page {
+    --hm-gap: 64px;
+  }
+
+  /* hero 左右留白與其他區塊一致（原本 12px 太貼邊） */
+  .home-page .hero-shell {
+    width: calc(100% - 40px);
+  }
+
+  .hero-facts {
+    font-size: 0.8125rem;
+    letter-spacing: 0.06em;
+  }
+
+  .hm-shell {
+    width: calc(100% - 40px);
+  }
+
+  .hm-scenario-list a {
+    grid-template-columns: 1fr;
+    padding: 20px 36px 20px 0;
+  }
+
+  .hm-show-grid {
+    gap: 28px 14px;
+  }
+
+  .hm-show-grid img {
+    margin-bottom: 8px;
+  }
+
+  .hm-show-grid strong {
+    font-size: 1.0625rem;
+  }
+
+  .hm-show-grid span {
+    font-size: 0.8125rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hm-shows-foot {
+    grid-template-columns: 1fr;
+  }
+
+  .hm-story {
+    min-height: 0;
+    padding: 0 0 56px;
+    align-items: start;
+  }
+
+  /* 手機：照片在上方完整露出，文字接在下方深色底 */
+  .hm-story-photo {
+    position: relative;
+    inset: auto;
+    z-index: 0;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    margin-bottom: 36px;
+  }
+
+  .hm-story::before {
+    content: none;
+  }
+
+  .hm-case-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hm-case-lead {
+    grid-row: auto;
+  }
+
+  .hm-case-lead img,
+  .hm-case img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .hm-process-cta {
+    max-width: none;
+  }
+
+  .hm-steps li {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 14px;
+    padding: 22px 0;
+  }
+
+  .hm-steps li > span {
+    font-size: 1.75rem;
+  }
+}
