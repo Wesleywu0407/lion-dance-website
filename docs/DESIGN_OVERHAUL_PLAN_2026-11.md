@@ -80,6 +80,32 @@ Status: **IN PROGRESS.**
   - No overflow; no single-character heading orphans at 6 widths.
   - About page visually unchanged.
 
+**2026-11-08 (round 4): gallery index + 9 albums rebuilt.**
+- **Shared data:** new `src/_data/galleryIndex.js` holds the category order (same as the header menu), cover photo, one-line summary and a recommended plan page per album. Titles and photo counts still come from `src/_data/galleries/*.json`.
+- **Index (`/gallery/`):**
+  - Breadcrumb and H1 on the left; the original intro copy (both paragraphs merged) on the right.
+  - A full-width 3-column photo grid (2 on tablet, 1 on phone). Name, summary and 「N 張現場照片 →」 sit under each photo.
+  - Fixed: 展演服務 was missing from the index grid (only 8 of 9 shown).
+  - Removed: white labels on bright photos, the cramped middle strip, the 01–08 numbers, and a 250-line inline `<style>` + a duplicate reveal script.
+  - Dark CTA band (LINE red, form `?source=gallery-index`, phone, link to 表演項目).
+- **Albums (`src/_includes/album-body.njk`, all 9 pages):**
+  - Breadcrumb that matches `BreadcrumbList`; H1 + intro.
+  - Red 「LINE 洽詢相似活動」 + form (`?eventType=…&source=gallery-{key}`, as before).
+  - Planning notes from `galleryContexts.json` as a 2-column ruled list.
+  - Photos in a masonry column layout that keeps each photo's original ratio. Click to open the existing lightbox; Esc closes and focus goes to the close button.
+  - 「其他活動案例」 links to the other 8 albums plus a recommended plan page (e.g. 開幕開工 → 開幕舞獅表演, 廟會 → 廟會策劃活動). These are new internal links.
+  - Closing CTA band. All pages use the shared footer.
+  - Photo URLs still go through `galleryThumbnail` / `galleryFull` / `gallerySrcset`, so CMS uploads keep working.
+- **Cleanup:**
+  - `sections/gallery.css` went from 1598 to 73 lines (lightbox only); `responsive.css` lost about 84 lines.
+  - `src/_includes/gallery-context.njk` is now unused (kept; delete after confirmation).
+- **SEO unchanged:** titles, descriptions, canonicals, H1 text, JSON-LD (`CollectionPage`, `ItemList`, `ImageGallery`, `BreadcrumbList`).
+- **Verified:**
+  - `npm test` green.
+  - All 10 gallery pages at 360 / 1440: no overflow, no broken images, no HTTP errors, no hidden reveals, tap targets 40px or more.
+  - Lightbox open/close/Esc works on all 9 albums.
+  - Home, landing, services and the other pages rechecked (no JS errors, no overflow).
+
 **Next:**
 - Phase 1 token cleanup. This includes removing the now-unused `.quote-prep`, `.landing-photo-grid` and `.cta-band` landing rules in `components.css` / `responsive.css`.
 - Then home → services → gallery.

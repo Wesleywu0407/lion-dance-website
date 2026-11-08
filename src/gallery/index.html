@@ -16,257 +16,8 @@
   <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="../favicon-180.png">
   <meta name="theme-color" content="#181311">
-  <link rel="stylesheet" href="../css/style.css?v=20261108-services1">
-  <style>
-    .gallery-page .gallery-page-hero {
-      min-height: auto;
-      padding: max(clamp(3.5rem, 8vw, 6rem), calc(var(--header-height) + 36px)) 1.5rem clamp(1.6rem, 3vw, 2.4rem);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      background: var(--bg);
-      text-align: center;
-    }
-
-    .gallery-page .gallery-page-hero::after {
-      content: "";
-      display: block;
-      width: 64px;
-      height: 2px;
-      margin: 0.5rem auto 0;
-      background: var(--accent);
-    }
-
-    .gallery-page .gallery-page-hero .eyebrow {
-      margin: 0;
-      color: var(--accent);
-      font-family: var(--font-body);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-    }
-
-    .gallery-page .gallery-page-hero h1 {
-      margin: 0;
-      color: var(--ink);
-      font-family: var(--font-display-serif);
-      font-size: clamp(2.4rem, 7vw, 3.6rem);
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: 0.15em;
-    }
-
-    .gallery-page .gallery-page-hero .hero-sub {
-      margin: 0;
-      max-width: 22em;
-      color: var(--ink-soft);
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      line-height: 1.8;
-    }
-
-    .gallery-page .case-category-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.75rem;
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 0.85rem;
-    }
-
-    .gallery-page .case-category-card {
-      position: relative;
-      display: block;
-      aspect-ratio: 1 / 1.08;
-      min-height: 0;
-      padding: 0;
-      overflow: hidden;
-      border: 1px solid rgba(184, 80, 66, 0.4);
-      border-radius: 6px;
-      background-color: var(--bg);
-      background-size: cover !important;
-      background-position: center !important;
-      background-repeat: no-repeat !important;
-      box-shadow: none;
-      text-decoration: none;
-      transition: transform 0.45s ease, box-shadow 0.45s ease;
-    }
-
-    .gallery-page .case-category-card:nth-child(7),
-    .gallery-page .case-category-card:nth-child(8) {
-      background-position: center bottom !important;
-    }
-
-    .gallery-page .case-category-card:nth-child(6) {
-      background-position: 35% bottom !important;
-    }
-
-    .gallery-page .case-category-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background: linear-gradient(
-        180deg,
-        rgba(0,0,0,0) 0%,
-        rgba(0,0,0,0) 40%,
-        rgba(0,0,0,0.75) 100%
-      );
-      pointer-events: none;
-    }
-
-    .gallery-page .case-category-card::after {
-      content: none;
-    }
-
-    .gallery-page .case-category-card .card-num {
-      position: absolute;
-      top: 0.6rem;
-      left: 0.75rem;
-      z-index: 2;
-      color: #F5F0E8 !important;
-      font-family: var(--font-display-serif);
-      font-size: clamp(0.75rem, 3vw, 0.95rem);
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      line-height: 1;
-      opacity: 0.85;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.9);
-    }
-
-    .gallery-page .case-category-card .card-title {
-      position: absolute;
-      left: 0.75rem;
-      right: 0.75rem;
-      bottom: 0.75rem;
-      z-index: 2;
-      margin: 0;
-      max-width: none;
-      color: #F5F0E8 !important;
-      font-family: var(--font-display-serif);
-      font-size: clamp(0.85rem, 3.5vw, 1.05rem);
-      font-weight: 700;
-      line-height: 1.2;
-      letter-spacing: 0.05em;
-      text-align: left;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.9);
-    }
-
-    .gallery-page .case-category-card:hover,
-    .gallery-page .case-category-card:focus-visible {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px -10px rgba(42, 33, 24, 0.45);
-      outline: none;
-    }
-
-    .gallery-page .case-summary {
-      max-width: 640px;
-      margin: clamp(1.5rem, 3vw, 2.4rem) auto 0;
-      padding: 0 1.25rem;
-      color: var(--ink-soft);
-      text-align: center;
-    }
-
-    .gallery-page .case-summary h2 {
-      margin: 0 0 1rem;
-      color: var(--ink);
-      font-family: var(--font-display-serif);
-      font-size: 1.25rem;
-      font-weight: 800;
-      line-height: 1.35;
-      letter-spacing: 0.18em;
-    }
-
-    .gallery-page .case-summary p {
-      margin: 0;
-      font-family: var(--font-body);
-      font-size: 0.92rem;
-      line-height: 1.95;
-      letter-spacing: 0.03em;
-    }
-
-    .gallery-page .case-summary .case-helper {
-      width: fit-content;
-      margin: 0.95rem auto 0;
-      padding: 0.65rem 0 0;
-      border-top: 1px solid rgba(185, 146, 94, 0.35);
-      color: var(--accent);
-      font-family: var(--font-body);
-      font-size: 0.82rem;
-      font-weight: 800;
-      letter-spacing: 0.15em;
-    }
-
-    .js .gallery-page .reveal {
-      opacity: 0;
-      transform: translateY(28px) scale(0.98);
-      transition: opacity 0.9s ease, transform 0.9s ease;
-    }
-
-    .js .gallery-page .reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-
-    .js .gallery-page .case-category-card.reveal:nth-child(1) { transition-delay: 0.05s; }
-    .js .gallery-page .case-category-card.reveal:nth-child(2) { transition-delay: 0.12s; }
-    .js .gallery-page .case-category-card.reveal:nth-child(3) { transition-delay: 0.19s; }
-    .js .gallery-page .case-category-card.reveal:nth-child(4) { transition-delay: 0.26s; }
-    .js .gallery-page .case-category-card.reveal:nth-child(5) { transition-delay: 0.33s; }
-    .js .gallery-page .case-category-card.reveal:nth-child(6) { transition-delay: 0.4s; }
-    .js .gallery-page .case-category-card.reveal:nth-child(7) { transition-delay: 0.47s; }
-    .js .gallery-page .case-category-card.reveal:nth-child(8) { transition-delay: 0.54s; }
-
-    @media (min-width: 769px) {
-      .gallery-page .case-category-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
-        padding: 0;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .gallery-page .case-category-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 0.5rem !important;
-        padding: 0 0.5rem !important;
-      }
-
-      .gallery-page .case-category-card {
-        aspect-ratio: 4 / 3;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .gallery-page .reveal,
-      .gallery-page .case-category-card {
-        transition: none;
-      }
-    }
-
-    /* Gallery hero visibility fix */
-    .gallery-page .page-hero {
-      padding: max(clamp(3.5rem, 8vw, 6rem), calc(var(--header-height) + 36px)) 1.5rem clamp(1.6rem, 3vw, 2.4rem) !important;
-      text-align: center;
-      background: var(--bg) !important;
-      background-image: none !important;
-      overflow: visible !important;
-      min-height: auto !important;
-    }
-
-    .gallery-page .page-hero h1,
-    .gallery-page .page-hero .eyebrow,
-    .gallery-page .page-hero .hero-sub {
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-    }
-  </style>
+  <link rel="stylesheet" href="../css/style.css?v=20261108-gallery1">
+  <link rel="stylesheet" href="../css/pages/gallery.css?v=20261108-gallery1">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -375,159 +126,64 @@
 }
   </script>
 </head>
-<body class="gallery-page">
+<body class="gallery-index-body">
   <div class="page-shell">
     {% set activeNav = "gallery" %}
     {% include "header.njk" %}
 
     <main id="main-content">
-      <section class="page-hero gallery-page-hero" aria-labelledby="page-title">
-        <h1 id="page-title" class="reveal">活動案例</h1>
-        <p class="hero-sub reveal">
-          沿著不同活動場域與節奏,<br>
-          收錄南仙龍獅的現場片段與演出記錄。
-        </p>
+      <section class="gl-index-hero" aria-labelledby="page-title">
+        <div class="gl-shell gl-index-head">
+          <div class="reveal reveal-hero">
+            <nav class="gl-crumbs" aria-label="麵包屑">
+              <ol>
+                <li><a href="/">首頁</a></li>
+                <li aria-current="page">活動案例</li>
+              </ol>
+            </nav>
+            <h1 id="page-title" class="gl-title">活動案例</h1>
+          </div>
+          <div class="reveal reveal-hero">
+            <p class="gl-lede">沿著不同活動場域與節奏，收錄南仙龍獅的現場片段與演出記錄。南仙活動案例涵蓋開幕剪綵、廟會慶典、校園教學、觀光展演與企業活動，依不同場域規劃合適的舞龍舞獅、戰鼓與節慶演出內容。</p>
+            <p class="gl-index-count">{{ galleryIndex.items | length }} 種活動類型，選擇最接近您活動的一類</p>
+          </div>
+        </div>
       </section>
 
-      <section class="section case-landing" aria-label="活動案例分類">
-        <nav class="case-category-grid gallery-grid" aria-label="活動案例分類">
-          <div class="gallery-col">
-            <a class="case-category-card gallery-card reveal" href="/gallery/opening" style="background-image: url('images/開幕開工/開幕熱場.jpg'); background-image: image-set(url('images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E9%96%8B%E5%B9%95%E7%86%B1%E5%A0%B4-720.webp') 1x, url('images/%E9%96%8B%E5%B9%95%E9%96%8B%E5%B7%A5/%E9%96%8B%E5%B9%95%E7%86%B1%E5%A0%B4-1440.webp') 2x)" aria-label="01 開幕開工活動案例，查看品牌開幕、店面剪綵、企業活動與商場慶典演出記錄">
-              <span class="gallery-card-label">
-                <span class="card-num">01</span>
-                <span class="card-title">開幕開工</span>
-              </span>
+      <section class="gl-index" aria-label="活動案例分類">
+        <ul class="gl-shell gl-index-grid">
+          {% for entry in galleryIndex.items %}
+          {% set album = galleries[entry.key] %}
+          <li class="reveal">
+            <a class="gl-card" href="/gallery/{{ entry.key }}">
+              <img src="/images/{{ entry.cover }}-720.webp" srcset="/images/{{ entry.cover }}-720.webp 720w, /images/{{ entry.cover }}-1440.webp 1440w" sizes="(max-width: 760px) 100vw, (max-width: 1100px) 50vw, 380px" alt="{{ album.title }}活動案例：{{ entry.summary }}" width="{{ entry.coverWidth }}" height="{{ entry.coverHeight }}" {% if loop.index > 3 %}loading="lazy" {% endif %}decoding="async">
+              <strong>{{ album.title }}</strong>
+              <span class="gl-card-summary">{{ entry.summary }}</span>
+              <span class="gl-card-more">{{ album.photos | length }} 張現場照片<span aria-hidden="true"> →</span></span>
             </a>
-            <a class="case-category-card gallery-card reveal" href="/gallery/funeral" style="background-image: url('images/追思儀式/靈獅4.jpg'); background-image: image-set(url('images/%E8%BF%BD%E6%80%9D%E5%84%80%E5%BC%8F/%E9%9D%88%E7%8D%854-720.webp') 1x, url('images/%E8%BF%BD%E6%80%9D%E5%84%80%E5%BC%8F/%E9%9D%88%E7%8D%854-1440.webp') 2x)" aria-label="04 追思儀式活動案例，查看追思儀式與靈獅演出記錄">
-              <span class="gallery-card-label">
-                <span class="card-num">04</span>
-                <span class="card-title">追思儀式</span>
-              </span>
-            </a>
-            <a class="case-category-card gallery-card reveal" href="/gallery/temple" style="background-image: url('images/廟會繞境祝壽/戰鼓2.jpg'); background-image: image-set(url('images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E6%88%B0%E9%BC%932-720.webp') 1x, url('images/%E5%BB%9F%E6%9C%83%E7%B9%9E%E5%A2%83%E7%A5%9D%E5%A3%BD/%E6%88%B0%E9%BC%932-1440.webp') 2x)" aria-label="07 廟會繞境與祝壽典禮活動案例，查看宮廟慶典、神明聖誕、進香遶境與地方節慶演出記錄">
-              <span class="gallery-card-label">
-                <span class="card-num">07</span>
-                <span class="card-title">廟會繞境・祝壽典禮</span>
-              </span>
-            </a>
-          </div>
-          <div class="gallery-col">
-            <a class="case-category-card gallery-card reveal" href="/gallery/banquet" style="background-image: url('images/春酒尾牙/尾牙8隻獅跳樁演出.jpg'); background-image: image-set(url('images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%998%E9%9A%BB%E7%8D%85%E8%B7%B3%E6%A8%81%E6%BC%94%E5%87%BA-720.webp') 1x, url('images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%998%E9%9A%BB%E7%8D%85%E8%B7%B3%E6%A8%81%E6%BC%94%E5%87%BA-1440.webp') 2x); background-position: center top;" aria-label="02 春酒尾牙活動案例，查看企業春酒、尾牙晚會、年度聚會與舞台演出記錄">
-              <span class="gallery-card-label">
-                <span class="card-num">02</span>
-                <span class="card-title">春酒尾牙</span>
-              </span>
-            </a>
-            <a class="case-category-card gallery-card reveal" href="/gallery/tourism" style="background-image: url('images/觀光表演/吉首國際鼓文化節.jpg'); background-image: image-set(url('images/%E8%A7%80%E5%85%89%E8%A1%A8%E6%BC%94/%E5%90%89%E9%A6%96%E5%9C%8B%E9%9A%9B%E9%BC%93%E6%96%87%E5%8C%96%E7%AF%80-720.webp') 1x, url('images/%E8%A7%80%E5%85%89%E8%A1%A8%E6%BC%94/%E5%90%89%E9%A6%96%E5%9C%8B%E9%9A%9B%E9%BC%93%E6%96%87%E5%8C%96%E7%AF%80-1440.webp') 2x)" aria-label="03 觀光表演活動案例，查看文化推廣、觀光活動、國際交流與城市節慶演出記錄">
-              <span class="gallery-card-label">
-                <span class="card-num">03</span>
-                <span class="card-title">觀光表演</span>
-              </span>
-            </a>
-            <a class="case-category-card gallery-card reveal" href="/gallery/groundbreaking" style="background-image: url('images/動土上樑/動土開場戰鼓.jpg'); background-image: image-set(url('images/%E5%8B%95%E5%9C%9F%E4%B8%8A%E6%A8%91/%E5%8B%95%E5%9C%9F%E9%96%8B%E5%A0%B4%E6%88%B0%E9%BC%93-720.webp') 1x, url('images/%E5%8B%95%E5%9C%9F%E4%B8%8A%E6%A8%91/%E5%8B%95%E5%9C%9F%E9%96%8B%E5%A0%B4%E6%88%B0%E9%BC%93-1440.webp') 2x)" aria-label="05 動土上樑活動案例，查看動土典禮、上樑儀式與開場戰鼓演出記錄">
-              <span class="gallery-card-label">
-                <span class="card-num">05</span>
-                <span class="card-title">動土上樑</span>
-              </span>
-            </a>
-            <a class="case-category-card gallery-card reveal" href="/gallery/festival-retail" style="background-image: url('images/百貨春節周年慶/百貨專櫃周年慶2.jpg'); background-image: image-set(url('images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/%E7%99%BE%E8%B2%A8%E5%B0%88%E6%AB%83%E5%91%A8%E5%B9%B4%E6%85%B62-720.webp') 1x, url('images/%E7%99%BE%E8%B2%A8%E6%98%A5%E7%AF%80%E5%91%A8%E5%B9%B4%E6%85%B6/%E7%99%BE%E8%B2%A8%E5%B0%88%E6%AB%83%E5%91%A8%E5%B9%B4%E6%85%B62-1440.webp') 2x)" aria-label="06 百貨春節與週年慶活動案例，查看百貨春節、週年慶與祥獅跳高樁演出記錄">
-              <span class="gallery-card-label">
-                <span class="card-num">06</span>
-                <span class="card-title">百貨春節・週年慶</span>
-              </span>
-            </a>
-            <a class="case-category-card gallery-card reveal" href="/gallery/school" style="background-image: url('images/學校社團企業教學/2026香港龍獅節.jpg'); background-image: image-set(url('images/%E5%AD%B8%E6%A0%A1%E7%A4%BE%E5%9C%98%E4%BC%81%E6%A5%AD%E6%95%99%E5%AD%B8/2026%E9%A6%99%E6%B8%AF%E9%BE%8D%E7%8D%85%E7%AF%80-720.webp') 1x, url('images/%E5%AD%B8%E6%A0%A1%E7%A4%BE%E5%9C%98%E4%BC%81%E6%A5%AD%E6%95%99%E5%AD%B8/2026%E9%A6%99%E6%B8%AF%E9%BE%8D%E7%8D%85%E7%AF%80-1440.webp') 2x)" aria-label="08 學校社團與企業教學活動案例，查看學校社團、文化體驗、企業活動與傳統技藝教學記錄">
-              <span class="gallery-card-label">
-                <span class="card-num">08</span>
-                <span class="card-title">學校社團・企業教學</span>
-              </span>
-            </a>
-          </div>
-        </nav>
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
 
-        <aside class="case-summary reveal" aria-label="活動案例綜述">
-          <h2>關於南仙的演出</h2>
-          <p>
-            南仙活動案例涵蓋開幕剪綵、廟會慶典、校園教學、觀光展演與企業活動,
-            依不同場域規劃合適的舞龍舞獅、戰鼓與節慶演出內容。
-          </p>
-          <p class="case-helper">選擇活動類型,探索南仙龍獅的演出現場</p>
-          <div class="case-summary-actions">
-            <a class="button button-primary" href="/pages/contact" aria-label="看過活動案例後聯絡南仙洽詢演出">聯絡洽詢</a>
-            <a class="button button-secondary" href="/pages/services" aria-label="了解南仙舞龍舞獅與戰鼓演出項目">了解演出項目</a>
+      <section class="gl-cta" aria-labelledby="gl-cta-title">
+        <div class="gl-shell gl-cta-grid">
+          <div class="reveal">
+            <h2 id="gl-cta-title" class="gl-cta-title"><span class="gl-phrase">找到相似的活動了嗎？</span><span class="gl-phrase">告訴我們日期與地點</span></h2>
+            <p>提供活動日期、地點與活動類型，我們會依場地與流程建議合適的演出內容與報價。也可以先看 <a href="/pages/services">表演項目</a>，了解每一種演出的特色。</p>
           </div>
-        </aside>
+          <div class="gl-cta-actions reveal">
+            <a class="button button-line" href="{{ site.lineUrl }}" target="_blank" rel="noopener noreferrer" aria-label="加 LINE 洽詢演出">LINE 洽詢・{{ site.lineId }}</a>
+            <a class="button gl-button-ghost" href="/pages/contact?source=gallery-index">線上填寫需求</a>
+            <p class="gl-cta-tel">或來電 <a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a></p>
+          </div>
+        </div>
       </section>
     </main>
 
-    <footer class="site-footer" role="contentinfo">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <h3>臺灣南仙龍獅體育會</h3>
-          <p>Taiwan Nan Sieng Dragon &amp; Lion Dance Activity Centre</p>
-          <p>以深厚傳統功底結合舞台藝術與視覺力，呈現莊嚴、熱烈且富有文化精神的專業演出。</p>
-          <div class="footer-socials">
-            <a href="https://www.facebook.com/p/%E8%87%BA%E5%8C%97%E5%BE%B7%E5%8B%9D%E8%88%98%E8%87%BA%E7%81%A3%E5%8D%97%E4%BB%99%E9%BE%8D%E7%8D%85%E9%AB%94%E8%82%B2%E6%9C%83-61556516607768/" target="_blank" rel="noreferrer" aria-label="前往臺灣南仙龍獅體育會 Facebook 粉絲專頁">f</a>
-          </div>
-        </div>
-        <div class="footer-links">
-          <div>
-            <h4>快速連結</h4>
-            <a href="/pages/about">關於我們</a>
-            <a href="/pages/services">表演項目</a>
-            <a href="/pages/temple-festival-planning">廟會策劃活動</a>
-            <a href="../gallery/">活動案例</a>
-            <a href="/pages/contact">聯絡我們</a>
-          </div>
-          <div>
-            <h4>演出項目</h4>
-            <a href="/pages/services#item-auspicious-lion">祥獅獻瑞</a>
-            <a href="/pages/services#item-war-drum">雷鳴戰鼓</a>
-            <a href="/pages/services#item-dragon-pearl">祥龍搶珠</a>
-            <a href="/pages/services#item-folk-performance">民俗藝陣</a>
-          </div>
-          <div>
-            <h4>演出方案</h4>
-            <a href="/landing/dragon-lion-dance-performance">舞龍舞獅表演</a>
-            <a href="/landing/lion-dance-performance">舞獅表演</a>
-            <a href="/landing/opening-lion-dance">開幕舞獅表演</a>
-            <a href="/landing/company-event-lion-dance">企業活動舞獅表演</a>
-            <a href="/landing/year-end-party-lion-dance">尾牙春酒舞獅表演</a>
-            <a href="/landing/lion-dance-price-guide">舞獅表演報價指南</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© <span id="current-year">2026</span> 臺灣南仙龍獅體育會 版權所有</span>
-      </div>
-    </footer>
+    {% include "footer.njk" %}
   </div>
   <script src="../backend-config.js?v=20260728-bp1"></script>
-  <script src="../script.js?v=20261108-services1" defer></script>
-  <script>
-    (function () {
-      var revealItems = document.querySelectorAll('.reveal');
-
-      if (!('IntersectionObserver' in window)) {
-        revealItems.forEach(function (el) {
-          el.classList.add('is-visible');
-        });
-        return;
-      }
-
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) {
-            e.target.classList.add('is-visible');
-            io.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.12 });
-
-      revealItems.forEach(function (el) {
-        io.observe(el);
-      });
-    })();
-  </script>
+  <script src="../script.js?v=20261108-gallery1" defer></script>
 </body>
 </html>

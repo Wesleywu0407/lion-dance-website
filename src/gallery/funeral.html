@@ -16,7 +16,8 @@
   <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="../favicon-180.png">
   <meta name="theme-color" content="#181311">
-  <link rel="stylesheet" href="../css/style.css?v=20261108-services1">
+  <link rel="stylesheet" href="../css/style.css?v=20261108-gallery1">
+  <link rel="stylesheet" href="../css/pages/gallery.css?v=20261108-gallery1">
 
   <script type="application/ld+json">
   {
@@ -584,75 +585,17 @@
   }
   </script>
 </head>
-<body>
+<body class="album-page-body">
   {% set gallery = galleries["funeral"] %}
   <div class="page-shell">
     {% set activeNav = "gallery" %}
     {% include "header.njk" %}
 
     <main id="main-content">
-      <section class="section album-page">
-        <div class="album-hero reveal">
-          <a class="album-back" href="../gallery/">← 返回活動案例</a>
-          <div>
-            <p class="album-kicker">活動案例</p>
-            <h1 class="album-title">{{ gallery.title }}</h1>
-            <p class="album-intro">{{ gallery.intro }}</p>
-          </div>
-        </div>
-        {% include "gallery-context.njk" %}
-        <div class="album-grid reveal" aria-label="{{ gallery.title }}照片">
-          {% for photo in gallery.photos %}
-          <button class="album-photo" type="button" data-album-photo data-lightbox-src="{{ photo | galleryFull }}" aria-label="放大檢視：{{ photo.alt }}"><img src="{{ photo | galleryThumbnail }}" srcset="{{ photo | gallerySrcset }}" sizes="(max-width: 760px) 92vw, 720px" alt="{{ photo.alt }}" loading="lazy" decoding="async" width="{{ photo.width }}" height="{{ photo.height }}"></button>
-          {% endfor %}
-        </div>
-      </section>
+      {% include "album-body.njk" %}
     </main>
 
-    <footer class="site-footer">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <h3>臺灣南仙龍獅體育會</h3>
-          <p>Taiwan Nan Sieng Dragon &amp; Lion Dance Activity Centre</p>
-          <p>以深厚傳統功底結合舞台藝術與視覺力，呈現莊嚴、熱烈且富有文化精神的專業演出。</p>
-          <div class="footer-socials">
-            <a href="https://www.facebook.com/p/%E8%87%BA%E5%8C%97%E5%BE%B7%E5%8B%9D%E8%88%98%E8%87%BA%E7%81%A3%E5%8D%97%E4%BB%99%E9%BE%8D%E7%8D%85%E9%AB%94%E8%82%B2%E6%9C%83-61556516607768/" target="_blank" rel="noreferrer" aria-label="前往臺灣南仙龍獅體育會 Facebook 粉絲專頁">f</a>
-          </div>
-        </div>
-        <div class="footer-links">
-          <div>
-            <h4>快速連結</h4>
-            <a href="/pages/about">關於我們</a>
-            <a href="/pages/services">表演項目</a>
-            <a href="/pages/temple-festival-planning">廟會策劃活動</a>
-            <a href="../gallery/">活動案例</a>
-            <a href="/pages/contact">聯絡我們</a>
-          </div>
-          <div>
-            <h4>演出項目</h4>
-            <a href="/pages/services#item-god-of-wealth">文武財神</a>
-            <a href="/pages/services#item-folk-performance">民俗藝陣</a>
-            <a href="/pages/services#item-plum-blossom-pole-lion">梅花樁獅</a>
-            <a href="/pages/services#item-auspicious-lion">祥獅獻瑞</a>
-            <a href="/pages/services#item-dragon-pearl">祥龍搶珠</a>
-            <a href="/pages/services#item-war-drum">雷鳴戰鼓</a>
-            <a href="/pages/services#item-nezha">電音三太子</a>
-          </div>
-          <div>
-            <h4>演出方案</h4>
-            <a href="/landing/dragon-lion-dance-performance">舞龍舞獅表演</a>
-            <a href="/landing/lion-dance-performance">舞獅表演</a>
-            <a href="/landing/opening-lion-dance">開幕舞獅表演</a>
-            <a href="/landing/company-event-lion-dance">企業活動舞獅表演</a>
-            <a href="/landing/year-end-party-lion-dance">尾牙春酒舞獅表演</a>
-            <a href="/landing/lion-dance-price-guide">舞獅表演報價指南</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© <span id="current-year">2026</span> 臺灣南仙龍獅體育會 版權所有</span>
-      </div>
-    </footer>
+    {% include "footer.njk" %}
   </div>
   <div class="album-lightbox" data-album-lightbox aria-hidden="true">
     <button class="album-lightbox-close" type="button" data-album-lightbox-close aria-label="關閉照片放大檢視">✕</button>
@@ -660,6 +603,6 @@
     <div class="album-lightbox-placeholder" aria-hidden="true"></div>
   </div>
   <script src="../backend-config.js?v=20260728-bp1"></script>
-  <script src="../script.js?v=20261108-services1" defer></script>
+  <script src="../script.js?v=20261108-gallery1" defer></script>
 </body>
 </html>

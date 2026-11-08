@@ -182,7 +182,6 @@ main :where(p, li, dt, dd, label, button, input, select, textarea, summary) {
   main > .section:not(:first-child),
   main > .page-section-stack,
   main > .cta-band,
-  .album-grid,
   .site-footer {
     content-visibility: auto;
     contain-intrinsic-size: auto 640px;
