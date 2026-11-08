@@ -169,38 +169,6 @@
   line-height: 1.86;
 }
 
-.about-service-list {
-  list-style: none;
-  margin: 1.2rem 0 1.6rem;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px 24px;
-  max-width: 42rem;
-}
-
-.about-service-list li {
-  position: relative;
-  padding-left: 18px;
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: clamp(1.12rem, 1.8vw, 1.34rem);
-  font-weight: 700;
-  line-height: 1.45;
-  letter-spacing: 0.04em;
-}
-
-.about-service-list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.72em;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--gold);
-}
-
 /* ── Entrance animation: hidden state ───────────────────── */
 
 .js .ctb-phrase,
@@ -303,15 +271,6 @@
     font-size: clamp(1.85rem, 8.5vw, 2.45rem);
     line-height: 1.22;
     max-width: 100%;
-  }
-
-  .about-service-list {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  .about-service-list li {
-    font-size: 1.125rem;
   }
 
   .about-service-summary-body p {

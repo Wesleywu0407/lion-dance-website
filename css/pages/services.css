@@ -1,0 +1,516 @@
+/* ── 表演項目頁（2026-11 重做）────────────────────────────
+   只在 /pages/services 載入。拿掉卡片底色、陰影、角框與圖框（原本一個項目有 3–4 層框），
+   改成：大照片＋細線分隔的左右交錯列；項目不再編號（順序沒有意義）。
+   流程保留編號（順序有意義），不再用 hover 改寫下方文字的互動卡片。
+   朱紅只給 LINE 主行動。版面語彙與首頁、落地頁、廟會策劃頁一致。
+   ─────────────────────────────────────────────────────────── */
+
+.services-page {
+  --sv-rule: var(--line);
+  --sv-dark: #181311;
+  --sv-dark-ink: #f5efe6;
+  --sv-dark-soft: rgba(245, 239, 230, 0.76);
+  --sv-gap: clamp(72px, 8vw, 120px);
+}
+
+.sv-shell {
+  width: min(calc(100% - 80px), 1180px);
+  margin: 0 auto;
+}
+
+.sv-title,
+.sv-section-title,
+.sv-item-title,
+.sv-cta-title {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.sv-section-title {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-display-serif);
+  font-size: clamp(1.5rem, 2.3vw, 2.05rem);
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  line-height: 1.35;
+}
+
+.sv-phrase {
+  display: inline-block;
+}
+
+.sv-split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(36px, 6vw, 96px);
+  align-items: start;
+}
+
+.sv-split header p {
+  max-width: 26em;
+  margin: 18px 0 0;
+  color: var(--ink-soft);
+  line-height: 1.9;
+}
+
+/* ── Hero：標題＋行動在左，項目目錄在右 ── */
+.sv-hero {
+  padding: calc(var(--header-height) + clamp(32px, 5vw, 64px)) 0 clamp(48px, 6vw, 80px);
+}
+
+.sv-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: end;
+}
+
+.sv-crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 24px;
+  padding: 0;
+  list-style: none;
+  color: var(--ink-soft);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+}
+
+.sv-crumbs li + li::before {
+  content: "/";
+  margin-right: 6px;
+  color: var(--ink-muted);
+}
+
+.sv-crumbs a {
+  display: inline-block;
+  padding: 10px 0;
+  margin: -10px 0;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.sv-crumbs a:hover,
+.sv-crumbs a:focus-visible {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.sv-title {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-display-serif);
+  font-size: clamp(2.6rem, 5vw, 4.25rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1.12;
+}
+
+.sv-lede {
+  max-width: 36em;
+  margin: 22px 0 0;
+  color: var(--ink-soft);
+  font-size: 1.0625rem;
+  line-height: 1.9;
+}
+
+.sv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.sv-index-label {
+  margin: 0 0 12px;
+  color: var(--ink-soft);
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+}
+
+.sv-index ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--sv-rule);
+}
+
+.sv-index li {
+  border-bottom: 1px solid var(--sv-rule);
+}
+
+.sv-index a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+}
+
+.sv-index a::after {
+  content: "↓";
+  color: var(--accent);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+}
+
+.sv-index a:hover,
+.sv-index a:focus-visible {
+  color: var(--accent);
+}
+
+/* ── 項目：大照片＋說明，左右交錯，細線分隔 ── */
+.sv-items {
+  padding-bottom: var(--sv-gap);
+}
+
+.sv-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+  padding: clamp(40px, 5vw, 64px) 0;
+  border-top: 1px solid var(--sv-rule);
+  scroll-margin-top: calc(var(--header-height) + 16px);
+}
+
+.sv-item:nth-child(even) {
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+}
+
+.sv-item:nth-child(even) .sv-item-photo {
+  order: 2;
+}
+
+.sv-item-photo {
+  margin: 0;
+}
+
+.sv-item-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.sv-item-title {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-display-serif);
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+}
+
+.sv-item-tags {
+  margin: 12px 0 0;
+  color: var(--accent);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.sv-item-text {
+  max-width: 30em;
+  margin: 18px 0 0;
+  color: var(--ink-soft);
+  line-height: 1.95;
+}
+
+.sv-item-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 8px 0;
+  color: var(--ink);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-decoration: underline;
+  text-decoration-color: rgba(143, 58, 47, 0.4);
+  text-underline-offset: 6px;
+}
+
+.sv-item-link:hover,
+.sv-item-link:focus-visible {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+/* ── 演出方案：細線條列連結 ── */
+.sv-plans {
+  padding: var(--sv-gap) 0;
+  background: #eee5d6;
+}
+
+.sv-plan-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(22, 19, 17, 0.14);
+}
+
+.sv-plan-list li {
+  border-bottom: 1px solid rgba(22, 19, 17, 0.14);
+}
+
+.sv-plan-list a {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  padding: 20px 32px 20px 0;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.sv-plan-list a::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  color: var(--accent);
+  transform: translateY(-50%);
+  transition: transform 0.2s ease;
+}
+
+.sv-plan-list strong {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  letter-spacing: 0.04em;
+}
+
+.sv-plan-list span {
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+}
+
+.sv-plan-list a:hover strong,
+.sv-plan-list a:focus-visible strong {
+  color: var(--accent);
+}
+
+.sv-plan-list a:hover::after,
+.sv-plan-list a:focus-visible::after {
+  transform: translate(4px, -50%);
+}
+
+/* ── 流程：順序有意義，保留編號 ── */
+.sv-process {
+  padding: var(--sv-gap) 0;
+}
+
+.sv-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--sv-rule);
+}
+
+.sv-steps li {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 20px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--sv-rule);
+}
+
+.sv-steps li > span {
+  color: var(--accent);
+  font-family: var(--font-display-serif);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.sv-steps h3 {
+  margin: 0 0 6px;
+  color: var(--ink);
+  font-size: 1.125rem;
+  letter-spacing: 0.06em;
+}
+
+.sv-steps p {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.8;
+}
+
+/* ── 收尾行動：深墨色帶 ── */
+.sv-cta {
+  padding: clamp(64px, 8vw, 112px) 0;
+  background: var(--sv-dark);
+  color: var(--sv-dark-ink);
+}
+
+.services-page .site-footer {
+  margin-top: 0;
+}
+
+.sv-cta-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: end;
+}
+
+.sv-cta-title {
+  margin: 0;
+  color: var(--sv-dark-ink);
+  font-family: var(--font-display-serif);
+  font-size: clamp(1.8rem, 3.4vw, 2.75rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+}
+
+.sv-cta-grid p {
+  max-width: 34em;
+  margin: 18px 0 0;
+  color: var(--sv-dark-soft);
+  line-height: 1.9;
+}
+
+.sv-cta-actions {
+  display: grid;
+  gap: 12px;
+}
+
+.sv-cta-actions .button {
+  width: 100%;
+  min-width: 0;
+}
+
+.sv-button-ghost {
+  background: transparent;
+  color: var(--sv-dark-ink);
+  border-color: rgba(245, 239, 230, 0.4);
+}
+
+.sv-button-ghost:hover,
+.sv-button-ghost:focus-visible {
+  border-color: var(--sv-dark-ink);
+  color: #fff;
+}
+
+.sv-cta .sv-cta-sub {
+  margin: 4px 0 0;
+  text-align: center;
+  font-size: 0.9375rem;
+}
+
+.sv-cta-sub a {
+  display: inline-block;
+  padding: 10px 0;
+  margin: -10px 0;
+  color: var(--sv-dark-ink);
+  font-weight: 700;
+  text-decoration-color: var(--gold);
+  text-underline-offset: 4px;
+}
+
+.sv-cta-sub span {
+  margin: 0 8px;
+}
+
+/* ── 平板 ── */
+@media (max-width: 1100px) {
+  .sv-hero-grid,
+  .sv-split,
+  .sv-cta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sv-cta-actions {
+    max-width: 420px;
+  }
+}
+
+/* ── 手機：照片在上、文字在下，不交錯 ── */
+@media (max-width: 760px) {
+  .services-page {
+    --sv-gap: 64px;
+  }
+
+  .sv-shell {
+    width: calc(100% - 40px);
+  }
+
+  .sv-hero {
+    padding-top: calc(var(--header-height) + 24px);
+  }
+
+  .sv-title {
+    font-size: clamp(2.2rem, 10vw, 2.75rem);
+  }
+
+  .sv-lede {
+    font-size: 1rem;
+  }
+
+  .sv-actions {
+    display: grid;
+  }
+
+  .sv-actions .button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .sv-index a {
+    padding: 13px 0;
+    font-size: 1rem;
+  }
+
+  .sv-item,
+  .sv-item:nth-child(even) {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 36px 0;
+  }
+
+  .sv-item:nth-child(even) .sv-item-photo {
+    order: 0;
+  }
+
+  .sv-item-photo {
+    margin: 0 -20px;
+  }
+
+  .sv-item-photo img {
+    aspect-ratio: 4 / 3;
+    border-radius: 0;
+  }
+
+  .sv-plan-list {
+    grid-template-columns: 1fr;
+  }
+
+  .sv-steps li {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 14px;
+    padding: 22px 0;
+  }
+
+  .sv-steps li > span {
+    font-size: 1.75rem;
+  }
+
+  .sv-cta-actions {
+    max-width: none;
+  }
+}

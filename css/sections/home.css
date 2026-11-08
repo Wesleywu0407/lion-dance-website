@@ -220,32 +220,6 @@ article).section-heading::after {
   padding: 86px 0;
 }
 
-.process-step span {
-  display: inline-flex;
-  margin-bottom: 10px;
-  color: var(--accent-deep);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-}
-
-.process-step h3 {
-  margin: 0 0 8px;
-  font-family: var(--font-body);
-  font-size: 1.32rem;
-  font-weight: 800;
-}
-
-.process-step p {
-  margin: 0;
-  color: var(--ink-soft);
-}
-
-.process-step {
-  padding-top: 18px;
-  border-top: 1px solid rgba(185, 146, 94, 0.26);
-}
-
 /* ======================================================
    手機版首頁重設計 (max-width: 760px)
    - 全部以 .home-page 為作用域，不污染其他頁

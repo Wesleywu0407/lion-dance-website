@@ -1,8 +1,4 @@
 @media (max-width: 1100px) {
-  .process-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   /* .case-grid columns now handled by gallery.css (masonry layout) */
 
   .about-layout {
@@ -139,38 +135,12 @@ h3.section-heading::after {
     text-wrap: pretty;
   }
 
-  .about-page .page-hero .page-hero-inner > p:not(.section-tag),
-
-  .service-page-hero {
+  .about-page .page-hero .page-hero-inner > p:not(.section-tag) {
     min-height: 0;
     padding: max(112px, calc(var(--header-height) + 32px)) 0 12px;
   }
 
-  .service-page-hero .page-hero-inner {
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-  }
-
-  .service-page-hero .page-hero-inner > h1 {
-    max-width: none;
-    font-family: var(--font-display-serif);
-    font-weight: 900;
-    font-size: clamp(2.5rem, 12vw, 3.2rem);
-    line-height: 1.14;
-    letter-spacing: 0.1em;
-    color: var(--ink);
-  }
-
-  .service-page-subtitle {
-    max-width: none;
-    font-size: 0.875rem;
-    letter-spacing: 0.06em;
-    line-height: 1.72;
-  }
-
-  .process-grid,
-.contact-form-row {
+  .contact-form-row {
     grid-template-columns: 1fr;
   }
 
@@ -389,8 +359,7 @@ select {
     width: min(calc(100% - 32px), var(--max-width));
   }
 
-  .page-hero .page-hero-inner > h1,
-  .service-page-hero .page-hero-inner > h1 {
+  .page-hero .page-hero-inner > h1 {
     margin-bottom: 8px;
     padding-inline: 0;
     font-size: clamp(1.95rem, 8.3vw, 2.35rem);
@@ -403,16 +372,6 @@ select {
     margin-top: 8px;
     font-size: 0.9375rem;
     line-height: 1.75;
-  }
-
-  .service-page-hero {
-    padding: max(96px, calc(var(--header-height) + 18px)) 0 14px;
-  }
-
-  .service-page-subtitle {
-    max-width: 22em;
-    font-size: 0.9375rem;
-    line-height: 1.7;
   }
 
   .button,
@@ -433,14 +392,6 @@ select {
     font-weight: 700;
     line-height: 1.45;
     letter-spacing: 0;
-    white-space: nowrap;
-  }
-
-  .process > .section-heading h2 {
-    font-size: clamp(1.3rem, 5.6vw, 1.5rem);
-    font-weight: 700;
-    line-height: 1.4;
-    letter-spacing: 0.02em;
     white-space: nowrap;
   }
 
@@ -551,60 +502,6 @@ select {
     gap: 22px;
     margin-top: 32px;
     padding: 24px 18px;
-  }
-
-  .performance-diary-list {
-    gap: 18px;
-    padding-inline: 0;
-  }
-
-  .service-item,
-  .service-item:first-child {
-    gap: 18px !important;
-    margin-bottom: 0;
-    padding: 18px !important;
-    border: 1px solid rgba(72, 54, 43, 0.11);
-    border-radius: 16px;
-    background: rgba(255, 252, 247, 0.66);
-  }
-
-  .service-item-photo {
-    max-height: none;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    border-radius: 10px;
-  }
-
-  .service-item-step {
-    margin-bottom: 4px;
-    font-size: 1.5rem;
-  }
-
-  .service-item h3,
-  .service-item:first-child h3 {
-    font-size: clamp(1.8rem, 8.6vw, 2.2rem);
-    line-height: 1.16;
-  }
-
-  .service-item-description {
-    margin-top: 10px;
-    line-height: 1.75;
-  }
-
-  .service-item-link[data-mobile-label] {
-    display: inline-flex;
-    min-height: 48px;
-    margin-top: 12px;
-    padding: 0 16px;
-    border: 1px solid rgba(143, 58, 47, 0.18);
-    border-radius: 999px;
-    background: rgba(255, 252, 247, 0.76);
-  }
-
-  .about-service-list a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
   }
 
 
@@ -783,7 +680,6 @@ select {
   main h2.section-heading,
   main .ctb-phrase,
   main .about-service-summary-head h2,
-  main .process-consultation-content h2,
   main .cta-band h2,
   main .quote-prep h2,
   main .contact-faq-heading h2,
@@ -808,11 +704,6 @@ select {
     line-height: 1.25 !important;
   }
 
-  /* 項目標題 h3：表演項目名稱 22px、其餘大型 h3 19px */
-  main .service-item-body h3 {
-    font-size: 1.375rem !important;
-  }
-
   main .intro-practice-title h3 {
     font-size: 1.2rem !important;
   }
@@ -823,7 +714,6 @@ select {
     font-size: 1.5rem !important;
   }
 
-  main .service-item-step,
   main .intro-process-number {
     font-size: 1.25rem !important;
   }

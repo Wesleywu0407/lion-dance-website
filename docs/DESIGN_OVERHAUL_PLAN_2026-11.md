@@ -52,6 +52,34 @@ Status: **IN PROGRESS.**
   - No JS errors.
   - Services / about / contact visually unchanged.
 
+**2026-11-08 (round 3): services page rebuilt.**
+- **Hero:**
+  - Breadcrumb, H1 and description (CMS), red LINE + form buttons (`?source=services-hero`).
+  - A two-column "7 種演出" jump index linking to the existing `#item-…` anchors. The anchors are kept, so home and footer links still land correctly; scroll offset clears the header.
+- **Items:**
+  - Big photo + text rows, alternating sides on desktop, divided by hairlines.
+  - Removed: card tint, shadows, corner brackets, framed photos and the 01–07 numbers.
+  - Item titles are now H2 (H1 → H2 instead of H1 → H3). Tags are red; link text is 「洽詢{項目} →」.
+  - Rendered with a loop over `services.json` (CMS still edits title / tags / description / alt).
+- **演出方案:**
+  - Ruled link list now covers all 6 plans plus 廟會策劃活動 (was 4).
+  - The one-line descriptions were written from the landing pages' own intros.
+- **Process:** static numbered ruled steps. The hover/click cards that rewrote the CTA text were removed (confusing, and not accessible as "buttons").
+- **CTA:**
+  - Dark band with one red LINE button, the form, phone, and a gallery link.
+  - The visible answer text now exactly matches the page's `FAQPage` JSON-LD answer, and the section has `id="faq"` to match the schema `@id`.
+- **Footer:** services now uses `footer.njk`.
+- **Cleanup:**
+  - Dead CSS removed: `sections/services.css` 709 → 83 lines; `sections/process.css` emptied (kept with a note, still imported; delete after confirmation); about.css −41, responsive.css −110 lines.
+  - 178 lines of dead JS removed from `script.js.njk` (photo-swap diary + process-card handlers).
+  - Leftover dead JS: the `.about-block` / `.ctb-phrase` observers (no page uses those classes now). Remove in the token cleanup phase.
+- **Verified:**
+  - `npm test` green.
+  - No JS errors on 10 key pages.
+  - Anchor jumps land with the title visible at 390 / 1440.
+  - No overflow; no single-character heading orphans at 6 widths.
+  - About page visually unchanged.
+
 **Next:**
 - Phase 1 token cleanup. This includes removing the now-unused `.quote-prep`, `.landing-photo-grid` and `.cta-band` landing rules in `components.css` / `responsive.css`.
 - Then home → services → gallery.

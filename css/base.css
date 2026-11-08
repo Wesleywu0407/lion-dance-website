@@ -180,12 +180,10 @@ main :where(p, li, dt, dd, label, button, input, select, textarea, summary) {
 
 @supports (content-visibility: auto) {
   main > .section:not(:first-child),
-main > .page-section-stack,
-main > .performance-diary,
-main > .process,
-main > .cta-band,
-.album-grid,
-.site-footer {
+  main > .page-section-stack,
+  main > .cta-band,
+  .album-grid,
+  .site-footer {
     content-visibility: auto;
     contain-intrinsic-size: auto 640px;
   }
@@ -340,7 +338,6 @@ h3.section-heading {
 
 /* Heading decorations removed: one idea per heading (eyebrow + title only). */
 
-.process-grid,
 .contact-layout,
 .about-layout {
   display: grid;

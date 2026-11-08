@@ -16,7 +16,8 @@
   <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="../favicon-180.png">
   <meta name="theme-color" content="#181311">
-  <link rel="stylesheet" href="../css/style.css?v=20261108-home1">
+  <link rel="stylesheet" href="../css/style.css?v=20261108-services1">
+  <link rel="stylesheet" href="../css/pages/services.css?v=20261108-services1">
 
   <script type="application/ld+json">
   {
@@ -499,211 +500,107 @@
   }
   </script>
 </head>
-<body>
+<body class="services-page">
   <div class="page-shell">
     {% set activeNav = "services" %}
     {% include "header.njk" %}
 
     <main id="main-content">
-      <section class="page-hero service-page-hero">
-        <div class="page-hero-inner reveal reveal-hero">
-          <h1 class="section-heading">{{ services.pageTitle | escape }}</h1>
-          <p class="service-page-subtitle">{{ services.pageDescription | escape }}</p>
+      <section class="sv-hero" aria-labelledby="sv-title">
+        <div class="sv-shell sv-hero-grid">
+          <div class="reveal reveal-hero">
+            <nav class="sv-crumbs" aria-label="麵包屑">
+              <ol>
+                <li><a href="/">首頁</a></li>
+                <li aria-current="page">表演項目</li>
+              </ol>
+            </nav>
+            <h1 id="sv-title" class="sv-title">{{ services.pageTitle | escape }}</h1>
+            <p class="sv-lede">{{ services.pageDescription | escape }}</p>
+            <div class="sv-actions">
+              <a class="button button-line" href="{{ site.lineUrl }}" target="_blank" rel="noopener noreferrer" aria-label="加 LINE 詢問表演項目檔期與報價">LINE 詢問檔期與報價</a>
+              <a class="button button-secondary" href="/pages/contact?source=services-hero">填寫演出需求</a>
+            </div>
+          </div>
+          <nav class="sv-index reveal reveal-hero" aria-label="表演項目目錄">
+            <p class="sv-index-label">{{ services.items | length }} 種演出，點選直接查看</p>
+            <ol>
+              {% for item in services.items %}
+              <li><a href="#{{ item.id }}">{{ item.title | escape }}</a></li>
+              {% endfor %}
+            </ol>
+          </nav>
         </div>
       </section>
 
-      <section class="section page-section-stack">
-        <section class="performance-diary" aria-label="表演項目">
-          <div class="performance-diary-list">
-            <article class="service-item" id="{{ services.items[0].id }}" data-image="{{ services.items[0].image1440 | replace('../', '') }}" data-alt="{{ services.items[0].alt | escape }}">
-              <img class="service-item-photo" src="{{ services.items[0].image720 }}" srcset="{{ services.items[0].image720 }} 720w, {{ services.items[0].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[0].alt | escape }}" width="{{ services.items[0].width }}" height="{{ services.items[0].height }}" loading="eager" fetchpriority="high" decoding="async">
-              <div class="service-item-body">
-              <p class="service-item-step">{{ services.items[0].step }}</p>
-              <h3>{{ services.items[0].title | escape }}</h3>
-              <p class="service-item-tags">{{ services.items[0].tags | escape }}</p>
-              <p class="service-item-description">{{ services.items[0].description | escape }}</p>
-              <a class="service-item-link learn-more" href="/pages/contact?service={{ services.items[0].id }}&amp;source=services-{{ services.items[0].id }}" data-mobile-label="洽詢此項目" aria-label="洽詢{{ services.items[0].title | escape }}演出服務">洽詢此項目 ›</a>
-              </div>
-            </article>
-
-            <article class="service-item" id="{{ services.items[1].id }}" data-image="{{ services.items[1].image1440 | replace('../', '') }}" data-alt="{{ services.items[1].alt | escape }}">
-              <img class="service-item-photo" src="{{ services.items[1].image720 }}" srcset="{{ services.items[1].image720 }} 720w, {{ services.items[1].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[1].alt | escape }}" width="{{ services.items[1].width }}" height="{{ services.items[1].height }}" loading="lazy" decoding="async">
-              <div class="service-item-body">
-              <p class="service-item-step">{{ services.items[1].step }}</p>
-              <h3>{{ services.items[1].title | escape }}</h3>
-              <p class="service-item-tags">{{ services.items[1].tags | escape }}</p>
-              <p class="service-item-description">{{ services.items[1].description | escape }}</p>
-              <a class="service-item-link learn-more" href="/pages/contact?service={{ services.items[1].id }}&amp;source=services-{{ services.items[1].id }}" data-mobile-label="洽詢此項目" aria-label="洽詢{{ services.items[1].title | escape }}演出服務">洽詢此項目 ›</a>
-              </div>
-            </article>
-
-            <article class="service-item" id="{{ services.items[2].id }}" data-image="{{ services.items[2].image1440 | replace('../', '') }}" data-alt="{{ services.items[2].alt | escape }}">
-              <img class="service-item-photo" src="{{ services.items[2].image720 }}" srcset="{{ services.items[2].image720 }} 720w, {{ services.items[2].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[2].alt | escape }}" width="{{ services.items[2].width }}" height="{{ services.items[2].height }}" loading="lazy" decoding="async">
-              <div class="service-item-body">
-              <p class="service-item-step">{{ services.items[2].step }}</p>
-              <h3>{{ services.items[2].title | escape }}</h3>
-              <p class="service-item-tags">{{ services.items[2].tags | escape }}</p>
-              <p class="service-item-description">{{ services.items[2].description | escape }}</p>
-              <a class="service-item-link learn-more" href="/pages/contact?service={{ services.items[2].id }}&amp;source=services-{{ services.items[2].id }}" data-mobile-label="洽詢此項目" aria-label="洽詢{{ services.items[2].title | escape }}演出服務">洽詢此項目 ›</a>
-              </div>
-            </article>
-
-            <article class="service-item" id="{{ services.items[3].id }}" data-image="{{ services.items[3].image1440 | replace('../', '') }}" data-alt="{{ services.items[3].alt | escape }}">
-              <img class="service-item-photo" src="{{ services.items[3].image720 }}" srcset="{{ services.items[3].image720 }} 720w, {{ services.items[3].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[3].alt | escape }}" width="{{ services.items[3].width }}" height="{{ services.items[3].height }}" loading="lazy" decoding="async">
-              <div class="service-item-body">
-              <p class="service-item-step">{{ services.items[3].step }}</p>
-              <h3>{{ services.items[3].title | escape }}</h3>
-              <p class="service-item-tags">{{ services.items[3].tags | escape }}</p>
-              <p class="service-item-description">{{ services.items[3].description | escape }}</p>
-              <a class="service-item-link learn-more" href="/pages/contact?service={{ services.items[3].id }}&amp;source=services-{{ services.items[3].id }}" data-mobile-label="洽詢此項目" aria-label="洽詢{{ services.items[3].title | escape }}演出服務">洽詢此項目 ›</a>
-              </div>
-            </article>
-
-            <article class="service-item" id="{{ services.items[4].id }}" data-image="{{ services.items[4].image1440 | replace('../', '') }}" data-alt="{{ services.items[4].alt | escape }}">
-              <img class="service-item-photo" src="{{ services.items[4].image720 }}" srcset="{{ services.items[4].image720 }} 720w, {{ services.items[4].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[4].alt | escape }}" width="{{ services.items[4].width }}" height="{{ services.items[4].height }}" loading="lazy" decoding="async">
-              <div class="service-item-body">
-              <p class="service-item-step">{{ services.items[4].step }}</p>
-              <h3>{{ services.items[4].title | escape }}</h3>
-              <p class="service-item-tags">{{ services.items[4].tags | escape }}</p>
-              <p class="service-item-description">{{ services.items[4].description | escape }}</p>
-              <a class="service-item-link learn-more" href="/pages/contact?service={{ services.items[4].id }}&amp;source=services-{{ services.items[4].id }}" data-mobile-label="洽詢此項目" aria-label="洽詢{{ services.items[4].title | escape }}演出服務">洽詢此項目 ›</a>
-              </div>
-            </article>
-
-            <article class="service-item" id="{{ services.items[5].id }}" data-image="{{ services.items[5].image1440 | replace('../', '') }}" data-alt="{{ services.items[5].alt | escape }}">
-              <img class="service-item-photo" src="{{ services.items[5].image720 }}" srcset="{{ services.items[5].image720 }} 720w, {{ services.items[5].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[5].alt | escape }}" width="{{ services.items[5].width }}" height="{{ services.items[5].height }}" loading="lazy" decoding="async">
-              <div class="service-item-body">
-              <p class="service-item-step">{{ services.items[5].step }}</p>
-              <h3>{{ services.items[5].title | escape }}</h3>
-              <p class="service-item-tags">{{ services.items[5].tags | escape }}</p>
-              <p class="service-item-description">{{ services.items[5].description | escape }}</p>
-              <a class="service-item-link learn-more" href="/pages/contact?service={{ services.items[5].id }}&amp;source=services-{{ services.items[5].id }}" data-mobile-label="洽詢此項目" aria-label="洽詢{{ services.items[5].title | escape }}演出服務">洽詢此項目 ›</a>
-              </div>
-            </article>
-
-            <article class="service-item" id="{{ services.items[6].id }}" data-image="{{ services.items[6].image1440 | replace('../', '') }}" data-alt="{{ services.items[6].alt | escape }}">
-              <img class="service-item-photo" src="{{ services.items[6].image720 }}" srcset="{{ services.items[6].image720 }} 720w, {{ services.items[6].image1440 }} 1440w" sizes="(max-width: 760px) 92vw, 46vw" alt="{{ services.items[6].alt | escape }}" width="{{ services.items[6].width }}" height="{{ services.items[6].height }}" loading="lazy" decoding="async">
-              <div class="service-item-body">
-              <p class="service-item-step">{{ services.items[6].step }}</p>
-              <h3>{{ services.items[6].title | escape }}</h3>
-              <p class="service-item-tags">{{ services.items[6].tags | escape }}</p>
-              <p class="service-item-description">{{ services.items[6].description | escape }}</p>
-              <a class="service-item-link learn-more" href="/pages/contact?service={{ services.items[6].id }}&amp;source=services-{{ services.items[6].id }}" data-mobile-label="洽詢此項目" aria-label="洽詢{{ services.items[6].title | escape }}演出服務">洽詢此項目 ›</a>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="about-service-summary reveal" aria-labelledby="service-solution-title">
-          <div class="about-service-summary-head">
-            <p class="section-tag">演出方案</p>
-            <h2 id="service-solution-title">依活動需求選擇演出方案</h2>
-          </div>
-          <div class="about-service-summary-body">
-            <p>若您已知道活動類型，可先查看對應的演出規劃方向，再與我們討論細節。</p>
-            <ul class="about-service-list">
-              <li><a href="/landing/dragon-lion-dance-performance">舞龍舞獅表演</a></li>
-              <li><a href="/landing/lion-dance-performance">舞獅表演</a></li>
-              <li><a href="/landing/opening-lion-dance">開幕舞獅表演</a></li>
-              <li><a href="/landing/company-event-lion-dance">企業活動舞獅表演</a></li>
-            </ul>
-          </div>
-        </section>
-
-        <div class="process">
-          <div class="section-heading reveal">
-            <p class="section-tag">服務流程</p>
-            <h2>清楚規劃每一場文化演出</h2>
-          </div>
-          <div class="process-grid">
-            <article class="process-step reveal" role="button" tabindex="0" aria-pressed="false" data-process-card data-process-tags="舞獅,綜合演出" data-process-title="先釐清活動條件與演出方向" data-process-text="我們會先了解活動性質、場地尺度、進退場條件與您希望營造的氣氛，再判斷舞獅或綜合演出是否最適合。">
-              <span>01</span>
-              <h3>需求洽詢</h3>
-              <p>了解活動類型、場地條件、演出時長與希望呈現的整體氛圍。</p>
-            </article>
-            <article class="process-step reveal" role="button" tabindex="0" aria-pressed="false" data-process-card data-process-tags="舞龍,綜合演出" data-process-title="把節目、動線與儀式節奏安排清楚" data-process-text="依照流程需求提出節目配置、進場動線、吉時儀式與視覺節奏建議，讓舞龍或多項演出能自然銜接。">
-              <span>02</span>
-              <h3>活動規劃</h3>
-              <p>依需求提出節目配置、進場動線、儀式安排與視覺節奏建議。</p>
-            </article>
-            <article class="process-step reveal" role="button" tabindex="0" aria-pressed="false" data-process-card data-process-tags="舞獅,舞龍,戰鼓" data-process-title="讓現場節奏莊重、有力且順暢" data-process-text="專業團隊依照現場節奏執行演出，掌握鼓點、出場、互動與收勢，讓舞獅、舞龍與戰鼓都保持完整氣勢。">
-              <span>03</span>
-              <h3>現場演出</h3>
-              <p>由專業團隊執行演出，掌握現場節奏，確保流程完整且具感染力。</p>
-            </article>
-            <article class="process-step reveal" role="button" tabindex="0" aria-pressed="false" data-process-card data-process-tags="綜合演出" data-process-title="留下可延續的合作經驗" data-process-text="演後整理現場經驗、流程亮點與後續建議，協助長期活動、品牌場合或年度合作更精準地規劃下一次演出。">
-              <span>04</span>
-              <h3>成效回饋</h3>
-              <p>演後整理合作經驗與後續建議，建立長期、穩定且值得信賴的合作關係。</p>
-            </article>
-          </div>
+      <section class="sv-items" aria-label="表演項目介紹">
+        <div class="sv-shell">
+          {% for item in services.items %}
+          <article class="sv-item reveal" id="{{ item.id }}">
+            <figure class="sv-item-photo">
+              <img src="{{ item.image720 }}" srcset="{{ item.image720 }} 720w, {{ item.image1440 }} 1440w" sizes="(max-width: 760px) 100vw, 56vw" alt="{{ item.alt | escape }}" width="{{ item.width }}" height="{{ item.height }}" {% if loop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+            </figure>
+            <div class="sv-item-body">
+              <h2 class="sv-item-title">{{ item.title | escape }}</h2>
+              <p class="sv-item-tags">{{ item.tags | escape }}</p>
+              <p class="sv-item-text">{{ item.description | escape }}</p>
+              <a class="sv-item-link" href="/pages/contact?service={{ item.id }}&amp;source=services-{{ item.id }}" aria-label="洽詢{{ item.title | escape }}演出服務">洽詢{{ item.title | escape }}<span aria-hidden="true"> →</span></a>
+            </div>
+          </article>
+          {% endfor %}
         </div>
+      </section>
 
-        <div class="cta-band process-consultation reveal" data-process-consultation>
-          <div class="process-consultation-content">
-            <h2 data-process-title>需要先討論適合的演出內容嗎？</h2>
-            <p data-process-text>如果您還不確定該選擇舞獅、舞龍、戰鼓或綜合演出，我們可以先協助您判斷最合適的方案。</p>
+      <section class="sv-plans" aria-labelledby="service-solution-title">
+        <div class="sv-shell sv-split">
+          <header class="reveal">
+            <h2 id="service-solution-title" class="sv-section-title">依活動需求選擇演出方案</h2>
+            <p>若您已知道活動類型，可先查看對應的演出規劃方向，再與我們討論細節。</p>
+          </header>
+          <ul class="sv-plan-list reveal">
+            <li><a href="/landing/opening-lion-dance"><strong>開幕舞獅表演</strong><span>公司、店面開幕與開工儀式</span></a></li>
+            <li><a href="/landing/company-event-lion-dance"><strong>企業活動舞獅表演</strong><span>品牌活動、年度大會與商演</span></a></li>
+            <li><a href="/landing/year-end-party-lion-dance"><strong>尾牙春酒舞獅表演</strong><span>晚會開場、戰鼓與醒獅互動</span></a></li>
+            <li><a href="/pages/temple-festival-planning"><strong>廟會策劃活動</strong><span>從發想到執行的一條龍規劃</span></a></li>
+            <li><a href="/landing/dragon-lion-dance-performance"><strong>舞龍舞獅表演</strong><span>龍、獅、戰鼓與民俗藝陣組合</span></a></li>
+            <li><a href="/landing/lion-dance-price-guide"><strong>舞獅表演報價指南</strong><span>影響報價的因素與詢價方式</span></a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="sv-process" aria-labelledby="sv-process-title">
+        <div class="sv-shell sv-split">
+          <header class="reveal">
+            <h2 id="sv-process-title" class="sv-section-title">清楚規劃每一場文化演出</h2>
+            <p>從第一次洽詢到演出後回饋，每一步都有明確的負責內容。</p>
+          </header>
+          <ol class="sv-steps">
+            <li class="reveal"><span aria-hidden="true">01</span><div><h3>需求洽詢</h3><p>了解活動類型、場地條件、演出時長與希望呈現的整體氛圍。</p></div></li>
+            <li class="reveal"><span aria-hidden="true">02</span><div><h3>活動規劃</h3><p>依需求提出節目配置、進場動線、儀式安排與視覺節奏建議。</p></div></li>
+            <li class="reveal"><span aria-hidden="true">03</span><div><h3>現場演出</h3><p>由專業團隊執行演出，掌握現場節奏，確保流程完整且具感染力。</p></div></li>
+            <li class="reveal"><span aria-hidden="true">04</span><div><h3>成效回饋</h3><p>演後整理合作經驗與後續建議，建立長期、穩定且值得信賴的合作關係。</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="sv-cta" id="faq" aria-labelledby="sv-cta-title">
+        <div class="sv-shell sv-cta-grid">
+          <div class="reveal">
+            <h2 id="sv-cta-title" class="sv-cta-title"><span class="sv-phrase">需要先討論</span><span class="sv-phrase">適合的演出內容嗎？</span></h2>
+            <p>如果您還不確定該選擇舞獅、舞龍、戰鼓或綜合演出，臺灣南仙龍獅體育會可以先協助判斷最合適的演出方案。</p>
           </div>
-          <div class="process-tag-group" aria-label="可討論的演出類型">
-            <span class="process-tag" data-process-tag="舞獅">舞獅</span>
-            <span class="process-tag" data-process-tag="舞龍">舞龍</span>
-            <span class="process-tag" data-process-tag="戰鼓">戰鼓</span>
-            <span class="process-tag" data-process-tag="綜合演出">綜合演出</span>
-          </div>
-          <div class="process-consultation-actions">
-            <a class="button button-primary" href="/pages/contact" aria-label="聯絡洽詢適合的舞龍舞獅演出內容">聯絡洽詢</a>
-            <a class="button button-secondary" href="../gallery/" aria-label="查看南仙舞龍舞獅與戰鼓活動案例">查看活動案例</a>
+          <div class="sv-cta-actions reveal">
+            <a class="button button-line" href="{{ site.lineUrl }}" target="_blank" rel="noopener noreferrer" aria-label="加 LINE 討論適合的演出內容">LINE 洽詢・{{ site.lineId }}</a>
+            <a class="button sv-button-ghost" href="/pages/contact?source=services-cta">線上填寫需求</a>
+            <p class="sv-cta-sub">或來電 <a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a><span aria-hidden="true">・</span><a href="/gallery/">先看活動案例</a></p>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <h3>臺灣南仙龍獅體育會</h3>
-          <p>Taiwan Nan Sieng Dragon &amp; Lion Dance Activity Centre</p>
-          <p>以深厚傳統功底結合舞台藝術與視覺力，呈現莊嚴、熱烈且富有文化精神的專業演出。</p>
-          <div class="footer-socials">
-            <a href="https://www.facebook.com/p/%E8%87%BA%E5%8C%97%E5%BE%B7%E5%8B%9D%E8%88%98%E8%87%BA%E7%81%A3%E5%8D%97%E4%BB%99%E9%BE%8D%E7%8D%85%E9%AB%94%E8%82%B2%E6%9C%83-61556516607768/" target="_blank" rel="noreferrer" aria-label="前往臺灣南仙龍獅體育會 Facebook 粉絲專頁">f</a>
-          </div>
-        </div>
-        <div class="footer-links">
-          <div>
-            <h4>快速連結</h4>
-            <a href="/pages/about">關於我們</a>
-            <a href="/pages/services">表演項目</a>
-            <a href="/pages/temple-festival-planning">廟會策劃活動</a>
-            <a href="../gallery/">活動案例</a>
-            <a href="/pages/contact">聯絡我們</a>
-          </div>
-          <div>
-            <h4>演出項目</h4>
-            <a href="/pages/services#item-god-of-wealth">文武財神</a>
-            <a href="/pages/services#item-folk-performance">民俗藝陣</a>
-            <a href="/pages/services#item-plum-blossom-pole-lion">梅花樁獅</a>
-            <a href="/pages/services#item-auspicious-lion">祥獅獻瑞</a>
-            <a href="/pages/services#item-dragon-pearl">祥龍搶珠</a>
-            <a href="/pages/services#item-war-drum">雷鳴戰鼓</a>
-            <a href="/pages/services#item-nezha">電音三太子</a>
-          </div>
-          <div>
-            <h4>演出方案</h4>
-            <a href="/landing/dragon-lion-dance-performance">舞龍舞獅表演</a>
-            <a href="/landing/lion-dance-performance">舞獅表演</a>
-            <a href="/landing/opening-lion-dance">開幕舞獅表演</a>
-            <a href="/landing/company-event-lion-dance">企業活動舞獅表演</a>
-            <a href="/landing/year-end-party-lion-dance">尾牙春酒舞獅表演</a>
-            <a href="/landing/lion-dance-price-guide">舞獅表演報價指南</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© <span id="current-year">2026</span> 臺灣南仙龍獅體育會 版權所有</span>
-      </div>
-    </footer>
+    {% include "footer.njk" %}
   </div>
   <script src="../backend-config.js?v=20260728-bp1"></script>
-  <script src="../script.js?v=20261108-home1" defer></script>
+  <script src="../script.js?v=20261108-services1" defer></script>
 </body>
 </html>
