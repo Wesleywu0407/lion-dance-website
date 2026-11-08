@@ -1,8 +1,9 @@
-<nav class="landing-photo-strip" aria-label="相關案例與演出資訊">
-  <p class="section-tag">相關案例與演出資訊</p>
-  <div class="cta-band-actions">
+{#- 落地頁內文連結：案例頁與報價指南（SEO 內部連結，check-seo-content 會檢查）。 -#}
+<nav class="lp-related" aria-label="相關案例與演出資訊">
+  <p class="lp-related-label">看更多現場</p>
+  <ul>
     {% for link in landingLinks[landingPage.key] %}
-    <a class="button button-secondary" href="{{ link.href | escape }}">{{ link.label | escape }}</a>
+    <li><a href="{{ link.href | escape }}">{{ link.label | escape }}<span aria-hidden="true"> →</span></a></li>
     {% endfor %}
-  </div>
+  </ul>
 </nav>

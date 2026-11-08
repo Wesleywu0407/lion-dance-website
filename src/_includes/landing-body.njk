@@ -1,0 +1,117 @@
+{#- 落地頁共用版型（2026-11）。
+    每頁在 include 前設定：
+      landingPage   — 文案（src/_data/landing/*.json，後台可編輯）
+      lp.crumb      — 麵包屑名稱（與 BreadcrumbList 結構化資料一致）
+      lp.points     — 重點段落 [{title, text}]
+      lp.contactHref— 表單洽詢連結（含 source，保留廣告來源追蹤）
+      lp.photos     — 3 張實況照 [{img, alt, w, h, caption}]；第 1 張當 hero（LCP），其餘放實況區
+      lp.ctaTitle / lp.ctaText — 最後一段洽詢文案
+      lp.sceneTitle — （選填）實況區標題，預設「{crumb}實況」
+    閱讀順序依「搜尋進站的客人怎麼做決定」：
+      確認你有做 + 怎麼聯絡（hero）→ 適不適合我的活動（重點）→ 看真的現場（實況）
+      → 詢價要準備什麼（降低開口門檻）→ 收尾行動。 -#}
+{%- set heroPhoto = lp.photos[0] -%}
+<section class="lp-hero" aria-labelledby="lp-title">
+  <div class="lp-shell lp-hero-grid">
+    <div class="lp-hero-copy reveal reveal-hero">
+      <nav class="lp-crumbs" aria-label="麵包屑">
+        <ol>
+          <li><a href="/">首頁</a></li>
+          <li aria-current="page">{{ lp.crumb | escape }}</li>
+        </ol>
+      </nav>
+      {% if landingPage.heroTag != landingPage.h1 and landingPage.heroTag != lp.crumb %}<p class="lp-kicker">{{ landingPage.heroTag | escape }}</p>{% endif %}
+      <h1 id="lp-title" class="lp-title">{{ landingPage.h1 | escape }}</h1>
+      <p class="lp-lede">{{ landingPage.intro | escape }}</p>
+      <div class="lp-actions">
+        <a class="button button-line" href="{{ site.lineUrl }}" target="_blank" rel="noopener noreferrer" aria-label="加 LINE 詢問{{ lp.crumb | escape }}檔期與報價">LINE 詢問檔期與報價</a>
+        <a class="button button-secondary" href="{{ lp.contactHref }}">填寫演出需求</a>
+      </div>
+      <p class="lp-tel">或直接來電 <a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a><span aria-hidden="true">・</span><span class="lp-nowrap">LINE ID：{{ site.lineId }}</span></p>
+      <ul class="lp-facts" aria-label="服務概要">
+        <li>2012 年創立</li>
+        <li>以台北為據點，全台出團</li>
+        <li>提供日期地點即可估價</li>
+      </ul>
+    </div>
+    <figure class="lp-hero-photo reveal reveal-hero">
+      <img src="/images/{{ heroPhoto.img }}-1440.webp" srcset="/images/{{ heroPhoto.img }}-720.webp 720w, /images/{{ heroPhoto.img }}-1440.webp 1440w" sizes="(max-width: 760px) 100vw, 46vw" alt="{{ heroPhoto.alt }}" width="{{ heroPhoto.w }}" height="{{ heroPhoto.h }}" fetchpriority="high" decoding="async">
+      <figcaption>{{ heroPhoto.caption }}</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="lp-points" aria-label="{{ lp.crumb | escape }}重點說明">
+  <div class="lp-shell">
+    {% for block in lp.points %}
+    <div class="lp-point reveal">
+      <h2 class="landing-point-title">{{ block.title | escape }}</h2>
+      <p>{{ block.text | escape }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="lp-scene" aria-labelledby="lp-scene-title">
+  <div class="lp-shell">
+    <div class="lp-scene-head reveal">
+      <h2 id="lp-scene-title" class="lp-section-title">{{ lp.sceneTitle or (lp.crumb + "實況") }}</h2>
+      {% include "landing-related.njk" %}
+    </div>
+    <div class="lp-scene-grid">
+      {% for photo in lp.photos %}{% if not loop.first %}
+      <figure class="reveal">
+        <img src="/images/{{ photo.img }}-720.webp" srcset="/images/{{ photo.img }}-720.webp 720w, /images/{{ photo.img }}-1440.webp 1440w" sizes="(max-width: 760px) 100vw, 50vw" alt="{{ photo.alt }}" width="{{ photo.w }}" height="{{ photo.h }}" loading="lazy" decoding="async">
+        <figcaption>{{ photo.caption }}</figcaption>
+      </figure>
+      {% endif %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="lp-prep" aria-labelledby="lp-prep-title">
+  <div class="lp-shell lp-prep-grid">
+    <div class="reveal">
+      <h2 id="lp-prep-title" class="lp-section-title">詢價前準備這 6 項資料</h2>
+      <p>不用先決定表演細節；資訊越完整，我們越能快速確認檔期、編制與交通安排。直接把這幾項貼到 LINE 就可以。</p>
+    </div>
+    <ol class="lp-prep-list reveal">
+      <li><strong>活動日期與時段</strong><span>日期未定也可先提供月份或候選日期</span></li>
+      <li><strong>活動地點</strong><span>縣市、室內外與場地名稱</span></li>
+      <li><strong>活動類型</strong><span>開幕、尾牙、廟會、校園或其他場合</span></li>
+      <li><strong>預計流程</strong><span>希望出場時間、段落長度與貴賓互動</span></li>
+      <li><strong>場地與人數</strong><span>舞台尺寸、動線與預估觀眾規模</span></li>
+      <li><strong>預算或期待效果</strong><span>尚未決定時可由南仙依需求建議</span></li>
+    </ol>
+  </div>
+</section>
+
+{% if lp.priceFaq %}
+<section class="lp-faq" aria-labelledby="price-faq-title">
+  <div class="lp-shell lp-faq-grid">
+    <h2 id="price-faq-title" class="lp-section-title reveal">舞獅表演報價常見問題</h2>
+    <div class="lp-faq-list">
+      {% for item in priceFaq.items %}
+      <details class="lp-faq-item">
+        <summary>{{ item.question | escape }}</summary>
+        <p>{{ item.answer | escape }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="lp-cta" aria-labelledby="lp-cta-title">
+  <div class="lp-shell lp-cta-grid">
+    <div class="reveal">
+      <h2 id="lp-cta-title" class="lp-cta-title">{{ lp.ctaTitle | escape }}</h2>
+      <p>{{ lp.ctaText | escape }}</p>
+    </div>
+    <div class="lp-cta-actions reveal">
+      <a class="button button-line" href="{{ site.lineUrl }}" target="_blank" rel="noopener noreferrer" aria-label="加 LINE 洽詢{{ lp.crumb | escape }}">LINE 洽詢・{{ site.lineId }}</a>
+      <a class="button lp-button-ghost" href="{{ lp.contactHref }}">線上填寫需求</a>
+      <p class="lp-cta-tel">或來電 <a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a></p>
+    </div>
+  </div>
+</section>

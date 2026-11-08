@@ -1,0 +1,519 @@
+/* ── 活動案例：總覽＋9 個相簿（2026-11 重做）─────────────────
+   只在 /gallery/ 與 /gallery/* 載入。放大檢視（.album-lightbox）沿用 sections/gallery.css。
+   總覽：原本照片擠在畫面中間一條、白字壓在亮照片上看不清楚 →
+         全寬 3 欄照片格，名稱、說明與照片張數放在圖下。
+   相簿：原本資訊框＋小圖 → 細線分隔的規劃重點＋大照片（保留原始比例，不裁切）。
+   朱紅只給 LINE 主行動。版面語彙與首頁、落地頁、表演項目頁一致。
+   ─────────────────────────────────────────────────────────── */
+
+.gallery-index-body,
+.album-page-body {
+  --gl-rule: var(--line);
+  --gl-dark: #181311;
+  --gl-dark-ink: #f5efe6;
+  --gl-dark-soft: rgba(245, 239, 230, 0.76);
+  --gl-gap: clamp(64px, 7vw, 104px);
+}
+
+.gl-shell {
+  width: min(calc(100% - 80px), 1180px);
+  margin: 0 auto;
+}
+
+.gl-phrase {
+  display: inline-block;
+}
+
+.gl-title,
+.gl-section-title,
+.gl-cta-title {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.gl-crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 24px;
+  padding: 0;
+  list-style: none;
+  color: var(--ink-soft);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+}
+
+.gl-crumbs li + li::before {
+  content: "/";
+  margin-right: 6px;
+  color: var(--ink-muted);
+}
+
+.gl-crumbs a {
+  display: inline-block;
+  padding: 10px 0;
+  margin: -10px 0;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.gl-crumbs a:hover,
+.gl-crumbs a:focus-visible {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.gl-title {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-display-serif);
+  font-size: clamp(2.4rem, 4.6vw, 3.9rem);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  line-height: 1.15;
+}
+
+.gl-lede {
+  max-width: 36em;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 1.0625rem;
+  line-height: 1.9;
+}
+
+.gl-section-title {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-display-serif);
+  font-size: clamp(1.5rem, 2.3vw, 2.05rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+}
+
+/* ── 總覽 ── */
+.gl-index-hero {
+  padding: calc(var(--header-height) + clamp(32px, 5vw, 64px)) 0 clamp(40px, 5vw, 64px);
+}
+
+.gl-index-head {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 24px clamp(40px, 6vw, 96px);
+  align-items: end;
+}
+
+.gl-index-count {
+  margin: 18px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--gl-rule);
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.gl-index {
+  padding-bottom: var(--gl-gap);
+}
+
+.gl-index-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(36px, 4vw, 56px) clamp(20px, 2.4vw, 32px);
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gl-card {
+  display: grid;
+  gap: 4px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.gl-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 14px;
+  object-fit: cover;
+  border-radius: 4px;
+  transition: filter 0.3s ease;
+}
+
+.gl-card strong {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.gl-card-summary {
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.gl-card-more {
+  margin-top: 6px;
+  color: var(--accent);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.gl-card:hover img,
+.gl-card:focus-visible img {
+  filter: brightness(1.06) saturate(1.05);
+}
+
+.gl-card:hover strong,
+.gl-card:focus-visible strong {
+  color: var(--accent);
+}
+
+/* ── 相簿：標題、說明、行動、規劃重點 ── */
+.gl-album-hero {
+  padding: calc(var(--header-height) + clamp(32px, 5vw, 64px)) 0 clamp(32px, 4vw, 48px);
+}
+
+.gl-album-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px clamp(40px, 6vw, 96px);
+  align-items: end;
+}
+
+.gl-album-head .gl-lede {
+  margin-top: 20px;
+}
+
+.gl-album-actions {
+  display: grid;
+  gap: 12px;
+  min-width: 260px;
+}
+
+.gl-album-actions .button {
+  width: 100%;
+  min-width: 0;
+}
+
+.gl-context {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(28px, 4vw, 64px);
+  margin: clamp(36px, 4vw, 52px) 0 0;
+  border-top: 1px solid var(--gl-rule);
+}
+
+.gl-context > div {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--gl-rule);
+}
+
+.gl-context dt {
+  margin-bottom: 8px;
+  color: var(--accent);
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.gl-context dd {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.9;
+}
+
+/* ── 相簿照片：保留原始比例的瀑布欄，點擊放大 ── */
+.gl-photos {
+  padding-bottom: var(--gl-gap);
+}
+
+.gl-photo-hint {
+  margin: 0 0 16px;
+  color: var(--ink-soft);
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+}
+
+.gl-photo-grid {
+  column-count: 3;
+  column-gap: clamp(12px, 1.6vw, 20px);
+}
+
+.gl-photo {
+  display: block;
+  width: 100%;
+  margin: 0 0 clamp(12px, 1.6vw, 20px);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  break-inside: avoid;
+}
+
+.gl-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  transition: filter 0.3s ease;
+}
+
+.gl-photo:hover img,
+.gl-photo:focus-visible img {
+  filter: brightness(1.08);
+}
+
+.gl-photo:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ── 其他案例 ── */
+.gl-more {
+  padding: var(--gl-gap) 0;
+  background: #eee5d6;
+}
+
+.gl-more-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
+}
+
+.gl-plan {
+  max-width: 24em;
+  margin: 18px 0 0;
+  color: var(--ink-soft);
+  line-height: 1.9;
+}
+
+.gl-plan a {
+  white-space: nowrap;
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration-color: rgba(143, 58, 47, 0.45);
+  text-underline-offset: 5px;
+}
+
+.gl-more-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(22, 19, 17, 0.14);
+}
+
+.gl-more-list li {
+  border-bottom: 1px solid rgba(22, 19, 17, 0.14);
+}
+
+.gl-more-list a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.gl-more-list a span {
+  color: var(--accent);
+  font-family: var(--font-body);
+  transition: transform 0.2s ease;
+}
+
+.gl-more-list a:hover,
+.gl-more-list a:focus-visible {
+  color: var(--accent);
+}
+
+.gl-more-list a:hover span,
+.gl-more-list a:focus-visible span {
+  transform: translateX(4px);
+}
+
+/* ── 收尾行動 ── */
+.gl-cta {
+  padding: clamp(64px, 8vw, 112px) 0;
+  background: var(--gl-dark);
+  color: var(--gl-dark-ink);
+}
+
+.gallery-index-body .site-footer,
+.album-page-body .site-footer {
+  margin-top: 0;
+}
+
+.gl-cta-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: end;
+}
+
+.gl-cta-title {
+  margin: 0;
+  color: var(--gl-dark-ink);
+  font-family: var(--font-display-serif);
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+}
+
+.gl-cta-grid p {
+  max-width: 34em;
+  margin: 18px 0 0;
+  color: var(--gl-dark-soft);
+  line-height: 1.9;
+}
+
+.gl-cta-grid p a {
+  color: var(--gl-dark-ink);
+  font-weight: 700;
+  text-decoration-color: var(--gold);
+  text-underline-offset: 4px;
+}
+
+.gl-cta-actions {
+  display: grid;
+  gap: 12px;
+}
+
+.gl-cta-actions .button {
+  width: 100%;
+  min-width: 0;
+}
+
+.gl-button-ghost {
+  background: transparent;
+  color: var(--gl-dark-ink);
+  border-color: rgba(245, 239, 230, 0.4);
+}
+
+.gl-button-ghost:hover,
+.gl-button-ghost:focus-visible {
+  border-color: var(--gl-dark-ink);
+  color: #fff;
+}
+
+.gl-cta .gl-cta-tel {
+  margin: 4px 0 0;
+  text-align: center;
+  font-size: 0.9375rem;
+}
+
+.gl-cta-tel a {
+  display: inline-block;
+  padding: 10px 0;
+  margin: -10px 0;
+}
+
+/* ── 平板 ── */
+@media (max-width: 1100px) {
+  .gl-index-head,
+  .gl-album-head,
+  .gl-more-grid,
+  .gl-cta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gl-index-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gl-album-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 560px;
+  }
+
+  .gl-photo-grid {
+    column-count: 2;
+  }
+
+  .gl-cta-actions {
+    max-width: 420px;
+  }
+}
+
+/* ── 手機 ── */
+@media (max-width: 760px) {
+  .gallery-index-body,
+  .album-page-body {
+    --gl-gap: 56px;
+  }
+
+  .gl-shell {
+    width: calc(100% - 40px);
+  }
+
+  .gl-index-hero,
+  .gl-album-hero {
+    padding-top: calc(var(--header-height) + 24px);
+  }
+
+  .gl-title {
+    font-size: clamp(2.1rem, 9.5vw, 2.6rem);
+  }
+
+  .gl-lede {
+    font-size: 1rem;
+  }
+
+  .gl-index-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .gl-card img {
+    aspect-ratio: 3 / 2;
+  }
+
+  .gl-album-actions {
+    grid-template-columns: 1fr;
+    min-width: 0;
+  }
+
+  .gl-context {
+    grid-template-columns: 1fr;
+  }
+
+  .gl-photo-grid {
+    column-gap: 10px;
+  }
+
+  .gl-photo {
+    margin-bottom: 10px;
+  }
+
+  .gl-more-list {
+    grid-template-columns: 1fr;
+  }
+
+  .gl-cta-actions {
+    max-width: none;
+  }
+}
+
+/* 段落內文字連結加大點擊範圍（≥ 40px），不改變排版位置 */
+.gl-plan a,
+.gl-cta-grid p a {
+  display: inline-block;
+  padding: 10px 0;
+  margin: -10px 0;
+}

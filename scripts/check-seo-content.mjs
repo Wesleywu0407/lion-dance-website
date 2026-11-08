@@ -52,7 +52,7 @@ for (const relative of ['index.html', ...['pages', 'gallery', 'landing'].flatMap
 for (const file of fs.readdirSync('_site/landing').filter(file => file.endsWith('.html'))) {
   const html = fs.readFileSync(`_site/landing/${file}`, 'utf8');
   const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1] || '';
-  assert.match(main, /<h2 class="ctb-phrase">/, `${file}: semantic content headings`);
+  assert.match(main, /<h2 class="landing-point-title">/, `${file}: semantic content headings`);
   assert.match(main, /href="\/gallery\//, `${file}: contextual case links`);
   if (file !== 'lion-dance-price-guide.html') {
     assert.match(main, /href="\/landing\/lion-dance-price-guide"/, `${file}: contextual price guide link`);

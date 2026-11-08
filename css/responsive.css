@@ -1,17 +1,8 @@
 @media (max-width: 1100px) {
-  .process-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   /* .case-grid columns now handled by gallery.css (masonry layout) */
 
   .about-layout {
     grid-template-columns: 1fr;
-  }
-
-  .narrative-layout {
-    grid-template-columns: 1fr;
-    gap: 32px;
   }
 
   /* case-card grid-column reset now handled in gallery.css */
@@ -21,14 +12,6 @@
     grid-template-columns: 1fr;
   }
 
-  .narrative-intro {
-    position: static;
-    max-width: 100%;
-  }
-
-  .narrative-intro .narrative-heading {
-    max-width: 100%;
-  }
 }
 
 @media (max-width: 760px) {
@@ -152,55 +135,8 @@ h3.section-heading::after {
     text-wrap: pretty;
   }
 
-  .about-page .page-hero .page-hero-inner > p:not(.section-tag),
-
-  .service-page-hero {
-    min-height: 0;
-    padding: max(112px, calc(var(--header-height) + 32px)) 0 12px;
-  }
-
-  .service-page-hero .page-hero-inner {
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-  }
-
-  .service-page-hero .page-hero-inner > h1 {
-    max-width: none;
-    font-family: var(--font-display-serif);
-    font-weight: 900;
-    font-size: clamp(2.5rem, 12vw, 3.2rem);
-    line-height: 1.14;
-    letter-spacing: 0.1em;
-    color: var(--ink);
-  }
-
-  .service-page-subtitle {
-    max-width: none;
-    font-size: 0.875rem;
-    letter-spacing: 0.06em;
-    line-height: 1.72;
-  }
-
-  .process-grid,
-.contact-form-row {
+  .contact-form-row {
     grid-template-columns: 1fr;
-  }
-
-  .narrative-intro .narrative-heading {
-    max-width: 100%;
-    padding: 10px 14px 14px;
-    font-size: clamp(2.15rem, 9vw, 2.8rem);
-    line-height: 1.14;
-    letter-spacing: 0.025em;
-  }
-
-  .narrative-heading-line {
-    white-space: normal;
-  }
-
-  .narrative-heading-phrase {
-    display: inline;
   }
 
 
@@ -248,11 +184,6 @@ select {
     font-size: clamp(2rem, 8vw, 3rem);
     margin-bottom: 1rem;
     line-height: 1.2;
-  }
-
-  .page-hero.gallery-page-hero {
-    grid-template-columns: 1fr;
-    text-align: center;
   }
 
   .footer-inner,
@@ -346,7 +277,7 @@ select {
   .footer-links a {
     min-width: 0;
     margin: 0;
-    padding: 9px 0;
+    padding: 12px 0;
     font-size: 0.875rem;
     line-height: 1.45;
     overflow-wrap: anywhere;
@@ -418,8 +349,7 @@ select {
     width: min(calc(100% - 32px), var(--max-width));
   }
 
-  .page-hero .page-hero-inner > h1,
-  .service-page-hero .page-hero-inner > h1 {
+  .page-hero .page-hero-inner > h1 {
     margin-bottom: 8px;
     padding-inline: 0;
     font-size: clamp(1.95rem, 8.3vw, 2.35rem);
@@ -432,16 +362,6 @@ select {
     margin-top: 8px;
     font-size: 0.9375rem;
     line-height: 1.75;
-  }
-
-  .service-page-hero {
-    padding: max(96px, calc(var(--header-height) + 18px)) 0 14px;
-  }
-
-  .service-page-subtitle {
-    max-width: 22em;
-    font-size: 0.9375rem;
-    line-height: 1.7;
   }
 
   .button,
@@ -465,14 +385,6 @@ select {
     white-space: nowrap;
   }
 
-  .process > .section-heading h2 {
-    font-size: clamp(1.3rem, 5.6vw, 1.5rem);
-    font-weight: 700;
-    line-height: 1.4;
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-  }
-
   .cta-band-actions {
     display: grid;
     grid-template-columns: 1fr;
@@ -491,7 +403,6 @@ select {
   .js .about-block,
   .js .ctb-phrase,
   .js .ctb-support,
-  .js .about-fade-paragraph,
   .js .ink-story-beat .ink-anim {
     opacity: 1 !important;
     clip-path: none !important;
@@ -583,60 +494,6 @@ select {
     padding: 24px 18px;
   }
 
-  .performance-diary-list {
-    gap: 18px;
-    padding-inline: 0;
-  }
-
-  .service-item,
-  .service-item:first-child {
-    gap: 18px !important;
-    margin-bottom: 0;
-    padding: 18px !important;
-    border: 1px solid rgba(72, 54, 43, 0.11);
-    border-radius: 16px;
-    background: rgba(255, 252, 247, 0.66);
-  }
-
-  .service-item-photo {
-    max-height: none;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    border-radius: 10px;
-  }
-
-  .service-item-step {
-    margin-bottom: 4px;
-    font-size: 1.5rem;
-  }
-
-  .service-item h3,
-  .service-item:first-child h3 {
-    font-size: clamp(1.8rem, 8.6vw, 2.2rem);
-    line-height: 1.16;
-  }
-
-  .service-item-description {
-    margin-top: 10px;
-    line-height: 1.75;
-  }
-
-  .service-item-link[data-mobile-label] {
-    display: inline-flex;
-    min-height: 48px;
-    margin-top: 12px;
-    padding: 0 16px;
-    border: 1px solid rgba(143, 58, 47, 0.18);
-    border-radius: 999px;
-    background: rgba(255, 252, 247, 0.76);
-  }
-
-  .about-service-list a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-  }
-
 
 
   .contact-page .contact-form .contact-check {
@@ -672,8 +529,7 @@ select {
   }
 
   .contact-page .contact-check a,
-  .contact-page .contact-faq-item summary,
-  .home-cases-all {
+  .contact-page .contact-faq-item summary {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
@@ -688,85 +544,6 @@ select {
   .intro-page .ink-story-button,
   .intro-page .intro-contact-button {
     min-height: 44px;
-  }
-
-  .album-page {
-    padding-top: 0;
-  }
-
-  .album-hero {
-    gap: 6px;
-    padding-top: max(90px, calc(var(--header-height) + 18px));
-    margin-bottom: 22px;
-  }
-
-  .album-back {
-    min-height: 44px;
-    padding-block: 10px;
-    font-size: 0.875rem;
-  }
-
-  .album-title {
-    font-size: clamp(1.9rem, 8.5vw, 2.25rem);
-    line-height: 1.18;
-  }
-
-  .album-intro {
-    margin-top: 10px;
-    font-size: 0.9375rem;
-    line-height: 1.75;
-  }
-
-  .album-context {
-    gap: 14px;
-    margin-bottom: 28px;
-    padding: 20px 18px;
-  }
-
-  .album-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
-
-  .album-photo {
-    aspect-ratio: 1 / 1;
-    border-radius: 10px;
-  }
-
-  .album-photo:first-child {
-    grid-column: 1 / -1;
-    aspect-ratio: 16 / 10;
-  }
-
-  .gallery-page .gallery-page-hero {
-    gap: 10px;
-    padding: max(100px, calc(var(--header-height) + 24px)) 16px 24px;
-  }
-
-  .gallery-page .gallery-page-hero .hero-sub {
-    font-size: 0.9375rem;
-    line-height: 1.7;
-  }
-
-  .gallery-page .gallery-grid {
-    width: calc(100vw - 32px) !important;
-    max-width: calc(100vw - 32px) !important;
-    gap: 10px !important;
-  }
-
-  .gallery-page .gallery-col {
-    gap: 10px;
-  }
-
-  .gallery-page .gallery-card-label {
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-  }
-
-  .gallery-page .gallery-card .gallery-card-label .card-title {
-    font-size: 0.875rem;
-    line-height: 1.35;
   }
 
   .quickbar {
@@ -812,11 +589,8 @@ select {
   /* 區塊標題 h2：22px */
   main .section-heading,
   main h2.section-heading,
-  main .section-heading .narrative-heading-line,
-  main .section-heading .narrative-heading-phrase,
   main .ctb-phrase,
   main .about-service-summary-head h2,
-  main .process-consultation-content h2,
   main .cta-band h2,
   main .quote-prep h2,
   main .contact-faq-heading h2,
@@ -841,11 +615,6 @@ select {
     line-height: 1.25 !important;
   }
 
-  /* 項目標題 h3：表演項目名稱 22px、其餘大型 h3 19px */
-  main .service-item-body h3 {
-    font-size: 1.375rem !important;
-  }
-
   main .intro-practice-title h3 {
     font-size: 1.2rem !important;
   }
@@ -856,11 +625,6 @@ select {
     font-size: 1.5rem !important;
   }
 
-  main .step-num {
-    font-size: 1.75rem !important;
-  }
-
-  main .service-item-step,
   main .intro-process-number {
     font-size: 1.25rem !important;
   }
@@ -871,5 +635,31 @@ select {
 
   main .intro-value-glyph {
     font-size: 1.4rem !important;
+  }
+}
+
+/* 手機：關於／隱私頁的標題區與其他頁一致——靠左、20px 左右留白（2026-11） */
+@media (max-width: 760px) {
+  .page-hero,
+  .page-hero-inner,
+  .page-hero .page-hero-inner > h1,
+  .page-hero .page-hero-inner > p:not(.section-tag) {
+    text-align: left;
+  }
+
+  .page-hero-inner {
+    width: calc(100% - 40px);
+    justify-items: start;
+  }
+
+  .page-hero .page-hero-inner > h1,
+  .page-hero .page-hero-inner > p:not(.section-tag) {
+    justify-self: start;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+
+  .page-hero .page-hero-inner > p:not(.section-tag) {
+    max-width: 32em;
   }
 }

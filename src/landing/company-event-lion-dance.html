@@ -16,7 +16,8 @@
   <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="../favicon-180.png">
   <meta name="theme-color" content="#181311">
-  <link rel="stylesheet" href="../css/style.css?v=20261030-source1">
+  <link rel="stylesheet" href="../css/style.css?v=20261108-polish1">
+  <link rel="stylesheet" href="../css/pages/landing.css?v=20261108-polish1">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -96,66 +97,31 @@
 }
   </script>
 </head>
-<body>
+<body class="landing-page">
   {% set landingPage = landing["company-event-lion-dance"] %}
   <div class="page-shell">
     {% include "header.njk" %}
 
     <main id="main-content">
-      <section class="page-hero">
-        <div class="page-hero-inner reveal reveal-hero">
-          <p class="section-tag">{{ landingPage.heroTag | escape }}</p>
-          <h1 class="section-heading">{{ landingPage.h1 | escape }}</h1>
-          <p>{{ landingPage.intro | escape }}</p>
-        </div>
-      </section>
-
-      <section class="section page-section-stack">
-        <div class="about-layout about-cinematic">
-          {% for block in landingPage.blocks %}
-          <div class="ctb about-block">
-            <h2 class="ctb-phrase">{{ block.title | escape }}</h2>
-            <p class="ctb-support">{{ block.text | escape }}</p>
-          </div>
-          {% endfor %}
-        </div>
-
-
-        {% include "landing-related.njk" %}
-
-        <div class="landing-photo-strip reveal">
-          <p class="section-tag">演出實況</p>
-          <div class="landing-photo-grid">
-            <figure>
-              <img src="../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%998%E9%9A%BB%E7%8D%85%E8%B7%B3%E6%A8%81%E6%BC%94%E5%87%BA-720.webp" srcset="../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%998%E9%9A%BB%E7%8D%85%E8%B7%B3%E6%A8%81%E6%BC%94%E5%87%BA-720.webp 720w, ../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%998%E9%9A%BB%E7%8D%85%E8%B7%B3%E6%A8%81%E6%BC%94%E5%87%BA-1440.webp 1440w" sizes="(max-width: 760px) 92vw, 380px" alt="尾牙八隻醒獅跳樁大型演出" width="720" height="502" loading="lazy" decoding="async">
-              <figcaption>尾牙晚會八獅跳樁大型演出</figcaption>
-            </figure>
-            <figure>
-              <img src="../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E8%81%AF%E6%AD%A1%E6%99%9A%E6%9C%83%E6%88%B0%E9%BC%93%E6%BC%94%E5%87%BA-720.webp" srcset="../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E8%81%AF%E6%AD%A1%E6%99%9A%E6%9C%83%E6%88%B0%E9%BC%93%E6%BC%94%E5%87%BA-720.webp 720w, ../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E8%81%AF%E6%AD%A1%E6%99%9A%E6%9C%83%E6%88%B0%E9%BC%93%E6%BC%94%E5%87%BA-1440.webp 1440w" sizes="(max-width: 760px) 92vw, 380px" alt="雷鳴戰鼓聯歡晚會演出" width="720" height="403" loading="lazy" decoding="async">
-              <figcaption>聯歡晚會雷鳴戰鼓開場</figcaption>
-            </figure>
-            <figure>
-              <img src="../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%99%E6%B4%BB%E5%8B%95-720.webp" srcset="../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%99%E6%B4%BB%E5%8B%95-720.webp 720w, ../images/%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%99%E6%B4%BB%E5%8B%95-1440.webp 1440w" sizes="(max-width: 760px) 92vw, 380px" alt="企業春酒尾牙醒獅活動演出" width="578" height="720" loading="lazy" decoding="async">
-              <figcaption>企業春酒醒獅互動演出</figcaption>
-            </figure>
-          </div>
-        </div>
-
-        <div class="cta-band reveal">
-          <p class="section-tag">預約洽詢</p>
-          <h2>{{ landingPage.ctaTitle | escape }}</h2>
-          <p>{{ landingPage.ctaText | escape }}</p>
-          <div class="cta-band-actions">
-            <a class="button button-primary" href="/pages/contact?eventType=company&amp;source=landing-company" aria-label="聯絡臺灣南仙龍獅體育會預約舞龍舞獅表演">聯絡洽詢</a>
-            <a class="button button-secondary" href="/pages/services" aria-label="查看臺灣南仙龍獅體育會表演項目">查看表演項目</a>
-          </div>
-        </div>
-      </section>
+      {% set lp = {
+        crumb: "企業活動舞獅表演",
+        points: landingPage.blocks,
+        contactHref: "/pages/contact?eventType=company&amp;source=landing-company",
+        ctaTitle: landingPage.ctaTitle,
+        ctaText: landingPage.ctaText,
+        priceFaq: false,
+        photos: [
+      { img: "%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%998%E9%9A%BB%E7%8D%85%E8%B7%B3%E6%A8%81%E6%BC%94%E5%87%BA", alt: "尾牙八隻醒獅跳樁大型演出", w: 720, h: 502, caption: "尾牙晚會八獅跳樁大型演出" },
+      { img: "%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E8%81%AF%E6%AD%A1%E6%99%9A%E6%9C%83%E6%88%B0%E9%BC%93%E6%BC%94%E5%87%BA", alt: "雷鳴戰鼓聯歡晚會演出", w: 720, h: 403, caption: "聯歡晚會雷鳴戰鼓開場" },
+      { img: "%E6%98%A5%E9%85%92%E5%B0%BE%E7%89%99/%E5%B0%BE%E7%89%99%E6%B4%BB%E5%8B%95", alt: "企業春酒尾牙醒獅活動演出", w: 578, h: 720, caption: "企業春酒醒獅互動演出" }
+        ]
+      } %}
+      {% include "landing-body.njk" %}
     </main>
 
     {% include "footer.njk" %}
   </div>
   <script src="../backend-config.js?v=20260728-bp1"></script>
-  <script src="../script.js?v=20261030-source1" defer></script>
+  <script src="../script.js?v=20261108-polish1" defer></script>
 </body>
 </html>

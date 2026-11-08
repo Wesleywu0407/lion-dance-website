@@ -73,19 +73,21 @@
   border-color: #fff;
 }
 
-/* LINE 品牌按鈕：台灣使用者最熟悉的洽詢入口（品牌綠調和為與站內暖色調協調的深松綠） */
+/* LINE 洽詢＝全站主要行動（2026-11 決定）：朱紅印章色，整頁只留這一個紅色主按鈕。
+   綠色只保留給「送出成功」等狀態訊息。 */
 .button-line {
-  background: #2f7d54;
+  background: var(--cta);
   color: #fff;
-  border-color: rgba(47, 125, 84, 0.4);
-  box-shadow: 0 10px 22px rgba(47, 125, 84, 0.22);
+  border-color: var(--cta);
+  box-shadow: 0 10px 22px rgba(168, 50, 31, 0.2);
 }
 
 .button-line:hover,
 .button-line:focus-visible {
-  background: #266644;
+  background: var(--cta-deep);
+  border-color: var(--cta-deep);
   color: #fff;
-  box-shadow: 0 8px 28px rgba(38, 102, 68, 0.34);
+  box-shadow: 0 8px 24px rgba(140, 40, 23, 0.3);
 }
 
 /* ── 手機快速聯絡列（script.js 注入，僅 ≤760px 顯示） ── */
@@ -121,14 +123,19 @@
     color: rgba(255, 255, 255, 0.92);
   }
 
+  /* 一個紅色主行動；預約演出退為次要，以細線分隔 */
   .quickbar .quickbar-line {
     color: #fff;
-    background: #2f7d54;
+    background: var(--cta);
   }
 
   .quickbar .quickbar-book {
     color: #fff;
-    background: var(--accent);
+    box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.14);
+  }
+
+  .quickbar .quickbar-tel {
+    box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.14);
   }
 
   body.is-nav-open .quickbar,
