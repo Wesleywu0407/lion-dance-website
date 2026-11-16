@@ -8,9 +8,9 @@ This file is the short router for future Claude/Codex-style agents. Keep it unde
 - Type: static public website for Taiwan Nanxian lion/dragon dance services.
 - Build: Eleventy. Input `src/` → output `_site/` (Netlify publishes `_site`).
 - Edit these: `src/` (pages, `_includes/`, `_data/`, `script.js.njk`), plus `css/`, `images/`, `assets/`, `models/` — those four are passthrough-copied from the project root and ARE live source.
-- Do NOT edit: `_site/` (build output), and the root-level `*.html` / `script.js` — those are stale pre-Eleventy copies, neither built nor deployed.
-- Local preview: `npx @11ty/eleventy` then `python3 -m http.server 8123 --directory _site` (serving the project root would show the stale legacy copies).
-- After changing any CSS or `assets/js/*`, bump the shared `?v=` token in `css/style.css` (10 `@import`s) and every `src/**/*.html` — otherwise browsers keep the cached version and edits silently do nothing.
+- Do NOT edit: `_site/` (build output; wiped and regenerated on every build).
+- Local preview: `npm run serve` (Eleventy dev server, http://localhost:8080). Internal links are extensionless (`/gallery/banquet`); this server and Netlify resolve them to `.html`, but `python3 -m http.server` does not — nav links and the intro-page iframe 404 there.
+- After changing CSS or `assets/js/*`, bump the `?v=` token on the `<link>`/`<script>` tags in every `src/**/*.html` that loads the changed file (shared token today: `20261108-polish1`). The build bundles `css/style.css` and its `@import`s into one file, so the `?v=` on those `@import`s never reaches production; the HTML token is the one that matters.
 
 ## Read First
 
