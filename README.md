@@ -60,15 +60,16 @@ npm run build     # 產生 _site/
 npm run serve     # Eleventy 開發伺服器（含熱更新）
 ```
 
-若要用其他方式預覽建置成果：
+若要預覽正式建置成果（不重新建置、不熱更新）：
 
 ```bash
 npm run build
-python3 -m http.server 8123 --directory _site
+npx @11ty/eleventy-dev-server --dir=_site
 ```
 
 > **注意**：一定要以 `_site/` 為根目錄啟動伺服器。直接開專案根目錄會看到錯誤的路徑結構。
-> VS Code Live Server 已設定為以 `_site/` 為網站根目錄。
+> 站內連結不帶副檔名（例如 `/gallery/banquet`），Netlify 與 Eleventy 開發伺服器會自動對應到 `.html`；`python3 -m http.server` 不會，導覽連結和龍獅介紹頁的動畫 iframe 會出現 404，請勿用它預覽。
+> VS Code Live Server 已設定為以 `_site/` 為網站根目錄，但它同樣不會補 `.html`，只適合查看單一頁面。
 
 ## npm scripts
 
@@ -322,15 +323,16 @@ npm run build     # outputs to _site/
 npm run serve     # Eleventy dev server with live reload
 ```
 
-To preview a production build another way:
+To preview the production build as-is (no rebuild, no live reload):
 
 ```bash
 npm run build
-python3 -m http.server 8123 --directory _site
+npx @11ty/eleventy-dev-server --dir=_site
 ```
 
 > **Important:** always serve `_site/` as the web root. Serving the project root produces the wrong path structure.
-> VS Code Live Server is already configured with `_site/` as the root.
+> Internal links are extensionless (e.g. `/gallery/banquet`). Netlify and the Eleventy dev server resolve them to `.html`; `python3 -m http.server` does not, so nav links and the intro page's animation iframe 404 there. Don't use it for previews.
+> VS Code Live Server is configured with `_site/` as the root, but it also doesn't add `.html`, so use it only for viewing single pages.
 
 ## npm scripts
 
