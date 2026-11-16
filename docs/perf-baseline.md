@@ -2,6 +2,7 @@
 
 > 測量日期：2026-07-18  
 > 測量環境：本機 `python3 -m http.server 8123`、Lighthouse 12.8.2、Mobile 模擬（Lighthouse 預設 simulated throttling / CPU slowdown 4x）  
+> 重新測量請改用 `npm run build` 後執行 `npx @11ty/eleventy-dev-server --dir=_site`：站內連結已改為不帶 `.html`，`python3 -m http.server` 無法對應，頁面間的連結與龍獅介紹頁的動畫 iframe 會 404。  
 > Git 基準：`a13a907 Expand service content and landing pages`
 
 ## Lighthouse Mobile
